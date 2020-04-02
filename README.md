@@ -5,7 +5,7 @@ LeetCode Problems' Solutions
 
 | # | Title | Solution | Difficulty |
 |---| ----- | -------- | ---------- |
-| 1 | [Two Sum](https://leetcode.com/problems/two-sum/) | [C++](./algorithms/cpp/1.cpp) | Easy |
+| 1 | [Two Sum](https://leetcode.com/problems/two-sum/) | [Python](./algorithms/0001.py) | Easy |
 
 ## Database
 
