@@ -11,9 +11,10 @@ __author__  = 'Mu Yang <http://muyang.pro>'
 #
 # Example:
 #
-# Input: (2 -> 4 -> 3) + (5 -> 6 -> 4)
-# Output: 7 -> 0 -> 8
-# Explanation: 342 + 465 = 807.
+#   Input: (2 -> 4 -> 3) + (5 -> 6 -> 4)
+#   Output: 7 -> 0 -> 8
+#   Explanation: 342 + 465 = 807.
+#
 ################################################################################################################################
 
 # Definition for singly-linked list.
@@ -23,8 +24,21 @@ __author__  = 'Mu Yang <http://muyang.pro>'
 #         self.next = None
 
 class Solution:
+    def addTwoNumbers(self, l1: ListNode, l2: ListNode, carry: int = 0) -> ListNode:
+        if not l1 and not l2:
+            return ListNode(carry) if carry else None
+        if l1:
+            carry += l1.val
+            l1 = l1.next
+        if l2:
+            carry += l2.val
+            l2 = l2.next
+        l3 = ListNode(carry%10)
+        l3.next = self.addTwoNumbers(l1, l2, carry//10);
+        return l3;
+
+class Solution2:
     def addTwoNumbers(self, l1: ListNode, l2: ListNode) -> ListNode:
-        carry = 0
         root = ListNode(l1.val + l2.val)
         l3 = root
         l1 = l1.next

@@ -10,6 +10,7 @@ import os
 LANG = {
     '.cpp': 'C++',
     '.py': 'Python',
+    '.sh': 'Bash',
 }
 
 def main():
