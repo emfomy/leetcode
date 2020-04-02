@@ -1,6 +1,8 @@
 # Source: https://leetcode.com/problems/two-sum/
-# Title:  Two Sum
-# Author: Mu Yang <muyang.pro>
+# Title: Two Sum
+# Difficulty: Easy
+
+__author__  = 'Mu Yang <http://muyang.pro>'
 
 ################################################################################################################################
 # Given an array of integers, return indices of the two numbers such that they add up to a specific target.
