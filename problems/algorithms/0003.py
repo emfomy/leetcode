@@ -1,8 +1,7 @@
 # Source: https://leetcode.com/problems/longest-substring-without-repeating-characters/
 # Title: Longest Substring Without Repeating Characters
 # Difficulty: Medium
-
-__author__  = 'Mu Yang <http://muyang.pro>'
+# Author: Mu Yang <http://muyang.pro>
 
 ################################################################################################################################
 # Given a string, find the length of the longest substring without repeating characters.
