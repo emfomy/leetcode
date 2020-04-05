@@ -13,6 +13,10 @@ LANG = {
     '.sh': 'Bash',
 }
 
+def myprint(*args, file=None, **kwargs):
+    print(*args, **kwargs)
+    print(*args, **kwargs, file=file)
+
 def main():
 
     data = {}
@@ -49,26 +53,26 @@ def main():
     with open('./README.md', 'w') as fout:
 
         # Header
-        print('# LeetCode', file=fout)
-        print('LeetCode Problems\' Solutions', file=fout)
-        print(file=fout)
+        myprint('# LeetCode', file=fout)
+        myprint('LeetCode Problems\' Solutions', file=fout)
+        myprint(file=fout)
 
         # Categories
         for cat in sorted(data.keys()):
-            print(f'# {cat}', file=fout)
-            print(file=fout)
+            myprint(f'# {cat}', file=fout)
+            myprint(file=fout)
 
             # Table
-            print('| # | Title | Solution | Difficulty |', file=fout)
-            print('|---| ----- | -------- | ---------- |', file=fout)
+            myprint('| # | Title | Solution | Difficulty |', file=fout)
+            myprint('|---| ----- | -------- | ---------- |', file=fout)
             for prob_num in sorted(data[cat].keys()):
                 prob = data[cat][prob_num]
                 prob_title = prob['title']
                 prob_source = prob['source']
                 prob_difficulty = prob['difficulty']
                 solutions = ' '.join((f'[{lang}]({file})' for lang, file in sorted(prob['solution'].items())))
-                print(f'| {prob_num} | [{prob_title}]({prob_source}) | {solutions} | {prob_difficulty} |', file=fout)
-            print(file=fout)
+                myprint(f'| {prob_num} | [{prob_title}]({prob_source}) | {solutions} | {prob_difficulty} |', file=fout)
+            myprint(file=fout)
 
 if __name__ == '__main__':
     main()

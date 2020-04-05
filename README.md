@@ -12,6 +12,10 @@ LeetCode Problems' Solutions
 | 5 | [Longest Palindromic Substring](//leetcode.com/problems/longest-palindromic-substring/) | [Python](./problems/algorithms/0005.py) | Medium |
 | 6 | [ZigZag Conversion](//leetcode.com/problems/zigzag-conversion/) | [Python](./problems/algorithms/0006.py) | Medium |
 | 7 | [Reverse Integer](//leetcode.com/problems/reverse-integer/) | [Python](./problems/algorithms/0007.py) | Easy |
+| 8 | [String to Integer (atoi)](//leetcode.com/problems/string-to-integer-atoi/) | [Python](./problems/algorithms/0008.py) | Medium |
+| 9 | [Palindrome Number](//leetcode.com/problems/palindrome-number/) | [Python](./problems/algorithms/0009.py) | Easy |
+| 10 | [Regular Expression Matching](//leetcode.com/problems/regular-expression-matching/) | [Python](./problems/algorithms/0010.py) | Hard |
+| 11 | [Container With Most Water](//leetcode.com/problems/container-with-most-water/) | [Python](./problems/algorithms/0011.py) | Medium |
 
 # Concurrency
 
