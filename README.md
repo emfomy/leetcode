@@ -16,6 +16,12 @@ LeetCode Problems' Solutions
 | 9 | [Palindrome Number](//leetcode.com/problems/palindrome-number/) | [Python](./problems/algorithms/0009.py) | Easy |
 | 10 | [Regular Expression Matching](//leetcode.com/problems/regular-expression-matching/) | [Python](./problems/algorithms/0010.py) | Hard |
 | 11 | [Container With Most Water](//leetcode.com/problems/container-with-most-water/) | [Python](./problems/algorithms/0011.py) | Medium |
+| 12 | [Integer to Roman](//leetcode.com/problems/integer-to-roman/) | [Python](./problems/algorithms/0012.py) | Medium |
+| 13 | [Roman to Integer](//leetcode.com/problems/roman-to-integer/) | [Python](./problems/algorithms/0013.py) | Easy |
+| 14 | [Longest Common Prefix](//leetcode.com/problems/longest-common-prefix/) | [Python](./problems/algorithms/0014.py) | Easy |
+| 15 | [3Sum](//leetcode.com/problems/3sum/) | [Python](./problems/algorithms/0015.py) | Medium |
+| 16 | [3Sum Closest](//leetcode.com/problems/3sum-closest/) | [Python](./problems/algorithms/0016.py) | Medium |
+| 17 | [Letter Combinations of a Phone Number](//leetcode.com/problems/letter-combinations-of-a-phone-number/) | [Python](./problems/algorithms/0017.py) | Medium |
 
 # Concurrency
 
