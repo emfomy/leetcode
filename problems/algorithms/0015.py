@@ -29,7 +29,7 @@ class Solution:
         i = 0
         while i < n:
             ai = nums[i]
-            if ai > 0: # break when 3 numbers are all positive
+            if ai > 0: # break when numbers are all positive
                 break
             j = i+1
             k = n-1

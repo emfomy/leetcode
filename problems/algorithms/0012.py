@@ -54,20 +54,20 @@
 #
 ################################################################################################################################
 
-roman0 = [ '', 'I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII', 'IX', ]
-roman1 = [ '', 'X', 'XX', 'XXX', 'XL', 'L', 'LX', 'LXX', 'LXXX', 'XC', ]
-roman2 = [ '', 'C', 'CC', 'CCC', 'CD', 'D', 'DC', 'DCC', 'DCCC', 'CM', ]
-roman3 = [ '', 'M', 'MM', 'MMM' ]
+ROMAN0 = [ '', 'I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII', 'IX', ]
+ROMAN1 = [ '', 'X', 'XX', 'XXX', 'XL', 'L', 'LX', 'LXX', 'LXXX', 'XC', ]
+ROMAN2 = [ '', 'C', 'CC', 'CCC', 'CD', 'D', 'DC', 'DCC', 'DCCC', 'CM', ]
+ROMAN3 = [ '', 'M', 'MM', 'MMM' ]
 
 class Solution2:
     def intToRoman(self, num: int) -> str:
         s = str(num)
         ans = ''
         try:
-            ans = roman0[int(s[-1])] + ans
-            ans = roman1[int(s[-2])] + ans
-            ans = roman2[int(s[-3])] + ans
-            ans = roman3[int(s[-4])] + ans
+            ans = ROMAN0[int(s[-1])] + ans
+            ans = ROMAN1[int(s[-2])] + ans
+            ans = ROMAN2[int(s[-3])] + ans
+            ans = ROMAN3[int(s[-4])] + ans
         except IndexError:
             pass
         return ans

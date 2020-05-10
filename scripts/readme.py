@@ -45,9 +45,9 @@ def main():
                 }
             else:
                 prob = data[cat][prob_num]
-                assert prob['source'] == prob_source
-                assert prob['title'] == prob_title
-                assert prob['difficulty'] == prob_difficulty
+                assert prob['source'] == prob_source, prob
+                assert prob['title'] == prob_title, prob
+                assert prob['difficulty'] == prob_difficulty, prob
                 prob['solution'][prob_lang] = prob_file
 
     with open('./README.md', 'w') as fout:

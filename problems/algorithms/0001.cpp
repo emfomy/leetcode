@@ -19,7 +19,7 @@
 
 class Solution {
  public:
-  vector<int> twoSum(vector<int>& nums, int target) {
+  vector<int> twoSum( vector<int>& nums, int target ) {
     const int n = nums.size();
     unordered_map<int, int> d;
     for ( auto i = 0; i < n; ++i ) {

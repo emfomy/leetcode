@@ -25,6 +25,8 @@ class Solution:
                 return [d[n], i]
             d[target-n] = i
 
+################################################################################################################################
+
 class Solution2:
     def twoSum(self, nums: List[int], target: int) -> List[int]:
         idxs = sorted(range(len(nums)), key=lambda k: nums[k])

@@ -21,7 +21,7 @@
 #
 ################################################################################################################################
 
-phone = {
+PHONE = {
     '2': 'abc',
     '3': 'def',
     '4': 'ghi',
@@ -37,4 +37,4 @@ import itertools
 class Solution:
     def letterCombinations(self, digits: str) -> List[str]:
         if digits:
-            yield from map(''.join, itertools.product(*map(phone.__getitem__, digits)))
+            yield from map(''.join, itertools.product(*map(PHONE.get, digits)))

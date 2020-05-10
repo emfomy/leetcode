@@ -54,7 +54,7 @@
 #
 ################################################################################################################################
 
-romans = {
+ROMANS = {
     'I': 1,
     'V': 5,
     'X': 10,
@@ -66,7 +66,7 @@ romans = {
 
 class Solution:
     def romanToInt(self, s: str) -> int:
-        l = map(romans.get, s)
+        l = map(ROMANS.get, s)
         ans = 0
         cur = next(l)
         for nxt in l:
@@ -81,7 +81,7 @@ class Solution:
 class Solution2:
     def romanToInt(self, s: str) -> int:
         ans = 0
-        cur = romans[s[0]]
+        cur = ROMANS[s[0]]
         for c in s[1:]:
             nxt = romans[c]
             if cur < nxt:

@@ -56,8 +56,32 @@
 #
 ################################################################################################################################
 
+class Solution:
+    def isMatch(self, s: str, p: str) -> bool:
+        print(s, '|', p, sep='\t\t')
+        if not p: # no pattern
+            return not s
+
+        pc = p[-1]
+        if pc == '*': # multiple
+            pc = p[-2]
+            if self.isMatch(s, p[:-2]): # no char
+                return True
+            if not s:
+                return False
+            if pc == '.' or pc == s[-1]:
+                return self.isMatch(s[:-1], p)
+        else: # single
+            if not s:
+                return False
+            if pc == '.' or pc == s[-1]:
+                return self.isMatch(s[:-1], p[:-1])
+        return False
+
+################################################################################################################################
+
 import re
 
-class Solution:
+class Solution2:
     def isMatch(self, s: str, p: str) -> bool:
         return bool(re.match(fr'^{p}$', s))

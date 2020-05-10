@@ -28,7 +28,7 @@
 
 class Solution {
  public:
-  double findMedianSortedArrays(vector<int>& nums1, vector<int>& nums2) {
+  double findMedianSortedArrays( vector<int>& nums1, vector<int>& nums2 ) {
     auto len = nums1.size() + nums2.size();
     vector<int> nums(len);
     merge(nums1.cbegin(), nums1.cend(), nums2.cbegin(), nums2.cend(), nums.begin());

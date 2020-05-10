@@ -22,6 +22,15 @@ LeetCode Problems' Solutions
 | 15 | [3Sum](//leetcode.com/problems/3sum/) | [Python](./problems/algorithms/0015.py) | Medium |
 | 16 | [3Sum Closest](//leetcode.com/problems/3sum-closest/) | [Python](./problems/algorithms/0016.py) | Medium |
 | 17 | [Letter Combinations of a Phone Number](//leetcode.com/problems/letter-combinations-of-a-phone-number/) | [Python](./problems/algorithms/0017.py) | Medium |
+| 18 | [4Sum](//leetcode.com/problems/4sum/) | [Python](./problems/algorithms/0018.py) | Medium |
+| 19 | [Remove Nth Node From End of List](//leetcode.com/problems/remove-nth-node-from-end-of-list/) | [Python](./problems/algorithms/0019.py) | Medium |
+| 20 | [Valid Parentheses](//leetcode.com/problems/valid-parentheses/) | [Python](./problems/algorithms/0020.py) | Easy |
+| 21 | [Merge Two Sorted Lists](//leetcode.com/problems/merge-two-sorted-lists/) | [Python](./problems/algorithms/0021.py) | Easy |
+| 22 | [Generate Parentheses](//leetcode.com/problems/generate-parentheses/) | [Python](./problems/algorithms/0022.py) | Medium |
+| 23 | [Merge k Sorted Lists](//leetcode.com/problems/merge-k-sorted-lists/) | [Python](./problems/algorithms/0023.py) | Hard |
+| 24 | [Swap Nodes in Pairs](//leetcode.com/problems/swap-nodes-in-pairs/) | [Python](./problems/algorithms/0024.py) | Medium |
+| 32 | [Longest Valid Parentheses](//leetcode.com/problems/longest-valid-parentheses/) | [Python](./problems/algorithms/0032.py) | Hard |
+| 33 | [Search in Rotated Sorted Array](//leetcode.com/problems/search-in-rotated-sorted-array/) | [C++](./problems/algorithms/0033.cpp) [Python](./problems/algorithms/0033.py) | Medium |
 
 # Concurrency
 
