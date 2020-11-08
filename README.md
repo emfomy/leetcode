@@ -31,6 +31,18 @@ LeetCode Problems' Solutions
 | 24 | [Swap Nodes in Pairs](//leetcode.com/problems/swap-nodes-in-pairs/) | [Python](./problems/algorithms/0024.py) | Medium |
 | 32 | [Longest Valid Parentheses](//leetcode.com/problems/longest-valid-parentheses/) | [Python](./problems/algorithms/0032.py) | Hard |
 | 33 | [Search in Rotated Sorted Array](//leetcode.com/problems/search-in-rotated-sorted-array/) | [C++](./problems/algorithms/0033.cpp) [Python](./problems/algorithms/0033.py) | Medium |
+| 34 | [Find First and Last Position of Element in Sorted Array](//leetcode.com/problems/find-first-and-last-position-of-element-in-sorted-array/) | [C++](./problems/algorithms/0034.cpp) | Medium |
+| 39 | [Combination Sum](//leetcode.com/problems/combination-sum/) | [Python](./problems/algorithms/0039.py) | Medium |
+| 41 | [First Missing Positive](//leetcode.com/problems/first-missing-positive/) | [Python](./problems/algorithms/0041.py) | Hard |
+| 42 | [Trapping Rain Water](//leetcode.com/problems/trapping-rain-water/) | [Python](./problems/algorithms/0042.py) | Hard |
+| 45 | [Jump Game II](//leetcode.com/problems/jump-game-ii/) | [Python](./problems/algorithms/0045.py) | Hard |
+| 46 | [Permutations](//leetcode.com/problems/permutations/) | [Python](./problems/algorithms/0046.py) | Medium |
+| 48 | [Rotate Image](//leetcode.com/problems/rotate-image/) | [Python](./problems/algorithms/0048.py) | Medium |
+| 49 | [Group Anagrams](//leetcode.com/problems/group-anagrams/) | [Python](./problems/algorithms/0049.py) | Medium |
+| 53 | [Maximum Subarray](//leetcode.com/problems/maximum-subarray/) | [Python](./problems/algorithms/0053.py) | Easy |
+| 55 | [Jump Game](//leetcode.com/problems/jump-game/) | [Python](./problems/algorithms/0055.py) | Medium |
+| 56 | [Merge Intervals](//leetcode.com/problems/merge-intervals/) | [Python](./problems/algorithms/0056.py) | Medium |
+| 62 | [Minimum Path Sum](//leetcode.com/problems/minimum-path-sum/) | [Python](./problems/algorithms/0062.py) | Medium |
 
 # Concurrency
 
