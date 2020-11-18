@@ -42,7 +42,15 @@ LeetCode Problems' Solutions
 | 53 | [Maximum Subarray](//leetcode.com/problems/maximum-subarray/) | [Python](./problems/algorithms/0053.py) | Easy |
 | 55 | [Jump Game](//leetcode.com/problems/jump-game/) | [Python](./problems/algorithms/0055.py) | Medium |
 | 56 | [Merge Intervals](//leetcode.com/problems/merge-intervals/) | [Python](./problems/algorithms/0056.py) | Medium |
-| 62 | [Minimum Path Sum](//leetcode.com/problems/minimum-path-sum/) | [Python](./problems/algorithms/0062.py) | Medium |
+| 62 | [Unique Paths](//leetcode.com/problems/unique-paths/) | [Python](./problems/algorithms/0062.py) | Medium |
+| 64 | [Minimum Path Sum](//leetcode.com/problems/minimum-path-sum/) | [Python](./problems/algorithms/0064.py) | Medium |
+| 70 | [Climbing Stairs](//leetcode.com/problems/climbing-stairs/) | [Python](./problems/algorithms/0070.py) | Easy |
+| 72 | [Edit Distance](//leetcode.com/problems/edit-distance/) | [Python](./problems/algorithms/0072.py) | Hard |
+| 75 | [Sort Colors](//leetcode.com/problems/sort-colors/) | [Python](./problems/algorithms/0075.py) | Medium |
+| 78 | [Subsets](//leetcode.com/problems/subsets/) | [Python](./problems/algorithms/0078.py) | Medium |
+| 79 | [Word Search](//leetcode.com/problems/word-search/) | [Python](./problems/algorithms/0079.py) | Medium |
+| 84 | [Largest Rectangle in Histogram](//leetcode.com/problems/largest-rectangle-in-histogram/) | [Python](./problems/algorithms/0084.py) | Hard |
+| 85 | [Largest Rectangle in Histogram](//leetcode.com/problems/largest-rectangle-in-histogram/) | [Python](./problems/algorithms/0085.py) | Hard |
 
 # Concurrency
 
