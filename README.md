@@ -50,7 +50,16 @@ LeetCode Problems' Solutions
 | 78 | [Subsets](//leetcode.com/problems/subsets/) | [Python](./problems/algorithms/0078.py) | Medium |
 | 79 | [Word Search](//leetcode.com/problems/word-search/) | [Python](./problems/algorithms/0079.py) | Medium |
 | 84 | [Largest Rectangle in Histogram](//leetcode.com/problems/largest-rectangle-in-histogram/) | [Python](./problems/algorithms/0084.py) | Hard |
-| 85 | [Largest Rectangle in Histogram](//leetcode.com/problems/largest-rectangle-in-histogram/) | [Python](./problems/algorithms/0085.py) | Hard |
+| 85 | [Maximal Rectangle](//leetcode.com/problems/maximal-rectangle/) | [Python](./problems/algorithms/0085.py) | Hard |
+| 94 | [Binary Tree Inorder Traversal](//leetcode.com/problems/binary-tree-inorder-traversal/) | [Python](./problems/algorithms/0094.py) | Medium |
+| 96 | [Unique Binary Search Trees](//leetcode.com/problems/unique-binary-search-trees/) | [Python](./problems/algorithms/0096.py) | Medium |
+| 98 | [Validate Binary Search Tree](//leetcode.com/problems/validate-binary-search-tree/) | [Python](./problems/algorithms/0098.py) | Medium |
+| 101 | [Symmetric Tree](//leetcode.com/problems/symmetric-tree/) | [Python](./problems/algorithms/0101.py) | Easy |
+| 102 | [Binary Tree Level Order Traversal](//leetcode.com/problems/binary-tree-level-order-traversal/) | [Python](./problems/algorithms/0102.py) | Medium |
+| 104 | [Maximum Depth of Binary Tree](//leetcode.com/problems/maximum-depth-of-binary-tree/) | [Python](./problems/algorithms/0104.py) | Easy |
+| 105 | [Construct Binary Tree from Preorder and Inorder Traversal](//leetcode.com/problems/construct-binary-tree-from-preorder-and-inorder-traversal/) | [Python](./problems/algorithms/0105.py) | Medium |
+| 114 | [Flatten Binary Tree to Linked List](//leetcode.com/problems/flatten-binary-tree-to-linked-list/) | [Python](./problems/algorithms/0114.py) | Medium |
+| 121 | [Best Time to Buy and Sell Stock](//leetcode.com/problems/best-time-to-buy-and-sell-stock/) | [Python](./problems/algorithms/0121.py) | Easy |
 
 # Concurrency
 
