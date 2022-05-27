@@ -9,6 +9,7 @@ import os
 
 LANG = {
     '.cpp': 'C++',
+    '.go': 'Go',
     '.py': 'Python',
     '.sh': 'Bash',
 }

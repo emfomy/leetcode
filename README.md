@@ -5,7 +5,7 @@ LeetCode Problems' Solutions
 
 | # | Title | Solution | Difficulty |
 |---| ----- | -------- | ---------- |
-| 1 | [Two Sum](//leetcode.com/problems/two-sum/) | [C++](./problems/algorithms/0001.cpp) [Python](./problems/algorithms/0001.py) | Easy |
+| 1 | [Two Sum](//leetcode.com/problems/two-sum/) | [C++](./problems/algorithms/0001.cpp) [Go](./problems/algorithms/0001.go) [Python](./problems/algorithms/0001.py) | Easy |
 | 2 | [Add Two Numbers](//leetcode.com/problems/add-two-numbers/) | [C++](./problems/algorithms/0002.cpp) [Python](./problems/algorithms/0002.py) | Medium |
 | 3 | [Longest Substring Without Repeating Characters](//leetcode.com/problems/longest-substring-without-repeating-characters/) | [C++](./problems/algorithms/0003.cpp) [Python](./problems/algorithms/0003.py) | Medium |
 | 4 | [Median of Two Sorted Arrays](//leetcode.com/problems/median-of-two-sorted-arrays/) | [C++](./problems/algorithms/0004.cpp) [Python](./problems/algorithms/0004.py) | Hard |
@@ -60,19 +60,5 @@ LeetCode Problems' Solutions
 | 105 | [Construct Binary Tree from Preorder and Inorder Traversal](//leetcode.com/problems/construct-binary-tree-from-preorder-and-inorder-traversal/) | [Python](./problems/algorithms/0105.py) | Medium |
 | 114 | [Flatten Binary Tree to Linked List](//leetcode.com/problems/flatten-binary-tree-to-linked-list/) | [Python](./problems/algorithms/0114.py) | Medium |
 | 121 | [Best Time to Buy and Sell Stock](//leetcode.com/problems/best-time-to-buy-and-sell-stock/) | [Python](./problems/algorithms/0121.py) | Easy |
-
-# Concurrency
-
-| # | Title | Solution | Difficulty |
-|---| ----- | -------- | ---------- |
-
-# Database
-
-| # | Title | Solution | Difficulty |
-|---| ----- | -------- | ---------- |
-
-# Shell
-
-| # | Title | Solution | Difficulty |
-|---| ----- | -------- | ---------- |
+| 1342 | [Number of Steps to Reduce a Number to Zero](//leetcode.com/problems/number-of-steps-to-reduce-a-number-to-zero/) | [Go](./problems/algorithms/1342.go) | Easy |
 
