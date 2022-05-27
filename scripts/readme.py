@@ -8,6 +8,7 @@ import glob
 import os
 
 LANG = {
+    '.c': 'C',
     '.cpp': 'C++',
     '.go': 'Go',
     '.py': 'Python',

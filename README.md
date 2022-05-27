@@ -60,5 +60,5 @@ LeetCode Problems' Solutions
 | 105 | [Construct Binary Tree from Preorder and Inorder Traversal](//leetcode.com/problems/construct-binary-tree-from-preorder-and-inorder-traversal/) | [Python](./problems/algorithms/0105.py) | Medium |
 | 114 | [Flatten Binary Tree to Linked List](//leetcode.com/problems/flatten-binary-tree-to-linked-list/) | [Python](./problems/algorithms/0114.py) | Medium |
 | 121 | [Best Time to Buy and Sell Stock](//leetcode.com/problems/best-time-to-buy-and-sell-stock/) | [Python](./problems/algorithms/0121.py) | Easy |
-| 1342 | [Number of Steps to Reduce a Number to Zero](//leetcode.com/problems/number-of-steps-to-reduce-a-number-to-zero/) | [Go](./problems/algorithms/1342.go) | Easy |
+| 1342 | [Number of Steps to Reduce a Number to Zero](//leetcode.com/problems/number-of-steps-to-reduce-a-number-to-zero/) | [C++](./problems/algorithms/1342.cpp) [Go](./problems/algorithms/1342.go) | Easy |
 
