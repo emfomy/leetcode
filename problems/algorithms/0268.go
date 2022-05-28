@@ -62,10 +62,10 @@ func missingNumber2(nums []int) int {
 func missingNumber3(nums []int) int {
 	res := 0
 	for i, num := range nums {
-		res ^= (i + 1)
+		res ^= i
 		res ^= num
 	}
-	return res
+	return res ^ len(nums)
 }
 
 // Use bit manipulation.
