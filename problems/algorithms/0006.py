@@ -14,7 +14,7 @@
 #
 # Write the code that will take a string and make this conversion given a number of rows:
 #
-# string convert(string s, int numRows);
+#   string convert(string s, int numRows);
 #
 # Example 1:
 #
@@ -27,10 +27,21 @@
 #   Output: "PINALSIGYAHRPI"
 #   Explanation:
 #
-#   P     I    N
-#   A   L S  I G
-#   Y A   H R
-#   P     I
+#     P     I    N
+#     A   L S  I G
+#     Y A   H R
+#     P     I
+#
+# Example 3:
+#
+#   Input: s = "A", numRows = 1
+#   Output: "A"
+#
+# Constraints:
+#
+#   1 <= s.length <= 1000
+#   s consists of English letters (lower-case and upper-case), ',' and '.'.
+#   1 <= numRows <= 1000
 #
 ################################################################################################################################
 

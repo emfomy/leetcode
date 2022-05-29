@@ -10,7 +10,7 @@ LeetCode Problems' Solutions
 | 3 | [Longest Substring Without Repeating Characters](//leetcode.com/problems/longest-substring-without-repeating-characters/) | [C++](./problems/algorithms/0003.cpp) [Go](./problems/algorithms/0003.go) [Python](./problems/algorithms/0003.py) | Medium |
 | 4 | [Median of Two Sorted Arrays](//leetcode.com/problems/median-of-two-sorted-arrays/) | [C++](./problems/algorithms/0004.cpp) [Go](./problems/algorithms/0004.go) [Python](./problems/algorithms/0004.py) | Hard |
 | 5 | [Longest Palindromic Substring](//leetcode.com/problems/longest-palindromic-substring/) | [Go](./problems/algorithms/0005.go) [Python](./problems/algorithms/0005.py) | Medium |
-| 6 | [ZigZag Conversion](//leetcode.com/problems/zigzag-conversion/) | [Python](./problems/algorithms/0006.py) | Medium |
+| 6 | [ZigZag Conversion](//leetcode.com/problems/zigzag-conversion/) | [Go](./problems/algorithms/0006.go) [Python](./problems/algorithms/0006.py) | Medium |
 | 7 | [Reverse Integer](//leetcode.com/problems/reverse-integer/) | [Python](./problems/algorithms/0007.py) | Easy |
 | 8 | [String to Integer (atoi)](//leetcode.com/problems/string-to-integer-atoi/) | [Python](./problems/algorithms/0008.py) | Medium |
 | 9 | [Palindrome Number](//leetcode.com/problems/palindrome-number/) | [Python](./problems/algorithms/0009.py) | Easy |
