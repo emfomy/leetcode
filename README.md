@@ -9,7 +9,7 @@ LeetCode Problems' Solutions
 | 2 | [Add Two Numbers](//leetcode.com/problems/add-two-numbers/) | [C++](./problems/algorithms/0002.cpp) [Go](./problems/algorithms/0002.go) [Python](./problems/algorithms/0002.py) | Medium |
 | 3 | [Longest Substring Without Repeating Characters](//leetcode.com/problems/longest-substring-without-repeating-characters/) | [C++](./problems/algorithms/0003.cpp) [Go](./problems/algorithms/0003.go) [Python](./problems/algorithms/0003.py) | Medium |
 | 4 | [Median of Two Sorted Arrays](//leetcode.com/problems/median-of-two-sorted-arrays/) | [C++](./problems/algorithms/0004.cpp) [Go](./problems/algorithms/0004.go) [Python](./problems/algorithms/0004.py) | Hard |
-| 5 | [Longest Palindromic Substring](//leetcode.com/problems/longest-palindromic-substring/) | [Python](./problems/algorithms/0005.py) | Medium |
+| 5 | [Longest Palindromic Substring](//leetcode.com/problems/longest-palindromic-substring/) | [Go](./problems/algorithms/0005.go) [Python](./problems/algorithms/0005.py) | Medium |
 | 6 | [ZigZag Conversion](//leetcode.com/problems/zigzag-conversion/) | [Python](./problems/algorithms/0006.py) | Medium |
 | 7 | [Reverse Integer](//leetcode.com/problems/reverse-integer/) | [Python](./problems/algorithms/0007.py) | Easy |
 | 8 | [String to Integer (atoi)](//leetcode.com/problems/string-to-integer-atoi/) | [Python](./problems/algorithms/0008.py) | Medium |
@@ -61,5 +61,6 @@ LeetCode Problems' Solutions
 | 114 | [Flatten Binary Tree to Linked List](//leetcode.com/problems/flatten-binary-tree-to-linked-list/) | [Python](./problems/algorithms/0114.py) | Medium |
 | 121 | [Best Time to Buy and Sell Stock](//leetcode.com/problems/best-time-to-buy-and-sell-stock/) | [Python](./problems/algorithms/0121.py) | Easy |
 | 268 | [Missing Number](//leetcode.com/problems/missing-number/) | [Go](./problems/algorithms/0268.go) | Easy |
+| 318 | [Maximum Product of Word Lengths](//leetcode.com/problems/maximum-product-of-word-lengths/) | [Go](./problems/algorithms/0318.go) | Easy |
 | 1342 | [Number of Steps to Reduce a Number to Zero](//leetcode.com/problems/number-of-steps-to-reduce-a-number-to-zero/) | [C++](./problems/algorithms/1342.cpp) [Go](./problems/algorithms/1342.go) | Easy |
 
