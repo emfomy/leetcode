@@ -29,6 +29,7 @@ LeetCode Problems' Solutions
 | 22 | [Generate Parentheses](//leetcode.com/problems/generate-parentheses/) | [Python](./problems/algorithms/0022.py) | Medium |
 | 23 | [Merge k Sorted Lists](//leetcode.com/problems/merge-k-sorted-lists/) | [Python](./problems/algorithms/0023.py) | Hard |
 | 24 | [Swap Nodes in Pairs](//leetcode.com/problems/swap-nodes-in-pairs/) | [Python](./problems/algorithms/0024.py) | Medium |
+| 29 | [Divide Two Integers](//leetcode.com/problems/divide-two-integers/) | [Go](./problems/algorithms/0029.go) | Medium |
 | 32 | [Longest Valid Parentheses](//leetcode.com/problems/longest-valid-parentheses/) | [Python](./problems/algorithms/0032.py) | Hard |
 | 33 | [Search in Rotated Sorted Array](//leetcode.com/problems/search-in-rotated-sorted-array/) | [C++](./problems/algorithms/0033.cpp) [Python](./problems/algorithms/0033.py) | Medium |
 | 34 | [Find First and Last Position of Element in Sorted Array](//leetcode.com/problems/find-first-and-last-position-of-element-in-sorted-array/) | [C++](./problems/algorithms/0034.cpp) | Medium |
