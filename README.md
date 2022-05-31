@@ -64,4 +64,5 @@ LeetCode Problems' Solutions
 | 268 | [Missing Number](//leetcode.com/problems/missing-number/) | [Go](./problems/algorithms/0268.go) | Easy |
 | 318 | [Maximum Product of Word Lengths](//leetcode.com/problems/maximum-product-of-word-lengths/) | [Go](./problems/algorithms/0318.go) | Easy |
 | 1342 | [Number of Steps to Reduce a Number to Zero](//leetcode.com/problems/number-of-steps-to-reduce-a-number-to-zero/) | [C++](./problems/algorithms/1342.cpp) [Go](./problems/algorithms/1342.go) | Easy |
+| 1461 | [Check If a String Contains All Binary Codes of Size K](//leetcode.com/problems/check-if-a-string-contains-all-binary-codes-of-size-k/) | [Go](./problems/algorithms/1461.go) | Medium |
 
