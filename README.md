@@ -45,7 +45,7 @@ LeetCode Problems' Solutions
 | 56 | [Merge Intervals](//leetcode.com/problems/merge-intervals/) | [Python](./problems/algorithms/0056.py) | Medium |
 | 62 | [Unique Paths](//leetcode.com/problems/unique-paths/) | [Python](./problems/algorithms/0062.py) | Medium |
 | 64 | [Minimum Path Sum](//leetcode.com/problems/minimum-path-sum/) | [Python](./problems/algorithms/0064.py) | Medium |
-| 70 | [Climbing Stairs](//leetcode.com/problems/climbing-stairs/) | [Python](./problems/algorithms/0070.py) | Easy |
+| 70 | [Climbing Stairs](//leetcode.com/problems/climbing-stairs/) | [Go](./problems/algorithms/0070.go) [Python](./problems/algorithms/0070.py) | Easy |
 | 72 | [Edit Distance](//leetcode.com/problems/edit-distance/) | [Python](./problems/algorithms/0072.py) | Hard |
 | 75 | [Sort Colors](//leetcode.com/problems/sort-colors/) | [Python](./problems/algorithms/0075.py) | Medium |
 | 78 | [Subsets](//leetcode.com/problems/subsets/) | [Python](./problems/algorithms/0078.py) | Medium |
@@ -61,11 +61,16 @@ LeetCode Problems' Solutions
 | 105 | [Construct Binary Tree from Preorder and Inorder Traversal](//leetcode.com/problems/construct-binary-tree-from-preorder-and-inorder-traversal/) | [Python](./problems/algorithms/0105.py) | Medium |
 | 114 | [Flatten Binary Tree to Linked List](//leetcode.com/problems/flatten-binary-tree-to-linked-list/) | [Python](./problems/algorithms/0114.py) | Medium |
 | 121 | [Best Time to Buy and Sell Stock](//leetcode.com/problems/best-time-to-buy-and-sell-stock/) | [Python](./problems/algorithms/0121.py) | Easy |
+| 191 | [Number of 1 Bits](//leetcode.com/problems/number-of-1-bits/) | [C++](./problems/algorithms/0191.cpp) [Go](./problems/algorithms/0191.go) | Easy |
 | 268 | [Missing Number](//leetcode.com/problems/missing-number/) | [Go](./problems/algorithms/0268.go) | Easy |
+| 303 | [Range Sum Query - Immutable](//leetcode.com/problems/range-sum-query-immutable/) | [Go](./problems/algorithms/0303.go) | Easy |
+| 304 | [Range Sum Query 2D - Immutable](//leetcode.com/problems/range-sum-query-2d-immutable/) | [Go](./problems/algorithms/0304.go) | Medium |
 | 318 | [Maximum Product of Word Lengths](//leetcode.com/problems/maximum-product-of-word-lengths/) | [Go](./problems/algorithms/0318.go) | Easy |
 | 509 | [Fibonacci Number](//leetcode.com/problems/fibonacci-number/) | [Go](./problems/algorithms/0509.go) | Easy |
+| 746 | [Min Cost Climbing Stairs](//leetcode.com/problems/min-cost-climbing-stairs/) | [Go](./problems/algorithms/0746.go) | Easy |
 | 867 | [Transpose Matrix](//leetcode.com/problems/transpose-matrix/) | [Go](./problems/algorithms/0867.go) [Python](./problems/algorithms/0867.py) | Easy |
 | 1137 | [N-th Tribonacci Number](//leetcode.com/problems/n-th-tribonacci-number/) | [Go](./problems/algorithms/1137.go) | Easy |
+| 1281 | [Subtract the Product and Sum of Digits of an Integer](//leetcode.com/problems/subtract-the-product-and-sum-of-digits-of-an-integer/) | [Go](./problems/algorithms/1281.go) | Easy |
 | 1342 | [Number of Steps to Reduce a Number to Zero](//leetcode.com/problems/number-of-steps-to-reduce-a-number-to-zero/) | [C++](./problems/algorithms/1342.cpp) [Go](./problems/algorithms/1342.go) | Easy |
 | 1461 | [Check If a String Contains All Binary Codes of Size K](//leetcode.com/problems/check-if-a-string-contains-all-binary-codes-of-size-k/) | [Go](./problems/algorithms/1461.go) | Medium |
 | 1480 | [Running Sum of 1d Array](//leetcode.com/problems/running-sum-of-1d-array/) | [Go](./problems/algorithms/1480.go) | Easy |

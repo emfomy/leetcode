@@ -36,14 +36,14 @@ SQRT5 = sqrt(5.0)
 PHI = (1+SQRT5)/2
 
 class Solution:
-    """Find (n-1)th Fibonacci number"""
+    """Find (n+1)th Fibonacci number"""
     def climbStairs(self, n: int) -> int:
         return int(pow(PHI, n+1)/SQRT5+.5)
 
 ################################################################################################################################
 
 class Solution2:
-    """Find (n-1)th Fibonacci number"""
+    """Find (n+1)th Fibonacci number"""
     def climbStairs(self, n: int) -> int:
 
         a = b = 1
