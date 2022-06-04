@@ -40,6 +40,7 @@ LeetCode Problems' Solutions
 | 46 | [Permutations](//leetcode.com/problems/permutations/) | [Python](./problems/algorithms/0046.py) | Medium |
 | 48 | [Rotate Image](//leetcode.com/problems/rotate-image/) | [Python](./problems/algorithms/0048.py) | Medium |
 | 49 | [Group Anagrams](//leetcode.com/problems/group-anagrams/) | [Python](./problems/algorithms/0049.py) | Medium |
+| 51 | [N-Queens](//leetcode.com/problems/n-queens/) | [Go](./problems/algorithms/0051.go) | Hard |
 | 53 | [Maximum Subarray](//leetcode.com/problems/maximum-subarray/) | [Python](./problems/algorithms/0053.py) | Easy |
 | 55 | [Jump Game](//leetcode.com/problems/jump-game/) | [Python](./problems/algorithms/0055.py) | Medium |
 | 56 | [Merge Intervals](//leetcode.com/problems/merge-intervals/) | [Python](./problems/algorithms/0056.py) | Medium |
@@ -62,13 +63,17 @@ LeetCode Problems' Solutions
 | 114 | [Flatten Binary Tree to Linked List](//leetcode.com/problems/flatten-binary-tree-to-linked-list/) | [Python](./problems/algorithms/0114.py) | Medium |
 | 121 | [Best Time to Buy and Sell Stock](//leetcode.com/problems/best-time-to-buy-and-sell-stock/) | [Python](./problems/algorithms/0121.py) | Easy |
 | 191 | [Number of 1 Bits](//leetcode.com/problems/number-of-1-bits/) | [C++](./problems/algorithms/0191.cpp) [Go](./problems/algorithms/0191.go) | Easy |
+| 198 | [House Robber](//leetcode.com/problems/house-robber/) | [Go](./problems/algorithms/0198.go) | Medium |
+| 213 | [House Robber II](//leetcode.com/problems/house-robber-ii/) | [Go](./problems/algorithms/0213.go) | Medium |
 | 268 | [Missing Number](//leetcode.com/problems/missing-number/) | [Go](./problems/algorithms/0268.go) | Easy |
 | 303 | [Range Sum Query - Immutable](//leetcode.com/problems/range-sum-query-immutable/) | [Go](./problems/algorithms/0303.go) | Easy |
 | 304 | [Range Sum Query 2D - Immutable](//leetcode.com/problems/range-sum-query-2d-immutable/) | [Go](./problems/algorithms/0304.go) | Medium |
 | 318 | [Maximum Product of Word Lengths](//leetcode.com/problems/maximum-product-of-word-lengths/) | [Go](./problems/algorithms/0318.go) | Easy |
 | 509 | [Fibonacci Number](//leetcode.com/problems/fibonacci-number/) | [Go](./problems/algorithms/0509.go) | Easy |
+| 740 | [Delete and Earn](//leetcode.com/problems/delete-and-earn/) | [Go](./problems/algorithms/0740.go) | Medium |
 | 746 | [Min Cost Climbing Stairs](//leetcode.com/problems/min-cost-climbing-stairs/) | [Go](./problems/algorithms/0746.go) | Easy |
 | 867 | [Transpose Matrix](//leetcode.com/problems/transpose-matrix/) | [Go](./problems/algorithms/0867.go) [Python](./problems/algorithms/0867.py) | Easy |
+| 976 | [Largest Perimeter Triangle](//leetcode.com/problems/largest-perimeter-triangle/) | [Go](./problems/algorithms/0976.go) | Easy |
 | 1137 | [N-th Tribonacci Number](//leetcode.com/problems/n-th-tribonacci-number/) | [Go](./problems/algorithms/1137.go) | Easy |
 | 1281 | [Subtract the Product and Sum of Digits of an Integer](//leetcode.com/problems/subtract-the-product-and-sum-of-digits-of-an-integer/) | [Go](./problems/algorithms/1281.go) | Easy |
 | 1342 | [Number of Steps to Reduce a Number to Zero](//leetcode.com/problems/number-of-steps-to-reduce-a-number-to-zero/) | [C++](./problems/algorithms/1342.cpp) [Go](./problems/algorithms/1342.go) | Easy |
@@ -76,4 +81,5 @@ LeetCode Problems' Solutions
 | 1480 | [Running Sum of 1d Array](//leetcode.com/problems/running-sum-of-1d-array/) | [Go](./problems/algorithms/1480.go) | Easy |
 | 1491 | [Average Salary Excluding the Minimum and Maximum Salary](//leetcode.com/problems/average-salary-excluding-the-minimum-and-maximum-salary/) | [Go](./problems/algorithms/1491.go) | Easy |
 | 1523 | [Count Odd Numbers in an Interval Range](//leetcode.com/problems/count-odd-numbers-in-an-interval-range/) | [Go](./problems/algorithms/1523.go) | Easy |
+| 1779 | [Find Nearest Point That Has the Same X or Y Coordinate](//leetcode.com/problems/find-nearest-point-that-has-the-same-x-or-y-coordinate/) | [Go](./problems/algorithms/1779.go) | Easy |
 

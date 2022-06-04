@@ -45,4 +45,4 @@ class Solution:
 
 class Solution2:
     def transpose(self, matrix: List[List[int]]) -> List[List[int]]:
-        return (col for col in zip(*matrix))
+        return zip(*matrix)
