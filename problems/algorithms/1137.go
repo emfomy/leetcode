@@ -52,6 +52,8 @@ func tribonacci(n int) int {
 	return next
 }
 
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 // T(n) = beta * alpha^n (rounded to integer), where
 // alpha = (a1 + a2 + 1)/3, a1 = cbrt(19+3sqrt(33)), a2 = cbrt(19-3sqrt(33))
 // beta = 3b/(b^2-2b+4, b = cbrt(586+102sqrt(33))

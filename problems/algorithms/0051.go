@@ -13,7 +13,6 @@
 // Example 1:
 //
 //   https://assets.leetcode.com/uploads/2020/11/13/queens.jpg
-//   https://assets.leetcode.com/uploads/2020/11/13/queens.jpg
 //
 //   Input: n = 4
 //   Output: [[".Q..","...Q","Q...","..Q."],["..Q.","Q...","...Q",".Q.."]]

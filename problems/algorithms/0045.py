@@ -23,9 +23,33 @@
 #   Input: nums = [2,3,0,1,4]
 #   Output: 2
 #
+# Constraints:
+#
+#   1 <= nums.length <= 10^4
+#   0 <= nums[i] <= 1000
+#
 ################################################################################################################################
 
 class Solution:
+    def jump(self, nums: List[int]) -> int:
+
+        l = len(nums)
+
+        min_step = [None]*l
+        min_step[0] = 0
+
+        for i, n in enumerate(nums):
+            next_step = min_step[i]+1
+            for j in range(i+1, min(i+1+n, l)):
+                if not min_step[j] or next_step < min_step[j]:
+                    min_step[j] = next_step
+
+        return min_step[-1]
+
+
+################################################################################################################################
+
+class Solution2:
     def jump(self, nums: List[int]) -> int:
         l = len(nums)-1
         if l <= 0:
@@ -42,21 +66,3 @@ class Solution:
                 if cur_end >= l:
                     break
         return step
-
-################################################################################################################################
-
-class Solution2:
-    def jump(self, nums: List[int]) -> int:
-
-        l = len(nums)
-
-        min_step = [None]*l
-        min_step[0] = 0
-
-        for i, n in enumerate(nums):
-            next_step = min_step[i]+1
-            for j in range(i+1, min(i+1+n, l)):
-                if not min_step[j] or next_step < min_step[j]:
-                    min_step[j] = next_step
-
-        return min_step[-1]
