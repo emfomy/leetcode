@@ -39,14 +39,14 @@ package main
 func rob(nums []int) int {
 	l := len(nums)
 
-	res0 := robLine(nums, 2, l-1) + nums[0] // If we rob house 0
-	res1 := robLine(nums, 1, l)             // If we don't rob house 0
+	res0 := _robLine(nums, 2, l-1) + nums[0] // If we rob house 0
+	res1 := _robLine(nums, 1, l)             // If we don't rob house 0
 
 	return _max(res0, res1)
 }
 
 // See P198
-func robLine(nums []int, start, end int) int {
+func _robLine(nums []int, start, end int) int {
 	r := 0
 	n := 0
 

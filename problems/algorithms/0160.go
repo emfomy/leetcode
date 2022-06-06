@@ -75,6 +75,47 @@ type ListNode struct {
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+// Let lenA, lenB be the length of two lists.
+// Assume that lenA >= lenB
+// Let runner A run (lenA-lenB) first, then run both runner together until visit the same node.
+//
+func getIntersectionNode(headA, headB *ListNode) *ListNode {
+	runnerA := headA
+	runnerB := headB
+
+	lenA := _lenLinkList(runnerA)
+	lenB := _lenLinkList(runnerB)
+
+	if lenA < lenB { // assume lenA >= lenB
+		runnerA, runnerB = runnerB, runnerA
+		lenA, lenB = lenB, lenA
+	}
+
+	// Run A first
+	for i := 0; i < lenA-lenB; i++ {
+		runnerA = runnerA.Next
+	}
+
+	// Run A and B together
+	for runnerA != runnerB {
+		runnerA = runnerA.Next
+		runnerB = runnerB.Next
+	}
+
+	return runnerA
+}
+
+func _lenLinkList(head *ListNode) int {
+	step := 0
+	for head != nil {
+		head = head.Next
+		step++
+	}
+	return step
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 // Use two runner A & B starting from each head.
 // For each runner, go to another head if it reaches the end.
 // Stop the algorithm when both runner reach the same node.
@@ -89,7 +130,7 @@ type ListNode struct {
 //   If lenA == lenB, then the runners will stop at the the first traversal (reaches nil)
 //   If lenA != lenB, then the runners will stop at the the second traversal (reaches nil)
 //
-func getIntersectionNode(headA, headB *ListNode) *ListNode {
+func getIntersectionNode2(headA, headB *ListNode) *ListNode {
 	runnerA := headA
 	runnerB := headB
 
@@ -131,7 +172,7 @@ func getIntersectionNode(headA, headB *ListNode) *ListNode {
 //
 // If there is no X (no intersection), then P will go back to A.
 // Therefore we need to reverse Q again to recover the structure.
-func getIntersectionNode2(headA, headB *ListNode) *ListNode {
+func getIntersectionNode3(headA, headB *ListNode) *ListNode {
 	if headA == headB { // Eage case
 		return headA
 	}

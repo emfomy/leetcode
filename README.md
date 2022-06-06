@@ -42,7 +42,7 @@ LeetCode Problems' Solutions
 | 49 | [Group Anagrams](//leetcode.com/problems/group-anagrams/) | [Python](./problems/algorithms/0049.py) | Medium |
 | 51 | [N-Queens](//leetcode.com/problems/n-queens/) | [Go](./problems/algorithms/0051.go) | Hard |
 | 52 | [N-Queens II](//leetcode.com/problems/n-queens-ii/) | [Go](./problems/algorithms/0052.go) | Hard |
-| 53 | [Maximum Subarray](//leetcode.com/problems/maximum-subarray/) | [Python](./problems/algorithms/0053.py) | Easy |
+| 53 | [Maximum Subarray](//leetcode.com/problems/maximum-subarray/) | [Go](./problems/algorithms/0053.go) [Python](./problems/algorithms/0053.py) | Easy |
 | 55 | [Jump Game](//leetcode.com/problems/jump-game/) | [Go](./problems/algorithms/0055.go) [Python](./problems/algorithms/0055.py) | Medium |
 | 56 | [Merge Intervals](//leetcode.com/problems/merge-intervals/) | [Python](./problems/algorithms/0056.py) | Medium |
 | 62 | [Unique Paths](//leetcode.com/problems/unique-paths/) | [Python](./problems/algorithms/0062.py) | Medium |
@@ -72,12 +72,16 @@ LeetCode Problems' Solutions
 | 303 | [Range Sum Query - Immutable](//leetcode.com/problems/range-sum-query-immutable/) | [Go](./problems/algorithms/0303.go) | Easy |
 | 304 | [Range Sum Query 2D - Immutable](//leetcode.com/problems/range-sum-query-2d-immutable/) | [Go](./problems/algorithms/0304.go) | Medium |
 | 318 | [Maximum Product of Word Lengths](//leetcode.com/problems/maximum-product-of-word-lengths/) | [Go](./problems/algorithms/0318.go) | Easy |
+| 496 | [Next Greater Element I](//leetcode.com/problems/next-greater-element-i/) | [Go](./problems/algorithms/0496.go) | Easy |
 | 509 | [Fibonacci Number](//leetcode.com/problems/fibonacci-number/) | [Go](./problems/algorithms/0509.go) | Easy |
+| 589 | [N-ary Tree Preorder Traversal](//leetcode.com/problems/n-ary-tree-preorder-traversal/) | [Go](./problems/algorithms/0589.go) | Easy |
 | 740 | [Delete and Earn](//leetcode.com/problems/delete-and-earn/) | [Go](./problems/algorithms/0740.go) | Medium |
 | 746 | [Min Cost Climbing Stairs](//leetcode.com/problems/min-cost-climbing-stairs/) | [Go](./problems/algorithms/0746.go) | Easy |
 | 867 | [Transpose Matrix](//leetcode.com/problems/transpose-matrix/) | [Go](./problems/algorithms/0867.go) [Python](./problems/algorithms/0867.py) | Easy |
+| 918 | [Maximum Sum Circular Subarray](//leetcode.com/problems/maximum-sum-circular-subarray/) | [Go](./problems/algorithms/0918.go) | Medium |
 | 976 | [Largest Perimeter Triangle](//leetcode.com/problems/largest-perimeter-triangle/) | [Go](./problems/algorithms/0976.go) | Easy |
 | 1137 | [N-th Tribonacci Number](//leetcode.com/problems/n-th-tribonacci-number/) | [Go](./problems/algorithms/1137.go) | Easy |
+| 1232 | [Check If It Is a Straight Line](//leetcode.com/problems/check-if-it-is-a-straight-line/) | [Go](./problems/algorithms/1232.go) | Easy |
 | 1281 | [Subtract the Product and Sum of Digits of an Integer](//leetcode.com/problems/subtract-the-product-and-sum-of-digits-of-an-integer/) | [Go](./problems/algorithms/1281.go) | Easy |
 | 1342 | [Number of Steps to Reduce a Number to Zero](//leetcode.com/problems/number-of-steps-to-reduce-a-number-to-zero/) | [C++](./problems/algorithms/1342.cpp) [Go](./problems/algorithms/1342.go) | Easy |
 | 1461 | [Check If a String Contains All Binary Codes of Size K](//leetcode.com/problems/check-if-a-string-contains-all-binary-codes-of-size-k/) | [Go](./problems/algorithms/1461.go) | Medium |
