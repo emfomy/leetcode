@@ -54,6 +54,7 @@ LeetCode Problems' Solutions
 | 79 | [Word Search](//leetcode.com/problems/word-search/) | [Python](./problems/algorithms/0079.py) | Medium |
 | 84 | [Largest Rectangle in Histogram](//leetcode.com/problems/largest-rectangle-in-histogram/) | [Python](./problems/algorithms/0084.py) | Hard |
 | 85 | [Maximal Rectangle](//leetcode.com/problems/maximal-rectangle/) | [Python](./problems/algorithms/0085.py) | Hard |
+| 88 | [Merge Sorted Array](//leetcode.com/problems/merge-sorted-array/) | [Go](./problems/algorithms/0088.go) | Easy |
 | 94 | [Binary Tree Inorder Traversal](//leetcode.com/problems/binary-tree-inorder-traversal/) | [Python](./problems/algorithms/0094.py) | Medium |
 | 96 | [Unique Binary Search Trees](//leetcode.com/problems/unique-binary-search-trees/) | [Python](./problems/algorithms/0096.py) | Medium |
 | 98 | [Validate Binary Search Tree](//leetcode.com/problems/validate-binary-search-tree/) | [Python](./problems/algorithms/0098.py) | Medium |
@@ -63,12 +64,14 @@ LeetCode Problems' Solutions
 | 105 | [Construct Binary Tree from Preorder and Inorder Traversal](//leetcode.com/problems/construct-binary-tree-from-preorder-and-inorder-traversal/) | [Python](./problems/algorithms/0105.py) | Medium |
 | 114 | [Flatten Binary Tree to Linked List](//leetcode.com/problems/flatten-binary-tree-to-linked-list/) | [Python](./problems/algorithms/0114.py) | Medium |
 | 121 | [Best Time to Buy and Sell Stock](//leetcode.com/problems/best-time-to-buy-and-sell-stock/) | [Python](./problems/algorithms/0121.py) | Easy |
+| 152 | [Maximum Product Subarray](//leetcode.com/problems/maximum-product-subarray/) | [Go](./problems/algorithms/0152.go) | Medium |
 | 160 | [Intersection of Two Linked Lists](//leetcode.com/problems/intersection-of-two-linked-lists/) | [Go](./problems/algorithms/0160.go) | Easy |
 | 191 | [Number of 1 Bits](//leetcode.com/problems/number-of-1-bits/) | [C++](./problems/algorithms/0191.cpp) [Go](./problems/algorithms/0191.go) | Easy |
 | 198 | [House Robber](//leetcode.com/problems/house-robber/) | [Go](./problems/algorithms/0198.go) | Medium |
 | 202 | [Happy Number](//leetcode.com/problems/happy-number/) | [Go](./problems/algorithms/0202.go) | Easy |
 | 213 | [House Robber II](//leetcode.com/problems/house-robber-ii/) | [Go](./problems/algorithms/0213.go) | Medium |
 | 268 | [Missing Number](//leetcode.com/problems/missing-number/) | [Go](./problems/algorithms/0268.go) | Easy |
+| 283 | [Move Zeroes](//leetcode.com/problems/move-zeroes/) | [Go](./problems/algorithms/0283.go) | Easy |
 | 303 | [Range Sum Query - Immutable](//leetcode.com/problems/range-sum-query-immutable/) | [Go](./problems/algorithms/0303.go) | Easy |
 | 304 | [Range Sum Query 2D - Immutable](//leetcode.com/problems/range-sum-query-2d-immutable/) | [Go](./problems/algorithms/0304.go) | Medium |
 | 318 | [Maximum Product of Word Lengths](//leetcode.com/problems/maximum-product-of-word-lengths/) | [Go](./problems/algorithms/0318.go) | Easy |
@@ -89,6 +92,9 @@ LeetCode Problems' Solutions
 | 1491 | [Average Salary Excluding the Minimum and Maximum Salary](//leetcode.com/problems/average-salary-excluding-the-minimum-and-maximum-salary/) | [Go](./problems/algorithms/1491.go) | Easy |
 | 1502 | [Can Make Arithmetic Progression From Sequence](//leetcode.com/problems/can-make-arithmetic-progression-from-sequence/) | [Go](./problems/algorithms/1502.go) | Easy |
 | 1523 | [Count Odd Numbers in an Interval Range](//leetcode.com/problems/count-odd-numbers-in-an-interval-range/) | [Go](./problems/algorithms/1523.go) | Easy |
+| 1567 | [Medium](//leetcode.com/problems/maximum-length-of-subarray-with-positive-product/) | [Go](./problems/algorithms/1567.go) | Easy |
+| 1588 | [Sum of All Odd Length Subarrays](//leetcode.com/problems/sum-of-all-odd-length-subarrays/) | [Go](./problems/algorithms/1588.go) | Easy |
+| 1672 | [Richest Customer Wealth](//leetcode.com/problems/richest-customer-wealth/) | [Go](./problems/algorithms/1672.go) | Easy |
 | 1779 | [Find Nearest Point That Has the Same X or Y Coordinate](//leetcode.com/problems/find-nearest-point-that-has-the-same-x-or-y-coordinate/) | [Go](./problems/algorithms/1779.go) | Easy |
 | 1790 | [Check if One String Swap Can Make Strings Equal](//leetcode.com/problems/check-if-one-string-swap-can-make-strings-equal/) | [Go](./problems/algorithms/1790.go) | Easy |
 | 1822 | [Sign of the Product of an Array](//leetcode.com/problems/sign-of-the-product-of-an-array/) | [Go](./problems/algorithms/1822.go) | Easy |
