@@ -67,6 +67,7 @@ LeetCode Problems' Solutions
 | 122 | [Best Time to Buy and Sell Stock II](//leetcode.com/problems/best-time-to-buy-and-sell-stock-ii/) | [Go](./problems/algorithms/0122.go) | Medium |
 | 152 | [Maximum Product Subarray](//leetcode.com/problems/maximum-product-subarray/) | [Go](./problems/algorithms/0152.go) | Medium |
 | 160 | [Intersection of Two Linked Lists](//leetcode.com/problems/intersection-of-two-linked-lists/) | [Go](./problems/algorithms/0160.go) | Easy |
+| 167 | [Two Sum II - Input Array Is Sorted](//leetcode.com/problems/two-sum-ii-input-array-is-sorted/) | [Go](./problems/algorithms/0167.go) | Medium |
 | 191 | [Number of 1 Bits](//leetcode.com/problems/number-of-1-bits/) | [C++](./problems/algorithms/0191.cpp) [Go](./problems/algorithms/0191.go) | Easy |
 | 198 | [House Robber](//leetcode.com/problems/house-robber/) | [Go](./problems/algorithms/0198.go) | Medium |
 | 202 | [Happy Number](//leetcode.com/problems/happy-number/) | [Go](./problems/algorithms/0202.go) | Easy |
@@ -75,11 +76,14 @@ LeetCode Problems' Solutions
 | 283 | [Move Zeroes](//leetcode.com/problems/move-zeroes/) | [Go](./problems/algorithms/0283.go) | Easy |
 | 303 | [Range Sum Query - Immutable](//leetcode.com/problems/range-sum-query-immutable/) | [Go](./problems/algorithms/0303.go) | Easy |
 | 304 | [Range Sum Query 2D - Immutable](//leetcode.com/problems/range-sum-query-2d-immutable/) | [Go](./problems/algorithms/0304.go) | Medium |
+| 309 | [Best Time to Buy and Sell Stock with Cooldown](//leetcode.com/problems/best-time-to-buy-and-sell-stock-with-cooldown/) | [Go](./problems/algorithms/0309.go) | Medium |
 | 318 | [Maximum Product of Word Lengths](//leetcode.com/problems/maximum-product-of-word-lengths/) | [Go](./problems/algorithms/0318.go) | Easy |
+| 389 | [Find the Difference](//leetcode.com/problems/find-the-difference/) | [Go](./problems/algorithms/0389.go) | Easy |
 | 496 | [Next Greater Element I](//leetcode.com/problems/next-greater-element-i/) | [Go](./problems/algorithms/0496.go) | Easy |
 | 509 | [Fibonacci Number](//leetcode.com/problems/fibonacci-number/) | [Go](./problems/algorithms/0509.go) | Easy |
 | 566 | [Reshape the Matrix](//leetcode.com/problems/reshape-the-matrix/) | [Go](./problems/algorithms/0566.go) | Easy |
 | 589 | [N-ary Tree Preorder Traversal](//leetcode.com/problems/n-ary-tree-preorder-traversal/) | [Go](./problems/algorithms/0589.go) | Easy |
+| 714 | [Best Time to Buy and Sell Stock with Transaction Fee](//leetcode.com/problems/best-time-to-buy-and-sell-stock-with-transaction-fee/) | [Go](./problems/algorithms/0714.go) | Medium |
 | 740 | [Delete and Earn](//leetcode.com/problems/delete-and-earn/) | [Go](./problems/algorithms/0740.go) | Medium |
 | 746 | [Min Cost Climbing Stairs](//leetcode.com/problems/min-cost-climbing-stairs/) | [Go](./problems/algorithms/0746.go) | Easy |
 | 867 | [Transpose Matrix](//leetcode.com/problems/transpose-matrix/) | [Go](./problems/algorithms/0867.go) [Python](./problems/algorithms/0867.py) | Easy |
@@ -100,6 +104,8 @@ LeetCode Problems' Solutions
 | 1572 | [Matrix Diagonal Sum](//leetcode.com/problems/matrix-diagonal-sum/) | [Go](./problems/algorithms/1572.go) | Easy |
 | 1588 | [Sum of All Odd Length Subarrays](//leetcode.com/problems/sum-of-all-odd-length-subarrays/) | [Go](./problems/algorithms/1588.go) | Easy |
 | 1672 | [Richest Customer Wealth](//leetcode.com/problems/richest-customer-wealth/) | [Go](./problems/algorithms/1672.go) | Easy |
+| 1678 | [Goal Parser Interpretation](//leetcode.com/problems/goal-parser-interpretation/) | [Go](./problems/algorithms/1678.go) | Easy |
+| 1768 | [Merge Strings Alternately](//leetcode.com/problems/merge-strings-alternately/) | [Go](./problems/algorithms/1768.go) | Easy |
 | 1779 | [Find Nearest Point That Has the Same X or Y Coordinate](//leetcode.com/problems/find-nearest-point-that-has-the-same-x-or-y-coordinate/) | [Go](./problems/algorithms/1779.go) | Easy |
 | 1790 | [Check if One String Swap Can Make Strings Equal](//leetcode.com/problems/check-if-one-string-swap-can-make-strings-equal/) | [Go](./problems/algorithms/1790.go) | Easy |
 | 1822 | [Sign of the Product of an Array](//leetcode.com/problems/sign-of-the-product-of-an-array/) | [Go](./problems/algorithms/1822.go) | Easy |
