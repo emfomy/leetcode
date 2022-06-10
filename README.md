@@ -35,7 +35,7 @@ LeetCode Problems' Solutions
 | 34 | [Find First and Last Position of Element in Sorted Array](//leetcode.com/problems/find-first-and-last-position-of-element-in-sorted-array/) | [C++](./problems/algorithms/0034.cpp) | Medium |
 | 39 | [Combination Sum](//leetcode.com/problems/combination-sum/) | [Python](./problems/algorithms/0039.py) | Medium |
 | 41 | [First Missing Positive](//leetcode.com/problems/first-missing-positive/) | [Python](./problems/algorithms/0041.py) | Hard |
-| 42 | [Trapping Rain Water](//leetcode.com/problems/trapping-rain-water/) | [Python](./problems/algorithms/0042.py) | Hard |
+| 42 | [Trapping Rain Water](//leetcode.com/problems/trapping-rain-water/) | [Go](./problems/algorithms/0042.go) [Python](./problems/algorithms/0042.py) | Hard |
 | 45 | [Jump Game II](//leetcode.com/problems/jump-game-ii/) | [Go](./problems/algorithms/0045.go) [Python](./problems/algorithms/0045.py) | Hard |
 | 46 | [Permutations](//leetcode.com/problems/permutations/) | [Python](./problems/algorithms/0046.py) | Medium |
 | 48 | [Rotate Image](//leetcode.com/problems/rotate-image/) | [Python](./problems/algorithms/0048.py) | Medium |
@@ -65,6 +65,7 @@ LeetCode Problems' Solutions
 | 114 | [Flatten Binary Tree to Linked List](//leetcode.com/problems/flatten-binary-tree-to-linked-list/) | [Python](./problems/algorithms/0114.py) | Medium |
 | 121 | [Best Time to Buy and Sell Stock](//leetcode.com/problems/best-time-to-buy-and-sell-stock/) | [Go](./problems/algorithms/0121.go) [Python](./problems/algorithms/0121.py) | Easy |
 | 122 | [Best Time to Buy and Sell Stock II](//leetcode.com/problems/best-time-to-buy-and-sell-stock-ii/) | [Go](./problems/algorithms/0122.go) | Medium |
+| 139 | [Word Break](//leetcode.com/problems/word-break/) | [Go](./problems/algorithms/0139.go) | Medium |
 | 152 | [Maximum Product Subarray](//leetcode.com/problems/maximum-product-subarray/) | [Go](./problems/algorithms/0152.go) | Medium |
 | 160 | [Intersection of Two Linked Lists](//leetcode.com/problems/intersection-of-two-linked-lists/) | [Go](./problems/algorithms/0160.go) | Easy |
 | 167 | [Two Sum II - Input Array Is Sorted](//leetcode.com/problems/two-sum-ii-input-array-is-sorted/) | [Go](./problems/algorithms/0167.go) | Medium |
@@ -83,16 +84,19 @@ LeetCode Problems' Solutions
 | 509 | [Fibonacci Number](//leetcode.com/problems/fibonacci-number/) | [Go](./problems/algorithms/0509.go) | Easy |
 | 566 | [Reshape the Matrix](//leetcode.com/problems/reshape-the-matrix/) | [Go](./problems/algorithms/0566.go) | Easy |
 | 589 | [N-ary Tree Preorder Traversal](//leetcode.com/problems/n-ary-tree-preorder-traversal/) | [Go](./problems/algorithms/0589.go) | Easy |
+| 709 | [To Lower Case](//leetcode.com/problems/to-lower-case/) | [Go](./problems/algorithms/0709.go) | Easy |
 | 714 | [Best Time to Buy and Sell Stock with Transaction Fee](//leetcode.com/problems/best-time-to-buy-and-sell-stock-with-transaction-fee/) | [Go](./problems/algorithms/0714.go) | Medium |
 | 740 | [Delete and Earn](//leetcode.com/problems/delete-and-earn/) | [Go](./problems/algorithms/0740.go) | Medium |
 | 746 | [Min Cost Climbing Stairs](//leetcode.com/problems/min-cost-climbing-stairs/) | [Go](./problems/algorithms/0746.go) | Easy |
 | 867 | [Transpose Matrix](//leetcode.com/problems/transpose-matrix/) | [Go](./problems/algorithms/0867.go) [Python](./problems/algorithms/0867.py) | Easy |
 | 918 | [Maximum Sum Circular Subarray](//leetcode.com/problems/maximum-sum-circular-subarray/) | [Go](./problems/algorithms/0918.go) | Medium |
+| 953 | [Verifying an Alien Dictionary](//leetcode.com/problems/verifying-an-alien-dictionary/) | [Go](./problems/algorithms/0953.go) | Easy |
 | 976 | [Largest Perimeter Triangle](//leetcode.com/problems/largest-perimeter-triangle/) | [Go](./problems/algorithms/0976.go) | Easy |
 | 1014 | [Best Sightseeing Pair](//leetcode.com/problems/best-sightseeing-pair/) | [Go](./problems/algorithms/1014.go) | Medium |
 | 1137 | [N-th Tribonacci Number](//leetcode.com/problems/n-th-tribonacci-number/) | [Go](./problems/algorithms/1137.go) | Easy |
 | 1232 | [Check If It Is a Straight Line](//leetcode.com/problems/check-if-it-is-a-straight-line/) | [Go](./problems/algorithms/1232.go) | Easy |
 | 1281 | [Subtract the Product and Sum of Digits of an Integer](//leetcode.com/problems/subtract-the-product-and-sum-of-digits-of-an-integer/) | [Go](./problems/algorithms/1281.go) | Easy |
+| 1309 | [Decrypt String from Alphabet to Integer Mapping](//leetcode.com/problems/decrypt-string-from-alphabet-to-integer-mapping/) | [Go](./problems/algorithms/1309.go) | Easy |
 | 1332 | [Remove Palindromic Subsequences](//leetcode.com/problems/remove-palindromic-subsequences/) | [Go](./problems/algorithms/1332.go) | Easy |
 | 1342 | [Number of Steps to Reduce a Number to Zero](//leetcode.com/problems/number-of-steps-to-reduce-a-number-to-zero/) | [C++](./problems/algorithms/1342.cpp) [Go](./problems/algorithms/1342.go) | Easy |
 | 1461 | [Check If a String Contains All Binary Codes of Size K](//leetcode.com/problems/check-if-a-string-contains-all-binary-codes-of-size-k/) | [Go](./problems/algorithms/1461.go) | Medium |

@@ -47,13 +47,18 @@ func lengthOfLongestSubstring(s string) int {
 		if _, ok := pool[s[j]]; !ok { // no repeating character
 			pool[s[j]] = void{}
 			j += 1
-			if j-i > max_len {
-				max_len = j - i
-			}
+			max_len = _max(max_len, j-i)
 		} else {
-			delete(pool, s[j])
+			delete(pool, s[i])
 			i += 1
 		}
 	}
 	return max_len
+}
+
+func _max(a, b int) int {
+	if a > b {
+		return a
+	}
+	return b
 }
