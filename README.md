@@ -55,12 +55,13 @@ LeetCode Problems' Solutions
 | 84 | [Largest Rectangle in Histogram](//leetcode.com/problems/largest-rectangle-in-histogram/) | [Python](./problems/algorithms/0084.py) | Hard |
 | 85 | [Maximal Rectangle](//leetcode.com/problems/maximal-rectangle/) | [Python](./problems/algorithms/0085.py) | Hard |
 | 88 | [Merge Sorted Array](//leetcode.com/problems/merge-sorted-array/) | [Go](./problems/algorithms/0088.go) | Easy |
+| 91 | [Decode Ways](//leetcode.com/problems/decode-ways/) | [Go](./problems/algorithms/0091.go) | Medium |
 | 94 | [Binary Tree Inorder Traversal](//leetcode.com/problems/binary-tree-inorder-traversal/) | [Python](./problems/algorithms/0094.py) | Medium |
 | 96 | [Unique Binary Search Trees](//leetcode.com/problems/unique-binary-search-trees/) | [Python](./problems/algorithms/0096.py) | Medium |
 | 98 | [Validate Binary Search Tree](//leetcode.com/problems/validate-binary-search-tree/) | [Python](./problems/algorithms/0098.py) | Medium |
 | 101 | [Symmetric Tree](//leetcode.com/problems/symmetric-tree/) | [Python](./problems/algorithms/0101.py) | Easy |
 | 102 | [Binary Tree Level Order Traversal](//leetcode.com/problems/binary-tree-level-order-traversal/) | [Python](./problems/algorithms/0102.py) | Medium |
-| 104 | [Maximum Depth of Binary Tree](//leetcode.com/problems/maximum-depth-of-binary-tree/) | [Python](./problems/algorithms/0104.py) | Easy |
+| 104 | [Maximum Depth of Binary Tree](//leetcode.com/problems/maximum-depth-of-binary-tree/) | [Go](./problems/algorithms/0104.go) [Python](./problems/algorithms/0104.py) | Easy |
 | 105 | [Construct Binary Tree from Preorder and Inorder Traversal](//leetcode.com/problems/construct-binary-tree-from-preorder-and-inorder-traversal/) | [Python](./problems/algorithms/0105.py) | Medium |
 | 114 | [Flatten Binary Tree to Linked List](//leetcode.com/problems/flatten-binary-tree-to-linked-list/) | [Python](./problems/algorithms/0114.py) | Medium |
 | 121 | [Best Time to Buy and Sell Stock](//leetcode.com/problems/best-time-to-buy-and-sell-stock/) | [Go](./problems/algorithms/0121.go) [Python](./problems/algorithms/0121.py) | Easy |
@@ -80,6 +81,8 @@ LeetCode Problems' Solutions
 | 309 | [Best Time to Buy and Sell Stock with Cooldown](//leetcode.com/problems/best-time-to-buy-and-sell-stock-with-cooldown/) | [Go](./problems/algorithms/0309.go) | Medium |
 | 318 | [Maximum Product of Word Lengths](//leetcode.com/problems/maximum-product-of-word-lengths/) | [Go](./problems/algorithms/0318.go) | Easy |
 | 389 | [Find the Difference](//leetcode.com/problems/find-the-difference/) | [Go](./problems/algorithms/0389.go) | Easy |
+| 404 | [Sum of Left Leaves](//leetcode.com/problems/sum-of-left-leaves/) | [Go](./problems/algorithms/0404.go) | Easy |
+| 413 | [Arithmetic Slices](//leetcode.com/problems/arithmetic-slices/) | [Go](./problems/algorithms/0413.go) | Medium |
 | 496 | [Next Greater Element I](//leetcode.com/problems/next-greater-element-i/) | [Go](./problems/algorithms/0496.go) | Easy |
 | 509 | [Fibonacci Number](//leetcode.com/problems/fibonacci-number/) | [Go](./problems/algorithms/0509.go) | Easy |
 | 566 | [Reshape the Matrix](//leetcode.com/problems/reshape-the-matrix/) | [Go](./problems/algorithms/0566.go) | Easy |
@@ -89,6 +92,7 @@ LeetCode Problems' Solutions
 | 740 | [Delete and Earn](//leetcode.com/problems/delete-and-earn/) | [Go](./problems/algorithms/0740.go) | Medium |
 | 746 | [Min Cost Climbing Stairs](//leetcode.com/problems/min-cost-climbing-stairs/) | [Go](./problems/algorithms/0746.go) | Easy |
 | 867 | [Transpose Matrix](//leetcode.com/problems/transpose-matrix/) | [Go](./problems/algorithms/0867.go) [Python](./problems/algorithms/0867.py) | Easy |
+| 876 | [Middle of the Linked List](//leetcode.com/problems/middle-of-the-linked-list/) | [Go](./problems/algorithms/0876.go) | Easy |
 | 918 | [Maximum Sum Circular Subarray](//leetcode.com/problems/maximum-sum-circular-subarray/) | [Go](./problems/algorithms/0918.go) | Medium |
 | 953 | [Verifying an Alien Dictionary](//leetcode.com/problems/verifying-an-alien-dictionary/) | [Go](./problems/algorithms/0953.go) | Easy |
 | 976 | [Largest Perimeter Triangle](//leetcode.com/problems/largest-perimeter-triangle/) | [Go](./problems/algorithms/0976.go) | Easy |
@@ -96,6 +100,7 @@ LeetCode Problems' Solutions
 | 1137 | [N-th Tribonacci Number](//leetcode.com/problems/n-th-tribonacci-number/) | [Go](./problems/algorithms/1137.go) | Easy |
 | 1232 | [Check If It Is a Straight Line](//leetcode.com/problems/check-if-it-is-a-straight-line/) | [Go](./problems/algorithms/1232.go) | Easy |
 | 1281 | [Subtract the Product and Sum of Digits of an Integer](//leetcode.com/problems/subtract-the-product-and-sum-of-digits-of-an-integer/) | [Go](./problems/algorithms/1281.go) | Easy |
+| 1290 | [Convert Binary Number in a Linked List to Integer](//leetcode.com/problems/convert-binary-number-in-a-linked-list-to-integer/) | [Go](./problems/algorithms/1290.go) | Easy |
 | 1309 | [Decrypt String from Alphabet to Integer Mapping](//leetcode.com/problems/decrypt-string-from-alphabet-to-integer-mapping/) | [Go](./problems/algorithms/1309.go) | Easy |
 | 1332 | [Remove Palindromic Subsequences](//leetcode.com/problems/remove-palindromic-subsequences/) | [Go](./problems/algorithms/1332.go) | Easy |
 | 1342 | [Number of Steps to Reduce a Number to Zero](//leetcode.com/problems/number-of-steps-to-reduce-a-number-to-zero/) | [C++](./problems/algorithms/1342.cpp) [Go](./problems/algorithms/1342.go) | Easy |
@@ -107,6 +112,7 @@ LeetCode Problems' Solutions
 | 1567 | [Maximum Length of Subarray With Positive Product](//leetcode.com/problems/maximum-length-of-subarray-with-positive-product/) | [Go](./problems/algorithms/1567.go) | Medium |
 | 1572 | [Matrix Diagonal Sum](//leetcode.com/problems/matrix-diagonal-sum/) | [Go](./problems/algorithms/1572.go) | Easy |
 | 1588 | [Sum of All Odd Length Subarrays](//leetcode.com/problems/sum-of-all-odd-length-subarrays/) | [Go](./problems/algorithms/1588.go) | Easy |
+| 1658 | [Minimum Operations to Reduce X to Zero](//leetcode.com/problems/minimum-operations-to-reduce-x-to-zero/) | [Go](./problems/algorithms/1658.go) | Medium |
 | 1672 | [Richest Customer Wealth](//leetcode.com/problems/richest-customer-wealth/) | [Go](./problems/algorithms/1672.go) | Easy |
 | 1678 | [Goal Parser Interpretation](//leetcode.com/problems/goal-parser-interpretation/) | [Go](./problems/algorithms/1678.go) | Easy |
 | 1768 | [Merge Strings Alternately](//leetcode.com/problems/merge-strings-alternately/) | [Go](./problems/algorithms/1768.go) | Easy |
