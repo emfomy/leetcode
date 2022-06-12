@@ -38,7 +38,7 @@ type void struct{}
 
 func lengthOfLongestSubstring(s string) int {
 	pool := make(map[byte]void)
-	max_len := 0
+	maxLen := 0
 	i := 0 // start index of substring
 	j := 0 // end index of substring
 	n := len(s)
@@ -47,13 +47,13 @@ func lengthOfLongestSubstring(s string) int {
 		if _, ok := pool[s[j]]; !ok { // no repeating character
 			pool[s[j]] = void{}
 			j += 1
-			max_len = _max(max_len, j-i)
+			maxLen = _max(maxLen, j-i)
 		} else {
 			delete(pool, s[i])
 			i += 1
 		}
 	}
-	return max_len
+	return maxLen
 }
 
 func _max(a, b int) int {

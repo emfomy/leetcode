@@ -57,7 +57,7 @@ LeetCode Problems' Solutions
 | 88 | [Merge Sorted Array](//leetcode.com/problems/merge-sorted-array/) | [Go](./problems/algorithms/0088.go) | Easy |
 | 91 | [Decode Ways](//leetcode.com/problems/decode-ways/) | [Go](./problems/algorithms/0091.go) | Medium |
 | 94 | [Binary Tree Inorder Traversal](//leetcode.com/problems/binary-tree-inorder-traversal/) | [Python](./problems/algorithms/0094.py) | Medium |
-| 96 | [Unique Binary Search Trees](//leetcode.com/problems/unique-binary-search-trees/) | [Python](./problems/algorithms/0096.py) | Medium |
+| 96 | [Unique Binary Search Trees](//leetcode.com/problems/unique-binary-search-trees/) | [Go](./problems/algorithms/0096.go) [Python](./problems/algorithms/0096.py) | Medium |
 | 98 | [Validate Binary Search Tree](//leetcode.com/problems/validate-binary-search-tree/) | [Python](./problems/algorithms/0098.py) | Medium |
 | 101 | [Symmetric Tree](//leetcode.com/problems/symmetric-tree/) | [Python](./problems/algorithms/0101.py) | Easy |
 | 102 | [Binary Tree Level Order Traversal](//leetcode.com/problems/binary-tree-level-order-traversal/) | [Python](./problems/algorithms/0102.py) | Medium |
@@ -74,6 +74,11 @@ LeetCode Problems' Solutions
 | 198 | [House Robber](//leetcode.com/problems/house-robber/) | [Go](./problems/algorithms/0198.go) | Medium |
 | 202 | [Happy Number](//leetcode.com/problems/happy-number/) | [Go](./problems/algorithms/0202.go) | Easy |
 | 213 | [House Robber II](//leetcode.com/problems/house-robber-ii/) | [Go](./problems/algorithms/0213.go) | Medium |
+| 217 | [Contains Duplicate](//leetcode.com/problems/contains-duplicate/) | [Go](./problems/algorithms/0217.go) | Easy |
+| 232 | [Implement Queue using Stacks](//leetcode.com/problems/implement-queue-using-stacks/) | [Go](./problems/algorithms/0232.go) | Easy |
+| 242 | [Valid Anagram](//leetcode.com/problems/valid-anagram/) | [Go](./problems/algorithms/0242.go) | Easy |
+| 263 | [Ugly Number](//leetcode.com/problems/ugly-number/) | [Go](./problems/algorithms/0263.go) | Easy |
+| 264 | [Ugly Number](//leetcode.com/problems/ugly-number/) | [Go](./problems/algorithms/0264.go) | Easy |
 | 268 | [Missing Number](//leetcode.com/problems/missing-number/) | [Go](./problems/algorithms/0268.go) | Easy |
 | 283 | [Move Zeroes](//leetcode.com/problems/move-zeroes/) | [Go](./problems/algorithms/0283.go) | Easy |
 | 303 | [Range Sum Query - Immutable](//leetcode.com/problems/range-sum-query-immutable/) | [Go](./problems/algorithms/0303.go) | Easy |
@@ -104,6 +109,7 @@ LeetCode Problems' Solutions
 | 1309 | [Decrypt String from Alphabet to Integer Mapping](//leetcode.com/problems/decrypt-string-from-alphabet-to-integer-mapping/) | [Go](./problems/algorithms/1309.go) | Easy |
 | 1332 | [Remove Palindromic Subsequences](//leetcode.com/problems/remove-palindromic-subsequences/) | [Go](./problems/algorithms/1332.go) | Easy |
 | 1342 | [Number of Steps to Reduce a Number to Zero](//leetcode.com/problems/number-of-steps-to-reduce-a-number-to-zero/) | [C++](./problems/algorithms/1342.cpp) [Go](./problems/algorithms/1342.go) | Easy |
+| 1356 | [Sort Integers by The Number of 1 Bits](//leetcode.com/problems/sort-integers-by-the-number-of-1-bits/) | [Go](./problems/algorithms/1356.go) | Easy |
 | 1461 | [Check If a String Contains All Binary Codes of Size K](//leetcode.com/problems/check-if-a-string-contains-all-binary-codes-of-size-k/) | [Go](./problems/algorithms/1461.go) | Medium |
 | 1480 | [Running Sum of 1d Array](//leetcode.com/problems/running-sum-of-1d-array/) | [Go](./problems/algorithms/1480.go) | Easy |
 | 1491 | [Average Salary Excluding the Minimum and Maximum Salary](//leetcode.com/problems/average-salary-excluding-the-minimum-and-maximum-salary/) | [Go](./problems/algorithms/1491.go) | Easy |
@@ -115,6 +121,7 @@ LeetCode Problems' Solutions
 | 1658 | [Minimum Operations to Reduce X to Zero](//leetcode.com/problems/minimum-operations-to-reduce-x-to-zero/) | [Go](./problems/algorithms/1658.go) | Medium |
 | 1672 | [Richest Customer Wealth](//leetcode.com/problems/richest-customer-wealth/) | [Go](./problems/algorithms/1672.go) | Easy |
 | 1678 | [Goal Parser Interpretation](//leetcode.com/problems/goal-parser-interpretation/) | [Go](./problems/algorithms/1678.go) | Easy |
+| 1695 | [Maximum Erasure Value](//leetcode.com/problems/maximum-erasure-value/) | [Go](./problems/algorithms/1695.go) | Medium |
 | 1768 | [Merge Strings Alternately](//leetcode.com/problems/merge-strings-alternately/) | [Go](./problems/algorithms/1768.go) | Easy |
 | 1779 | [Find Nearest Point That Has the Same X or Y Coordinate](//leetcode.com/problems/find-nearest-point-that-has-the-same-x-or-y-coordinate/) | [Go](./problems/algorithms/1779.go) | Easy |
 | 1790 | [Check if One String Swap Can Make Strings Equal](//leetcode.com/problems/check-if-one-string-swap-can-make-strings-equal/) | [Go](./problems/algorithms/1790.go) | Easy |

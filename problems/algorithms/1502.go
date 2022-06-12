@@ -37,7 +37,7 @@ type void struct{}
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-// Using sort; O(nlogn) time, O(1) space
+// Use sort; O(nlogn) time, O(1) space
 func canMakeArithmeticProgression(arr []int) bool {
 	sort.Ints(arr)
 
@@ -52,7 +52,7 @@ func canMakeArithmeticProgression(arr []int) bool {
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-// Using set; O(n) time, O(n) space
+// Use set; O(n) time, O(n) space
 func canMakeArithmeticProgression2(arr []int) bool {
 	n := len(arr)
 	if n == 2 {
@@ -95,7 +95,7 @@ func canMakeArithmeticProgression2(arr []int) bool {
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-// Using swap; O(n) time, O(1) space
+// Use swap; O(n) time, O(1) space
 func canMakeArithmeticProgression3(arr []int) bool {
 	n := len(arr)
 	if n == 2 {
