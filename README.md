@@ -64,6 +64,9 @@ LeetCode Problems' Solutions
 | 104 | [Maximum Depth of Binary Tree](//leetcode.com/problems/maximum-depth-of-binary-tree/) | [Go](./problems/algorithms/0104.go) [Python](./problems/algorithms/0104.py) | Easy |
 | 105 | [Construct Binary Tree from Preorder and Inorder Traversal](//leetcode.com/problems/construct-binary-tree-from-preorder-and-inorder-traversal/) | [Python](./problems/algorithms/0105.py) | Medium |
 | 114 | [Flatten Binary Tree to Linked List](//leetcode.com/problems/flatten-binary-tree-to-linked-list/) | [Python](./problems/algorithms/0114.py) | Medium |
+| 118 | [Pascal's Triangle](//leetcode.com/problems/pascals-triangle/) | [Go](./problems/algorithms/0118.go) | Easy |
+| 119 | [Pascal's Triangle II](//leetcode.com/problems/pascals-triangle-ii/) | [Go](./problems/algorithms/0119.go) | Easy |
+| 120 | [Triangle](//leetcode.com/problems/triangle/) | [Go](./problems/algorithms/0120.go) | Medium |
 | 121 | [Best Time to Buy and Sell Stock](//leetcode.com/problems/best-time-to-buy-and-sell-stock/) | [Go](./problems/algorithms/0121.go) [Python](./problems/algorithms/0121.py) | Easy |
 | 122 | [Best Time to Buy and Sell Stock II](//leetcode.com/problems/best-time-to-buy-and-sell-stock-ii/) | [Go](./problems/algorithms/0122.go) | Medium |
 | 139 | [Word Break](//leetcode.com/problems/word-break/) | [Go](./problems/algorithms/0139.go) | Medium |
@@ -118,6 +121,7 @@ LeetCode Problems' Solutions
 | 1567 | [Maximum Length of Subarray With Positive Product](//leetcode.com/problems/maximum-length-of-subarray-with-positive-product/) | [Go](./problems/algorithms/1567.go) | Medium |
 | 1572 | [Matrix Diagonal Sum](//leetcode.com/problems/matrix-diagonal-sum/) | [Go](./problems/algorithms/1572.go) | Easy |
 | 1588 | [Sum of All Odd Length Subarrays](//leetcode.com/problems/sum-of-all-odd-length-subarrays/) | [Go](./problems/algorithms/1588.go) | Easy |
+| 1603 | [Design Parking System](//leetcode.com/problems/design-parking-system/) | [Go](./problems/algorithms/1603.go) | Easy |
 | 1658 | [Minimum Operations to Reduce X to Zero](//leetcode.com/problems/minimum-operations-to-reduce-x-to-zero/) | [Go](./problems/algorithms/1658.go) | Medium |
 | 1672 | [Richest Customer Wealth](//leetcode.com/problems/richest-customer-wealth/) | [Go](./problems/algorithms/1672.go) | Easy |
 | 1678 | [Goal Parser Interpretation](//leetcode.com/problems/goal-parser-interpretation/) | [Go](./problems/algorithms/1678.go) | Easy |
