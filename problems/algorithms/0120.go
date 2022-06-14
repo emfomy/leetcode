@@ -45,25 +45,25 @@ import (
 func minimumTotal(triangle [][]int) int {
 	n := len(triangle)
 
-	currSum := make([]int, n)
-	nextSum := make([]int, n)
+	prev := make([]int, n)
+	next := make([]int, n)
 
-	currSum[0] = triangle[0][0]
+	prev[0] = triangle[0][0]
 
 	for i := 1; i < n; i++ {
 		row := triangle[i]
 
-		nextSum[0] = row[0] + currSum[0]
+		next[0] = row[0] + prev[0]
 		for j := 1; j < i; j++ {
-			nextSum[j] = row[j] + _min(currSum[j-1], currSum[j])
+			next[j] = row[j] + _min(prev[j-1], prev[j])
 		}
-		nextSum[i] = row[i] + currSum[i-1]
+		next[i] = row[i] + prev[i-1]
 
-		currSum, nextSum = nextSum, currSum
+		prev, next = next, prev
 	}
 
 	res := math.MaxInt32
-	for _, v := range currSum {
+	for _, v := range prev {
 		res = _min(res, v)
 	}
 	return res
