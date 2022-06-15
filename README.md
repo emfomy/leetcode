@@ -107,11 +107,13 @@ LeetCode Problems' Solutions
 | 953 | [Verifying an Alien Dictionary](//leetcode.com/problems/verifying-an-alien-dictionary/) | [Go](./problems/algorithms/0953.go) | Easy |
 | 976 | [Largest Perimeter Triangle](//leetcode.com/problems/largest-perimeter-triangle/) | [Go](./problems/algorithms/0976.go) | Easy |
 | 1014 | [Best Sightseeing Pair](//leetcode.com/problems/best-sightseeing-pair/) | [Go](./problems/algorithms/1014.go) | Medium |
+| 1048 | [Longest String Chain](//leetcode.com/problems/longest-string-chain/) | [Go](./problems/algorithms/1048.go) | Medium |
 | 1137 | [N-th Tribonacci Number](//leetcode.com/problems/n-th-tribonacci-number/) | [Go](./problems/algorithms/1137.go) | Easy |
 | 1232 | [Check If It Is a Straight Line](//leetcode.com/problems/check-if-it-is-a-straight-line/) | [Go](./problems/algorithms/1232.go) | Easy |
 | 1281 | [Subtract the Product and Sum of Digits of an Integer](//leetcode.com/problems/subtract-the-product-and-sum-of-digits-of-an-integer/) | [Go](./problems/algorithms/1281.go) | Easy |
 | 1290 | [Convert Binary Number in a Linked List to Integer](//leetcode.com/problems/convert-binary-number-in-a-linked-list-to-integer/) | [Go](./problems/algorithms/1290.go) | Easy |
 | 1309 | [Decrypt String from Alphabet to Integer Mapping](//leetcode.com/problems/decrypt-string-from-alphabet-to-integer-mapping/) | [Go](./problems/algorithms/1309.go) | Easy |
+| 1314 | [Matrix Block Sum](//leetcode.com/problems/matrix-block-sum/) | [Go](./problems/algorithms/1314.go) | Medium |
 | 1332 | [Remove Palindromic Subsequences](//leetcode.com/problems/remove-palindromic-subsequences/) | [Go](./problems/algorithms/1332.go) | Easy |
 | 1342 | [Number of Steps to Reduce a Number to Zero](//leetcode.com/problems/number-of-steps-to-reduce-a-number-to-zero/) | [C++](./problems/algorithms/1342.cpp) [Go](./problems/algorithms/1342.go) | Easy |
 | 1356 | [Sort Integers by The Number of 1 Bits](//leetcode.com/problems/sort-integers-by-the-number-of-1-bits/) | [Go](./problems/algorithms/1356.go) | Easy |
