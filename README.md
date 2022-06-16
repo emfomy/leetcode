@@ -45,7 +45,8 @@ LeetCode Problems' Solutions
 | 53 | [Maximum Subarray](//leetcode.com/problems/maximum-subarray/) | [Go](./problems/algorithms/0053.go) [Python](./problems/algorithms/0053.py) | Easy |
 | 55 | [Jump Game](//leetcode.com/problems/jump-game/) | [Go](./problems/algorithms/0055.go) [Python](./problems/algorithms/0055.py) | Medium |
 | 56 | [Merge Intervals](//leetcode.com/problems/merge-intervals/) | [Python](./problems/algorithms/0056.py) | Medium |
-| 62 | [Unique Paths](//leetcode.com/problems/unique-paths/) | [Python](./problems/algorithms/0062.py) | Medium |
+| 62 | [Unique Paths](//leetcode.com/problems/unique-paths/) | [Go](./problems/algorithms/0062.go) [Python](./problems/algorithms/0062.py) | Medium |
+| 63 | [Unique Paths II](//leetcode.com/problems/unique-paths-ii/) | [Go](./problems/algorithms/0063.go) | Medium |
 | 64 | [Minimum Path Sum](//leetcode.com/problems/minimum-path-sum/) | [Python](./problems/algorithms/0064.py) | Medium |
 | 70 | [Climbing Stairs](//leetcode.com/problems/climbing-stairs/) | [Go](./problems/algorithms/0070.go) [Python](./problems/algorithms/0070.py) | Easy |
 | 72 | [Edit Distance](//leetcode.com/problems/edit-distance/) | [Python](./problems/algorithms/0072.py) | Hard |
