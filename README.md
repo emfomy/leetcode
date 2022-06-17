@@ -47,7 +47,7 @@ LeetCode Problems' Solutions
 | 56 | [Merge Intervals](//leetcode.com/problems/merge-intervals/) | [Python](./problems/algorithms/0056.py) | Medium |
 | 62 | [Unique Paths](//leetcode.com/problems/unique-paths/) | [Go](./problems/algorithms/0062.go) [Python](./problems/algorithms/0062.py) | Medium |
 | 63 | [Unique Paths II](//leetcode.com/problems/unique-paths-ii/) | [Go](./problems/algorithms/0063.go) | Medium |
-| 64 | [Minimum Path Sum](//leetcode.com/problems/minimum-path-sum/) | [Python](./problems/algorithms/0064.py) | Medium |
+| 64 | [Minimum Path Sum](//leetcode.com/problems/minimum-path-sum/) | [Go](./problems/algorithms/0064.go) [Python](./problems/algorithms/0064.py) | Medium |
 | 70 | [Climbing Stairs](//leetcode.com/problems/climbing-stairs/) | [Go](./problems/algorithms/0070.go) [Python](./problems/algorithms/0070.py) | Easy |
 | 72 | [Edit Distance](//leetcode.com/problems/edit-distance/) | [Python](./problems/algorithms/0072.py) | Hard |
 | 75 | [Sort Colors](//leetcode.com/problems/sort-colors/) | [Python](./problems/algorithms/0075.py) | Medium |
@@ -79,6 +79,7 @@ LeetCode Problems' Solutions
 | 202 | [Happy Number](//leetcode.com/problems/happy-number/) | [Go](./problems/algorithms/0202.go) | Easy |
 | 213 | [House Robber II](//leetcode.com/problems/house-robber-ii/) | [Go](./problems/algorithms/0213.go) | Medium |
 | 217 | [Contains Duplicate](//leetcode.com/problems/contains-duplicate/) | [Go](./problems/algorithms/0217.go) | Easy |
+| 221 | [Maximal Square](//leetcode.com/problems/maximal-square/) | [Go](./problems/algorithms/0221.go) | Medium |
 | 232 | [Implement Queue using Stacks](//leetcode.com/problems/implement-queue-using-stacks/) | [Go](./problems/algorithms/0232.go) | Easy |
 | 242 | [Valid Anagram](//leetcode.com/problems/valid-anagram/) | [Go](./problems/algorithms/0242.go) | Easy |
 | 263 | [Ugly Number](//leetcode.com/problems/ugly-number/) | [Go](./problems/algorithms/0263.go) | Easy |
@@ -106,6 +107,7 @@ LeetCode Problems' Solutions
 | 918 | [Maximum Sum Circular Subarray](//leetcode.com/problems/maximum-sum-circular-subarray/) | [Go](./problems/algorithms/0918.go) | Medium |
 | 931 | [Minimum Falling Path Sum](//leetcode.com/problems/minimum-falling-path-sum/) | [Go](./problems/algorithms/0931.go) | Medium |
 | 953 | [Verifying an Alien Dictionary](//leetcode.com/problems/verifying-an-alien-dictionary/) | [Go](./problems/algorithms/0953.go) | Easy |
+| 968 | [Binary Tree Cameras](//leetcode.com/problems/binary-tree-cameras/) | [Go](./problems/algorithms/0968.go) | Hard |
 | 976 | [Largest Perimeter Triangle](//leetcode.com/problems/largest-perimeter-triangle/) | [Go](./problems/algorithms/0976.go) | Easy |
 | 1014 | [Best Sightseeing Pair](//leetcode.com/problems/best-sightseeing-pair/) | [Go](./problems/algorithms/1014.go) | Medium |
 | 1048 | [Longest String Chain](//leetcode.com/problems/longest-string-chain/) | [Go](./problems/algorithms/1048.go) | Medium |
