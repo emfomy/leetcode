@@ -49,7 +49,7 @@ LeetCode Problems' Solutions
 | 63 | [Unique Paths II](//leetcode.com/problems/unique-paths-ii/) | [Go](./problems/algorithms/0063.go) | Medium |
 | 64 | [Minimum Path Sum](//leetcode.com/problems/minimum-path-sum/) | [Go](./problems/algorithms/0064.go) [Python](./problems/algorithms/0064.py) | Medium |
 | 70 | [Climbing Stairs](//leetcode.com/problems/climbing-stairs/) | [Go](./problems/algorithms/0070.go) [Python](./problems/algorithms/0070.py) | Easy |
-| 72 | [Edit Distance](//leetcode.com/problems/edit-distance/) | [Python](./problems/algorithms/0072.py) | Hard |
+| 72 | [Edit Distance](//leetcode.com/problems/edit-distance/) | [Go](./problems/algorithms/0072.go) [Python](./problems/algorithms/0072.py) | Hard |
 | 75 | [Sort Colors](//leetcode.com/problems/sort-colors/) | [Python](./problems/algorithms/0075.py) | Medium |
 | 78 | [Subsets](//leetcode.com/problems/subsets/) | [Python](./problems/algorithms/0078.py) | Medium |
 | 79 | [Word Search](//leetcode.com/problems/word-search/) | [Python](./problems/algorithms/0079.py) | Medium |
@@ -93,6 +93,7 @@ LeetCode Problems' Solutions
 | 318 | [Maximum Product of Word Lengths](//leetcode.com/problems/maximum-product-of-word-lengths/) | [Go](./problems/algorithms/0318.go) | Easy |
 | 376 | [Wiggle Subsequence](//leetcode.com/problems/wiggle-subsequence/) | [Go](./problems/algorithms/0376.go) | Medium |
 | 389 | [Find the Difference](//leetcode.com/problems/find-the-difference/) | [Go](./problems/algorithms/0389.go) | Easy |
+| 392 | [Is Subsequence](//leetcode.com/problems/is-subsequence/) | [Go](./problems/algorithms/0392.go) | Easy |
 | 404 | [Sum of Left Leaves](//leetcode.com/problems/sum-of-left-leaves/) | [Go](./problems/algorithms/0404.go) | Easy |
 | 413 | [Arithmetic Slices](//leetcode.com/problems/arithmetic-slices/) | [Go](./problems/algorithms/0413.go) | Medium |
 | 496 | [Next Greater Element I](//leetcode.com/problems/next-greater-element-i/) | [Go](./problems/algorithms/0496.go) | Easy |
@@ -106,6 +107,7 @@ LeetCode Problems' Solutions
 | 740 | [Delete and Earn](//leetcode.com/problems/delete-and-earn/) | [Go](./problems/algorithms/0740.go) | Medium |
 | 745 | [Prefix and Suffix Search](//leetcode.com/problems/prefix-and-suffix-search/) | [Go](./problems/algorithms/0745.go) | Hard |
 | 746 | [Min Cost Climbing Stairs](//leetcode.com/problems/min-cost-climbing-stairs/) | [Go](./problems/algorithms/0746.go) | Easy |
+| 820 | [Short Encoding of Words](//leetcode.com/problems/short-encoding-of-words/) | [Go](./problems/algorithms/0820.go) | Medium |
 | 867 | [Transpose Matrix](//leetcode.com/problems/transpose-matrix/) | [Go](./problems/algorithms/0867.go) [Python](./problems/algorithms/0867.py) | Easy |
 | 876 | [Middle of the Linked List](//leetcode.com/problems/middle-of-the-linked-list/) | [Go](./problems/algorithms/0876.go) | Easy |
 | 918 | [Maximum Sum Circular Subarray](//leetcode.com/problems/maximum-sum-circular-subarray/) | [Go](./problems/algorithms/0918.go) | Medium |
@@ -116,6 +118,7 @@ LeetCode Problems' Solutions
 | 1014 | [Best Sightseeing Pair](//leetcode.com/problems/best-sightseeing-pair/) | [Go](./problems/algorithms/1014.go) | Medium |
 | 1048 | [Longest String Chain](//leetcode.com/problems/longest-string-chain/) | [Go](./problems/algorithms/1048.go) | Medium |
 | 1137 | [N-th Tribonacci Number](//leetcode.com/problems/n-th-tribonacci-number/) | [Go](./problems/algorithms/1137.go) | Easy |
+| 1143 | [Longest Common Subsequence](//leetcode.com/problems/longest-common-subsequence/) | [Go](./problems/algorithms/1143.go) | Medium |
 | 1232 | [Check If It Is a Straight Line](//leetcode.com/problems/check-if-it-is-a-straight-line/) | [Go](./problems/algorithms/1232.go) | Easy |
 | 1268 | [Search Suggestions System](//leetcode.com/problems/search-suggestions-system/) | [Go](./problems/algorithms/1268.go) | Medium |
 | 1281 | [Subtract the Product and Sum of Digits of an Integer](//leetcode.com/problems/subtract-the-product-and-sum-of-digits-of-an-integer/) | [Go](./problems/algorithms/1281.go) | Easy |

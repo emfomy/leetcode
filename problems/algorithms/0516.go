@@ -47,7 +47,7 @@ func longestPalindromeSubseq(s string) int {
 			if c1 == c2 {
 				mat[i][j] = mat[i-1][j-1] + 1
 			} else {
-				mat[i][j] = _max(mat[i-1][j], mat[i][j-1])
+				mat[i][j] = _max(mat[i][j-1], mat[i-1][j])
 			}
 		}
 	}
@@ -71,7 +71,7 @@ func longestPalindromeSubseq2(s string) int {
 			if c1 == c2 {
 				next[j] = prev[j-1] + 1
 			} else {
-				next[j] = _max(prev[j], next[j-1])
+				next[j] = _max(next[j-1], prev[j])
 			}
 		}
 		prev, next = next, prev
