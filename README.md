@@ -86,21 +86,25 @@ LeetCode Problems' Solutions
 | 264 | [Ugly Number](//leetcode.com/problems/ugly-number/) | [Go](./problems/algorithms/0264.go) | Easy |
 | 268 | [Missing Number](//leetcode.com/problems/missing-number/) | [Go](./problems/algorithms/0268.go) | Easy |
 | 283 | [Move Zeroes](//leetcode.com/problems/move-zeroes/) | [Go](./problems/algorithms/0283.go) | Easy |
+| 300 | [Longest Increasing Subsequence](//leetcode.com/problems/longest-increasing-subsequence/) | [Go](./problems/algorithms/0300.go) | Medium |
 | 303 | [Range Sum Query - Immutable](//leetcode.com/problems/range-sum-query-immutable/) | [Go](./problems/algorithms/0303.go) | Easy |
 | 304 | [Range Sum Query 2D - Immutable](//leetcode.com/problems/range-sum-query-2d-immutable/) | [Go](./problems/algorithms/0304.go) | Medium |
 | 309 | [Best Time to Buy and Sell Stock with Cooldown](//leetcode.com/problems/best-time-to-buy-and-sell-stock-with-cooldown/) | [Go](./problems/algorithms/0309.go) | Medium |
 | 318 | [Maximum Product of Word Lengths](//leetcode.com/problems/maximum-product-of-word-lengths/) | [Go](./problems/algorithms/0318.go) | Easy |
+| 376 | [Wiggle Subsequence](//leetcode.com/problems/wiggle-subsequence/) | [Go](./problems/algorithms/0376.go) | Medium |
 | 389 | [Find the Difference](//leetcode.com/problems/find-the-difference/) | [Go](./problems/algorithms/0389.go) | Easy |
 | 404 | [Sum of Left Leaves](//leetcode.com/problems/sum-of-left-leaves/) | [Go](./problems/algorithms/0404.go) | Easy |
 | 413 | [Arithmetic Slices](//leetcode.com/problems/arithmetic-slices/) | [Go](./problems/algorithms/0413.go) | Medium |
 | 496 | [Next Greater Element I](//leetcode.com/problems/next-greater-element-i/) | [Go](./problems/algorithms/0496.go) | Easy |
 | 509 | [Fibonacci Number](//leetcode.com/problems/fibonacci-number/) | [Go](./problems/algorithms/0509.go) | Easy |
+| 516 | [Longest Palindromic Subsequence](//leetcode.com/problems/longest-palindromic-subsequence/) | [Go](./problems/algorithms/0516.go) | Medium |
 | 566 | [Reshape the Matrix](//leetcode.com/problems/reshape-the-matrix/) | [Go](./problems/algorithms/0566.go) | Easy |
 | 583 | [Delete Operation for Two Strings](//leetcode.com/problems/delete-operation-for-two-strings/) | [Go](./problems/algorithms/0583.go) | Medium |
 | 589 | [N-ary Tree Preorder Traversal](//leetcode.com/problems/n-ary-tree-preorder-traversal/) | [Go](./problems/algorithms/0589.go) | Easy |
 | 709 | [To Lower Case](//leetcode.com/problems/to-lower-case/) | [Go](./problems/algorithms/0709.go) | Easy |
 | 714 | [Best Time to Buy and Sell Stock with Transaction Fee](//leetcode.com/problems/best-time-to-buy-and-sell-stock-with-transaction-fee/) | [Go](./problems/algorithms/0714.go) | Medium |
 | 740 | [Delete and Earn](//leetcode.com/problems/delete-and-earn/) | [Go](./problems/algorithms/0740.go) | Medium |
+| 745 | [Prefix and Suffix Search](//leetcode.com/problems/prefix-and-suffix-search/) | [Go](./problems/algorithms/0745.go) | Hard |
 | 746 | [Min Cost Climbing Stairs](//leetcode.com/problems/min-cost-climbing-stairs/) | [Go](./problems/algorithms/0746.go) | Easy |
 | 867 | [Transpose Matrix](//leetcode.com/problems/transpose-matrix/) | [Go](./problems/algorithms/0867.go) [Python](./problems/algorithms/0867.py) | Easy |
 | 876 | [Middle of the Linked List](//leetcode.com/problems/middle-of-the-linked-list/) | [Go](./problems/algorithms/0876.go) | Easy |
@@ -113,6 +117,7 @@ LeetCode Problems' Solutions
 | 1048 | [Longest String Chain](//leetcode.com/problems/longest-string-chain/) | [Go](./problems/algorithms/1048.go) | Medium |
 | 1137 | [N-th Tribonacci Number](//leetcode.com/problems/n-th-tribonacci-number/) | [Go](./problems/algorithms/1137.go) | Easy |
 | 1232 | [Check If It Is a Straight Line](//leetcode.com/problems/check-if-it-is-a-straight-line/) | [Go](./problems/algorithms/1232.go) | Easy |
+| 1268 | [Search Suggestions System](//leetcode.com/problems/search-suggestions-system/) | [Go](./problems/algorithms/1268.go) | Medium |
 | 1281 | [Subtract the Product and Sum of Digits of an Integer](//leetcode.com/problems/subtract-the-product-and-sum-of-digits-of-an-integer/) | [Go](./problems/algorithms/1281.go) | Easy |
 | 1290 | [Convert Binary Number in a Linked List to Integer](//leetcode.com/problems/convert-binary-number-in-a-linked-list-to-integer/) | [Go](./problems/algorithms/1290.go) | Easy |
 | 1309 | [Decrypt String from Alphabet to Integer Mapping](//leetcode.com/problems/decrypt-string-from-alphabet-to-integer-mapping/) | [Go](./problems/algorithms/1309.go) | Easy |
