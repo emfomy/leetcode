@@ -34,6 +34,8 @@
 
 package main
 
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 // Use DP
 // Time: O(n^2); Space: O(n)
 func lengthOfLIS(nums []int) int {
@@ -59,9 +61,81 @@ func lengthOfLIS(nums []int) int {
 	return res
 }
 
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+// Use DP
+// Time: O(n^2); Space: O(n)
+func lengthOfLIS2(nums []int) int {
+	n := len(nums)
+
+	// Smallest tail of all increasing subsequences with length i+1
+	// Note that it is always an increasing array
+	tails := make([]int, 0, n)
+
+	for _, num := range nums {
+		found := false
+		for i, tail := range tails {
+			if num <= tail {
+				tails[i] = num
+				found = true
+				break
+			}
+		}
+		if !found {
+			tails = append(tails, num)
+		}
+	}
+
+	return len(tails)
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+// Use DP + binary search
+// Time: O(nlogn); Space: O(n)
+func lengthOfLIS3(nums []int) int {
+	n := len(nums)
+
+	// Smallest tail of all increasing subsequences with length i+1
+	// Note that it is always an increasing array
+	tails := make([]int, n)
+	size := 0
+
+	for _, num := range nums {
+		idx := _binarySearch(tails, size, num)
+		tails[idx] = num
+		if idx == size {
+			size += 1
+		}
+	}
+
+	return size
+}
+
+// Returns the index such that arr[idx-1] < target <= arr[idx]
+func _binarySearch(arr []int, size, target int) int {
+	left := 0
+	right := size
+	for left != right {
+		mid := (left + right) / 2
+		if arr[mid] < target {
+			left = mid + 1
+		} else {
+			right = mid
+		}
+	}
+	return left
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 func _max(a, b int) int {
 	if a > b {
 		return a
 	}
 	return b
+}
+
+func main() {
+	lengthOfLIS3([]int{10, 9, 2, 5, 3, 7, 101, 18})
 }

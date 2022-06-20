@@ -43,6 +43,8 @@
 
 package main
 
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 // Use DP
 // Time: O(n^2); Space: O(n)
 func wiggleMaxLength(nums []int) int {
@@ -72,6 +74,66 @@ func wiggleMaxLength(nums []int) int {
 	}
 	return res
 }
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+// Use DP
+// Time: O(n); Space: O(1)
+func wiggleMaxLength2(nums []int) int {
+	n := len(nums)
+	posLen := 1
+	negLen := 1
+
+	for i := 1; i < n; i++ {
+		if nums[i] > nums[i-1] {
+			posLen = _max(posLen, negLen+1)
+		} else if nums[i] < nums[i-1] {
+			negLen = _max(negLen, posLen+1)
+		}
+	}
+
+	return len(nums)
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+// Use Greedy
+// Time: O(n); Space: O(1)
+func wiggleMaxLength3(nums []int) int {
+	n := len(nums)
+	if n <= 1 {
+		return 1
+	}
+
+	// Find first different
+	i := 1
+	for i = 1; i < n; i++ {
+		diff := nums[i] - nums[i-1]
+		if diff != 0 {
+			break
+		}
+	}
+
+	// All numbers are the same
+	if i == n {
+		return 1
+	}
+
+	res := 2
+	prevDiff := nums[i] - nums[i-1]
+
+	for i++; i < n; i++ {
+		diff := nums[i] - nums[i-1]
+		if diff*prevDiff < 0 {
+			res += 1
+			prevDiff = diff
+		}
+	}
+
+	return res
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 func _max(a, b int) int {
 	if a > b {
