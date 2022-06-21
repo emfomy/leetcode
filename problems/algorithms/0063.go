@@ -15,6 +15,7 @@
 // Example 1:
 //
 //   https://assets.leetcode.com/uploads/2020/11/04/robot1.jpg
+//
 //   Input: obstacleGrid = [[0,0,0],[0,1,0],[0,0,0]]
 //   Output: 2
 //   Explanation:
@@ -26,6 +27,7 @@
 //   Example 2:
 //
 //   https://assets.leetcode.com/uploads/2020/11/04/robot2.jpg
+//
 //   Input: obstacleGrid = [[0,1],[0,0]]
 //   Output: 1
 //

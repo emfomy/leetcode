@@ -91,6 +91,7 @@ LeetCode Problems' Solutions
 | 304 | [Range Sum Query 2D - Immutable](//leetcode.com/problems/range-sum-query-2d-immutable/) | [Go](./problems/algorithms/0304.go) | Medium |
 | 309 | [Best Time to Buy and Sell Stock with Cooldown](//leetcode.com/problems/best-time-to-buy-and-sell-stock-with-cooldown/) | [Go](./problems/algorithms/0309.go) | Medium |
 | 318 | [Maximum Product of Word Lengths](//leetcode.com/problems/maximum-product-of-word-lengths/) | [Go](./problems/algorithms/0318.go) | Easy |
+| 322 | [Coin Change](//leetcode.com/problems/coin-change/) | [Go](./problems/algorithms/0322.go) | Medium |
 | 376 | [Wiggle Subsequence](//leetcode.com/problems/wiggle-subsequence/) | [Go](./problems/algorithms/0376.go) | Medium |
 | 389 | [Find the Difference](//leetcode.com/problems/find-the-difference/) | [Go](./problems/algorithms/0389.go) | Easy |
 | 392 | [Is Subsequence](//leetcode.com/problems/is-subsequence/) | [Go](./problems/algorithms/0392.go) | Easy |
@@ -99,6 +100,7 @@ LeetCode Problems' Solutions
 | 496 | [Next Greater Element I](//leetcode.com/problems/next-greater-element-i/) | [Go](./problems/algorithms/0496.go) | Easy |
 | 509 | [Fibonacci Number](//leetcode.com/problems/fibonacci-number/) | [Go](./problems/algorithms/0509.go) | Easy |
 | 516 | [Longest Palindromic Subsequence](//leetcode.com/problems/longest-palindromic-subsequence/) | [Go](./problems/algorithms/0516.go) | Medium |
+| 518 | [Coin Change 2](//leetcode.com/problems/coin-change-2/) | [Go](./problems/algorithms/0518.go) | Medium |
 | 566 | [Reshape the Matrix](//leetcode.com/problems/reshape-the-matrix/) | [Go](./problems/algorithms/0566.go) | Easy |
 | 583 | [Delete Operation for Two Strings](//leetcode.com/problems/delete-operation-for-two-strings/) | [Go](./problems/algorithms/0583.go) | Medium |
 | 589 | [N-ary Tree Preorder Traversal](//leetcode.com/problems/n-ary-tree-preorder-traversal/) | [Go](./problems/algorithms/0589.go) | Easy |
@@ -137,6 +139,7 @@ LeetCode Problems' Solutions
 | 1572 | [Matrix Diagonal Sum](//leetcode.com/problems/matrix-diagonal-sum/) | [Go](./problems/algorithms/1572.go) | Easy |
 | 1588 | [Sum of All Odd Length Subarrays](//leetcode.com/problems/sum-of-all-odd-length-subarrays/) | [Go](./problems/algorithms/1588.go) | Easy |
 | 1603 | [Design Parking System](//leetcode.com/problems/design-parking-system/) | [Go](./problems/algorithms/1603.go) | Easy |
+| 1642 | [Furthest Building You Can Reach](//leetcode.com/problems/furthest-building-you-can-reach/) | [Go](./problems/algorithms/1642.go) | Medium |
 | 1658 | [Minimum Operations to Reduce X to Zero](//leetcode.com/problems/minimum-operations-to-reduce-x-to-zero/) | [Go](./problems/algorithms/1658.go) | Medium |
 | 1672 | [Richest Customer Wealth](//leetcode.com/problems/richest-customer-wealth/) | [Go](./problems/algorithms/1672.go) | Easy |
 | 1678 | [Goal Parser Interpretation](//leetcode.com/problems/goal-parser-interpretation/) | [Go](./problems/algorithms/1678.go) | Easy |
