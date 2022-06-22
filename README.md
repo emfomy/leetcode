@@ -33,7 +33,8 @@ LeetCode Problems' Solutions
 | 32 | [Longest Valid Parentheses](//leetcode.com/problems/longest-valid-parentheses/) | [Python](./problems/algorithms/0032.py) | Hard |
 | 33 | [Search in Rotated Sorted Array](//leetcode.com/problems/search-in-rotated-sorted-array/) | [C++](./problems/algorithms/0033.cpp) [Python](./problems/algorithms/0033.py) | Medium |
 | 34 | [Find First and Last Position of Element in Sorted Array](//leetcode.com/problems/find-first-and-last-position-of-element-in-sorted-array/) | [C++](./problems/algorithms/0034.cpp) | Medium |
-| 39 | [Combination Sum](//leetcode.com/problems/combination-sum/) | [Python](./problems/algorithms/0039.py) | Medium |
+| 39 | [Combination Sum](//leetcode.com/problems/combination-sum/) | [Go](./problems/algorithms/0039.go) [Python](./problems/algorithms/0039.py) | Medium |
+| 40 | [Combination Sum II](//leetcode.com/problems/combination-sum-ii/) | [Go](./problems/algorithms/0040.go) | Medium |
 | 41 | [First Missing Positive](//leetcode.com/problems/first-missing-positive/) | [Python](./problems/algorithms/0041.py) | Hard |
 | 42 | [Trapping Rain Water](//leetcode.com/problems/trapping-rain-water/) | [Go](./problems/algorithms/0042.go) [Python](./problems/algorithms/0042.py) | Hard |
 | 45 | [Jump Game II](//leetcode.com/problems/jump-game-ii/) | [Go](./problems/algorithms/0045.go) [Python](./problems/algorithms/0045.py) | Hard |
@@ -78,6 +79,8 @@ LeetCode Problems' Solutions
 | 198 | [House Robber](//leetcode.com/problems/house-robber/) | [Go](./problems/algorithms/0198.go) | Medium |
 | 202 | [Happy Number](//leetcode.com/problems/happy-number/) | [Go](./problems/algorithms/0202.go) | Easy |
 | 213 | [House Robber II](//leetcode.com/problems/house-robber-ii/) | [Go](./problems/algorithms/0213.go) | Medium |
+| 215 | [Kth Largest Element in an Array](//leetcode.com/problems/kth-largest-element-in-an-array/) | [C++](./problems/algorithms/0215.cpp) [Go](./problems/algorithms/0215.go) | Medium |
+| 216 | [Combination Sum III](//leetcode.com/problems/combination-sum-iii/) | [Go](./problems/algorithms/0216.go) | Medium |
 | 217 | [Contains Duplicate](//leetcode.com/problems/contains-duplicate/) | [Go](./problems/algorithms/0217.go) | Easy |
 | 221 | [Maximal Square](//leetcode.com/problems/maximal-square/) | [Go](./problems/algorithms/0221.go) | Medium |
 | 232 | [Implement Queue using Stacks](//leetcode.com/problems/implement-queue-using-stacks/) | [Go](./problems/algorithms/0232.go) | Easy |
@@ -85,6 +88,7 @@ LeetCode Problems' Solutions
 | 263 | [Ugly Number](//leetcode.com/problems/ugly-number/) | [Go](./problems/algorithms/0263.go) | Easy |
 | 264 | [Ugly Number](//leetcode.com/problems/ugly-number/) | [Go](./problems/algorithms/0264.go) | Easy |
 | 268 | [Missing Number](//leetcode.com/problems/missing-number/) | [Go](./problems/algorithms/0268.go) | Easy |
+| 279 | [Perfect Squares](//leetcode.com/problems/perfect-squares/) | [Go](./problems/algorithms/0279.go) | Medium |
 | 283 | [Move Zeroes](//leetcode.com/problems/move-zeroes/) | [Go](./problems/algorithms/0283.go) | Easy |
 | 300 | [Longest Increasing Subsequence](//leetcode.com/problems/longest-increasing-subsequence/) | [Go](./problems/algorithms/0300.go) | Medium |
 | 303 | [Range Sum Query - Immutable](//leetcode.com/problems/range-sum-query-immutable/) | [Go](./problems/algorithms/0303.go) | Easy |
@@ -92,7 +96,9 @@ LeetCode Problems' Solutions
 | 309 | [Best Time to Buy and Sell Stock with Cooldown](//leetcode.com/problems/best-time-to-buy-and-sell-stock-with-cooldown/) | [Go](./problems/algorithms/0309.go) | Medium |
 | 318 | [Maximum Product of Word Lengths](//leetcode.com/problems/maximum-product-of-word-lengths/) | [Go](./problems/algorithms/0318.go) | Easy |
 | 322 | [Coin Change](//leetcode.com/problems/coin-change/) | [Go](./problems/algorithms/0322.go) | Medium |
+| 343 | [Integer Break](//leetcode.com/problems/integer-break/) | [Go](./problems/algorithms/0343.go) | Medium |
 | 376 | [Wiggle Subsequence](//leetcode.com/problems/wiggle-subsequence/) | [Go](./problems/algorithms/0376.go) | Medium |
+| 377 | [Combination Sum IV](//leetcode.com/problems/combination-sum-iv/) | [Go](./problems/algorithms/0377.go) | Medium |
 | 389 | [Find the Difference](//leetcode.com/problems/find-the-difference/) | [Go](./problems/algorithms/0389.go) | Easy |
 | 392 | [Is Subsequence](//leetcode.com/problems/is-subsequence/) | [Go](./problems/algorithms/0392.go) | Easy |
 | 404 | [Sum of Left Leaves](//leetcode.com/problems/sum-of-left-leaves/) | [Go](./problems/algorithms/0404.go) | Easy |

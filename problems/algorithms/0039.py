@@ -4,16 +4,11 @@
 # Author: Mu Yang <http://muyang.pro>
 
 ################################################################################################################################
-# Given a set of candidate numbers (candidates) (without duplicates) and a target number (target), find all unique combinations in candidates where the candidate numbers sums to target. You may return the combinations in any order.
+# Given an array of distinct integers candidates and a target integer target, return a list of all unique combinations of candidates where the chosen numbers sum to target. You may return the combinations in any order.
 #
 # The same number may be chosen from candidates an unlimited number of times. Two combinations are unique if the frequency of at least one of the chosen numbers is different.
 #
 # It is guaranteed that the number of unique combinations that sum up to target is less than 150 combinations for the given input.
-#
-# Note:
-#
-# - All numbers (including target) will be positive integers.
-# - The solution set must not contain duplicate combinations.
 #
 # Example 1:
 #
@@ -34,15 +29,12 @@
 #   Input: candidates = [2], target = 1
 #   Output: []
 #
-# Example 4:
+# Constraints:
 #
-#   Input: candidates = [1], target = 1
-#   Output: [[1]]
-#
-# Example 5:
-#
-#   Input: candidates = [1], target = 2
-#   Output: [[1,1]]
+#   1 <= candidates.length <= 30
+#   1 <= candidates[i] <= 200
+#   All elements of candidates are distinct.
+#   1 <= target <= 500
 #
 ################################################################################################################################
 
@@ -57,6 +49,5 @@ class Solution:
                 yield solution
             return
 
-        prev = solution[-1] if solution else -1
         for i, c in enumerate(candidates):
             yield from self.combinationSumInner(candidates[i:], target-c, *solution, c)
