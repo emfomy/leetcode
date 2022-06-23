@@ -78,6 +78,8 @@ LeetCode Problems' Solutions
 | 191 | [Number of 1 Bits](//leetcode.com/problems/number-of-1-bits/) | [C++](./problems/algorithms/0191.cpp) [Go](./problems/algorithms/0191.go) | Easy |
 | 198 | [House Robber](//leetcode.com/problems/house-robber/) | [Go](./problems/algorithms/0198.go) | Medium |
 | 202 | [Happy Number](//leetcode.com/problems/happy-number/) | [Go](./problems/algorithms/0202.go) | Easy |
+| 207 | [Course Schedule](//leetcode.com/problems/course-schedule/) | [Go](./problems/algorithms/0207.go) | Medium |
+| 210 | [Course Schedule II](//leetcode.com/problems/course-schedule-ii/) | [Go](./problems/algorithms/0210.go) | Medium |
 | 213 | [House Robber II](//leetcode.com/problems/house-robber-ii/) | [Go](./problems/algorithms/0213.go) | Medium |
 | 215 | [Kth Largest Element in an Array](//leetcode.com/problems/kth-largest-element-in-an-array/) | [C++](./problems/algorithms/0215.cpp) [Go](./problems/algorithms/0215.go) | Medium |
 | 216 | [Combination Sum III](//leetcode.com/problems/combination-sum-iii/) | [Go](./problems/algorithms/0216.go) | Medium |
@@ -110,6 +112,7 @@ LeetCode Problems' Solutions
 | 566 | [Reshape the Matrix](//leetcode.com/problems/reshape-the-matrix/) | [Go](./problems/algorithms/0566.go) | Easy |
 | 583 | [Delete Operation for Two Strings](//leetcode.com/problems/delete-operation-for-two-strings/) | [Go](./problems/algorithms/0583.go) | Medium |
 | 589 | [N-ary Tree Preorder Traversal](//leetcode.com/problems/n-ary-tree-preorder-traversal/) | [Go](./problems/algorithms/0589.go) | Easy |
+| 630 | [Course Schedule III](//leetcode.com/problems/course-schedule-iii/) | [Go](./problems/algorithms/0630.go) | Hard |
 | 709 | [To Lower Case](//leetcode.com/problems/to-lower-case/) | [Go](./problems/algorithms/0709.go) | Easy |
 | 714 | [Best Time to Buy and Sell Stock with Transaction Fee](//leetcode.com/problems/best-time-to-buy-and-sell-stock-with-transaction-fee/) | [Go](./problems/algorithms/0714.go) | Medium |
 | 740 | [Delete and Earn](//leetcode.com/problems/delete-and-earn/) | [Go](./problems/algorithms/0740.go) | Medium |
