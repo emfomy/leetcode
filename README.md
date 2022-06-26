@@ -113,6 +113,7 @@ LeetCode Problems' Solutions
 | 583 | [Delete Operation for Two Strings](//leetcode.com/problems/delete-operation-for-two-strings/) | [Go](./problems/algorithms/0583.go) | Medium |
 | 589 | [N-ary Tree Preorder Traversal](//leetcode.com/problems/n-ary-tree-preorder-traversal/) | [Go](./problems/algorithms/0589.go) | Easy |
 | 630 | [Course Schedule III](//leetcode.com/problems/course-schedule-iii/) | [Go](./problems/algorithms/0630.go) | Hard |
+| 665 | [Non-decreasing Array](//leetcode.com/problems/non-decreasing-array/) | [Go](./problems/algorithms/0665.go) | Medium |
 | 709 | [To Lower Case](//leetcode.com/problems/to-lower-case/) | [Go](./problems/algorithms/0709.go) | Easy |
 | 714 | [Best Time to Buy and Sell Stock with Transaction Fee](//leetcode.com/problems/best-time-to-buy-and-sell-stock-with-transaction-fee/) | [Go](./problems/algorithms/0714.go) | Medium |
 | 740 | [Delete and Earn](//leetcode.com/problems/delete-and-earn/) | [Go](./problems/algorithms/0740.go) | Medium |
@@ -138,7 +139,9 @@ LeetCode Problems' Solutions
 | 1314 | [Matrix Block Sum](//leetcode.com/problems/matrix-block-sum/) | [Go](./problems/algorithms/1314.go) | Medium |
 | 1332 | [Remove Palindromic Subsequences](//leetcode.com/problems/remove-palindromic-subsequences/) | [Go](./problems/algorithms/1332.go) | Easy |
 | 1342 | [Number of Steps to Reduce a Number to Zero](//leetcode.com/problems/number-of-steps-to-reduce-a-number-to-zero/) | [C++](./problems/algorithms/1342.cpp) [Go](./problems/algorithms/1342.go) | Easy |
+| 1354 | [Construct Target Array With Multiple Sums](//leetcode.com/problems/construct-target-array-with-multiple-sums/) | [Go](./problems/algorithms/1354.go) | Hard |
 | 1356 | [Sort Integers by The Number of 1 Bits](//leetcode.com/problems/sort-integers-by-the-number-of-1-bits/) | [Go](./problems/algorithms/1356.go) | Easy |
+| 1423 | [Maximum Points You Can Obtain from Cards](//leetcode.com/problems/maximum-points-you-can-obtain-from-cards/) | [Go](./problems/algorithms/1423.go) | Medium |
 | 1461 | [Check If a String Contains All Binary Codes of Size K](//leetcode.com/problems/check-if-a-string-contains-all-binary-codes-of-size-k/) | [Go](./problems/algorithms/1461.go) | Medium |
 | 1480 | [Running Sum of 1d Array](//leetcode.com/problems/running-sum-of-1d-array/) | [Go](./problems/algorithms/1480.go) | Easy |
 | 1491 | [Average Salary Excluding the Minimum and Maximum Salary](//leetcode.com/problems/average-salary-excluding-the-minimum-and-maximum-salary/) | [Go](./problems/algorithms/1491.go) | Easy |
@@ -157,4 +160,8 @@ LeetCode Problems' Solutions
 | 1779 | [Find Nearest Point That Has the Same X or Y Coordinate](//leetcode.com/problems/find-nearest-point-that-has-the-same-x-or-y-coordinate/) | [Go](./problems/algorithms/1779.go) | Easy |
 | 1790 | [Check if One String Swap Can Make Strings Equal](//leetcode.com/problems/check-if-one-string-swap-can-make-strings-equal/) | [Go](./problems/algorithms/1790.go) | Easy |
 | 1822 | [Sign of the Product of an Array](//leetcode.com/problems/sign-of-the-product-of-an-array/) | [Go](./problems/algorithms/1822.go) | Easy |
+| 2319 | [Check if Matrix Is X-Matrix](//leetcode.com/problems/check-if-matrix-is-x-matrix/) | [Go](./problems/algorithms/2319.go) | Easy |
+| 2320 | [Count Number of Ways to Place Houses](//leetcode.com/problems/count-number-of-ways-to-place-houses/) | [Go](./problems/algorithms/2320.go) | Medium |
+| 2321 | [Maximum Score Of Spliced Array](//leetcode.com/problems/maximum-score-of-spliced-array/) | [Go](./problems/algorithms/2321.go) | Hard |
+| 2322 | [Minimum Score After Removals on a Tree](//leetcode.com/problems/minimum-score-after-removals-on-a-tree/) | [Go](./problems/algorithms/2322.go) | Hard |
 
