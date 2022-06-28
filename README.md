@@ -152,9 +152,11 @@ LeetCode Problems' Solutions
 | 1588 | [Sum of All Odd Length Subarrays](//leetcode.com/problems/sum-of-all-odd-length-subarrays/) | [Go](./problems/algorithms/1588.go) | Easy |
 | 1603 | [Design Parking System](//leetcode.com/problems/design-parking-system/) | [Go](./problems/algorithms/1603.go) | Easy |
 | 1642 | [Furthest Building You Can Reach](//leetcode.com/problems/furthest-building-you-can-reach/) | [Go](./problems/algorithms/1642.go) | Medium |
+| 1647 | [Minimum Deletions to Make Character Frequencies Unique](//leetcode.com/problems/minimum-deletions-to-make-character-frequencies-unique/) | [Go](./problems/algorithms/1647.go) | Medium |
 | 1658 | [Minimum Operations to Reduce X to Zero](//leetcode.com/problems/minimum-operations-to-reduce-x-to-zero/) | [Go](./problems/algorithms/1658.go) | Medium |
 | 1672 | [Richest Customer Wealth](//leetcode.com/problems/richest-customer-wealth/) | [Go](./problems/algorithms/1672.go) | Easy |
 | 1678 | [Goal Parser Interpretation](//leetcode.com/problems/goal-parser-interpretation/) | [Go](./problems/algorithms/1678.go) | Easy |
+| 1689 | [Partitioning Into Minimum Number Of Deci-Binary Numbers](//leetcode.com/problems/partitioning-into-minimum-number-of-deci-binary-numbers/) | [Go](./problems/algorithms/1689.go) | Medium |
 | 1695 | [Maximum Erasure Value](//leetcode.com/problems/maximum-erasure-value/) | [Go](./problems/algorithms/1695.go) | Medium |
 | 1768 | [Merge Strings Alternately](//leetcode.com/problems/merge-strings-alternately/) | [Go](./problems/algorithms/1768.go) | Easy |
 | 1779 | [Find Nearest Point That Has the Same X or Y Coordinate](//leetcode.com/problems/find-nearest-point-that-has-the-same-x-or-y-coordinate/) | [Go](./problems/algorithms/1779.go) | Easy |
@@ -163,5 +165,4 @@ LeetCode Problems' Solutions
 | 2319 | [Check if Matrix Is X-Matrix](//leetcode.com/problems/check-if-matrix-is-x-matrix/) | [Go](./problems/algorithms/2319.go) | Easy |
 | 2320 | [Count Number of Ways to Place Houses](//leetcode.com/problems/count-number-of-ways-to-place-houses/) | [Go](./problems/algorithms/2320.go) | Medium |
 | 2321 | [Maximum Score Of Spliced Array](//leetcode.com/problems/maximum-score-of-spliced-array/) | [Go](./problems/algorithms/2321.go) | Hard |
-| 2322 | [Minimum Score After Removals on a Tree](//leetcode.com/problems/minimum-score-after-removals-on-a-tree/) | [Go](./problems/algorithms/2322.go) | Hard |
 
