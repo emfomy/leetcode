@@ -104,6 +104,7 @@ LeetCode Problems' Solutions
 | 389 | [Find the Difference](//leetcode.com/problems/find-the-difference/) | [Go](./problems/algorithms/0389.go) | Easy |
 | 392 | [Is Subsequence](//leetcode.com/problems/is-subsequence/) | [Go](./problems/algorithms/0392.go) | Easy |
 | 404 | [Sum of Left Leaves](//leetcode.com/problems/sum-of-left-leaves/) | [Go](./problems/algorithms/0404.go) | Easy |
+| 406 | [Queue Reconstruction by Height](//leetcode.com/problems/queue-reconstruction-by-height/) | [Go](./problems/algorithms/0406.go) | Medium |
 | 413 | [Arithmetic Slices](//leetcode.com/problems/arithmetic-slices/) | [Go](./problems/algorithms/0413.go) | Medium |
 | 496 | [Next Greater Element I](//leetcode.com/problems/next-greater-element-i/) | [Go](./problems/algorithms/0496.go) | Easy |
 | 509 | [Fibonacci Number](//leetcode.com/problems/fibonacci-number/) | [Go](./problems/algorithms/0509.go) | Easy |
