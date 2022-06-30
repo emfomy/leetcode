@@ -106,6 +106,7 @@ LeetCode Problems' Solutions
 | 404 | [Sum of Left Leaves](//leetcode.com/problems/sum-of-left-leaves/) | [Go](./problems/algorithms/0404.go) | Easy |
 | 406 | [Queue Reconstruction by Height](//leetcode.com/problems/queue-reconstruction-by-height/) | [Go](./problems/algorithms/0406.go) | Medium |
 | 413 | [Arithmetic Slices](//leetcode.com/problems/arithmetic-slices/) | [Go](./problems/algorithms/0413.go) | Medium |
+| 462 | [Minimum Moves to Equal Array Elements II](//leetcode.com/problems/minimum-moves-to-equal-array-elements-ii/) | [Go](./problems/algorithms/0462.go) | Medium |
 | 496 | [Next Greater Element I](//leetcode.com/problems/next-greater-element-i/) | [Go](./problems/algorithms/0496.go) | Easy |
 | 509 | [Fibonacci Number](//leetcode.com/problems/fibonacci-number/) | [Go](./problems/algorithms/0509.go) | Easy |
 | 516 | [Longest Palindromic Subsequence](//leetcode.com/problems/longest-palindromic-subsequence/) | [Go](./problems/algorithms/0516.go) | Medium |
