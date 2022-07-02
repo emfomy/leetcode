@@ -145,6 +145,7 @@ LeetCode Problems' Solutions
 | 1356 | [Sort Integers by The Number of 1 Bits](//leetcode.com/problems/sort-integers-by-the-number-of-1-bits/) | [Go](./problems/algorithms/1356.go) | Easy |
 | 1423 | [Maximum Points You Can Obtain from Cards](//leetcode.com/problems/maximum-points-you-can-obtain-from-cards/) | [Go](./problems/algorithms/1423.go) | Medium |
 | 1461 | [Check If a String Contains All Binary Codes of Size K](//leetcode.com/problems/check-if-a-string-contains-all-binary-codes-of-size-k/) | [Go](./problems/algorithms/1461.go) | Medium |
+| 1465 | [Maximum Area of a Piece of Cake After Horizontal and Vertical Cuts](//leetcode.com/problems/maximum-area-of-a-piece-of-cake-after-horizontal-and-vertical-cuts/) | [Go](./problems/algorithms/1465.go) | Medium |
 | 1480 | [Running Sum of 1d Array](//leetcode.com/problems/running-sum-of-1d-array/) | [Go](./problems/algorithms/1480.go) | Easy |
 | 1491 | [Average Salary Excluding the Minimum and Maximum Salary](//leetcode.com/problems/average-salary-excluding-the-minimum-and-maximum-salary/) | [Go](./problems/algorithms/1491.go) | Easy |
 | 1502 | [Can Make Arithmetic Progression From Sequence](//leetcode.com/problems/can-make-arithmetic-progression-from-sequence/) | [Go](./problems/algorithms/1502.go) | Easy |
@@ -160,6 +161,7 @@ LeetCode Problems' Solutions
 | 1678 | [Goal Parser Interpretation](//leetcode.com/problems/goal-parser-interpretation/) | [Go](./problems/algorithms/1678.go) | Easy |
 | 1689 | [Partitioning Into Minimum Number Of Deci-Binary Numbers](//leetcode.com/problems/partitioning-into-minimum-number-of-deci-binary-numbers/) | [Go](./problems/algorithms/1689.go) | Medium |
 | 1695 | [Maximum Erasure Value](//leetcode.com/problems/maximum-erasure-value/) | [Go](./problems/algorithms/1695.go) | Medium |
+| 1710 | [Maximum Units on a Truck](//leetcode.com/problems/maximum-units-on-a-truck/) | [Go](./problems/algorithms/1710.go) | Easy |
 | 1768 | [Merge Strings Alternately](//leetcode.com/problems/merge-strings-alternately/) | [Go](./problems/algorithms/1768.go) | Easy |
 | 1779 | [Find Nearest Point That Has the Same X or Y Coordinate](//leetcode.com/problems/find-nearest-point-that-has-the-same-x-or-y-coordinate/) | [Go](./problems/algorithms/1779.go) | Easy |
 | 1790 | [Check if One String Swap Can Make Strings Equal](//leetcode.com/problems/check-if-one-string-swap-can-make-strings-equal/) | [Go](./problems/algorithms/1790.go) | Easy |

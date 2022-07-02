@@ -37,7 +37,7 @@
 
 package main
 
-const modulo = 1e9 + 7
+const modulo = int(1e9 + 7)
 
 // F(i)^2, F(i) is the (i+1)th Fibonacci number
 func countHousePlacements(n int) int {
