@@ -60,6 +60,7 @@ LeetCode Problems' Solutions
 | 91 | [Decode Ways](//leetcode.com/problems/decode-ways/) | [Go](./problems/algorithms/0091.go) | Medium |
 | 94 | [Binary Tree Inorder Traversal](//leetcode.com/problems/binary-tree-inorder-traversal/) | [Python](./problems/algorithms/0094.py) | Medium |
 | 96 | [Unique Binary Search Trees](//leetcode.com/problems/unique-binary-search-trees/) | [Go](./problems/algorithms/0096.go) [Python](./problems/algorithms/0096.py) | Medium |
+| 97 | [Interleaving String](//leetcode.com/problems/interleaving-string/) | [Go](./problems/algorithms/0097.go) | Medium |
 | 98 | [Validate Binary Search Tree](//leetcode.com/problems/validate-binary-search-tree/) | [Python](./problems/algorithms/0098.py) | Medium |
 | 101 | [Symmetric Tree](//leetcode.com/problems/symmetric-tree/) | [Python](./problems/algorithms/0101.py) | Easy |
 | 102 | [Binary Tree Level Order Traversal](//leetcode.com/problems/binary-tree-level-order-traversal/) | [Python](./problems/algorithms/0102.py) | Medium |
@@ -71,6 +72,8 @@ LeetCode Problems' Solutions
 | 120 | [Triangle](//leetcode.com/problems/triangle/) | [Go](./problems/algorithms/0120.go) | Medium |
 | 121 | [Best Time to Buy and Sell Stock](//leetcode.com/problems/best-time-to-buy-and-sell-stock/) | [Go](./problems/algorithms/0121.go) [Python](./problems/algorithms/0121.py) | Easy |
 | 122 | [Best Time to Buy and Sell Stock II](//leetcode.com/problems/best-time-to-buy-and-sell-stock-ii/) | [Go](./problems/algorithms/0122.go) | Medium |
+| 128 | [Longest Consecutive Sequence](//leetcode.com/problems/longest-consecutive-sequence/) | [Go](./problems/algorithms/0128.go) | Medium |
+| 135 | [Candy](//leetcode.com/problems/candy/) | [Go](./problems/algorithms/0135.go) | Hard |
 | 139 | [Word Break](//leetcode.com/problems/word-break/) | [Go](./problems/algorithms/0139.go) | Medium |
 | 152 | [Maximum Product Subarray](//leetcode.com/problems/maximum-product-subarray/) | [Go](./problems/algorithms/0152.go) | Medium |
 | 160 | [Intersection of Two Linked Lists](//leetcode.com/problems/intersection-of-two-linked-lists/) | [Go](./problems/algorithms/0160.go) | Easy |
