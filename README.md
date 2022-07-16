@@ -63,9 +63,9 @@ LeetCode Problems' Solutions
 | 97 | [Interleaving String](//leetcode.com/problems/interleaving-string/) | [Go](./problems/algorithms/0097.go) | Medium |
 | 98 | [Validate Binary Search Tree](//leetcode.com/problems/validate-binary-search-tree/) | [Python](./problems/algorithms/0098.py) | Medium |
 | 101 | [Symmetric Tree](//leetcode.com/problems/symmetric-tree/) | [Python](./problems/algorithms/0101.py) | Easy |
-| 102 | [Binary Tree Level Order Traversal](//leetcode.com/problems/binary-tree-level-order-traversal/) | [Python](./problems/algorithms/0102.py) | Medium |
+| 102 | [Binary Tree Level Order Traversal](//leetcode.com/problems/binary-tree-level-order-traversal/) | [Go](./problems/algorithms/0102.go) [Python](./problems/algorithms/0102.py) | Medium |
 | 104 | [Maximum Depth of Binary Tree](//leetcode.com/problems/maximum-depth-of-binary-tree/) | [Go](./problems/algorithms/0104.go) [Python](./problems/algorithms/0104.py) | Easy |
-| 105 | [Construct Binary Tree from Preorder and Inorder Traversal](//leetcode.com/problems/construct-binary-tree-from-preorder-and-inorder-traversal/) | [Python](./problems/algorithms/0105.py) | Medium |
+| 105 | [Construct Binary Tree from Preorder and Inorder Traversal](//leetcode.com/problems/construct-binary-tree-from-preorder-and-inorder-traversal/) | [Go](./problems/algorithms/0105.go) [Python](./problems/algorithms/0105.py) | Medium |
 | 114 | [Flatten Binary Tree to Linked List](//leetcode.com/problems/flatten-binary-tree-to-linked-list/) | [Python](./problems/algorithms/0114.py) | Medium |
 | 118 | [Pascal's Triangle](//leetcode.com/problems/pascals-triangle/) | [Go](./problems/algorithms/0118.go) | Easy |
 | 119 | [Pascal's Triangle II](//leetcode.com/problems/pascals-triangle-ii/) | [Go](./problems/algorithms/0119.go) | Easy |
@@ -80,6 +80,7 @@ LeetCode Problems' Solutions
 | 167 | [Two Sum II - Input Array Is Sorted](//leetcode.com/problems/two-sum-ii-input-array-is-sorted/) | [Go](./problems/algorithms/0167.go) | Medium |
 | 191 | [Number of 1 Bits](//leetcode.com/problems/number-of-1-bits/) | [C++](./problems/algorithms/0191.cpp) [Go](./problems/algorithms/0191.go) | Easy |
 | 198 | [House Robber](//leetcode.com/problems/house-robber/) | [Go](./problems/algorithms/0198.go) | Medium |
+| 199 | [Binary Tree Right Side View](//leetcode.com/problems/binary-tree-right-side-view/) | [Go](./problems/algorithms/0199.go) | Medium |
 | 202 | [Happy Number](//leetcode.com/problems/happy-number/) | [Go](./problems/algorithms/0202.go) | Easy |
 | 207 | [Course Schedule](//leetcode.com/problems/course-schedule/) | [Go](./problems/algorithms/0207.go) | Medium |
 | 210 | [Course Schedule II](//leetcode.com/problems/course-schedule-ii/) | [Go](./problems/algorithms/0210.go) | Medium |
@@ -110,6 +111,7 @@ LeetCode Problems' Solutions
 | 406 | [Queue Reconstruction by Height](//leetcode.com/problems/queue-reconstruction-by-height/) | [Go](./problems/algorithms/0406.go) | Medium |
 | 413 | [Arithmetic Slices](//leetcode.com/problems/arithmetic-slices/) | [Go](./problems/algorithms/0413.go) | Medium |
 | 462 | [Minimum Moves to Equal Array Elements II](//leetcode.com/problems/minimum-moves-to-equal-array-elements-ii/) | [Go](./problems/algorithms/0462.go) | Medium |
+| 473 | [Matchsticks to Square](//leetcode.com/problems/matchsticks-to-square/) | [Go](./problems/algorithms/0473.go) | Medium |
 | 496 | [Next Greater Element I](//leetcode.com/problems/next-greater-element-i/) | [Go](./problems/algorithms/0496.go) | Easy |
 | 509 | [Fibonacci Number](//leetcode.com/problems/fibonacci-number/) | [Go](./problems/algorithms/0509.go) | Easy |
 | 516 | [Longest Palindromic Subsequence](//leetcode.com/problems/longest-palindromic-subsequence/) | [Go](./problems/algorithms/0516.go) | Medium |
@@ -119,6 +121,7 @@ LeetCode Problems' Solutions
 | 589 | [N-ary Tree Preorder Traversal](//leetcode.com/problems/n-ary-tree-preorder-traversal/) | [Go](./problems/algorithms/0589.go) | Easy |
 | 630 | [Course Schedule III](//leetcode.com/problems/course-schedule-iii/) | [Go](./problems/algorithms/0630.go) | Hard |
 | 665 | [Non-decreasing Array](//leetcode.com/problems/non-decreasing-array/) | [Go](./problems/algorithms/0665.go) | Medium |
+| 695 | [Max Area of Island](//leetcode.com/problems/max-area-of-island/) | [Go](./problems/algorithms/0695.go) | Medium |
 | 709 | [To Lower Case](//leetcode.com/problems/to-lower-case/) | [Go](./problems/algorithms/0709.go) | Easy |
 | 714 | [Best Time to Buy and Sell Stock with Transaction Fee](//leetcode.com/problems/best-time-to-buy-and-sell-stock-with-transaction-fee/) | [Go](./problems/algorithms/0714.go) | Medium |
 | 740 | [Delete and Earn](//leetcode.com/problems/delete-and-earn/) | [Go](./problems/algorithms/0740.go) | Medium |
@@ -149,6 +152,7 @@ LeetCode Problems' Solutions
 | 1423 | [Maximum Points You Can Obtain from Cards](//leetcode.com/problems/maximum-points-you-can-obtain-from-cards/) | [Go](./problems/algorithms/1423.go) | Medium |
 | 1461 | [Check If a String Contains All Binary Codes of Size K](//leetcode.com/problems/check-if-a-string-contains-all-binary-codes-of-size-k/) | [Go](./problems/algorithms/1461.go) | Medium |
 | 1465 | [Maximum Area of a Piece of Cake After Horizontal and Vertical Cuts](//leetcode.com/problems/maximum-area-of-a-piece-of-cake-after-horizontal-and-vertical-cuts/) | [Go](./problems/algorithms/1465.go) | Medium |
+| 1473 | [Paint House III](//leetcode.com/problems/paint-house-iii/) | [Go](./problems/algorithms/1473.go) | Hard |
 | 1480 | [Running Sum of 1d Array](//leetcode.com/problems/running-sum-of-1d-array/) | [Go](./problems/algorithms/1480.go) | Easy |
 | 1491 | [Average Salary Excluding the Minimum and Maximum Salary](//leetcode.com/problems/average-salary-excluding-the-minimum-and-maximum-salary/) | [Go](./problems/algorithms/1491.go) | Easy |
 | 1502 | [Can Make Arithmetic Progression From Sequence](//leetcode.com/problems/can-make-arithmetic-progression-from-sequence/) | [Go](./problems/algorithms/1502.go) | Easy |
@@ -164,6 +168,7 @@ LeetCode Problems' Solutions
 | 1678 | [Goal Parser Interpretation](//leetcode.com/problems/goal-parser-interpretation/) | [Go](./problems/algorithms/1678.go) | Easy |
 | 1689 | [Partitioning Into Minimum Number Of Deci-Binary Numbers](//leetcode.com/problems/partitioning-into-minimum-number-of-deci-binary-numbers/) | [Go](./problems/algorithms/1689.go) | Medium |
 | 1695 | [Maximum Erasure Value](//leetcode.com/problems/maximum-erasure-value/) | [Go](./problems/algorithms/1695.go) | Medium |
+| 1696 | [Jump Game VI](//leetcode.com/problems/jump-game-vi/) | [Go](./problems/algorithms/1696.go) | Medium |
 | 1710 | [Maximum Units on a Truck](//leetcode.com/problems/maximum-units-on-a-truck/) | [Go](./problems/algorithms/1710.go) | Easy |
 | 1768 | [Merge Strings Alternately](//leetcode.com/problems/merge-strings-alternately/) | [Go](./problems/algorithms/1768.go) | Easy |
 | 1779 | [Find Nearest Point That Has the Same X or Y Coordinate](//leetcode.com/problems/find-nearest-point-that-has-the-same-x-or-y-coordinate/) | [Go](./problems/algorithms/1779.go) | Easy |
@@ -172,4 +177,5 @@ LeetCode Problems' Solutions
 | 2319 | [Check if Matrix Is X-Matrix](//leetcode.com/problems/check-if-matrix-is-x-matrix/) | [Go](./problems/algorithms/2319.go) | Easy |
 | 2320 | [Count Number of Ways to Place Houses](//leetcode.com/problems/count-number-of-ways-to-place-houses/) | [Go](./problems/algorithms/2320.go) | Medium |
 | 2321 | [Maximum Score Of Spliced Array](//leetcode.com/problems/maximum-score-of-spliced-array/) | [Go](./problems/algorithms/2321.go) | Hard |
+| 2331 | [Evaluate Boolean Binary Tree](//leetcode.com/problems/evaluate-boolean-binary-tree/) | [Go](./problems/algorithms/2331.go) | Easy |
 

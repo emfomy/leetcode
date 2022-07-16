@@ -52,8 +52,8 @@ class Solution:
         root = TreeNode(val=preorder.pop())
 
         # Recursive
-        root.left = self.buildTreeInner(root.val)
-        root.right = self.buildTreeInner(parent_val)
+        root.left = self.buildTreeInner(preorder, inorder, root.val)
+        root.right = self.buildTreeInner(preorder, inorder, parent_val)
 
         return root
 
