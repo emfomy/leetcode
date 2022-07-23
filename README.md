@@ -56,9 +56,12 @@ LeetCode Problems' Solutions
 | 79 | [Word Search](//leetcode.com/problems/word-search/) | [Python](./problems/algorithms/0079.py) | Medium |
 | 84 | [Largest Rectangle in Histogram](//leetcode.com/problems/largest-rectangle-in-histogram/) | [Python](./problems/algorithms/0084.py) | Hard |
 | 85 | [Maximal Rectangle](//leetcode.com/problems/maximal-rectangle/) | [Python](./problems/algorithms/0085.py) | Hard |
+| 86 | [Partition List](//leetcode.com/problems/partition-list/) | [Go](./problems/algorithms/0086.go) | Medium |
 | 88 | [Merge Sorted Array](//leetcode.com/problems/merge-sorted-array/) | [Go](./problems/algorithms/0088.go) | Easy |
 | 91 | [Decode Ways](//leetcode.com/problems/decode-ways/) | [Go](./problems/algorithms/0091.go) | Medium |
+| 92 | [Reverse Linked List II](//leetcode.com/problems/reverse-linked-list-ii/) | [Go](./problems/algorithms/0092.go) | Medium |
 | 94 | [Binary Tree Inorder Traversal](//leetcode.com/problems/binary-tree-inorder-traversal/) | [Python](./problems/algorithms/0094.py) | Medium |
+| 95 | [Unique Binary Search Trees II](//leetcode.com/problems/unique-binary-search-trees-ii/) | [Go](./problems/algorithms/0095.go) | Medium |
 | 96 | [Unique Binary Search Trees](//leetcode.com/problems/unique-binary-search-trees/) | [Go](./problems/algorithms/0096.go) [Python](./problems/algorithms/0096.py) | Medium |
 | 97 | [Interleaving String](//leetcode.com/problems/interleaving-string/) | [Go](./problems/algorithms/0097.go) | Medium |
 | 98 | [Validate Binary Search Tree](//leetcode.com/problems/validate-binary-search-tree/) | [Python](./problems/algorithms/0098.py) | Medium |
@@ -82,6 +85,7 @@ LeetCode Problems' Solutions
 | 198 | [House Robber](//leetcode.com/problems/house-robber/) | [Go](./problems/algorithms/0198.go) | Medium |
 | 199 | [Binary Tree Right Side View](//leetcode.com/problems/binary-tree-right-side-view/) | [Go](./problems/algorithms/0199.go) | Medium |
 | 202 | [Happy Number](//leetcode.com/problems/happy-number/) | [Go](./problems/algorithms/0202.go) | Easy |
+| 206 | [Reverse Linked List](//leetcode.com/problems/reverse-linked-list/) | [Go](./problems/algorithms/0206.go) | Easy |
 | 207 | [Course Schedule](//leetcode.com/problems/course-schedule/) | [Go](./problems/algorithms/0207.go) | Medium |
 | 210 | [Course Schedule II](//leetcode.com/problems/course-schedule-ii/) | [Go](./problems/algorithms/0210.go) | Medium |
 | 213 | [House Robber II](//leetcode.com/problems/house-robber-ii/) | [Go](./problems/algorithms/0213.go) | Medium |
@@ -117,8 +121,10 @@ LeetCode Problems' Solutions
 | 516 | [Longest Palindromic Subsequence](//leetcode.com/problems/longest-palindromic-subsequence/) | [Go](./problems/algorithms/0516.go) | Medium |
 | 518 | [Coin Change 2](//leetcode.com/problems/coin-change-2/) | [Go](./problems/algorithms/0518.go) | Medium |
 | 566 | [Reshape the Matrix](//leetcode.com/problems/reshape-the-matrix/) | [Go](./problems/algorithms/0566.go) | Easy |
+| 576 | [Out of Boundary Paths](//leetcode.com/problems/out-of-boundary-paths/) | [Go](./problems/algorithms/0576.go) | Medium |
 | 583 | [Delete Operation for Two Strings](//leetcode.com/problems/delete-operation-for-two-strings/) | [Go](./problems/algorithms/0583.go) | Medium |
 | 589 | [N-ary Tree Preorder Traversal](//leetcode.com/problems/n-ary-tree-preorder-traversal/) | [Go](./problems/algorithms/0589.go) | Easy |
+| 629 | [K Inverse Pairs Array](//leetcode.com/problems/k-inverse-pairs-array/) | [Go](./problems/algorithms/0629.go) | Hard |
 | 630 | [Course Schedule III](//leetcode.com/problems/course-schedule-iii/) | [Go](./problems/algorithms/0630.go) | Hard |
 | 665 | [Non-decreasing Array](//leetcode.com/problems/non-decreasing-array/) | [Go](./problems/algorithms/0665.go) | Medium |
 | 695 | [Max Area of Island](//leetcode.com/problems/max-area-of-island/) | [Go](./problems/algorithms/0695.go) | Medium |
@@ -127,6 +133,7 @@ LeetCode Problems' Solutions
 | 740 | [Delete and Earn](//leetcode.com/problems/delete-and-earn/) | [Go](./problems/algorithms/0740.go) | Medium |
 | 745 | [Prefix and Suffix Search](//leetcode.com/problems/prefix-and-suffix-search/) | [Go](./problems/algorithms/0745.go) | Hard |
 | 746 | [Min Cost Climbing Stairs](//leetcode.com/problems/min-cost-climbing-stairs/) | [Go](./problems/algorithms/0746.go) | Easy |
+| 792 | [Number of Matching Subsequences](//leetcode.com/problems/number-of-matching-subsequences/) | [Go](./problems/algorithms/0792.go) | Medium |
 | 820 | [Short Encoding of Words](//leetcode.com/problems/short-encoding-of-words/) | [Go](./problems/algorithms/0820.go) | Medium |
 | 867 | [Transpose Matrix](//leetcode.com/problems/transpose-matrix/) | [Go](./problems/algorithms/0867.go) [Python](./problems/algorithms/0867.py) | Easy |
 | 876 | [Middle of the Linked List](//leetcode.com/problems/middle-of-the-linked-list/) | [Go](./problems/algorithms/0876.go) | Easy |
@@ -137,6 +144,7 @@ LeetCode Problems' Solutions
 | 976 | [Largest Perimeter Triangle](//leetcode.com/problems/largest-perimeter-triangle/) | [Go](./problems/algorithms/0976.go) | Easy |
 | 1014 | [Best Sightseeing Pair](//leetcode.com/problems/best-sightseeing-pair/) | [Go](./problems/algorithms/1014.go) | Medium |
 | 1048 | [Longest String Chain](//leetcode.com/problems/longest-string-chain/) | [Go](./problems/algorithms/1048.go) | Medium |
+| 1074 | [Number of Submatrices That Sum to Target](//leetcode.com/problems/number-of-submatrices-that-sum-to-target/) | [Go](./problems/algorithms/1074.go) | Hard |
 | 1137 | [N-th Tribonacci Number](//leetcode.com/problems/n-th-tribonacci-number/) | [Go](./problems/algorithms/1137.go) | Easy |
 | 1143 | [Longest Common Subsequence](//leetcode.com/problems/longest-common-subsequence/) | [Go](./problems/algorithms/1143.go) | Medium |
 | 1232 | [Check If It Is a Straight Line](//leetcode.com/problems/check-if-it-is-a-straight-line/) | [Go](./problems/algorithms/1232.go) | Easy |
