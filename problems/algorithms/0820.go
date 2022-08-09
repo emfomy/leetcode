@@ -38,8 +38,6 @@
 
 package main
 
-import "fmt"
-
 // Use Suffix Trie
 
 type void struct{}
@@ -85,9 +83,4 @@ func newTrieNode() *trieNode {
 	return &trieNode{
 		children: make(map[byte]*trieNode),
 	}
-}
-
-func main() {
-	res := minimumLengthEncoding([]string{"time", "atime", "btime"})
-	fmt.Println(res)
 }
