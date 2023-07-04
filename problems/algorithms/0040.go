@@ -43,11 +43,7 @@ package main
 func combinationSum2(candidates []int, target int) [][]int {
 	candidateMap := make(map[int]int, len(candidates)) // map candidate to its numbers
 	for _, num := range candidates {
-		if _, ok := candidateMap[num]; !ok {
-			candidateMap[num] = 1
-		} else {
-			candidateMap[num] += 1
-		}
+		candidateMap[num]++
 	}
 	nums := make([]int, 0, len(candidateMap))
 	counts := make([]int, 0, len(candidateMap))
