@@ -80,6 +80,7 @@ LeetCode Problems' Solutions
 | 126 | [Word Ladder II](//leetcode.com/problems/word-ladder-ii/) | [Go](./problems/algorithms/0126.go) | Hard |
 | 128 | [Longest Consecutive Sequence](//leetcode.com/problems/longest-consecutive-sequence/) | [Go](./problems/algorithms/0128.go) | Medium |
 | 135 | [Candy](//leetcode.com/problems/candy/) | [Go](./problems/algorithms/0135.go) | Hard |
+| 137 | [Single Number II](//leetcode.com/problems/single-number-ii/) | [Go](./problems/algorithms/0137.go) | Medium |
 | 139 | [Word Break](//leetcode.com/problems/word-break/) | [Go](./problems/algorithms/0139.go) | Medium |
 | 152 | [Maximum Product Subarray](//leetcode.com/problems/maximum-product-subarray/) | [Go](./problems/algorithms/0152.go) | Medium |
 | 160 | [Intersection of Two Linked Lists](//leetcode.com/problems/intersection-of-two-linked-lists/) | [Go](./problems/algorithms/0160.go) | Easy |
@@ -203,8 +204,10 @@ LeetCode Problems' Solutions
 | 1779 | [Find Nearest Point That Has the Same X or Y Coordinate](//leetcode.com/problems/find-nearest-point-that-has-the-same-x-or-y-coordinate/) | [Go](./problems/algorithms/1779.go) | Easy |
 | 1790 | [Check if One String Swap Can Make Strings Equal](//leetcode.com/problems/check-if-one-string-swap-can-make-strings-equal/) | [Go](./problems/algorithms/1790.go) | Easy |
 | 1822 | [Sign of the Product of an Array](//leetcode.com/problems/sign-of-the-product-of-an-array/) | [Go](./problems/algorithms/1822.go) | Easy |
+| 2125 | [Number of Laser Beams in a Bank](//leetcode.com/problems/number-of-laser-beams-in-a-bank) | [Go](./problems/algorithms/2125.go) | Medium |
 | 2319 | [Check if Matrix Is X-Matrix](//leetcode.com/problems/check-if-matrix-is-x-matrix/) | [Go](./problems/algorithms/2319.go) | Easy |
 | 2320 | [Count Number of Ways to Place Houses](//leetcode.com/problems/count-number-of-ways-to-place-houses/) | [Go](./problems/algorithms/2320.go) | Medium |
 | 2321 | [Maximum Score Of Spliced Array](//leetcode.com/problems/maximum-score-of-spliced-array/) | [Go](./problems/algorithms/2321.go) | Hard |
 | 2331 | [Evaluate Boolean Binary Tree](//leetcode.com/problems/evaluate-boolean-binary-tree/) | [Go](./problems/algorithms/2331.go) | Easy |
+| 2870 | [Minimum Number of Operations to Make Array Empty](//leetcode.com/problems/minimum-number-of-operations-to-make-array-empty) | [Go](./problems/algorithms/2870.go) | Medium |
 

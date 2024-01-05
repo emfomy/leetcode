@@ -135,7 +135,3 @@ func _max(a, b int) int {
 	}
 	return b
 }
-
-func main() {
-	lengthOfLIS3([]int{10, 9, 2, 5, 3, 7, 101, 18})
-}

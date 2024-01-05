@@ -41,7 +41,7 @@ package main
 
 const modulo = int(1e9 + 7)
 
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 func countVowelPermutation(n int) int {
 	aCount, eCount, iCount, oCount, uCount := 1, 1, 1, 1, 1
 
@@ -57,14 +57,16 @@ func countVowelPermutation(n int) int {
 	return (aCount + eCount + iCount + oCount + uCount) % modulo
 }
 
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // Its an markov chain
 // A = [
-//     0   1   1   0   1
-//     1   0   1   0   0
-//     0   1   0   1   0
-//     0   0   1   0   0
-//     0   0   1   1   0
+//
+//	0   1   1   0   1
+//	1   0   1   0   0
+//	0   1   0   1   0
+//	0   0   1   0   0
+//	0   0   1   1   0
+//
 // ]
 // Find eigen system of A in Zp where p = 1e9+7
 func countVowelPermutation2(n int) int {
@@ -75,14 +77,29 @@ func countVowelPermutation2(n int) int {
 }
 
 func _fastPow(x int, n int) int {
-	if n == 1 {
-		return x
+	res := 1
+	for true {
+		if (n & 1) != 0 {
+			res = (res * x) % modulo
+		}
+		n >>= 1
+		if n == 0 {
+			break
+		}
+		x = (x * x) % modulo
 	}
-	y := _fastPow(x, n/2)
-	y2 := y * y % modulo
-	if n&1 == 1 {
-		return (x * y2) % modulo
-	} else {
-		return y2
-	}
+	return res
 }
+
+// func _fastPow(x int, n int) int {
+// 	if n == 1 {
+// 		return x
+// 	}
+// 	y := _fastPow(x, n/2)
+// 	y2 := y * y % modulo
+// 	if n&1 == 1 {
+// 		return (x * y2) % modulo
+// 	} else {
+// 		return y2
+// 	}
+// }
