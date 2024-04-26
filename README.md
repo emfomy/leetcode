@@ -41,7 +41,7 @@ LeetCode Problems' Solutions
 | 45 | [Jump Game II](//leetcode.com/problems/jump-game-ii/) | [Go](./problems/algorithms/0045.go) [Python](./problems/algorithms/0045.py) | Hard |
 | 46 | [Permutations](//leetcode.com/problems/permutations/) | [Python](./problems/algorithms/0046.py) | Medium |
 | 48 | [Rotate Image](//leetcode.com/problems/rotate-image/) | [Python](./problems/algorithms/0048.py) | Medium |
-| 49 | [Group Anagrams](//leetcode.com/problems/group-anagrams/) | [Python](./problems/algorithms/0049.py) | Medium |
+| 49 | [Group Anagrams](//leetcode.com/problems/group-anagrams/) | [Go](./problems/algorithms/0049.go) [Python](./problems/algorithms/0049.py) | Medium |
 | 51 | [N-Queens](//leetcode.com/problems/n-queens/) | [Go](./problems/algorithms/0051.go) | Hard |
 | 52 | [N-Queens II](//leetcode.com/problems/n-queens-ii/) | [Go](./problems/algorithms/0052.go) | Hard |
 | 53 | [Maximum Subarray](//leetcode.com/problems/maximum-subarray/) | [Go](./problems/algorithms/0053.go) [Python](./problems/algorithms/0053.py) | Easy |
@@ -120,6 +120,7 @@ LeetCode Problems' Solutions
 | 376 | [Wiggle Subsequence](//leetcode.com/problems/wiggle-subsequence/) | [Go](./problems/algorithms/0376.go) | Medium |
 | 377 | [Combination Sum IV](//leetcode.com/problems/combination-sum-iv/) | [Go](./problems/algorithms/0377.go) | Medium |
 | 378 | [Kth Smallest Element in a Sorted Matrix](//leetcode.com/problems/kth-smallest-element-in-a-sorted-matrix/) | [Go](./problems/algorithms/0378.go) | Medium |
+| 380 | [Insert Delete GetRandom O(1)](//leetcode.com/problems/insert-delete-getrandom-o1/) | [Go](./problems/algorithms/0380.go) | Medium |
 | 383 | [Ransom Note](//leetcode.com/problems/ransom-note/) | [Go](./problems/algorithms/0383.go) | Easy |
 | 387 | [Roman to Integer](//leetcode.com/problems/first-unique-character-in-a-string/) | [Go](./problems/algorithms/0387.go) | Easy |
 | 389 | [Find the Difference](//leetcode.com/problems/find-the-difference/) | [Go](./problems/algorithms/0389.go) | Easy |
@@ -163,20 +164,24 @@ LeetCode Problems' Solutions
 | 968 | [Binary Tree Cameras](//leetcode.com/problems/binary-tree-cameras/) | [Go](./problems/algorithms/0968.go) | Hard |
 | 976 | [Largest Perimeter Triangle](//leetcode.com/problems/largest-perimeter-triangle/) | [Go](./problems/algorithms/0976.go) | Easy |
 | 1014 | [Best Sightseeing Pair](//leetcode.com/problems/best-sightseeing-pair/) | [Go](./problems/algorithms/1014.go) | Medium |
+| 1026 | [Determine if String Halves Are Alike](//leetcode.com/problems/maximum-difference-between-node-and-ancestor/) | [Go](./problems/algorithms/1026.go) | Medium |
 | 1048 | [Longest String Chain](//leetcode.com/problems/longest-string-chain/) | [Go](./problems/algorithms/1048.go) | Medium |
 | 1074 | [Number of Submatrices That Sum to Target](//leetcode.com/problems/number-of-submatrices-that-sum-to-target/) | [Go](./problems/algorithms/1074.go) | Hard |
 | 1137 | [N-th Tribonacci Number](//leetcode.com/problems/n-th-tribonacci-number/) | [Go](./problems/algorithms/1137.go) | Easy |
 | 1143 | [Longest Common Subsequence](//leetcode.com/problems/longest-common-subsequence/) | [Go](./problems/algorithms/1143.go) | Medium |
+| 1207 | [Unique Number of Occurrences](//leetcode.com/problems/unique-number-of-occurrences) | [Go](./problems/algorithms/1207.go) | Easy |
 | 1220 | [Count Vowels Permutation](//leetcode.com/problems/count-vowels-permutation/) | [Go](./problems/algorithms/1220.go) | Hard |
 | 1232 | [Check If It Is a Straight Line](//leetcode.com/problems/check-if-it-is-a-straight-line/) | [Go](./problems/algorithms/1232.go) | Easy |
 | 1268 | [Search Suggestions System](//leetcode.com/problems/search-suggestions-system/) | [Go](./problems/algorithms/1268.go) | Medium |
 | 1281 | [Subtract the Product and Sum of Digits of an Integer](//leetcode.com/problems/subtract-the-product-and-sum-of-digits-of-an-integer/) | [Go](./problems/algorithms/1281.go) | Easy |
+| 1289 | [Minimum Falling Path Sum II](//leetcode.com/problems/minimum-falling-path-sum-ii) | [Go](./problems/algorithms/1289.go) | Hard |
 | 1290 | [Convert Binary Number in a Linked List to Integer](//leetcode.com/problems/convert-binary-number-in-a-linked-list-to-integer/) | [Go](./problems/algorithms/1290.go) | Easy |
 | 1309 | [Decrypt String from Alphabet to Integer Mapping](//leetcode.com/problems/decrypt-string-from-alphabet-to-integer-mapping/) | [Go](./problems/algorithms/1309.go) | Easy |
 | 1314 | [Matrix Block Sum](//leetcode.com/problems/matrix-block-sum/) | [Go](./problems/algorithms/1314.go) | Medium |
 | 1332 | [Remove Palindromic Subsequences](//leetcode.com/problems/remove-palindromic-subsequences/) | [Go](./problems/algorithms/1332.go) | Easy |
 | 1338 | [Reduce Array Size to The Half](//leetcode.com/problems/reduce-array-size-to-the-half/) | [Go](./problems/algorithms/1338.go) | Medium |
 | 1342 | [Number of Steps to Reduce a Number to Zero](//leetcode.com/problems/number-of-steps-to-reduce-a-number-to-zero/) | [C++](./problems/algorithms/1342.cpp) [Go](./problems/algorithms/1342.go) | Easy |
+| 1347 | [Minimum Number of Steps to Make Two Strings Anagram](//leetcode.com/problems/minimum-number-of-steps-to-make-two-strings-anagram/) | [Go](./problems/algorithms/1347.go) | Medium |
 | 1354 | [Construct Target Array With Multiple Sums](//leetcode.com/problems/construct-target-array-with-multiple-sums/) | [Go](./problems/algorithms/1354.go) | Hard |
 | 1356 | [Sort Integers by The Number of 1 Bits](//leetcode.com/problems/sort-integers-by-the-number-of-1-bits/) | [Go](./problems/algorithms/1356.go) | Easy |
 | 1423 | [Maximum Points You Can Obtain from Cards](//leetcode.com/problems/maximum-points-you-can-obtain-from-cards/) | [Go](./problems/algorithms/1423.go) | Medium |
@@ -193,18 +198,21 @@ LeetCode Problems' Solutions
 | 1603 | [Design Parking System](//leetcode.com/problems/design-parking-system/) | [Go](./problems/algorithms/1603.go) | Easy |
 | 1642 | [Furthest Building You Can Reach](//leetcode.com/problems/furthest-building-you-can-reach/) | [Go](./problems/algorithms/1642.go) | Medium |
 | 1647 | [Minimum Deletions to Make Character Frequencies Unique](//leetcode.com/problems/minimum-deletions-to-make-character-frequencies-unique/) | [Go](./problems/algorithms/1647.go) | Medium |
+| 1657 | [Determine if Two Strings Are Close](//leetcode.com/problems/determine-if-two-strings-are-close/) | [Go](./problems/algorithms/1657.go) | Medium |
 | 1658 | [Minimum Operations to Reduce X to Zero](//leetcode.com/problems/minimum-operations-to-reduce-x-to-zero/) | [Go](./problems/algorithms/1658.go) | Medium |
 | 1672 | [Richest Customer Wealth](//leetcode.com/problems/richest-customer-wealth/) | [Go](./problems/algorithms/1672.go) | Easy |
 | 1678 | [Goal Parser Interpretation](//leetcode.com/problems/goal-parser-interpretation/) | [Go](./problems/algorithms/1678.go) | Easy |
 | 1689 | [Partitioning Into Minimum Number Of Deci-Binary Numbers](//leetcode.com/problems/partitioning-into-minimum-number-of-deci-binary-numbers/) | [Go](./problems/algorithms/1689.go) | Medium |
 | 1695 | [Maximum Erasure Value](//leetcode.com/problems/maximum-erasure-value/) | [Go](./problems/algorithms/1695.go) | Medium |
 | 1696 | [Jump Game VI](//leetcode.com/problems/jump-game-vi/) | [Go](./problems/algorithms/1696.go) | Medium |
+| 1704 | [Determine if String Halves Are Alike](//leetcode.com/problems/determine-if-string-halves-are-alike/) | [Go](./problems/algorithms/1704.go) | Easy |
 | 1710 | [Maximum Units on a Truck](//leetcode.com/problems/maximum-units-on-a-truck/) | [Go](./problems/algorithms/1710.go) | Easy |
 | 1768 | [Merge Strings Alternately](//leetcode.com/problems/merge-strings-alternately/) | [Go](./problems/algorithms/1768.go) | Easy |
 | 1779 | [Find Nearest Point That Has the Same X or Y Coordinate](//leetcode.com/problems/find-nearest-point-that-has-the-same-x-or-y-coordinate/) | [Go](./problems/algorithms/1779.go) | Easy |
 | 1790 | [Check if One String Swap Can Make Strings Equal](//leetcode.com/problems/check-if-one-string-swap-can-make-strings-equal/) | [Go](./problems/algorithms/1790.go) | Easy |
 | 1822 | [Sign of the Product of an Array](//leetcode.com/problems/sign-of-the-product-of-an-array/) | [Go](./problems/algorithms/1822.go) | Easy |
 | 2125 | [Number of Laser Beams in a Bank](//leetcode.com/problems/number-of-laser-beams-in-a-bank) | [Go](./problems/algorithms/2125.go) | Medium |
+| 2225 | [Find Players With Zero or One Losses](//leetcode.com/problems/number-of-laser-beams-in-a-bank) | [Go](./problems/algorithms/2225.go) | Medium |
 | 2319 | [Check if Matrix Is X-Matrix](//leetcode.com/problems/check-if-matrix-is-x-matrix/) | [Go](./problems/algorithms/2319.go) | Easy |
 | 2320 | [Count Number of Ways to Place Houses](//leetcode.com/problems/count-number-of-ways-to-place-houses/) | [Go](./problems/algorithms/2320.go) | Medium |
 | 2321 | [Maximum Score Of Spliced Array](//leetcode.com/problems/maximum-score-of-spliced-array/) | [Go](./problems/algorithms/2321.go) | Hard |

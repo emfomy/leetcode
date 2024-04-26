@@ -23,11 +23,11 @@ def main():
 
     data = {}
     # Categories
-    for cat_dir in glob.glob('./problems/*'):
-        cat = os.path.basename(cat_dir).capitalize()
-        data[cat] = {}
+    for cate_dir in glob.glob('./problems/*'):
+        cate = os.path.basename(cate_dir).capitalize()
+        data[cate] = {}
 
-        for prob_file in sorted(glob.glob(f'{cat_dir}/*')):
+        for prob_file in sorted(glob.glob(f'{cate_dir}/*')):
             prob_num, prob_lang = os.path.splitext(os.path.basename(prob_file))
             prob_num = int(prob_num)
             prob_lang = LANG[prob_lang]
@@ -36,8 +36,8 @@ def main():
                 prob_title = fin.readline().split(':')[-1].strip()
                 prob_difficulty = fin.readline().split(':')[-1].strip()
 
-            if prob_num not in data[cat]:
-                data[cat][prob_num] = {
+            if prob_num not in data[cate]:
+                data[cate][prob_num] = {
                     'source': prob_source,
                     'title': prob_title,
                     'difficulty': prob_difficulty,
@@ -46,7 +46,7 @@ def main():
                     }
                 }
             else:
-                prob = data[cat][prob_num]
+                prob = data[cate][prob_num]
                 assert prob['source'] == prob_source, prob
                 assert prob['title'] == prob_title, prob
                 assert prob['difficulty'] == prob_difficulty, prob
@@ -60,15 +60,15 @@ def main():
         myprint(file=fout)
 
         # Categories
-        for cat in sorted(data.keys()):
-            myprint(f'# {cat}', file=fout)
+        for cate in sorted(data.keys()):
+            myprint(f'# {cate}', file=fout)
             myprint(file=fout)
 
             # Table
             myprint('| # | Title | Solution | Difficulty |', file=fout)
             myprint('|---| ----- | -------- | ---------- |', file=fout)
-            for prob_num in sorted(data[cat].keys()):
-                prob = data[cat][prob_num]
+            for prob_num in sorted(data[cate].keys()):
+                prob = data[cate][prob_num]
                 prob_title = prob['title']
                 prob_source = prob['source']
                 prob_difficulty = prob['difficulty']

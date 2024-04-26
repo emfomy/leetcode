@@ -43,13 +43,13 @@ func numSubmatrixSumTarget(matrix [][]int, target int) int {
 	n := len(matrix[0])
 
 	// Compute prefix sums
-	sum := make([][]int, m+1)
+	presum := make([][]int, m+1)
 	for i := 0; i < m+1; i++ {
-		sum[i] = make([]int, n+1)
+		presum[i] = make([]int, n+1)
 	}
 	for i := 0; i < m; i++ {
 		for j := 0; j < n; j++ {
-			sum[i+1][j+1] = matrix[i][j] + sum[i][j+1] + sum[i+1][j] - sum[i][j]
+			presum[i+1][j+1] = matrix[i][j] + presum[i][j+1] + presum[i+1][j] - presum[i][j]
 		}
 	}
 
@@ -59,7 +59,7 @@ func numSubmatrixSumTarget(matrix [][]int, target int) int {
 		for x2 := x1 + 1; x2 <= m; x2++ {
 			for y1 := 0; y1 < n; y1++ {
 				for y2 := y1 + 1; y2 <= n; y2++ {
-					subsum := sum[x2][y2] - sum[x2][y1] - sum[x1][y2] + sum[x1][y1]
+					subsum := presum[x2][y2] - presum[x2][y1] - presum[x1][y2] + presum[x1][y1]
 					if subsum == target {
 						res++
 					}

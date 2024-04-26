@@ -51,30 +51,19 @@ func minFallingPathSum(matrix [][]int) int {
 	}
 
 	for _, row := range matrix[1:] {
-		next[0] = _min(prev[0], prev[1]) + row[0]
+		next[0] = min(prev[0], prev[1]) + row[0]
 		for i := 1; i < n-1; i++ {
-			next[i] = _min3(prev[i-1], prev[i], prev[i+1]) + row[i]
+			next[i] = min(prev[i-1], prev[i], prev[i+1]) + row[i]
 		}
-		next[n-1] = _min(prev[n-2], prev[n-1]) + row[n-1]
+		next[n-1] = min(prev[n-2], prev[n-1]) + row[n-1]
 
 		prev, next = next, prev
 	}
 
 	res := math.MaxInt32
 	for _, v := range prev {
-		res = _min(res, v)
+		res = min(res, v)
 	}
 
 	return res
-}
-
-func _min3(a, b, c int) int {
-	return _min(_min(a, b), c)
-}
-
-func _min(a, b int) int {
-	if a < b {
-		return a
-	}
-	return b
 }
