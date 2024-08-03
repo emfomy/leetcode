@@ -22,35 +22,31 @@ def myprint(*args, file=None, **kwargs):
 def main():
 
     data = {}
-    # Categories
-    for cate_dir in glob.glob('./problems/*'):
-        cate = os.path.basename(cate_dir).capitalize()
-        data[cate] = {}
 
-        for prob_file in sorted(glob.glob(f'{cate_dir}/*')):
-            prob_num, prob_lang = os.path.splitext(os.path.basename(prob_file))
-            prob_num = int(prob_num)
-            prob_lang = LANG[prob_lang]
-            with open(prob_file) as fin:
-                prob_source = fin.readline().split(':')[-1].strip()
-                prob_title = fin.readline().split(':')[-1].strip()
-                prob_difficulty = fin.readline().split(':')[-1].strip()
+    for prob_file in sorted(glob.glob('problems/*')):
+        prob_num, prob_lang = os.path.splitext(os.path.basename(prob_file))
+        prob_num = int(prob_num)
+        prob_lang = LANG[prob_lang]
+        with open(prob_file) as fin:
+            prob_source = fin.readline().split(':')[-1].strip()
+            prob_title = fin.readline().split(':')[-1].strip()
+            prob_difficulty = fin.readline().split(':')[-1].strip()
 
-            if prob_num not in data[cate]:
-                data[cate][prob_num] = {
-                    'source': prob_source,
-                    'title': prob_title,
-                    'difficulty': prob_difficulty,
-                    'solution': {
-                        prob_lang: prob_file,
-                    }
+        if prob_num not in data:
+            data[prob_num] = {
+                'source': prob_source,
+                'title': prob_title,
+                'difficulty': prob_difficulty,
+                'solution': {
+                    prob_lang: prob_file,
                 }
-            else:
-                prob = data[cate][prob_num]
-                assert prob['source'] == prob_source, prob
-                assert prob['title'] == prob_title, prob
-                assert prob['difficulty'] == prob_difficulty, prob
-                prob['solution'][prob_lang] = prob_file
+            }
+        else:
+            prob = data[prob_num]
+            assert prob['source'] == prob_source, prob
+            assert prob['title'] == prob_title, prob
+            assert prob['difficulty'] == prob_difficulty, prob
+            prob['solution'][prob_lang] = prob_file
 
     with open('./README.md', 'w') as fout:
 
@@ -58,23 +54,20 @@ def main():
         myprint('# LeetCode', file=fout)
         myprint('LeetCode Problems\' Solutions', file=fout)
         myprint(file=fout)
+        myprint('# Problems', file=fout)
+        myprint(file=fout)
 
-        # Categories
-        for cate in sorted(data.keys()):
-            myprint(f'# {cate}', file=fout)
-            myprint(file=fout)
-
-            # Table
-            myprint('| # | Title | Solution | Difficulty |', file=fout)
-            myprint('|---| ----- | -------- | ---------- |', file=fout)
-            for prob_num in sorted(data[cate].keys()):
-                prob = data[cate][prob_num]
-                prob_title = prob['title']
-                prob_source = prob['source']
-                prob_difficulty = prob['difficulty']
-                solutions = ' '.join((f'[{lang}]({file})' for lang, file in sorted(prob['solution'].items())))
-                myprint(f'| {prob_num} | [{prob_title}]({prob_source}) | {solutions} | {prob_difficulty} |', file=fout)
-            myprint(file=fout)
+        # Table
+        myprint('| # | Title | Solution | Difficulty |', file=fout)
+        myprint('|---| ----- | -------- | ---------- |', file=fout)
+        for prob_num in sorted(data.keys()):
+            prob = data[prob_num]
+            prob_title = prob['title']
+            prob_source = prob['source']
+            prob_difficulty = prob['difficulty']
+            solutions = ' '.join((f'[{lang}]({file})' for lang, file in sorted(prob['solution'].items())))
+            myprint(f'| {prob_num} | [{prob_title}]({prob_source}) | {solutions} | {prob_difficulty} |', file=fout)
+        myprint(file=fout)
 
 if __name__ == '__main__':
     main()
