@@ -45,8 +45,10 @@ LeetCode Problems' Solutions
 | 51 | [N-Queens](//leetcode.com/problems/n-queens) | [Go](problems/0051.go) | Hard |
 | 52 | [N-Queens II](//leetcode.com/problems/n-queens-ii) | [Go](problems/0052.go) | Hard |
 | 53 | [Maximum Subarray](//leetcode.com/problems/maximum-subarray) | [Go](problems/0053.go) [Python](problems/0053.py) | Easy |
+| 54 | [Spiral Matrix](//leetcode.com/problems/spiral-matrix) | [Go](problems/0054.go) | Medium |
 | 55 | [Jump Game](//leetcode.com/problems/jump-game) | [Go](problems/0055.go) [Python](problems/0055.py) | Medium |
 | 56 | [Merge Intervals](//leetcode.com/problems/merge-intervals) | [Python](problems/0056.py) | Medium |
+| 59 | [Spiral Matrix II](//leetcode.com/problems/spiral-matrix-ii) | [Go](problems/0059.go) | Medium |
 | 62 | [Unique Paths](//leetcode.com/problems/unique-paths) | [Go](problems/0062.go) [Python](problems/0062.py) | Medium |
 | 63 | [Unique Paths II](//leetcode.com/problems/unique-paths-ii/) | [Go](problems/0063.go) | Medium |
 | 64 | [Minimum Path Sum](//leetcode.com/problems/minimum-path-sum) | [Go](problems/0064.go) [Python](problems/0064.py) | Medium |
@@ -89,6 +91,7 @@ LeetCode Problems' Solutions
 | 191 | [Number of 1 Bits](//leetcode.com/problems/number-of-1-bits) | [C++](problems/0191.cpp) [Go](problems/0191.go) | Easy |
 | 198 | [House Robber](//leetcode.com/problems/house-robber) | [Go](problems/0198.go) | Medium |
 | 199 | [Binary Tree Right Side View](//leetcode.com/problems/binary-tree-right-side-view) | [Go](problems/0199.go) | Medium |
+| 200 | [Number of Islands](//leetcode.com/problems/number-of-islands) | [Go](problems/0200.go) | Medium |
 | 202 | [Happy Number](//leetcode.com/problems/happy-number) | [Go](problems/0202.go) | Easy |
 | 206 | [Reverse Linked List](//leetcode.com/problems/reverse-linked-list) | [Go](problems/0206.go) | Easy |
 | 207 | [Course Schedule](//leetcode.com/problems/course-schedule) | [Go](problems/0207.go) | Medium |
@@ -107,6 +110,7 @@ LeetCode Problems' Solutions
 | 263 | [Ugly Number](//leetcode.com/problems/ugly-number) | [Go](problems/0263.go) | Easy |
 | 264 | [Ugly Number](//leetcode.com/problems/ugly-number) | [Go](problems/0264.go) | Easy |
 | 268 | [Missing Number](//leetcode.com/problems/missing-number) | [Go](problems/0268.go) | Easy |
+| 273 | [Integer to English Words](//leetcode.com/problems/integer-to-english-words) | [Go](problems/0273.go) | Hard |
 | 279 | [Perfect Squares](//leetcode.com/problems/perfect-squares) | [Go](problems/0279.go) | Medium |
 | 283 | [Move Zeroes](//leetcode.com/problems/move-zeroes) | [Go](problems/0283.go) | Easy |
 | 300 | [Longest Increasing Subsequence](//leetcode.com/problems/longest-increasing-subsequence) | [Go](problems/0300.go) | Medium |
@@ -163,12 +167,14 @@ LeetCode Problems' Solutions
 | 867 | [Transpose Matrix](//leetcode.com/problems/transpose-matrix) | [Go](problems/0867.go) [Python](problems/0867.py) | Easy |
 | 876 | [Middle of the Linked List](//leetcode.com/problems/middle-of-the-linked-list) | [Go](problems/0876.go) | Easy |
 | 881 | [Boats to Save People](//leetcode.com/problems/boats-to-save-people) | [Go](problems/0881.go) | Medium |
+| 885 | [Spiral Matrix III](//leetcode.com/problems/spiral-matrix-iii) | [Go](problems/0885.go) | Medium |
 | 890 | [Find and Replace Pattern](//leetcode.com/problems/find-and-replace-pattern) | [Go](problems/0890.go) | Medium |
 | 916 | [Word Subsets](//leetcode.com/problems/word-subsets) | [Go](problems/0916.go) | Medium |
 | 918 | [Maximum Sum Circular Subarray](//leetcode.com/problems/maximum-sum-circular-subarray) | [Go](problems/0918.go) | Medium |
 | 931 | [Minimum Falling Path Sum](//leetcode.com/problems/minimum-falling-path-sum) | [Go](problems/0931.go) | Medium |
 | 945 | [Minimum Increment to Make Array Unique](//leetcode.com/problems/minimum-increment-to-make-array-unique) | [Go](problems/0945.go) | Medium |
 | 953 | [Verifying an Alien Dictionary](//leetcode.com/problems/verifying-an-alien-dictionary) | [Go](problems/0953.go) | Easy |
+| 959 | [Regions Cut By Slashes](//leetcode.com/problems/regions-cut-by-slashes) | [Go](problems/0959.go) | Medium |
 | 968 | [Binary Tree Cameras](//leetcode.com/problems/binary-tree-cameras) | [Go](problems/0968.go) | Hard |
 | 976 | [Largest Perimeter Triangle](//leetcode.com/problems/largest-perimeter-triangle) | [Go](problems/0976.go) | Easy |
 | 1014 | [Best Sightseeing Pair](//leetcode.com/problems/best-sightseeing-pair) | [Go](problems/1014.go) | Medium |
@@ -203,6 +209,7 @@ LeetCode Problems' Solutions
 | 1480 | [Running Sum of 1d Array](//leetcode.com/problems/running-sum-of-1d-array) | [Go](problems/1480.go) | Easy |
 | 1491 | [Average Salary Excluding the Minimum and Maximum Salary](//leetcode.com/problems/average-salary-excluding-the-minimum-and-maximum-salary) | [Go](problems/1491.go) | Easy |
 | 1502 | [Can Make Arithmetic Progression From Sequence](//leetcode.com/problems/can-make-arithmetic-progression-from-sequence) | [Go](problems/1502.go) | Easy |
+| 1508 | [Range Sum of Sorted Subarray Sums](//leetcode.com/problems/range-sum-of-sorted-subarray-sums) | [Go](problems/1508.go) | Medium |
 | 1509 | [Minimum Difference Between Largest and Smallest Value in Three Moves](//leetcode.com/problems/minimum-difference-between-largest-and-smallest-value-in-three-moves) | [Go](problems/1509.go) | Medium |
 | 1523 | [Count Odd Numbers in an Interval Range](//leetcode.com/problems/count-odd-numbers-in-an-interval-range) | [Go](problems/1523.go) | Easy |
 | 1567 | [Maximum Length of Subarray With Positive Product](//leetcode.com/problems/maximum-length-of-subarray-with-positive-product) | [Go](problems/1567.go) | Medium |
@@ -236,6 +243,7 @@ LeetCode Problems' Solutions
 | 2319 | [Check if Matrix Is X-Matrix](//leetcode.com/problems/check-if-matrix-is-x-matrix) | [Go](problems/2319.go) | Easy |
 | 2320 | [Count Number of Ways to Place Houses](//leetcode.com/problems/count-number-of-ways-to-place-houses) | [Go](problems/2320.go) | Medium |
 | 2321 | [Maximum Score Of Spliced Array](//leetcode.com/problems/maximum-score-of-spliced-array) | [Go](problems/2321.go) | Hard |
+| 2326 | [Spiral Matrix IV](//leetcode.com/problems/spiral-matrix-iv) | [Go](problems/2326.go) | Medium |
 | 2331 | [Evaluate Boolean Binary Tree](//leetcode.com/problems/evaluate-boolean-binary-tree) | [Go](problems/2331.go) | Easy |
 | 2441 | [Largest Positive Integer That Exists With Its Negative](//leetcode.com/problems/largest-positive-integer-that-exists-with-its-negative) | [Go](problems/2441.go) | Easy |
 | 2487 | [Remove Nodes From Linked List](//leetcode.com/problems/remove-nodes-from-linked-list) | [Go](problems/2487.go) | Medium |
@@ -243,5 +251,6 @@ LeetCode Problems' Solutions
 | 2816 | [Double a Number Represented as a Linked List](//leetcode.com/problems/double-a-number-represented-as-a-linked-list) | [Go](problems/2816.go) | Medium |
 | 2870 | [Minimum Number of Operations to Make Array Empty](//leetcode.com/problems/minimum-number-of-operations-to-make-array-empty) | [Go](problems/2870.go) | Medium |
 | 2997 | [Minimum Number of Operations to Make Array XOR Equal to K](//leetcode.com/problems/minimum-number-of-operations-to-make-array-xor-equal-to-k) | [Go](problems/2997.go) | Medium |
+| 3016 | [Minimum Number of Pushes to Type Word II](//leetcode.com/problems/minimum-number-of-pushes-to-type-word-ii) | [Go](problems/3016.go) | Medium |
 | 3075 | [Maximize Happiness of Selected Children](//leetcode.com/problems/maximize-happiness-of-selected-children) | [Go](problems/3075.go) | Medium |
 
