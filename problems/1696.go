@@ -50,7 +50,7 @@ type pair struct {
 type pairHeap []pair
 
 func (h pairHeap) Len() int           { return len(h) }
-func (h pairHeap) Less(i, j int) bool { return h[i].val > h[j].val } // we want max-heap
+func (h pairHeap) Less(i, j int) bool { return h[i].val > h[j].val } // max-heap
 func (h pairHeap) Swap(i, j int)      { h[i], h[j] = h[j], h[i] }
 
 func newIntHeap(arr []pair) *pairHeap {

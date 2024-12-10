@@ -48,7 +48,7 @@ import (
 type intHeap []int
 
 func (h intHeap) Len() int           { return len(h) }
-func (h intHeap) Less(i, j int) bool { return h[i] > h[j] } // we want max-heap
+func (h intHeap) Less(i, j int) bool { return h[i] > h[j] } // max-heap
 func (h intHeap) Swap(i, j int)      { h[i], h[j] = h[j], h[i] }
 
 func newIntHeap(arr []int) *intHeap {
