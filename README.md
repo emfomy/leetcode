@@ -255,6 +255,8 @@ LeetCode Problems' Solutions
 | 2441 | [Largest Positive Integer That Exists With Its Negative](//leetcode.com/problems/largest-positive-integer-that-exists-with-its-negative) | [Go](problems/2441.go) | Easy |
 | 2487 | [Remove Nodes From Linked List](//leetcode.com/problems/remove-nodes-from-linked-list) | [Go](problems/2487.go) | Medium |
 | 2554 | [Maximum Number of Integers to Choose From a Range I](//leetcode.com/problems/maximum-number-of-integers-to-choose-from-a-range-i) | [Go](problems/2554.go) | Medium |
+| 2558 | [Take Gifts From the Richest Pile](//leetcode.com/problems/take-gifts-from-the-richest-pile) | [Go](problems/2558.go) | Easy |
+| 2779 | [Maximum Beauty of an Array After Applying Operation](//leetcode.com/problems/maximum-beauty-of-an-array-after-applying-operation) | [Go](problems/2779.go) | Medium |
 | 2816 | [Double a Number Represented as a Linked List](//leetcode.com/problems/double-a-number-represented-as-a-linked-list) | [Go](problems/2816.go) | Medium |
 | 2870 | [Minimum Number of Operations to Make Array Empty](//leetcode.com/problems/minimum-number-of-operations-to-make-array-empty) | [Go](problems/2870.go) | Medium |
 | 2938 | [Separate Black and White Balls](//leetcode.com/problems/separate-black-and-white-balls) | [Go](problems/2938.go) | Medium |
