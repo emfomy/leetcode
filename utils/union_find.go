@@ -8,45 +8,45 @@ type unionFind struct {
 }
 
 func newUnionFind(n int) *unionFind {
-	count := 0
 	parent := make([]int, n)
 	rank := make([]int, n)
 
-	for i := 0; i < n; i++ {
-		parent[i] = i
-		rank[i] = 0
-		count++
+	for x := range n {
+		parent[x] = x
+		rank[x] = 0
 	}
 
 	return &unionFind{
 		parent: parent,
 		rank:   rank,
-		count:  count,
+		count:  n,
 	}
 }
 
-func (u *unionFind) find(i int) int { // path compression
-	if i != u.parent[i] {
-		u.parent[i] = u.find(u.parent[i])
+func (uf *unionFind) find(x int) int { // path compression
+	if uf.parent[x] != x {
+		uf.parent[x] = uf.find(uf.parent[x])
 	}
-	return u.parent[i]
+	return uf.parent[x]
 }
 
-func (u *unionFind) union(x, y int) { // union with rank
-	x = u.find(x)
-	y = u.find(y)
+func (uf *unionFind) union(x, y int) { // union with rank
+	x = uf.find(x)
+	y = uf.find(y)
 	if x == y {
 		return
 	}
 
-	if u.rank[x] > u.rank[y] {
+	// Ensure rank(x) >= rank(y)
+	if uf.rank[x] < uf.rank[y] {
 		x, y = y, x
 	}
 
-	u.parent[x] = y
-	if u.rank[x] == u.rank[y] {
-		u.rank[x]++
+	// Marge y into x
+	uf.parent[y] = x
+	if uf.rank[x] == uf.rank[y] {
+		uf.rank[x]++
 	}
 
-	u.count--
+	uf.count--
 }

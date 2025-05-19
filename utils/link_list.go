@@ -5,7 +5,7 @@ type ListNode struct {
 	Next *ListNode
 }
 
-func array2List(arr []int) *ListNode {
+func array2List(arr ...int) *ListNode {
 	head := &ListNode{
 		Val: arr[0],
 	}

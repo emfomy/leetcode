@@ -74,10 +74,3 @@ func _copyMap(src map[string]int) map[string]int {
 	}
 	return dst
 }
-
-func main() {
-	findSubstring(
-		"lingmindraboofooowingdingbarrwingmonkeypoundcake",
-		[]string{"fooo", "barr", "wing", "ding", "wing"},
-	)
-}

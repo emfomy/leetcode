@@ -32,7 +32,6 @@
 package main
 
 import (
-	"fmt"
 	"sort"
 )
 
@@ -99,9 +98,4 @@ func _makesquare(matchsticks []int, idx int, sq square, edge int, seen map[int]b
 	}
 
 	return false
-}
-
-func main() {
-	res := makesquare([]int{12, 8, 12, 16, 20, 24, 28, 32, 36, 40, 44, 48, 52, 56, 60})
-	fmt.Println(res)
 }

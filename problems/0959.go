@@ -198,28 +198,28 @@ func newUnionFind(n int) *unionFind {
 	}
 }
 
-func (u *unionFind) find(i int) int { // path compression
-	if i != u.parent[i] {
-		u.parent[i] = u.find(u.parent[i])
+func (uf *unionFind) find(i int) int { // path compression
+	if i != uf.parent[i] {
+		uf.parent[i] = uf.find(uf.parent[i])
 	}
-	return u.parent[i]
+	return uf.parent[i]
 }
 
-func (u *unionFind) union(x, y int) { // union with rank
-	x = u.find(x)
-	y = u.find(y)
+func (uf *unionFind) union(x, y int) { // union with rank
+	x = uf.find(x)
+	y = uf.find(y)
 
 	if x == y {
 		return
 	}
 
-	if u.size[x] < u.size[y] {
+	if uf.size[x] < uf.size[y] {
 		x, y = y, x
 	}
 
-	u.parent[y] = x
-	u.size[x] += u.size[y]
-	u.count--
+	uf.parent[y] = x
+	uf.size[x] += uf.size[y]
+	uf.count--
 }
 
 func regionsBySlashes2(grid []string) int {

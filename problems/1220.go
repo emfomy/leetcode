@@ -41,7 +41,8 @@ package main
 
 const modulo = int(1e9 + 7)
 
-// ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 func countVowelPermutation(n int) int {
 	aCount, eCount, iCount, oCount, uCount := 1, 1, 1, 1, 1
 
@@ -57,23 +58,63 @@ func countVowelPermutation(n int) int {
 	return (aCount + eCount + iCount + oCount + uCount) % modulo
 }
 
-// ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 // Its an markov chain
-// A = [
-//
-//	0   1   1   0   1
-//	1   0   1   0   0
-//	0   1   0   1   0
-//	0   0   1   0   0
-//	0   0   1   1   0
-//
+// M = [
+// 0   1   1   0   1
+// 1   0   1   0   0
+// 0   1   0   1   0
+// 0   0   1   0   0
+// 0   0   1   1   0
 // ]
-// Find eigen system of A in Zp where p = 1e9+7
+//
+// Find the eigen-system in Fp (p = 1e9+7)
+// A = U * D * U^{-1}, U is the right eigenvectors
+// Write e = (1, 1, 1, 1, 1), u = U' * e, v = U^{-1} * e
+// The solution is
+// e' * A^(n-1) * e = e' * U * D^(n-1) * U^{-1} * e
+//              = (U' * e)' * D^(n-1) * (U^{-1} * e)
+//              = u' * D^(n-1) * v
+//              = sum(u @ v @ d^(n-1)), where @ is element-wise product
+//              = sum(c @ d^n), Write c = (u @ v @ (1/d))
+//
+// Use sage:
+//
+// F = GF(1_000_000_007)
+// A = Matrix(F, [...])
+// e = vector(F, (1, 1, 1, 1, 1))
+// d = A.eigenvalues()
+// _, U = A.eigenmatrix_right()
+// u = U.transpose() * e
+// v = U.inverse() * e
+// c = vector([a * b for a, b in zip(u, v)])
+//
+// d = (1000000006, 882979097, 653592850, 419376480, 44051588)
+// U = [
+//          1          1          1          1          1
+//          0  515412670  273651538  907301038  303634775
+// 1000000006  753268719  376306490  953281255  917143548
+//          1  129710377  277286359  466095231  126908046
+//          0  614297715    3634822  558794201  823273279
+// ]
+// u = (1, 12689468, 930879210, 885471712, 170959635)
+// v = (0, 459873583, 779875704, 153844979, 606405749)
+// c = (0, 74674987, 155923322, 984156423, 785245287)
+//
+
 func countVowelPermutation2(n int) int {
-	return (62759413*_fastPow(44051588, n) +
-		784439686*_fastPow(419376480, n) +
+	return (74674987*_fastPow(882979097, n-1) +
+		155923322*_fastPow(653592850, n-1) +
+		984156423*_fastPow(419376480, n-1) +
+		785245287*_fastPow(44051588, n-1)) % modulo
+}
+
+func countVowelPermutation3(n int) int {
+	return (514029000*_fastPow(882979097, n) +
 		638771916*_fastPow(653592850, n) +
-		514029000*_fastPow(882979097, n)) % modulo
+		784439686*_fastPow(419376480, n) +
+		62759413*_fastPow(44051588, n)) % modulo
 }
 
 func _fastPow(x int, n int) int {
@@ -90,16 +131,3 @@ func _fastPow(x int, n int) int {
 	}
 	return res
 }
-
-// func _fastPow(x int, n int) int {
-// 	if n == 1 {
-// 		return x
-// 	}
-// 	y := _fastPow(x, n/2)
-// 	y2 := y * y % modulo
-// 	if n&1 == 1 {
-// 		return (x * y2) % modulo
-// 	} else {
-// 		return y2
-// 	}
-// }

@@ -2,6 +2,7 @@ package utils
 
 import "cmp"
 
+// arr[lo-1] < target <= arr[lo=hi]
 func bisectLeft[T cmp.Ordered](arr []T, target T, lo, hi int) int {
 	for lo < hi {
 		mid := (lo + hi) / 2
@@ -14,6 +15,7 @@ func bisectLeft[T cmp.Ordered](arr []T, target T, lo, hi int) int {
 	return lo
 }
 
+// arr[lo-1] <= target < arr[lo=hi]
 func bisectRight[T cmp.Ordered](arr []T, target T, lo, hi int) int {
 	for lo < hi {
 		mid := (lo + hi) / 2

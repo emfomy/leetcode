@@ -53,7 +53,7 @@ func (h pairHeap) Len() int           { return len(h) }
 func (h pairHeap) Less(i, j int) bool { return h[i].val > h[j].val } // max-heap
 func (h pairHeap) Swap(i, j int)      { h[i], h[j] = h[j], h[i] }
 
-func newIntHeap(arr []pair) *pairHeap {
+func newPairHeap(arr []pair) *pairHeap {
 	h := pairHeap(arr)
 	heap.Init(&h)
 	return &h
@@ -80,7 +80,7 @@ func (h *pairHeap) Peak() pair {
 func maxResult(nums []int, k int) int {
 	n := len(nums)
 
-	dp := newIntHeap(make([]pair, 0, n))
+	dp := newPairHeap(make([]pair, 0, n))
 
 	curr := pair{
 		idx: 0,

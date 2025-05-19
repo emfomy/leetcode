@@ -4,7 +4,7 @@
 // Author: Mu Yang <http://muyang.pro>
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-// A **trie** (https://en.wikipedia.org/wiki/Trie) (pronounced as "try") or **prefix tree**  is a tree data structure used to efficiently store and retrieve keys in a dataset of strings. There are various applications of this data structure, such as autocomplete and spellchecker.
+// A **trie** (https://en.wikipedia.org/wiki/Trie) (pronounced as "try") or **prefix tree** is a tree data structure used to efficiently store and retrieve keys in a dataset of strings. There are various applications of this data structure, such as autocomplete and spellchecker.
 //
 // Implement the Trie class:
 //
@@ -39,7 +39,7 @@
 //
 // - `1 <= word.length, prefix.length <= 2000`
 // - `word` and `prefix` consist only of lowercase English letters.
-// - At most `3 * 10^4` calls **in total**  will be made to `insert`, `search`, and `startsWith`.
+// - At most `3 * 10^4` calls **in total** will be made to `insert`, `search`, and `startsWith`.
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 

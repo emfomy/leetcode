@@ -28,8 +28,6 @@
 
 package main
 
-import "fmt"
-
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 // Count bits; O(n) time, O(1) space
@@ -61,8 +59,4 @@ func singleNumber2(nums []int) int {
 	}
 
 	return once
-}
-
-func main() {
-	fmt.Println(singleNumber2([]int{2, 2, 3, 2}))
 }

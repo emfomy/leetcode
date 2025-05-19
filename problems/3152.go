@@ -4,15 +4,14 @@
 // Author: Mu Yang <http://muyang.pro>
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-// An array is considered **special**  if every pair of its adjacent elements contains two numbers with different parity.
+// An array is considered **special** if every pair of its adjacent elements contains two numbers with different parity.
 //
-// You are given an array of integer `nums` and a 2D integer matrix `queries`, where for `queries[i] = [from<sub>i</sub>, to<sub>i</sub>]` your task is to check that <div aria-expanded="false" data-headlessui-state="" id="headlessui-popover-button-:ro:">subarray<div style="position: fixed; z-index: 40; inset: 0px auto auto 0px; transform: translate(310px, 262px);"> `nums[from<sub>i</sub>..to<sub>i</sub>]` is **special**  or not.
+// You are given an array of integer `nums` and a 2D integer matrix `queries`, where for `queries[i] = [from_i, to_i]` your task is to check that <div aria-expanded="false" data-headlessui-state="" id="headlessui-popover-button-:ro:">subarray<div style="position: fixed; z-index: 40; inset: 0px auto auto 0px; transform: translate(310px, 262px);"> `nums[from_i..to_i]` is **special** or not.
 //
-// Return an array of booleans `answer` such that `answer[i]` is `true` if `nums[from<sub>i</sub>..to<sub>i</sub>]` is special.
+// Return an array of booleans `answer` such that `answer[i]` is `true` if `nums[from_i..to_i]` is special.
 //
 // **Example 1:**
 //
-// <div class="example-block">
 // Input: nums = [3,4,1,2,6], queries = [[0,4]]
 //
 // Output: [false]
@@ -23,7 +22,6 @@
 //
 // **Example 2:**
 //
-// <div class="example-block">
 // Input: nums = [4,3,1,6], queries = [[0,2],[2,3]]
 //
 // Output: [false,true]

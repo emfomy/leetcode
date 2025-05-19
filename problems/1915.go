@@ -104,7 +104,3 @@ func wonderfulSubstrings(word string) int64 {
 
 	return res
 }
-
-func main() {
-	fmt.Println(wonderfulSubstrings("aba"))
-}

@@ -4,48 +4,61 @@
 // Author: Mu Yang <http://muyang.pro>
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-// You are given an integer array values where values[i] represents the value of the ith sightseeing spot. Two sightseeing spots i and j have a distance j - i between them.
+// You are given an integer array `values` where values[i] represents the value of the `i^th` sightseeing spot. Two sightseeing spots `i` and `j` have a **distance** `j - i` between them.
 //
-// The score of a pair (i < j) of sightseeing spots is values[i] + values[j] + i - j: the sum of the values of the sightseeing spots, minus the distance between them.
+// The score of a pair (`i < j`) of sightseeing spots is `values[i] + values[j] + i - j`: the sum of the values of the sightseeing spots, minus the distance between them.
 //
 // Return the maximum score of a pair of sightseeing spots.
 //
-// Example 1:
+// **Example 1:**
 //
-//   Input: values = [8,1,5,2,6]
-//   Output: 11
-//   Explanation: i = 0, j = 2, values[i] + values[j] + i - j = 8 + 5 + 0 - 2 = 11
+// ```
+// Input: values = [8,1,5,2,6]
+// Output: 11
+// Explanation: i = 0, j = 2, values[i] + values[j] + i - j = 8 + 5 + 0 - 2 = 11
+// ```
 //
-// Example 2:
+// **Example 2:**
 //
-//   Input: values = [1,2]
-//   Output: 2
+// ```
+// Input: values = [1,2]
+// Output: 2
+// ```
 //
-// Constraints:
+// **Constraints:**
 //
-//   2 <= values.length <= 5 * 10^4
-//   1 <= values[i] <= 1000
+// - `2 <= values.length <= 5 * 10^4`
+// - `1 <= values[i] <= 1000`
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 package main
 
+// Brute-force, O(n^2)
 func maxScoreSightseeingPair(values []int) int {
-	res := 0
-	iValue := values[0]
+	n := len(values)
 
-	for _, v := range values[1:] {
-		iValue--
-		res = _max(res, iValue+v)
-		iValue = _max(iValue, v)
+	res := 0
+	for i := 0; i < n; i++ {
+		for j := i + 1; j < n; j++ {
+			res = max(res, values[i]+values[j]+i-j)
+		}
 	}
 
 	return res
 }
 
-func _max(a, b int) int {
-	if a > b {
-		return a
+// DP, O(n)
+// The value of i decrease by 1 for each step we go right
+func maxScoreSightseeingPair2(values []int) int {
+	iValue := values[0]
+
+	res := 0
+	for _, jValue := range values {
+		iValue--
+		res = max(res, iValue+jValue)
+		iValue = max(iValue, jValue)
 	}
-	return b
+
+	return res
 }

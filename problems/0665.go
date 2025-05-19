@@ -64,8 +64,3 @@ func checkPossibility(nums []int) bool {
 
 	return true
 }
-
-func main() {
-	res := checkPossibility([]int{2, 3, 1, 4})
-	fmt.Println(res)
-}

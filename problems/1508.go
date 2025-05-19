@@ -49,7 +49,7 @@ type pair struct {
 type pairHeap []pair
 
 func (h pairHeap) Len() int           { return len(h) }
-func (h pairHeap) Less(i, j int) bool { return h[i].sum < h[j].sum } // we want min-heap
+func (h pairHeap) Less(i, j int) bool { return h[i].sum < h[j].sum } // min-heap
 func (h pairHeap) Swap(i, j int)      { h[i], h[j] = h[j], h[i] }
 
 func newPairHeap(arr []pair) *pairHeap {
