@@ -28,13 +28,14 @@
 #include <algorithm>
 #include <functional>
 #include <vector>
+
 using namespace std;
 
 class Solution {
-public:
-    int findKthLargest(vector<int>& nums, int k) {
-        k--;
-        nth_element(nums.begin(), nums.begin()+k, nums.end(), greater{});
-        return nums[k];
-    }
+ public:
+  int findKthLargest(vector<int>& nums, int k) {
+    k--;
+    nth_element(nums.begin(), nums.begin() + k, nums.end(), greater<int>{});
+    return nums[k];
+  }
 };

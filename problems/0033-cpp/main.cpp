@@ -27,18 +27,20 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 #include <algorithm>
+#include <vector>
+
+using namespace std;
 
 class Solution {
-
  public:
-  int search( vector<int>& nums, int target ) {
-    if ( nums.size() == 0 ) {
+  int search(vector<int>& nums, int target) {
+    if (nums.size() == 0) {
       return -1;
     }
 
     int base = nums[0];
 
-    auto comp = [base] ( const int a, const int b ) { // True: Less
+    auto comp = [base](const int a, const int b) {  // True: Less
       if (a < base && b >= base) {
         return false;
       }
@@ -50,7 +52,7 @@ class Solution {
 
     auto it = lower_bound(nums.cbegin(), nums.cend(), target, comp);
 
-    if ( it != nums.cend() && *it == target ) {
+    if (it != nums.cend() && *it == target) {
       return it - nums.cbegin();
     } else {
       return -1;

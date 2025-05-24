@@ -304,7 +304,7 @@ LeetCode Problems' Solutions
 | 2033 | [Minimum Operations to Make a Uni-Value Grid](https://leetcode.com/problems/minimum-operations-to-make-a-uni-value-grid) | [Go](problems/2033-go/main.go) | Medium |
 | 2037 | [Minimum Number of Moves to Seat Everyone](https://leetcode.com/problems/minimum-number-of-moves-to-seat-everyone) | [Go](problems/2037-go/main.go) | Easy |
 | 2054 | [Two Best Non-Overlapping Events](https://leetcode.com/problems/two-best-non-overlapping-events) | [Go](problems/2054-go/main.go) | Medium |
-| 2071 | [Maximum Number of Tasks You Can Assign](htthttps://leetcode.com/problems/maximum-number-of-tasks-you-can-assign) | [Go](problems/2071-go/main.go) | Hard |
+| 2071 | [Maximum Number of Tasks You Can Assign](https://leetcode.com/problems/maximum-number-of-tasks-you-can-assign) | [Go](problems/2071-go/main.go) | Hard |
 | 2094 | [Finding 3-Digit Even Numbers](https://leetcode.com/problems/finding-3-digit-even-numbers) | [Go](problems/2094-go/main.go) | Easy |
 | 2109 | [Adding Spaces to a String](https://leetcode.com/problems/adding-spaces-to-a-string) | [Go](problems/2109-go/main.go) | Medium |
 | 2115 | [Find All Possible Recipes from Given Supplies](https://leetcode.com/problems/find-all-possible-recipes-from-given-supplies) | [Go](problems/2115-go/main.go) | Medium |

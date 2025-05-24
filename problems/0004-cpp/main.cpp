@@ -31,12 +31,16 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+#include <vector>
+
+using namespace std;
+
 class Solution {
  public:
-  double findMedianSortedArrays( vector<int>& nums1, vector<int>& nums2 ) {
+  double findMedianSortedArrays(vector<int>& nums1, vector<int>& nums2) {
     auto len = nums1.size() + nums2.size();
     vector<int> nums(len);
     merge(nums1.cbegin(), nums1.cend(), nums2.cbegin(), nums2.cend(), nums.begin());
-    return double(nums[(len-1)/2] + nums[(len)/2]) / 2;
+    return double(nums[(len - 1) / 2] + nums[(len) / 2]) / 2;
   }
 };

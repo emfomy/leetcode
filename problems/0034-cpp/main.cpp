@@ -23,21 +23,22 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 #include <algorithm>
+#include <vector>
+
+using namespace std;
 
 class Solution {
  public:
-  vector<int> searchRange( vector<int>& nums, int target ) {
-    if ( nums.size() == 0 ) {
-      return { -1, -1 };
+  vector<int> searchRange(vector<int>& nums, int target) {
+    if (nums.size() == 0) {
+      return {-1, -1};
     }
 
     auto [lower_it, upper_it] = equal_range(nums.cbegin(), nums.cend(), target);
 
-    if ( lower_it != nums.cend() && *lower_it == target &&
-         upper_it != nums.cbegin() && *(--upper_it) == target ) {
-      return { static_cast<int>(lower_it - nums.cbegin()),
-               static_cast<int>(upper_it - nums.cbegin()) };
+    if (lower_it != nums.cend() && *lower_it == target && upper_it != nums.cbegin() && *(--upper_it) == target) {
+      return {static_cast<int>(lower_it - nums.cbegin()), static_cast<int>(upper_it - nums.cbegin())};
     }
-    return { -1, -1 };
+    return {-1, -1};
   }
 };

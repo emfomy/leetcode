@@ -32,14 +32,18 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+#include <unordered_set>
+
+using namespace std;
+
 class Solution {
  public:
-  int lengthOfLongestSubstring( string str ) {
+  int lengthOfLongestSubstring(string str) {
     unordered_set<char> s;
     size_t max_len = 0;
     auto it0 = str.begin(), it1 = str.begin();
-    while ( it1 != str.end() ) {
-      if ( s.count(*it1) ) {
+    while (it1 != str.end()) {
+      if (s.count(*it1)) {
         s.erase(*it0);
         ++it0;
       } else {

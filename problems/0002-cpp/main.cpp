@@ -37,26 +37,27 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-/**
- * Definition for singly-linked list.
- * struct ListNode {
- *     int val;
- *     ListNode *next;
- *     ListNode(int x) : val(x), next(NULL) {}
- * };
- */
+struct ListNode {
+  int val;
+  ListNode* next;
+  ListNode(int x) : val(x), next(nullptr) {}
+}
+
+#include <vector>
+
+using namespace std;
 
 class Solution {
  public:
-  ListNode* addTwoNumbers( ListNode* l1, ListNode* l2, int carry = 0 ) {
-    if ( !l1 && !l2 ) {
+  ListNode* addTwoNumbers(ListNode* l1, ListNode* l2, int carry = 0) {
+    if (!l1 && !l2) {
       return carry ? new ListNode(carry) : nullptr;
     }
     carry += (l1 ? l1->val : 0) + (l2 ? l2->val : 0);
-    auto *l3 = new ListNode(carry%10);
+    auto* l3 = new ListNode(carry % 10);
     l1 = l1 ? l1->next : nullptr;
     l2 = l2 ? l2->next : nullptr;
-    l3->next = addTwoNumbers(l1, l2, carry/10);
+    l3->next = addTwoNumbers(l1, l2, carry / 10);
     return l3;
   }
 };

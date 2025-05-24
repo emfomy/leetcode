@@ -37,11 +37,10 @@
 
 #include <bit>
 #include <cstdint>
+
 using namespace std;
 
 class Solution {
-public:
-    int hammingWeight(uint32_t n) {
-        return __popcount(n);
-    }
+ public:
+  int hammingWeight(uint32_t n) { return __builtin_popcount(n); }
 };

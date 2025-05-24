@@ -42,6 +42,7 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 #include <bit>
+
 using namespace std;
 
 // If num is power of 2, then the result is log2(num).
@@ -52,10 +53,6 @@ using namespace std;
 // Note: since num is sigend integer,
 //   we need to substract 1 to the result for the sign bit.
 class Solution {
-public:
-    int numberOfSteps(int num) {
-        return num
-            ? sizeof(num) * 8 - __countl_zero(num) + __popcount(num) - 2
-            : 0;
-    }
+ public:
+  int numberOfSteps(int num) { return num ? sizeof(num) * 8 - __builtin_clz(num) + __builtin_popcount(num) - 1 : 0; }
 };

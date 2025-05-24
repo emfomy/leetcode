@@ -37,17 +37,22 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+#include <unordered_map>
+#include <vector>
+
+using namespace std;
+
 class Solution {
  public:
-  vector<int> twoSum( vector<int>& nums, int target ) {
+  vector<int> twoSum(vector<int>& nums, int target) {
     const int n = nums.size();
     unordered_map<int, int> d;
-    for ( auto i = 0; i < n; ++i ) {
+    for (auto i = 0; i < n; ++i) {
       const auto num = nums[i];
-      if ( d.count(num) ) {
-        return {d[num], i };
+      if (d.count(num)) {
+        return {d[num], i};
       }
-      d[target-num] = i;
+      d[target - num] = i;
     }
     return {};
   }

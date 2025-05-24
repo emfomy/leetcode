@@ -1,4 +1,4 @@
-// Source: htthttps://leetcode.com/problems/maximum-number-of-tasks-you-can-assign
+// Source: https://leetcode.com/problems/maximum-number-of-tasks-you-can-assign
 // Title: Maximum Number of Tasks You Can Assign
 // Difficulty: Hard
 // Author: Mu Yang <http://muyang.pro>
