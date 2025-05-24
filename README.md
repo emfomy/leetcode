@@ -125,7 +125,6 @@ LeetCode Problems' Solutions
 | 318 | [Maximum Product of Word Lengths](https://leetcode.com/problems/maximum-product-of-word-lengths) | [Go](problems/0318-go/main.go) | Easy |
 | 322 | [Coin Change](https://leetcode.com/problems/coin-change) | [Go](problems/0322-go/main.go) | Medium |
 | 326 | [Power of Three](https://leetcode.com/problems/power-of-three) | [Go](problems/0326-go/main.go) | Easy |
-| 330 | [Patching Array](https://leetcode.com/problems/patching-array) | [Go](problems/0330-go/main.go) | Hard |
 | 343 | [Integer Break](https://leetcode.com/problems/integer-break) | [Go](problems/0343-go/main.go) | Medium |
 | 368 | [Largest Divisible Subset](https://leetcode.com/problems/largest-divisible-subset) | [Go](problems/0368-go/main.go) | Medium |
 | 376 | [Wiggle Subsequence](https://leetcode.com/problems/wiggle-subsequence) | [Go](problems/0376-go/main.go) | Medium |

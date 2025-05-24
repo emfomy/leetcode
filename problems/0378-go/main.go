@@ -43,51 +43,53 @@
 package main
 
 import (
-	"container/heap"
+	"github.com/emirpasic/gods/trees/binaryheap"
+	"github.com/emirpasic/gods/utils"
 )
 
-type intHeap []int
-
-func (h intHeap) Len() int           { return len(h) }
-func (h intHeap) Less(i, j int) bool { return h[i] > h[j] } // max-heap
-func (h intHeap) Swap(i, j int)      { h[i], h[j] = h[j], h[i] }
-
-func newIntHeap(arr []int) *intHeap {
-	h := intHeap(arr)
-	heap.Init(&h)
-	return &h
-}
-
-func (h *intHeap) Push(x interface{}) {
-	*h = append(*h, x.(int))
-}
-
-func (h *intHeap) Pop() interface{} {
-	n := len(*h)
-	x := (*h)[n-1]
-	*h = (*h)[:n-1]
-	return x
-}
-
-func (h *intHeap) Peak() int {
-	if h.Len() == 0 {
-		return -1
-	}
-	return (*h)[0]
-}
-
+// Heap
 func kthSmallest(matrix [][]int, k int) int {
-	h := newIntHeap(make([]int, 0, k))
+	heap := binaryheap.NewWith(func(a, b any) int { return -utils.IntComparator(a, b) })
 	for _, row := range matrix {
 		for _, v := range row {
-			if h.Len() == k {
-				if v > h.Peak() {
+			if heap.Size() == k {
+				top, _ := heap.Peek()
+				if v > top.(int) {
 					continue
 				}
-				heap.Pop(h)
+				heap.Pop()
 			}
-			heap.Push(h, v)
+			heap.Push(v)
 		}
 	}
-	return h.Peak()
+	ans, _ := heap.Peek()
+	return ans.(int)
+}
+
+// Binary search
+func kthSmallest2(matrix [][]int, k int) int {
+	n := len(matrix)
+
+	check := func(x int) bool {
+		sum, col := 0, n-1
+		for _, row := range matrix {
+			for ; col >= 0 && row[col] > x; col-- {
+			}
+			sum += col + 1
+		}
+		return sum < k
+	}
+
+	// check(lo-1) = true, check(lo=hi) = false
+	lo, hi := matrix[0][0], matrix[n-1][n-1]
+	for lo < hi {
+		mid := lo + (hi-lo)/2
+		if check(mid) {
+			lo = mid + 1
+		} else {
+			hi = mid
+		}
+	}
+
+	return lo
 }
