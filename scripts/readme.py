@@ -2,7 +2,7 @@
 # -*- coding:utf-8 -*-
 
 __author__ = "Mu Yang <http://muyang.pro>"
-__copyright__ = "Copyright 2020"
+__copyright__ = "Copyright 2025"
 
 import glob
 import os
@@ -25,14 +25,40 @@ def main():
 
     data = {}
 
-    for prob_file in sorted(glob.glob("problems/*")):
-        prob_num, prob_lang = os.path.splitext(os.path.basename(prob_file))
-        prob_num = int(prob_num)
-        prob_lang = LANG[prob_lang]
-        with open(prob_file) as fin:
-            prob_source = fin.readline().split(":")[-1].strip()
-            prob_title = fin.readline().split(":")[-1].strip()
-            prob_difficulty = fin.readline().split(":")[-1].strip()
+    for prob_dir in sorted(glob.glob("problems/*-*")):
+        if not os.path.isdir(prob_dir):
+            continue
+
+        basename = os.path.basename(prob_dir)
+        if "-" not in basename:
+            continue
+
+        prob_num_str, lang_code = basename.split("-", 1)
+        try:
+            prob_num = int(prob_num_str)
+        except ValueError:
+            continue
+
+        # Try to find the main source file
+        files = [f for f in os.listdir(prob_dir) if f.startswith("main.")]
+        if not files:
+            continue
+
+        filename = files[0]
+        filepath = os.path.join(prob_dir, filename)
+        ext = os.path.splitext(filename)[-1]
+
+        prob_lang = LANG.get(ext)
+        if not prob_lang:
+            continue
+
+        with open(filepath) as fin:
+            try:
+                prob_source = fin.readline().split(":", 1)[-1].strip()
+                prob_title = fin.readline().split(":", 1)[-1].strip()
+                prob_difficulty = fin.readline().split(":", 1)[-1].strip()
+            except Exception:
+                continue
 
         if prob_num not in data:
             data[prob_num] = {
@@ -40,7 +66,7 @@ def main():
                 "title": prob_title,
                 "difficulty": prob_difficulty,
                 "solution": {
-                    prob_lang: prob_file,
+                    prob_lang: filepath,
                 },
             }
         else:
@@ -48,7 +74,7 @@ def main():
             assert prob["source"] == prob_source, prob
             assert prob["title"] == prob_title, prob
             assert prob["difficulty"] == prob_difficulty, prob
-            prob["solution"][prob_lang] = prob_file
+            prob["solution"][prob_lang] = filepath
 
     with open("./README.md", "w") as fout:
 
