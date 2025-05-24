@@ -42,7 +42,7 @@ func jump1(nums []int) int {
 	currMax := 0 // max reachable index
 	prevMax := 0 // max reachable index in (step-1) steps
 	for i, num := range nums {
-		currMax = _max(currMax, i+num)
+		currMax = max(currMax, i+num)
 		if i == prevMax {
 			step++
 			prevMax = currMax
@@ -53,11 +53,4 @@ func jump1(nums []int) int {
 	}
 
 	return step
-}
-
-func _max(a, b int) int {
-	if a > b {
-		return a
-	}
-	return b
 }

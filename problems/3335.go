@@ -1,85 +1,73 @@
-// Source: https://leetcode.com/problems/total-characters-in-string-after-transformations-i
-// Title: Total Characters in String After Transformations I
+// Source: https://leetcode.com/problems/zero-array-transformation-i
+// Title: Zero Array Transformation I
 // Difficulty: Medium
 // Author: Mu Yang <http://muyang.pro>
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-// You are given a string `s` and an integer `t`, representing the number of **transformations** to perform. In one **transformation**, every character in `s` is replaced according to the following rules:
+// You are given an integer array `nums` of length `n` and a 2D array `queries`, where `queries[i] = [l_i, r_i]`.
 //
-// - If the character is `'z'`, replace it with the string `"ab"`.
-// - Otherwise, replace it with the **next** character in the alphabet. For example, `'a'` is replaced with `'b'`, `'b'` is replaced with `'c'`, and so on.
+// For each `queries[i]`:
 //
-// Return the **length** of the resulting string after **exactly** `t` transformations.
+// - Select a subset of indices within the range `[l_i, r_i]` in `nums`.
+// - A **subset** of an array is a selection of elements (possibly none) of the array.
+// - Decrement the values at the selected indices by 1.
 //
-// Since the answer may be very large, return it **modulo** `10^9 + 7`.
+// A **Zero Array** is an array where all elements are equal to 0.
+//
+// Return `true` if it is possible to transform `nums` into a **Zero Array** after processing all the queries sequentially, otherwise return `false`.
 //
 // **Example 1:**
 //
 // ```
-// Input: s = "abcyy", t = 2
-// Output: 7
+// Input: nums = [1,0,1], queries = [[0,2]]
+// Output: true
 // Explanation:
-// - **First Transformation (t = 1)**:
-//   - `'a'` becomes `'b'`
-//   - `'b'` becomes `'c'`
-//   - `'c'` becomes `'d'`
-//   - `'y'` becomes `'z'`
-//   - `'y'` becomes `'z'`
-//   - String after the first transformation: `"bcdzz"`
-// - **Second Transformation (t = 2)**:
-//   - `'b'` becomes `'c'`
-//   - `'c'` becomes `'d'`
-//   - `'d'` becomes `'e'`
-//   - `'z'` becomes `"ab"`
-//   - `'z'` becomes `"ab"`
-//   - String after the second transformation: `"cdeabab"`
-// - **Final Length of the string**: The string is `"cdeabab"`, which has 7 characters.
-// ```
+// - **For i = 0:**
+//   - Select the subset of indices as `[0, 2]` and decrement the values at these indices by 1.
+//   - The array will become `[0, 0, 0]`, which is a Zero Array.
+// ``
 //
 // **Example 2:**
 //
 // ```
-// Input: s = "azbk", t = 1
-// Output: 5
+// Input: nums = [4,3,2,1], queries = [[1,3],[0,2]]
+// Output: false
 // Explanation:
-// - **First Transformation (t = 1)**:
-//   - `'a'` becomes `'b'`
-//   - `'z'` becomes `"ab"`
-//   - `'b'` becomes `'c'`
-//   - `'k'` becomes `'l'`
-//   - String after the first transformation: `"babcl"`
-// - **Final Length of the string**: The string is `"babcl"`, which has 5 characters.
+// - **For i = 0:**
+//   - Select the subset of indices as `[1, 2, 3]` and decrement the values at these indices by 1.
+//   - The array will become `[4, 2, 1, 0]`.
+// - **For i = 1:**
+//   - Select the subset of indices as `[0, 1, 2]` and decrement the values at these indices by 1.
+//   - The array will become `[3, 1, 0, 0]`, which is not a Zero Array.
 // ```
 //
 // **Constraints:**
 //
-// - `1 <= s.length <= 10^5`
-// - `s` consists only of lowercase English letters.
-// - `1 <= t <= 10^5`
+// - `1 <= nums.length <= 10^5`
+// - `0 <= nums[i] <= 10^5`
+// - `1 <= queries.length <= 10^5`
+// - `queries[i].length == 2`
+// - `0 <= l_i <= r_i < nums.length`
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 package main
 
-const modulo = int(1e9 + 7)
+func isZeroArray(nums []int, queries [][]int) bool {
+	n := len(nums)
+	diffs := make([]int, n+1)
 
-func lengthAfterTransformations(s string, t int) int {
-	// Count alphabets, reverse order
-	counter := [26]int{}
-	for _, ch := range s {
-		counter['z'-ch]++
+	for _, query := range queries {
+		diffs[query[0]]++
+		diffs[query[1]+1]--
 	}
 
-	for i := range t {
-		counter[(25+i)%26] += counter[i%26]
-		counter[(25+i)%26] %= modulo
+	val := 0
+	for i := range n {
+		val += diffs[i]
+		if val < nums[i] {
+			return false
+		}
 	}
-
-	ans := 0
-	for _, count := range counter {
-		ans += count
-		ans %= modulo
-	}
-
-	return ans
+	return true
 }

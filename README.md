@@ -55,6 +55,7 @@ LeetCode Problems' Solutions
 | 64 | [Minimum Path Sum](//leetcode.com/problems/minimum-path-sum) | [Go](problems/0064.go) [Python](problems/0064.py) | Medium |
 | 70 | [Climbing Stairs](//leetcode.com/problems/climbing-stairs) | [Go](problems/0070.go) [Python](problems/0070.py) | Easy |
 | 72 | [Edit Distance](//leetcode.com/problems/edit-distance) | [Go](problems/0072.go) [Python](problems/0072.py) | Hard |
+| 73 | [Set Matrix Zeroes](//leetcode.com/problems/set-matrix-zeroes) | [Go](problems/0073.go) | Medium |
 | 75 | [Sort Colors](//leetcode.com/problems/sort-colors) | [Go](problems/0075.go) [Python](problems/0075.py) | Medium |
 | 78 | [Subsets](//leetcode.com/problems/subsets) | [Go](problems/0078.go) [Python](problems/0078.py) | Medium |
 | 79 | [Word Search](//leetcode.com/problems/word-search) | [Python](problems/0079.py) | Medium |
@@ -387,6 +388,7 @@ LeetCode Problems' Solutions
 | 2918 | [Minimum Equal Sum of Two Arrays After Replacing Zeros](//leetcode.com/problems/minimum-equal-sum-of-two-arrays-after-replacing-zeros) | [Go](problems/2918.go) | Medium |
 | 2938 | [Separate Black and White Balls](//leetcode.com/problems/separate-black-and-white-balls) | [Go](problems/2938.go) | Medium |
 | 2940 | [Find Building Where Alice and Bob Can Meet](//leetcode.com/problems/find-building-where-alice-and-bob-can-meet) | [Go](problems/2940.go) | Hard |
+| 2942 | [Find Words Containing Character](//leetcode.com/problems/find-words-containing-character) | [Go](problems/2942.go) | Easy |
 | 2943 | [Count Symmetric Integers](//leetcode.com/problems/count-symmetric-integers) | [Go](problems/2943.go) | Easy |
 | 2948 | [Make Lexicographically Smallest Array by Swapping Elements](//leetcode.com/problems/make-lexicographically-smallest-array-by-swapping-elements) | [Go](problems/2948.go) | Medium |
 | 2962 | [Count Subarrays Where Max Element Appears at Least K Times](//leetcode.com/problems/count-subarrays-where-max-element-appears-at-least-k-times) | [Go](problems/2962.go) | Medium |
@@ -398,6 +400,7 @@ LeetCode Problems' Solutions
 | 3024 | [Type of Triangle](//leetcode.com/problems/type-of-triangle) | [Go](problems/3024.go) | Easy |
 | 3042 | [Count Prefix and Suffix Pairs I](//leetcode.com/problems/count-prefix-and-suffix-pairs-i) | [Go](problems/3042.go) | Easy |
 | 3066 | [Minimum Operations to Exceed Threshold Value II](//leetcode.com/problems/minimum-operations-to-exceed-threshold-value-ii) | [Go](problems/3066.go) | Medium |
+| 3068 | [Find the Maximum Sum of Node Values](//leetcode.com/problems/find-the-maximum-sum-of-node-values) | [Go](problems/3068.go) | Medium |
 | 3075 | [Maximize Happiness of Selected Children](//leetcode.com/problems/maximize-happiness-of-selected-children) | [Go](problems/3075.go) | Medium |
 | 3105 | [Longest Strictly Increasing or Strictly Decreasing Subarray](//leetcode.com/problems/longest-strictly-increasing-or-strictly-decreasing-subarray) | [Go](problems/3105.go) | Easy |
 | 3108 | [Minimum Cost Walk in Weighted Graph](//leetcode.com/problems/minimum-cost-walk-in-weighted-graph) | [Go](problems/3108.go) | Hard |
@@ -413,12 +416,14 @@ LeetCode Problems' Solutions
 | 3264 | [Final Array State After K Multiplication Operations I](//leetcode.com/problems/final-array-state-after-k-multiplication-operations-i) | [Go](problems/3264.go) | Easy |
 | 3272 | [Find the Count of Good Integers](//leetcode.com/problems/find-the-count-of-good-integers) | [Go](problems/3272.go) | Hard |
 | 3306 | [Count of Substrings Containing Every Vowel and K Consonants II](//leetcode.com/problems/count-of-substrings-containing-every-vowel-and-k-consonants-ii) | [Go](problems/3306.go) | Medium |
-| 3335 | [Total Characters in String After Transformations I](//leetcode.com/problems/total-characters-in-string-after-transformations-i) | [Go](problems/3335.go) | Medium |
+| 3335 | [Zero Array Transformation I](//leetcode.com/problems/zero-array-transformation-i) | [Go](problems/3335.go) | Medium |
 | 3337 | [Total Characters in String After Transformations II](//leetcode.com/problems/total-characters-in-string-after-transformations-ii) | [Go](problems/3337.go) | Hard |
 | 3341 | [Find Minimum Time to Reach Last Room I](//leetcode.com/problems/find-minimum-time-to-reach-last-room-i) | [Go](problems/3341.go) | Medium |
 | 3342 | [Find Minimum Time to Reach Last Room II](//leetcode.com/problems/find-minimum-time-to-reach-last-room-ii) | [Go](problems/3342.go) | Medium |
 | 3343 | [Count Number of Balanced Permutations](//leetcode.com/problems/count-number-of-balanced-permutations) | [Go](problems/3343.go) | Hard |
+| 3355 | [Total Characters in String After Transformations I](//leetcode.com/problems/total-characters-in-string-after-transformations-i) | [Go](problems/3355.go) | Medium |
 | 3356 | [Zero Array Transformation II](//leetcode.com/problems/zero-array-transformation-ii) | [Go](problems/3356.go) | Medium |
+| 3362 | [Zero Array Transformation III](//leetcode.com/problems/zero-array-transformation-iii) | [Go](problems/3362.go) | Medium |
 | 3375 | [Minimum Operations to Make Array Values Equal to K](//leetcode.com/problems/minimum-operations-to-make-array-values-equal-to-k) | [Go](problems/3375.go) | Medium |
 | 3392 | [Count Subarrays of Length Three With a Condition](//leetcode.com/problems/count-subarrays-of-length-three-with-a-condition) | [Go](problems/3392.go) | Easy |
 | 3394 | [Check if Grid can be Cut into Sections](//leetcode.com/problems/check-if-grid-can-be-cut-into-sections) | [Go](problems/3394.go) | Medium |
