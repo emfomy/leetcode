@@ -4,53 +4,52 @@
 # Author: Mu Yang <http://muyang.pro>
 
 ################################################################################################################################
-# Given n non-negative integers representing an elevation map where the width of each bar is 1, compute how much water it can trap after raining.
+# Given `n` non-negative integers representing an elevation map where the width of each bar is `1`, compute how much water it can trap after raining.
 #
-# Example 1:
+# **Example 1:**
+# https://assets.leetcode.com/uploads/2018/10/22/rainwatertrap.png
 #
-#   https://assets.leetcode.com/uploads/2018/10/22/rainwatertrap.png
-#   Input: height = [0,1,0,2,1,0,1,3,2,1,2,1]
-#   Output: 6
-#   Explanation: The above elevation map (black section) is represented by array [0,1,0,2,1,0,1,3,2,1,2,1]. In this case, 6 units of rain water (blue section) are being trapped.
+# ```
+# Input: height = [0,1,0,2,1,0,1,3,2,1,2,1]
+# Output: 6
+# Explanation: The above elevation map (black section) is represented by array [0,1,0,2,1,0,1,3,2,1,2,1]. In this case, 6 units of rain water (blue section) are being trapped.
+# ```
 #
-# Example 2:
+# **Example 2:**
 #
-#   Input: height = [4,2,0,3,2,5]
-#   Output: 9
+# ```
+# Input: height = [4,2,0,3,2,5]
+# Output: 9
+# ```
 #
-# Constraints:
+# **Constraints:**
 #
-#   n == height.length
-#   1 <= n <= 2 * 10^4
-#   0 <= height[i] <= 10^5
+# - `n == height.length`
+# - `1 <= n <= 2 * 10^4`
+# - `0 <= height[i] <= 10^5`
 #
 ################################################################################################################################
 
+from typing import List
+
+
+# Use two pointer
 class Solution:
     def trap(self, height: List[int]) -> int:
+        n = len(height)
 
-        i = 0
-        j = len(height)-1
-
-        if i >= j:
-            return 0
-
-        left_val = height[i]
-        right_val = height[j]
+        left, right = 0, n - 1
+        left_max, right_max = height[left], height[right]
         ans = 0
 
-        while i < j:
-            if height[i] < height[j]:
-                i += 1
-                if height[i] > left_val:
-                    left_val = height[i]
-                else:
-                    ans += left_val - height[i]
-            else:
-                j -= 1
-                if height[j] > right_val:
-                    right_val = height[j]
-                else:
-                    ans += right_val - height[j]
+        while left < right:
+            if height[left] < height[right]:  # shrink from left
+                left += 1
+                left_max = max(left_max, height[left])
+                ans += left_max - height[left]
+            else:  # shrink right
+                right -= 1
+                right_max = max(right_max, height[right])
+                ans += right_max - height[right]
 
         return ans

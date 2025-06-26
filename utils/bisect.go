@@ -1,42 +1,14 @@
 package utils
 
-import "cmp"
-
-// arr[lo-1] < target <= arr[lo=hi]
-func bisectLeft[T cmp.Ordered](arr []T, target T, lo, hi int) int {
-	for lo < hi {
-		mid := (lo + hi) / 2
-		if arr[mid] < target {
-			lo = mid + 1
+// check(lo-1) = false, check(lo=hi) = true
+// the range should always be [check=false, check=true)
+func bisect(check func(int) bool, lo, hi int) int {
+	for lo < hi { // find in range [lo, hi)
+		mid := lo + (hi-lo)/2
+		if check(mid) {
+			hi = mid // go to range [lo, mid)
 		} else {
-			hi = mid
-		}
-	}
-	return lo
-}
-
-// arr[lo-1] <= target < arr[lo=hi]
-func bisectRight[T cmp.Ordered](arr []T, target T, lo, hi int) int {
-	for lo < hi {
-		mid := (lo + hi) / 2
-		if arr[mid] <= target {
-			lo = mid + 1
-		} else {
-			hi = mid
-		}
-	}
-	return lo
-}
-
-// fn should be be arr[mid] < target for bisect left
-// fn should be be arr[mid] <= target for bisect right
-func bisectFunc(fn func(int) bool, lo, hi int) int {
-	for lo < hi {
-		mid := (lo + hi) / 2
-		if fn(mid) {
-			lo = mid + 1
-		} else {
-			hi = mid
+			lo = mid + 1 // go to range [mid+1, hi)
 		}
 	}
 	return lo

@@ -4,125 +4,100 @@
 // Author: Mu Yang <http://muyang.pro>
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-// There are n children standing in a line. Each child is assigned a rating value given in the integer array ratings.
+// There are `n` children standing in a line. Each child is assigned a rating value given in the integer array `ratings`.
 //
 // You are giving candies to these children subjected to the following requirements:
 //
-// Each child must have at least one candy.
-// Children with a higher rating get more candies than their neighbors.
+// - Each child must have at least one candy.
+// - Children with a higher rating get more candies than their neighbors.
+//
 // Return the minimum number of candies you need to have to distribute the candies to the children.
 //
-// Example 1:
+// **Example 1:**
 //
-//   Input: ratings = [1,0,2]
-//   Output: 5
-//   Explanation: You can allocate to the first, second and third child with 2, 1, 2 candies respectively.
+// ```
+// Input: ratings = [1,0,2]
+// Output: 5
+// Explanation: You can allocate to the first, second and third child with 2, 1, 2 candies respectively.
+// ```
 //
-// Example 2:
+// **Example 2:**
 //
-//   Input: ratings = [1,2,2]
-//   Output: 4
-//   Explanation:
-//     You can allocate to the first, second and third child with 1, 2, 1 candies respectively.
-//     The third child gets 1 candy because it satisfies the above two conditions.
+// ```
+// Input: ratings = [1,2,2]
+// Output: 4
+// Explanation: You can allocate to the first, second and third child with 1, 2, 1 candies respectively.
+// The third child gets 1 candy because it satisfies the above two conditions.
+// ```
 //
-// Constraints:
+// **Constraints:**
 //
-//   n == ratings.length
-//   1 <= n <= 2 * 10^4
-//   0 <= ratings[i] <= 2 * 10^4
+// - `n == ratings.length`
+// - `1 <= n <= 2 * 10^4`
+// - `0 <= ratings[i] <= 2 * 10^4`
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 package main
 
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-// Use Sort
-
 import (
-	"sort"
+	"slices"
 )
 
-type IdxSlice struct {
-	sort.IntSlice
-	indices []int
-}
-
-func (s IdxSlice) Swap(i, j int) {
-	s.IntSlice.Swap(i, j)
-	s.indices[i], s.indices[j] = s.indices[j], s.indices[i]
-}
-
+// Sort
 func candy(ratings []int) int {
 	n := len(ratings)
 
-	// Set indices
-	tmp := make([]int, n)
-	indices := make([]int, n)
-	for i := 0; i < n; i++ {
-		tmp[i] = ratings[i]
-		indices[i] = i
+	// Sort with indices
+	idxs := make([]int, n)
+	for i := range n {
+		idxs[i] = i
 	}
-
-	// Sort indices
-	sort.Sort(IdxSlice{
-		IntSlice: tmp,
-		indices:  indices,
+	slices.SortFunc(idxs, func(i, j int) int {
+		return ratings[i] - ratings[j]
 	})
 
-	res := 0
-	candies := tmp // Reuse space
-
-	for _, idx := range indices {
-		candies[idx] = 1
-		if idx > 0 && ratings[idx] > ratings[idx-1] {
-			candies[idx] = _max(candies[idx], candies[idx-1]+1)
+	// Distribute candies
+	candies := make([]int, n)
+	ans := 0
+	for _, i := range idxs {
+		candy := 1
+		if i > 0 && ratings[i] > ratings[i-1] {
+			candy = max(candy, candies[i-1]+1)
 		}
-		if idx < n-1 && ratings[idx] > ratings[idx+1] {
-			candies[idx] = _max(candies[idx], candies[idx+1]+1)
+		if i < n-1 && ratings[i] > ratings[i+1] {
+			candy = max(candy, candies[i+1]+1)
 		}
-		res += candies[idx]
+		candies[i] = candy
+		ans += candy
 	}
 
-	return res
+	return ans
 }
 
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-// Use Two Arries
-
+// Traversal in both direction
 func candy2(ratings []int) int {
 	n := len(ratings)
-	left := make([]int, n)
-	right := make([]int, n)
+	candies := make([]int, n) // stores less 1 candy than actual value
 
-	left[0] = 1
+	// Forward
 	for i := 1; i < n; i++ {
 		if ratings[i] > ratings[i-1] {
-			left[i] = left[i-1] + 1
-		} else {
-			left[i] = 1
+			candies[i] = max(candies[i], candies[i-1]+1)
 		}
 	}
 
-	right[n-1] = 1
+	// Backward
 	for i := n - 2; i >= 0; i-- {
 		if ratings[i] > ratings[i+1] {
-			right[i] = right[i+1] + 1
-		} else {
-			right[i] = 1
+			candies[i] = max(candies[i], candies[i+1]+1)
 		}
 	}
 
-	res := 0
-	for i := 0; i < n; i++ {
-		res += _max(left[i], right[i])
+	// Answer
+	ans := n
+	for _, candy := range candies {
+		ans += candy
 	}
-	return res
-}
-
-func _max(a, b int) int {
-	if a > b {
-		return a
-	}
-	return b
+	return ans
 }

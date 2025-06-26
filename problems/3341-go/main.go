@@ -30,9 +30,9 @@
 // Output: 3
 // Explanation:
 // The minimum time required is 3 seconds.
-// - At time `t == 0``, move from room `(0, 0)`` to room `(1, 0)`` in one second.
-// - At time `t == 1``, move from room `(1, 0)`` to room `(1, 1)`` in one second.
-// - At time `t == 2``, move from room `(1, 1)`` to room `(1, 2)`` in one second.
+// - At time `t == 0`, move from room `(0, 0)`` to room `(1, 0)`` in one second.
+// - At time `t == 1`, move from room `(1, 0)`` to room `(1, 1)`` in one second.
+// - At time `t == 2`, move from room `(1, 1)`` to room `(1, 2)`` in one second.
 // ```
 //
 // **Example 3:**
