@@ -4,54 +4,68 @@
 // Author: Mu Yang <http://muyang.pro>
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-// Given a string, find the length of the longest substring without repeating characters.
+// Given a string `s`, find the length of the **longest substring** without duplicate characters.
 //
-// Example 1:
+// A **substring** is a contiguous **non-empty** sequence of characters within a string.
 //
-//   Input: "abcabcbb"
-//   Output: 3
-//   Explanation: The answer is "abc", with the length of 3.
+// **Example 1:**
 //
-// Example 2:
+// ```
+// Input: s = "abcabcbb"
+// Output: 3
+// Explanation: The answer is "abc", with the length of 3.
+// ```
 //
-//   Input: "bbbbb"
-//   Output: 1
-//   Explanation: The answer is "b", with the length of 1.
+// **Example 2:**
 //
-// Example 3:
+// ```
+// Input: s = "bbbbb"
+// Output: 1
+// Explanation: The answer is "b", with the length of 1.
+// ```
 //
-//   Input: "pwwkew"
-//   Output: 3
-//   Explanation: The answer is "wke", with the length of 3.
-//                Note that the answer must be a substring, "pwke" is a subsequence and not a substring.
+// **Example 3:**
 //
-// Constraints:
+// ```
+// Input: s = "pwwkew"
+// Output: 3
+// Explanation: The answer is "wke", with the length of 3.
+// Notice that the answer must be a substring, "pwke" is a subsequence and not a substring.
+// ```
 //
-//   0 <= s.length <= 5 * 10^4
-//   s consists of English letters, digits, symbols and spaces.
+// **Constraints:**
+//
+// - `0 <= s.length <= 5 * 10^4`
+// - `s` consists of English letters, digits, symbols and spaces.
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-#include <unordered_set>
+#include <string>
+#include <unordered_map>
 
 using namespace std;
 
+// Use Sliding Window & Hash Map
 class Solution {
  public:
-  int lengthOfLongestSubstring(string str) {
-    unordered_set<char> s;
-    size_t max_len = 0;
-    auto it0 = str.begin(), it1 = str.begin();
-    while (it1 != str.end()) {
-      if (s.count(*it1)) {
-        s.erase(*it0);
-        ++it0;
+  int lengthOfLongestSubstring(string s) {
+    int n = s.size();
+
+    unordered_map<char, int> counter;
+    int left = 0;
+    int right = 0;
+    int ans = 0;
+    while (right < n) {
+      if (counter[s[right]] > 0) {
+        counter[s[left]]--;
+        left++;
       } else {
-        s.insert(*it1);
-        ++it1;
+        counter[s[right]]++;
+        right++;
       }
-      max_len = max(s.size(), max_len);
+      ans = max(ans, right - left);
     }
-    return max_len;
+
+    return ans;
   }
 };

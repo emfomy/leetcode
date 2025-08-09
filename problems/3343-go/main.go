@@ -75,14 +75,11 @@ func init() {
 
 func _fastPow(x int, n int) int {
 	res := 1
-	for true {
+	for n > 0 {
 		if (n & 1) != 0 {
 			res = (res * x) % modulo
 		}
 		n >>= 1
-		if n == 0 {
-			break
-		}
 		x = (x * x) % modulo
 	}
 	return res

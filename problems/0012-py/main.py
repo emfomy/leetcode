@@ -4,70 +4,79 @@
 # Author: Mu Yang <http://muyang.pro>
 
 ################################################################################################################################
-# Roman numerals are represented by seven different symbols: I, V, X, L, C, D and M.
+# # Seven different symbols represent Roman numerals with the following values:
 #
-#   Symbol       Value
-#   I             1
-#   V             5
-#   X             10
-#   L             50
-#   C             100
-#   D             500
-#   M             1000
+# # ```
+# # Symbol        Value
+# # I             1
+# # V             5
+# # X             10
+# # L             50
+# # C             100
+# # D             500
+# # M             1000`
+# # ``
 #
-# For example, two is written as II in Roman numeral, just two one's added together. Twelve is written as, XII, which is simply X + II. The number twenty seven is written as XXVII, which is XX + V + II.
+# Roman numerals are formed by appendingthe conversions ofdecimal place valuesfrom highest to lowest. Converting a decimal place value into a Roman numeral has the following rules:
 #
-# Roman numerals are usually written largest to smallest from left to right. However, the numeral for four is not IIII. Instead, the number four is written as IV. Because the one is before the five we subtract it making four. The same principle applies to the number nine, which is written as IX. There are six instances where subtraction is used:
+# - If the value does not start with 4 or9, select the symbol of the maximal value that can be subtracted from the input, append that symbol to the result, subtract its value, and convert the remainder to a Roman numeral.
+# - If the value starts with 4 or 9 use the**subtractive form**representingone symbol subtracted from the following symbol, for example,4 is 1 (`I`) less than 5 (`V`): `IV`and 9 is 1 (`I`) less than 10 (`X`): `IX`.Only the following subtractive forms are used: 4 (`IV`), 9 (`IX`),40 (`XL`), 90 (`XC`), 400 (`CD`) and 900 (`CM`).
+# - Only powers of 10 (`I`, `X`, `C`, `M`) can be appended consecutively at most 3 times to represent multiples of 10. You cannot append 5(`V`), 50 (`L`), or 500 (`D`) multiple times. If you need to append a symbol4 timesuse the **subtractive form**.
 #
-# - I can be placed before V (5) and X (10) to make 4 and 9.
-# - X can be placed before L (50) and C (100) to make 40 and 90.
-# - C can be placed before D (500) and M (1000) to make 400 and 900.
+# Given an integer, convert it to a Roman numeral.
 #
-# Given an integer, convert it to a roman numeral. Input is guaranteed to be within the range from 1 to 3999.
+# **Example 1:**
 #
-# Example 1:
+# ```
+# Input: num = 3749
+# Output: "MMMDCCXLIX"
+# Explanation:
+# 3000 = MMM as 1000 (M) + 1000 (M) + 1000 (M)
+#  700 = DCC as 500 (D) + 100 (C) + 100 (C)
+#   40 = XL as 10 (X) less of 50 (L)
+#    9 = IX as 1 (I) less of 10 (X)
+# Note: 49 is not 1 (I) less of 50 (L) because the conversion is based on decimal places
+# ```
 #
-#   Input: 3
-#   Output: "III"
+# **Example 2:**
 #
-# Example 2:
+# ```
+# Input: num = 58
+# Output: "LVIII"
+# Explanation:
+# 50 = L
+#  8 = VIII
+# ```
 #
-#   Input: 4
-#   Output: "IV"
+# **Example 3:**
 #
-# Example 3:
+# ```
+# Input: num = 1994
+# Output: "MCMXCIV"
+# Explanation:
+# 1000 = M
+#  900 = CM
+#   90 = XC
+#    4 = IV
+# ```
 #
-#   Input: 9
-#   Output: "IX"
+# **Constraints:**
 #
-# Example 4:
-#
-#   Input: 58
-#   Output: "LVIII"
-#   Explanation: L = 50, V = 5, III = 3.
-#
-# Example 5:
-#
-#   Input: 1994
-#   Output: "MCMXCIV"
-#   Explanation: M = 1000, CM = 900, XC = 90 and IV = 4.
+# - `1 <= num <= 3999`
 #
 ################################################################################################################################
 
-ROMAN0 = [ '', 'I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII', 'IX', ]
-ROMAN1 = [ '', 'X', 'XX', 'XXX', 'XL', 'L', 'LX', 'LXX', 'LXXX', 'XC', ]
-ROMAN2 = [ '', 'C', 'CC', 'CCC', 'CD', 'D', 'DC', 'DCC', 'DCCC', 'CM', ]
-ROMAN3 = [ '', 'M', 'MM', 'MMM' ]
 
-class Solution2:
+class Solution:
     def intToRoman(self, num: int) -> str:
-        s = str(num)
-        ans = ''
-        try:
-            ans = ROMAN0[int(s[-1])] + ans
-            ans = ROMAN1[int(s[-2])] + ans
-            ans = ROMAN2[int(s[-3])] + ans
-            ans = ROMAN3[int(s[-4])] + ans
-        except IndexError:
-            pass
-        return ans
+        romans0 = ["", "I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX"]
+        romans1 = ["", "X", "XX", "XXX", "XL", "L", "LX", "LXX", "LXXX", "XC"]
+        romans2 = ["", "C", "CC", "CCC", "CD", "D", "DC", "DCC", "DCCC", "CM"]
+        romans3 = ["", "M", "MM", "MMM"]
+
+        num0 = num % 10
+        num1 = (num // 10) % 10
+        num2 = (num // 100) % 10
+        num3 = (num // 1000) % 10
+
+        return romans3[num3] + romans2[num2] + romans1[num1] + romans0[num0]

@@ -4,102 +4,81 @@
 # Author: Mu Yang <http://muyang.pro>
 
 ################################################################################################################################
-# Given preorder and inorder traversal of a tree, construct the binary tree.
+# Given two integer arrays `preorder` and `inorder` where `preorder` is the preorder traversal of a binary tree and `inorder` is the inorder traversal of the same tree, construct and return the binary tree.
 #
-# Note:
-# You may assume that duplicates do not exist in the tree.
+# **Example 1:**
+# https://assets.leetcode.com/uploads/2021/02/19/tree.jpg
 #
-# For example, given
+# ```
+# Input: preorder = [3,9,20,15,7], inorder = [9,3,15,20,7]
+# Output: [3,9,20,null,null,15,7]
+# ```
 #
-#   preorder = [3,9,20,15,7]
-#   inorder = [9,3,15,20,7]
+# **Example 2:**
 #
-# Return the following binary tree:
+# ```
+# Input: preorder = [-1], inorder = [-1]
+# Output: [-1]
+# ```
 #
-#     3
-#    / \
-#   9  20
-#     /  \
-#    15   7
+# **Constraints:**
+#
+# - `1 <= preorder.length <= 3000`
+# - `inorder.length == preorder.length`
+# - `-3000 <= preorder[i], inorder[i] <= 3000`
+# - `preorder` and `inorder` consist of **unique** values.
+# - Each value of `inorder` also appears in `preorder`.
+# - `preorder` is **guaranteed** to be the preorder traversal of the tree.
+# - `inorder` is **guaranteed** to be the inorder traversal of the tree.
 #
 ################################################################################################################################
 
-# Definition for a binary tree node.
-# class TreeNode:
-#     def __init__(self, val=0, left=None, right=None):
-#         self.val = val
-#         self.left = left
-#         self.right = right
 
+from typing import List, Optional
+
+
+class TreeNode:
+    def __init__(self, val=0, left=None, right=None):
+        self.val = val
+        self.left = left
+        self.right = right
+
+
+# Divide and Conquer
+# O(n logn)
+#
+# The first value in `preorder` is the root.
+# We may find this not in `inorder`, and split the left and right parts into subtrees.
+# Using size of the subtrees, we can also split `preorder` into two parts.
 class Solution:
-    """O(n)"""
-    def buildTree(self, preorder: List[int], inorder: List[int]) -> TreeNode:
-
-        preorder.reverse()
-        inorder.reverse()
-        return self.buildTreeInner(preorder, inorder, None)
-
-    def buildTreeInner(self, preorder, inorder, parent_val):
-
+    def buildTree(self, preorder: List[int], inorder: List[int]) -> Optional[TreeNode]:
         if not preorder:
             return None
-
-        if inorder[-1] == parent_val:
-            inorder.pop()
-            return None
-
-        # Create node
-        root = TreeNode(val=preorder.pop())
-
-        # Recursive
-        root.left = self.buildTreeInner(preorder, inorder, root.val)
-        root.right = self.buildTreeInner(preorder, inorder, parent_val)
-
-        return root
-
-class Solution2:
-    """O(n)"""
-    def buildTree(self, preorder: List[int], inorder: List[int]) -> TreeNode:
-
-        self.preorder = preorder
-        self.inorder = inorder
-        self.preindex = 0
-        self.inindex = 0
-
-        return self.buildTreeInner(None)
-
-    def buildTreeInner(self, parent_val):
-
-        if self.preindex >= len(self.preorder):
-            return None
-
-        if self.inorder[self.inindex] == parent_val:
-            self.inindex += 1
-            return None
-
-        # Create node
-        root = TreeNode(val=self.preorder[self.preindex])
-        self.preindex += 1
-
-        # Recursive
-        root.left = self.buildTreeInner(root.val)
-        root.right = self.buildTreeInner(parent_val)
-
-        return root
-
-class Solution3:
-    """O(n logn)"""
-    def buildTree(self, preorder: List[int], inorder: List[int]) -> TreeNode:
-
-        if not preorder:
-            return None
-
-        # Find root node in inorder
         root = TreeNode(val=preorder[0])
-        index = inorder.index(root.val)
+        idx = inorder.index(preorder[0])
+        root.left = self.buildTree(preorder[1 : idx + 1], inorder[:idx])
+        root.right = self.buildTree(preorder[idx + 1 :], inorder[idx + 1 :])
+        return root
 
-        # Recursive
-        root.left = self.buildTree(preorder[1:index+1], inorder[:index])
-        root.right = self.buildTree(preorder[index+1:], inorder[index+1:])
 
+# Divide and Conquer
+# O(n)
+#
+# Use hash map to store the indices
+class Solution:
+    def buildTree(self, preorder: List[int], inorder: List[int]) -> Optional[TreeNode]:
+        self.inIdxs = {val: idx for idx, val in enumerate(inorder)}
+        return self._buildTree(preorder, inorder, 0)
+
+    def _buildTree(
+        self, preorder: List[int], inorder: List[int], shift: int
+    ) -> Optional[TreeNode]:
+        if not preorder:
+            return None
+        root = TreeNode(val=preorder[0])
+        idx = self.inIdxs[preorder[0]] - shift
+        root.left = self._buildTree(preorder[1 : idx + 1], inorder[:idx], shift + 0)
+        root.right = self._buildTree(
+            preorder[idx + 1 :], inorder[idx + 1 :], shift + idx + 1
+        )
         return root

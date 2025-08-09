@@ -42,6 +42,7 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 #include <bit>
+#include <cstdint>
 
 using namespace std;
 
@@ -54,5 +55,7 @@ using namespace std;
 //   we need to substract 1 to the result for the sign bit.
 class Solution {
  public:
-  int numberOfSteps(int num) { return num ? sizeof(num) * 8 - __builtin_clz(num) + __builtin_popcount(num) - 1 : 0; }
+  int numberOfSteps(int num) {  //
+    return num ? 32 - countl_zero(static_cast<uint32_t>(num)) + popcount(static_cast<uint32_t>(num)) - 1 : 0;
+  }
 };

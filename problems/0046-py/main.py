@@ -4,48 +4,44 @@
 # Author: Mu Yang <http://muyang.pro>
 
 ################################################################################################################################
-# Given a collection of distinct integers, return all possible permutations.
+# Given an array `nums` of distinct integers, return all the possible **permutations**. You can return the answer in **any order**.
 #
-# Example:
+# A **permutation** is a rearrangement of all the elements of an array.
 #
-#   Input: [1,2,3]
-#   Output:
-#   [
-#     [1,2,3],
-#     [1,3,2],
-#     [2,1,3],
-#     [2,3,1],
-#     [3,1,2],
-#     [3,2,1]
-#   ]
+# **Example 1:**
+#
+# ```
+# Input: nums = [1,2,3]
+# Output: [[1,2,3],[1,3,2],[2,1,3],[2,3,1],[3,1,2],[3,2,1]]
+# ```
+#
+# **Example 2:**
+#
+# ```
+# Input: nums = [0,1]
+# Output: [[0,1],[1,0]]
+# ```
+#
+# **Example 3:**
+#
+# ```
+# Input: nums = [1]
+# Output: [[1]]
+# ```
+#
+# **Constraints:**
+#
+# - `1 <= nums.length <= 6`
+# - `-10 <= nums[i] <= 10`
+# - All the integers of `nums` are **unique**.
 #
 ################################################################################################################################
+
+
+import itertools
+from typing import List
+
 
 class Solution:
-    """Heap's algorithm"""
     def permute(self, nums: List[int]) -> List[List[int]]:
-        yield from self.permuteInner(nums, len(nums))
-
-    def permuteInner(self, nums, k):
-        if k == 1:
-            yield list(nums)
-        else:
-            for i in range(k):
-                yield from self.permuteInner(nums, k-1)
-                if k % 2:
-                    nums[i], nums[k-1] = nums[k-1], nums[i]
-                else:
-                    nums[0], nums[k-1] = nums[k-1], nums[0]
-
-################################################################################################################################
-
-class Solution2:
-    def permute(self, nums: List[int]) -> List[List[int]]:
-        yield from self.permuteInner([], nums)
-
-    def permuteInner(self, prefix, nums):
-        if not nums:
-            yield prefix
-        else:
-            for i, n in enumerate(nums):
-                yield from self.permuteInner(prefix+[n], nums[:i]+nums[i+1:])
+        return list(map(list, itertools.permutations(nums)))

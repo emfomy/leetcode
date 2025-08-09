@@ -4,57 +4,67 @@
 # Author: Mu Yang <http://muyang.pro>
 
 ################################################################################################################################
-# Given n pairs of parentheses, write a function to generate all combinations of well-formed parentheses.
+# Given `n` pairs of parentheses, write a function to generate all combinations of well-formed parentheses.
 #
-# For example, given n = 3, a solution set is:
+# **Example 1:**
 #
-#   [
-#     "((()))",
-#     "(()())",
-#     "(())()",
-#     "()(())",
-#     "()()()"
-#   ]
+# ```
+# Input: n = 3
+# Output: ["((()))","(()())","(())()","()(())","()()()"]
+# ```
+#
+# **Example 2:**
+#
+# ```
+# Input: n = 1
+# Output: ["()"]
+# ```
+#
+# **Constraints:**
+#
+# - `1 <= n <= 8`
 #
 ################################################################################################################################
+
+from typing import List
+
 
 class Solution:
+    # Divide & Conquer
+    #
+    # First we know that the first character must be `(`.
+    # We can split the string into (xxx)yyy, where `)` is the corresponding parenthesis.
+    # Here xxx and yyy are both valid parentheses.
     def generateParenthesis(self, n: int) -> List[str]:
-
         if n == 0:
-            yield ''
-            return
+            return [""]
 
-        for m in range(n):
-            for left in self.generateParenthesis(m):
-                for right in self.generateParenthesis(n-m-1):
-                    yield f'({left}){right}'
+        ans = []
 
-################################################################################################################################
+        for i in range(n):
+            lefts = self.generateParenthesis(i)
+            rights = self.generateParenthesis(n - i - 1)
+            for left in lefts:
+                for right in rights:
+                    ans.append(f"({left}){right}")
 
-from itertools import product
+        return ans
 
-class Solution2:
+
+class Solution:
+    # DP
+    #
+    # First we know that the first character must be `(`.
+    # We can split the string into (xxx)yyy, where `)` is the corresponding parenthesis.
+    # Here xxx and yyy are both valid parentheses.
     def generateParenthesis(self, n: int) -> List[str]:
+        ansList = [[] for _ in range(n + 1)]
+        ansList[0].append("")
 
-        if n == 0:
-            yield ''
-            return
+        for m in range(n + 1):
+            for i in range(m):
+                for left in ansList[i]:
+                    for right in ansList[m - i - 1]:
+                        ansList[m].append(f"({left}){right}")
 
-        if n == 1:
-            yield '()'
-            return
-
-        for m in range(1, n+1):
-            yield from self.generateParenthesisBase(n, m)
-
-    def generateParenthesisBase(self, n: int, m: int):
-
-        for ls in product(*(range(n-m+1) for _ in range(m))):
-            if sum(ls) != n-m:
-                continue
-
-            template = '({})'*m
-            for subp in product(*map(self.generateParenthesis, ls)):
-                yield template.format(*subp)
-
+        return ansList[n]

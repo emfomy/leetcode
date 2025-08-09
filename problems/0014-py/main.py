@@ -2,34 +2,46 @@
 # Title: Longest Common Prefix
 # Difficulty: Easy
 # Author: Mu Yang <http://muyang.pro>
-
+#
 ################################################################################################################################
 # Write a function to find the longest common prefix string amongst an array of strings.
 #
-# If there is no common prefix, return an empty string "".
+# If there is no common prefix, return an empty string `""`.
 #
-# Example 1:
+# **Example 1:**
 #
-#   Input: ["flower","flow","flight"]
-#   Output: "fl"
+# ```
+# Input: strs = ["flower","flow","flight"]
+# Output: "fl"
+# ```
 #
-# Example 2:
+# **Example 2:**
 #
-#   Input: ["dog","racecar","car"]
-#   Output: ""
-#   Explanation: There is no common prefix among the input strings.
+# ```
+# Input: strs = ["dog","racecar","car"]
+# Output: ""
+# Explanation: There is no common prefix among the input strings.
+# ```
 #
-# Note:
+# **Constraints:**
 #
-#   All given inputs are in lowercase letters a-z.
+# - `1 <= strs.length <= 200`
+# - `0 <= strs[i].length <= 200`
+# - `strs[i]` consists of only lowercase English letters if it is non-empty.
 #
 ################################################################################################################################
 
+
+from typing import List
+
+
 class Solution:
     def longestCommonPrefix(self, strs: List[str]) -> str:
-        ans = ''
-        for cs in zip(*strs):
-            if any(c != cs[0] for c in cs[1:]):
+        size = 0
+
+        for chs in zip(*strs):
+            if any((ch != chs[0] for ch in chs)):
                 break
-            ans += cs[0]
-        return ans
+            size += 1
+
+        return strs[0][:size]

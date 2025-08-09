@@ -31,11 +31,14 @@
 package main
 
 func isSubsequence(s string, t string) bool {
-	sIdx := 0
-	for tIdx := 0; sIdx < len(s) && tIdx < len(t); tIdx++ {
-		if s[sIdx] == t[tIdx] {
-			sIdx++
+	m, n := len(s), len(t)
+
+	i, j := 0, 0
+	for i < m && j < n {
+		if s[i] == t[j] {
+			i++
 		}
+		j++
 	}
-	return sIdx == len(s)
+	return i == m
 }

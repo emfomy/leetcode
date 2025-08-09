@@ -4,107 +4,57 @@
 # Author: Mu Yang <http://muyang.pro>
 
 ################################################################################################################################
-# Given a binary tree, check whether it is a mirror of itself (ie, symmetric around its center).
+# Given the `root` of a binary tree, check whether it is a mirror of itself (i.e., symmetric around its center).
 #
-# For example, this binary tree [1,2,2,3,4,4,3] is symmetric:
+# **Example 1:**
+# https://assets.leetcode.com/uploads/2021/02/19/symtree1.jpg
 #
-#     1
-#    / \
-#   2   2
-#  / \ / \
-# 3  4 4  3
+# ```
+# Input: root = [1,2,2,3,4,4,3]
+# Output: true
+# ```
 #
-# But the following [1,2,2,null,3,null,3] is not:
+# **Example 2:**
+# https://assets.leetcode.com/uploads/2021/02/19/symtree2.jpg
 #
-#     1
-#    / \
-#   2   2
-#    \   \
-#    3    3
+# ```
+# Input: root = [1,2,2,null,3,null,3]
+# Output: false
+# ```
 #
-# Follow up: Solve it both recursively and iteratively.
+# **Constraints:**
+#
+# - The number of nodes in the tree is in the range `[1, 1000]`.
+# - `-100 <= Node.val <= 100`
+#
+# **Follow up:** Could you solve it both recursively and iteratively?
 #
 ################################################################################################################################
 
-# Definition for a binary tree node.
-# class TreeNode:
-#     def __init__(self, val=0, left=None, right=None):
-#         self.val = val
-#         self.left = left
-#         self.right = right
+
+from typing import Optional
+
+
+class TreeNode:
+    def __init__(self, val=0, left=None, right=None):
+        self.val = val
+        self.left = left
+        self.right = right
+
 
 class Solution:
-    """Iteration"""
-    def isSymmetric(self, root: TreeNode) -> bool:
-        if root:
-            for left, right in zip(self.traversalLeft(root.left), self.traversalRight(root.right)):
-                if left != right:
-                    return False
-        return True
+    def isSymmetric(self, root: Optional[TreeNode]) -> bool:
+        return self._isSymmetric(root, root)
 
-    def traversalLeft(self, root):
-        stack = [(None, None,)]
-        status = None
-        while stack:
-            if root:
-                if status is None:  # start
-                    yield root.val
-                    stack.append((root, 'L'))
-                    root = root.left
-                    status = None
-                elif status == 'L': # Left finished
-                    stack.append((root, 'R'))
-                    root = root.right
-                    status = None
-                else: # Right finished
-                    root, status = stack.pop()
-            else:
-                yield None
-                root, status = stack.pop()
+    def _isSymmetric(self, a: Optional[TreeNode], b: Optional[TreeNode]) -> bool:
+        if not a and not b:
+            return True
 
-    def traversalRight(self, root):
-        stack = [(None, None,)]
-        status = None
-        while stack:
-            if root:
-                if status is None:  # start
-                    yield root.val
-                    stack.append((root, 'R'))
-                    root = root.right
-                    status = None
-                elif status == 'R': # Right finished
-                    stack.append((root, 'L'))
-                    root = root.left
-                    status = None
-                else: # Right finished
-                    root, status = stack.pop()
-            else:
-                yield None
-                root, status = stack.pop()
+        if not a or not b:
+            return False
 
-################################################################################################################################
-
-class Solution2:
-    """Recursion"""
-    def isSymmetric(self, root: TreeNode) -> bool:
-        if root:
-            for left, right in zip(self.traversalLeft(root.left), self.traversalRight(root.right)):
-                if left != right:
-                    return False
-        return True
-
-    def traversalLeft(self, root):
-        if root:
-            yield root.val
-            yield from self.traversalLeft(root.left)
-            yield from self.traversalLeft(root.right)
-        else:
-            yield None
-
-    def traversalRight(self, root):
-        if root:
-            yield root.val
-            yield from self.traversalRight(root.right)
-            yield from self.traversalRight(root.left)
-        else:
-            yield None
+        return (
+            a.val == b.val
+            and self._isSymmetric(a.left, b.right)
+            and self._isSymmetric(a.right, b.left)
+        )

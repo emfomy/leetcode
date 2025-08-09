@@ -85,14 +85,11 @@ func numberOfPowerfulInt(start int64, finish int64, limit int, suffixStr string)
 
 func _fastPow(x int64, n int) int64 {
 	res := int64(1)
-	for true {
+	for n > 0 {
 		if (n & 1) != 0 {
 			res *= x
 		}
 		n >>= 1
-		if n == 0 {
-			break
-		}
 		x *= x
 	}
 	return res

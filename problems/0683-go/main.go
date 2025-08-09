@@ -41,7 +41,7 @@
 package main
 
 import (
-	"github.com/emirpasic/gods/v2/trees/avltree"
+	"github.com/emirpasic/gods/v2/trees/redblacktree"
 )
 
 // Brute-force
@@ -94,7 +94,7 @@ func kEmptySlots(bulbs []int, k int) int {
 // Use tree
 func kEmptySlots2(bulbs []int, k int) int {
 	type void struct{}
-	tree := avltree.New[int, void]()
+	tree := redblacktree.New[int, void]()
 	for day, bulb := range bulbs {
 		tree.Put(bulb, void{})
 		if left, ok := tree.Floor(bulb - 1); ok && (bulb-left.Key-1 == k) {

@@ -15,11 +15,11 @@ LeetCode Problems' Solutions
 | 8 | [String to Integer (atoi)](https://leetcode.com/problems/string-to-integer-atoi) | [Python](problems/0008-py/main.py) | Medium |
 | 9 | [Palindrome Number](https://leetcode.com/problems/palindrome-number) | [Python](problems/0009-py/main.py) | Easy |
 | 10 | [Regular Expression Matching](https://leetcode.com/problems/regular-expression-matching) | [Python](problems/0010-py/main.py) | Hard |
-| 11 | [Container With Most Water](https://leetcode.com/problems/container-with-most-water) | [Python](problems/0011-py/main.py) | Medium |
+| 11 | [Container With Most Water](https://leetcode.com/problems/container-with-most-water) | [C++](problems/0011-cpp/main.cpp) [Python](problems/0011-py/main.py) | Medium |
 | 12 | [Integer to Roman](https://leetcode.com/problems/integer-to-roman) | [Python](problems/0012-py/main.py) | Medium |
 | 13 | [Roman to Integer](https://leetcode.com/problems/roman-to-integer) | [Go](problems/0013-go/main.go) [Python](problems/0013-py/main.py) | Easy |
 | 14 | [Longest Common Prefix](https://leetcode.com/problems/longest-common-prefix) | [Python](problems/0014-py/main.py) | Easy |
-| 15 | [3Sum](https://leetcode.com/problems/3sum) | [Python](problems/0015-py/main.py) | Medium |
+| 15 | [3Sum](https://leetcode.com/problems/3sum) | [C++](problems/0015-cpp/main.cpp) [Python](problems/0015-py/main.py) | Medium |
 | 16 | [3Sum Closest](https://leetcode.com/problems/3sum-closest) | [Python](problems/0016-py/main.py) | Medium |
 | 17 | [Letter Combinations of a Phone Number](https://leetcode.com/problems/letter-combinations-of-a-phone-number) | [Python](problems/0017-py/main.py) | Medium |
 | 18 | [4Sum](https://leetcode.com/problems/4sum) | [Python](problems/0018-py/main.py) | Medium |
@@ -31,11 +31,13 @@ LeetCode Problems' Solutions
 | 24 | [Swap Nodes in Pairs](https://leetcode.com/problems/swap-nodes-in-pairs) | [Python](problems/0024-py/main.py) | Medium |
 | 26 | [Remove Duplicates from Sorted Array](https://leetcode.com/problems/remove-duplicates-from-sorted-array) | [Python](problems/0026-py/main.py) | Easy |
 | 27 | [Remove Element](https://leetcode.com/problems/remove-element) | [Python](problems/0027-py/main.py) | Easy |
+| 28 | [Find the Index of the First Occurrence in a String](https://leetcode.com/problems/find-the-index-of-the-first-occurrence-in-a-string) | [Go](problems/0028-go/main.go) [Python](problems/0028-py/main.py) | Easy |
 | 29 | [Divide Two Integers](https://leetcode.com/problems/divide-two-integers) | [Go](problems/0029-go/main.go) | Medium |
-| 30 | [Substring with Concatenation of All Words](https://leetcode.com/problems/substring-with-concatenation-of-all-words) | [Go](problems/0030-go/main.go) | Hard |
+| 30 | [Substring with Concatenation of All Words](https://leetcode.com/problems/substring-with-concatenation-of-all-words) | [C++](problems/0030-cpp/main.cpp) [Go](problems/0030-go/main.go) | Hard |
 | 32 | [Longest Valid Parentheses](https://leetcode.com/problems/longest-valid-parentheses) | [Python](problems/0032-py/main.py) | Hard |
 | 33 | [Search in Rotated Sorted Array](https://leetcode.com/problems/search-in-rotated-sorted-array) | [C++](problems/0033-cpp/main.cpp) [Python](problems/0033-py/main.py) | Medium |
 | 34 | [Find First and Last Position of Element in Sorted Array](https://leetcode.com/problems/find-first-and-last-position-of-element-in-sorted-array) | [C++](problems/0034-cpp/main.cpp) [Go](problems/0034-go/main.go) | Medium |
+| 36 | [Valid Sudoku](https://leetcode.com/problems/valid-sudoku) | [C++](problems/0036-cpp/main.cpp) | Medium |
 | 38 | [Count and Say](https://leetcode.com/problems/count-and-say) | [Go](problems/0038-go/main.go) | Medium |
 | 39 | [Combination Sum](https://leetcode.com/problems/combination-sum) | [Go](problems/0039-go/main.go) [Python](problems/0039-py/main.py) | Medium |
 | 40 | [Combination Sum II](https://leetcode.com/problems/combination-sum-ii) | [Go](problems/0040-go/main.go) | Medium |
@@ -43,22 +45,28 @@ LeetCode Problems' Solutions
 | 42 | [Trapping Rain Water](https://leetcode.com/problems/trapping-rain-water) | [Go](problems/0042-go/main.go) [Python](problems/0042-py/main.py) | Hard |
 | 45 | [Jump Game II](https://leetcode.com/problems/jump-game-ii) | [Go](problems/0045-go/main.go) [Python](problems/0045-py/main.py) | Hard |
 | 46 | [Permutations](https://leetcode.com/problems/permutations) | [Python](problems/0046-py/main.py) | Medium |
-| 48 | [Rotate Image](https://leetcode.com/problems/rotate-image) | [Python](problems/0048-py/main.py) | Medium |
-| 49 | [Group Anagrams](https://leetcode.com/problems/group-anagrams) | [Go](problems/0049-go/main.go) [Python](problems/0049-py/main.py) | Medium |
+| 48 | [Rotate Image](https://leetcode.com/problems/rotate-image) | [C++](problems/0048-cpp/main.cpp) [Python](problems/0048-py/main.py) | Medium |
+| 49 | [Group Anagrams](https://leetcode.com/problems/group-anagrams) | [C++](problems/0049-cpp/main.cpp) [Go](problems/0049-go/main.go) [Python](problems/0049-py/main.py) | Medium |
+| 50 | [Pow(x, n)](https://leetcode.com/problems/powx-n) | [Python](problems/0050-py/main.py) | Medium |
 | 51 | [N-Queens](https://leetcode.com/problems/n-queens) | [Go](problems/0051-go/main.go) | Hard |
-| 52 | [N-Queens II](https://leetcode.com/problems/n-queens-ii) | [Go](problems/0052-go/main.go) | Hard |
+| 52 | [N-Queens II](https://leetcode.com/problems/n-queens-ii) | [Go](problems/0052-go/main.go) [Python](problems/0052-py/main.py) | Hard |
 | 53 | [Maximum Subarray](https://leetcode.com/problems/maximum-subarray) | [Go](problems/0053-go/main.go) [Python](problems/0053-py/main.py) | Easy |
-| 54 | [Spiral Matrix](https://leetcode.com/problems/spiral-matrix) | [Go](problems/0054-go/main.go) | Medium |
+| 54 | [Spiral Matrix](https://leetcode.com/problems/spiral-matrix) | [C++](problems/0054-cpp/main.cpp) [Go](problems/0054-go/main.go) | Medium |
 | 55 | [Jump Game](https://leetcode.com/problems/jump-game) | [Go](problems/0055-go/main.go) [Python](problems/0055-py/main.py) | Medium |
-| 56 | [Merge Intervals](https://leetcode.com/problems/merge-intervals) | [Python](problems/0056-py/main.py) | Medium |
+| 56 | [Merge Intervals](https://leetcode.com/problems/merge-intervals) | [C++](problems/0056-cpp/main.cpp) [Python](problems/0056-py/main.py) | Medium |
+| 58 | [Length of Last Word](https://leetcode.com/problems/length-of-last-word) | [Python](problems/0058-py/main.py) | Easy |
 | 59 | [Spiral Matrix II](https://leetcode.com/problems/spiral-matrix-ii) | [Go](problems/0059-go/main.go) | Medium |
 | 62 | [Unique Paths](https://leetcode.com/problems/unique-paths) | [Go](problems/0062-go/main.go) [Python](problems/0062-py/main.py) | Medium |
 | 63 | [Unique Paths II](https://leetcode.com/problems/unique-paths-ii/) | [Go](problems/0063-go/main.go) | Medium |
 | 64 | [Minimum Path Sum](https://leetcode.com/problems/minimum-path-sum) | [Go](problems/0064-go/main.go) [Python](problems/0064-py/main.py) | Medium |
+| 68 | [Text Justification](https://leetcode.com/problems/text-justification) | [Python](problems/0068-py/main.py) | Hard |
+| 69 | [Sqrt(x)](https://leetcode.com/problems/sqrtx) | [Python](problems/0069-py/main.py) | Easy |
 | 70 | [Climbing Stairs](https://leetcode.com/problems/climbing-stairs) | [Go](problems/0070-go/main.go) [Python](problems/0070-py/main.py) | Easy |
 | 72 | [Edit Distance](https://leetcode.com/problems/edit-distance) | [Go](problems/0072-go/main.go) [Python](problems/0072-py/main.py) | Hard |
-| 73 | [Set Matrix Zeroes](https://leetcode.com/problems/set-matrix-zeroes) | [Go](problems/0073-go/main.go) | Medium |
+| 73 | [Set Matrix Zeroes](https://leetcode.com/problems/set-matrix-zeroes) | [C++](problems/0073-cpp/main.cpp) [Go](problems/0073-go/main.go) | Medium |
 | 75 | [Sort Colors](https://leetcode.com/problems/sort-colors) | [Go](problems/0075-go/main.go) [Python](problems/0075-py/main.py) | Medium |
+| 76 | [Minimum Window Substring](https://leetcode.com/problems/minimum-window-substring) | [C++](problems/0076-cpp/main.cpp) | Hard |
+| 77 | [Letter Combinations](https://leetcode.com/problems/combinations) | [Python](problems/0077-py/main.py) | Medium |
 | 78 | [Subsets](https://leetcode.com/problems/subsets) | [Go](problems/0078-go/main.go) [Python](problems/0078-py/main.py) | Medium |
 | 79 | [Word Search](https://leetcode.com/problems/word-search) | [Python](problems/0079-py/main.py) | Medium |
 | 80 | [Remove Duplicates from Sorted Array II](https://leetcode.com/problems/remove-duplicates-from-sorted-array-ii) | [Python](problems/0080-py/main.py) | Medium |
@@ -73,67 +81,98 @@ LeetCode Problems' Solutions
 | 96 | [Unique Binary Search Trees](https://leetcode.com/problems/unique-binary-search-trees) | [Go](problems/0096-go/main.go) [Python](problems/0096-py/main.py) | Medium |
 | 97 | [Interleaving String](https://leetcode.com/problems/interleaving-string) | [Go](problems/0097-go/main.go) | Medium |
 | 98 | [Validate Binary Search Tree](https://leetcode.com/problems/validate-binary-search-tree) | [Go](problems/0098-go/main.go) [Python](problems/0098-py/main.py) | Medium |
+| 100 | [Same Tree](https://leetcode.com/problems/same-tree) | [Python](problems/0100-py/main.py) | Easy |
 | 101 | [Symmetric Tree](https://leetcode.com/problems/symmetric-tree) | [Python](problems/0101-py/main.py) | Easy |
 | 102 | [Binary Tree Level Order Traversal](https://leetcode.com/problems/binary-tree-level-order-traversal) | [Go](problems/0102-go/main.go) [Python](problems/0102-py/main.py) | Medium |
+| 103 | [Binary Tree Zigzag Level Order Traversal](https://leetcode.com/problems/binary-tree-zigzag-level-order-traversal) | [Python](problems/0103-py/main.py) | Medium |
 | 104 | [Maximum Depth of Binary Tree](https://leetcode.com/problems/maximum-depth-of-binary-tree) | [Go](problems/0104-go/main.go) [Python](problems/0104-py/main.py) | Easy |
 | 105 | [Construct Binary Tree from Preorder and Inorder Traversal](https://leetcode.com/problems/construct-binary-tree-from-preorder-and-inorder-traversal) | [Go](problems/0105-go/main.go) [Python](problems/0105-py/main.py) | Medium |
+| 106 | [Construct Binary Tree from Inorder and Postorder Traversal](https://leetcode.com/problems/construct-binary-tree-from-inorder-and-postorder-traversal) | [Python](problems/0106-py/main.py) | Medium |
 | 108 | [Convert Sorted Array to Binary Search Tree](https://leetcode.com/problems/convert-sorted-array-to-binary-search-tree) | [Go](problems/0108-go/main.go) | Easy |
+| 112 | [Path Sum](https://leetcode.com/problems/path-sum) | [Python](problems/0112-py/main.py) | Easy |
 | 114 | [Flatten Binary Tree to Linked List](https://leetcode.com/problems/flatten-binary-tree-to-linked-list) | [Go](problems/0114-go/main.go) [Python](problems/0114-py/main.py) | Medium |
+| 117 | [Populating Next Right Pointers in Each Node II](https://leetcode.com/problems/populating-next-right-pointers-in-each-node-ii) | [Python](problems/0117-py/main.py) | Medium |
 | 118 | [Pascal's Triangle](https://leetcode.com/problems/pascals-triangle) | [Go](problems/0118-go/main.go) | Easy |
 | 119 | [Pascal's Triangle II](https://leetcode.com/problems/pascals-triangle-ii) | [Go](problems/0119-go/main.go) | Easy |
 | 120 | [Triangle](https://leetcode.com/problems/triangle) | [Go](problems/0120-go/main.go) | Medium |
 | 121 | [Best Time to Buy and Sell Stock](https://leetcode.com/problems/best-time-to-buy-and-sell-stock) | [Go](problems/0121-go/main.go) [Python](problems/0121-py/main.py) | Easy |
 | 122 | [Best Time to Buy and Sell Stock II](https://leetcode.com/problems/best-time-to-buy-and-sell-stock-ii) | [Go](problems/0122-go/main.go) [Python](problems/0122-py/main.py) | Medium |
+| 123 | [Best Time to Buy and Sell Stock III](https://leetcode.com/problems/best-time-to-buy-and-sell-stock-iii) | [Python](problems/0123-py/main.py) | Hard |
+| 124 | [Binary Tree Maximum Path Sum](https://leetcode.com/problems/binary-tree-maximum-path-sum) | [Python](problems/0124-py/main.py) | Hard |
+| 125 | [Populating Next Right Pointers in Each Node II](https://leetcode.com/problems/populating-next-right-pointers-in-each-node-ii) | [Python](problems/0125-py/main.py) | Easy |
 | 126 | [Word Ladder II](https://leetcode.com/problems/word-ladder-ii) | [Go](problems/0126-go/main.go) | Hard |
-| 128 | [Longest Consecutive Sequence](https://leetcode.com/problems/longest-consecutive-sequence) | [Go](problems/0128-go/main.go) | Medium |
+| 127 | [Word Ladder](https://leetcode.com/problems/word-ladder) | [Python](problems/0127-py/main.py) | Hard |
+| 128 | [Longest Consecutive Sequence](https://leetcode.com/problems/longest-consecutive-sequence) | [C++](problems/0128-cpp/main.cpp) [Go](problems/0128-go/main.go) | Medium |
+| 129 | [Sum Root to Leaf Numbers](https://leetcode.com/problems/sum-root-to-leaf-numbers) | [Python](problems/0129-py/main.py) | Medium |
 | 134 | [Gas Station](https://leetcode.com/problems/gas-station) | [Python](problems/0134-py/main.py) | Medium |
 | 135 | [Candy](https://leetcode.com/problems/candy) | [Go](problems/0135-go/main.go) [Python](problems/0135-py/main.py) | Hard |
 | 137 | [Single Number II](https://leetcode.com/problems/single-number-ii) | [Go](problems/0137-go/main.go) | Medium |
 | 139 | [Word Break](https://leetcode.com/problems/word-break) | [Go](problems/0139-go/main.go) | Medium |
+| 151 | [Reverse Words in a String](https://leetcode.com/problems/reverse-words-in-a-string) | [Python](problems/0151-py/main.py) | Medium |
 | 152 | [Maximum Product Subarray](https://leetcode.com/problems/maximum-product-subarray) | [Go](problems/0152-go/main.go) | Medium |
 | 160 | [Intersection of Two Linked Lists](https://leetcode.com/problems/intersection-of-two-linked-lists) | [Go](problems/0160-go/main.go) | Easy |
 | 165 | [Compare Version Numbers](https://leetcode.com/problems/compare-version-numbers) | [Go](problems/0165-go/main.go) | Medium |
-| 167 | [Two Sum II - Input Array Is Sorted](https://leetcode.com/problems/two-sum-ii-input-array-is-sorted) | [Go](problems/0167-go/main.go) | Medium |
+| 167 | [Two Sum II - Input Array Is Sorted](https://leetcode.com/problems/two-sum-ii-input-array-is-sorted) | [Go](problems/0167-go/main.go) [Python](problems/0167-py/main.py) | Medium |
 | 169 | [Majority Element](https://leetcode.com/problems/majority-element) | [Python](problems/0169-py/main.py) | Easy |
+| 173 | [Binary Search Tree Iterator](https://leetcode.com/problems/binary-search-tree-iterator) | [Python](problems/0173-py/main.py) | Medium |
+| 188 | [Best Time to Buy and Sell Stock IV](https://leetcode.com/problems/best-time-to-buy-and-sell-stock-iv) | [Python](problems/0188-py/main.py) | Hard |
 | 189 | [Rotate Array](https://leetcode.com/problems/rotate-array) | [Python](problems/0189-py/main.py) | Medium |
 | 191 | [Number of 1 Bits](https://leetcode.com/problems/number-of-1-bits) | [C++](problems/0191-cpp/main.cpp) [Go](problems/0191-go/main.go) | Easy |
 | 198 | [House Robber](https://leetcode.com/problems/house-robber) | [Go](problems/0198-go/main.go) | Medium |
-| 199 | [Binary Tree Right Side View](https://leetcode.com/problems/binary-tree-right-side-view) | [Go](problems/0199-go/main.go) | Medium |
+| 199 | [Binary Tree Right Side View](https://leetcode.com/problems/binary-tree-right-side-view) | [Go](problems/0199-go/main.go) [Python](problems/0199-py/main.py) | Medium |
 | 200 | [Number of Islands](https://leetcode.com/problems/number-of-islands) | [Go](problems/0200-go/main.go) | Medium |
-| 202 | [Happy Number](https://leetcode.com/problems/happy-number) | [Go](problems/0202-go/main.go) | Easy |
+| 202 | [Happy Number](https://leetcode.com/problems/happy-number) | [C++](problems/0202-cpp/main.cpp) [Go](problems/0202-go/main.go) | Easy |
+| 205 | [Isomorphic Strings](https://leetcode.com/problems/isomorphic-strings) | [C++](problems/0205-cpp/main.cpp) | Easy |
 | 206 | [Reverse Linked List](https://leetcode.com/problems/reverse-linked-list) | [Go](problems/0206-go/main.go) | Easy |
 | 207 | [Course Schedule](https://leetcode.com/problems/course-schedule) | [Go](problems/0207-go/main.go) | Medium |
 | 208 | [Implement Trie (Prefix Tree)](https://leetcode.com/problems/implement-trie-prefix-tree) | [Go](problems/0208-go/main.go) | Medium |
+| 209 | [Minimum Size Subarray Sum](https://leetcode.com/problems/minimum-size-subarray-sum) | [C++](problems/0209-cpp/main.cpp) | Medium |
 | 210 | [Course Schedule II](https://leetcode.com/problems/course-schedule-ii) | [Go](problems/0210-go/main.go) | Medium |
 | 213 | [House Robber II](https://leetcode.com/problems/house-robber-ii) | [Go](problems/0213-go/main.go) | Medium |
 | 215 | [Kth Largest Element in an Array](https://leetcode.com/problems/kth-largest-element-in-an-array) | [C++](problems/0215-cpp/main.cpp) [Go](problems/0215-go/main.go) | Medium |
 | 216 | [Combination Sum III](https://leetcode.com/problems/combination-sum-iii) | [Go](problems/0216-go/main.go) | Medium |
 | 217 | [Contains Duplicate](https://leetcode.com/problems/contains-duplicate) | [Go](problems/0217-go/main.go) | Easy |
+| 219 | [Contains Duplicate II](https://leetcode.com/problems/contains-duplicate-ii) | [C++](problems/0219-cpp/main.cpp) | Easy |
 | 221 | [Maximal Square](https://leetcode.com/problems/maximal-square) | [Go](problems/0221-go/main.go) | Medium |
+| 222 | [Count Complete Tree Nodes](https://leetcode.com/problems/count-complete-tree-nodes) | [Python](problems/0222-py/main.py) | Easy |
+| 226 | [Invert Binary Tree](https://leetcode.com/problems/invert-binary-tree) | [Python](problems/0226-py/main.py) | Easy |
+| 228 | [Summary Ranges](https://leetcode.com/problems/summary-ranges) | [C++](problems/0228-cpp/main.cpp) | Easy |
+| 231 | [Power of Two](https://leetcode.com/problems/power-of-two) | [C++](problems/0231-cpp/main.cpp) | Easy |
 | 232 | [Implement Queue using Stacks](https://leetcode.com/problems/implement-queue-using-stacks) | [Go](problems/0232-go/main.go) | Easy |
 | 235 | [Lowest Common Ancestor of a Binary Search Tree](https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-search-tree) | [Go](problems/0235-go/main.go) | Easy |
-| 236 | [Lowest Common Ancestor of a Binary Tree](https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-tree) | [Go](problems/0236-go/main.go) | Medium |
+| 236 | [Lowest Common Ancestor of a Binary Tree](https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-tree) | [Go](problems/0236-go/main.go) [Python](problems/0236-py/main.py) | Medium |
 | 237 | [Delete Node in a Linked List](https://leetcode.com/problems/delete-node-in-a-linked-list) | [Go](problems/0237-go/main.go) | Medium |
 | 238 | [Product of Array Except Self](https://leetcode.com/problems/product-of-array-except-self) | [Python](problems/0238-py/main.py) | Medium |
 | 240 | [Search a 2D Matrix II](https://leetcode.com/problems/search-a-2d-matrix-ii) | [Go](problems/0240-go/main.go) | Medium |
-| 242 | [Valid Anagram](https://leetcode.com/problems/valid-anagram) | [Go](problems/0242-go/main.go) | Easy |
+| 242 | [Valid Anagram](https://leetcode.com/problems/valid-anagram) | [C++](problems/0242-cpp/main.cpp) [Go](problems/0242-go/main.go) | Easy |
 | 255 | [Verify Preorder Sequence in Binary Search Tree](https://leetcode.com/problems/verify-preorder-sequence-in-binary-search-tree) | [Go](problems/0255-go/main.go) | Medium |
 | 263 | [Ugly Number](https://leetcode.com/problems/ugly-number) | [Go](problems/0263-go/main.go) | Easy |
 | 264 | [Ugly Number](https://leetcode.com/problems/ugly-number) | [Go](problems/0264-go/main.go) | Easy |
 | 268 | [Missing Number](https://leetcode.com/problems/missing-number) | [Go](problems/0268-go/main.go) | Easy |
+| 272 | [Closest Binary Search Tree Value II](https://leetcode.com/problems/closest-binary-search-tree-value-ii) | [Go](problems/0272-go/main.go) | Hard |
 | 273 | [Integer to English Words](https://leetcode.com/problems/integer-to-english-words) | [Go](problems/0273-go/main.go) | Hard |
 | 274 | [H-Index](https://leetcode.com/problems/h-index) | [Python](problems/0274-py/main.py) | Medium |
 | 279 | [Perfect Squares](https://leetcode.com/problems/perfect-squares) | [Go](problems/0279-go/main.go) | Medium |
 | 283 | [Move Zeroes](https://leetcode.com/problems/move-zeroes) | [Go](problems/0283-go/main.go) | Easy |
+| 285 | [Inorder Successor in BST](https://leetcode.com/problems/inorder-successor-in-bst) | [Go](problems/0285-go/main.go) | Medium |
+| 289 | [Game of Life](https://leetcode.com/problems/game-of-life) | [C++](problems/0289-cpp/main.cpp) | Medium |
+| 290 | [Word Pattern](https://leetcode.com/problems/word-pattern) | [C++](problems/0290-cpp/main.cpp) | Easy |
 | 300 | [Longest Increasing Subsequence](https://leetcode.com/problems/longest-increasing-subsequence) | [Go](problems/0300-go/main.go) | Medium |
+| 302 | [Smallest Rectangle Enclosing Black Pixels](https://assets.leetcode.com/uploads/2021/03/14/pixel-grid.jpg) | [Go](problems/0302-go/main.go) | Hard |
 | 303 | [Range Sum Query - Immutable](https://leetcode.com/problems/range-sum-query-immutable) | [Go](problems/0303-go/main.go) | Easy |
 | 304 | [Range Sum Query 2D - Immutable](https://leetcode.com/problems/range-sum-query-2d-immutable) | [Go](problems/0304-go/main.go) | Medium |
 | 307 | [Range Sum Query - Immutable](https://leetcode.com/problems/range-sum-query-immutable) | [Go](problems/0307-go/main.go) | Easy |
 | 309 | [Best Time to Buy and Sell Stock with Cooldown](https://leetcode.com/problems/best-time-to-buy-and-sell-stock-with-cooldown) | [Go](problems/0309-go/main.go) | Medium |
+| 311 | [Sparse Matrix Multiplication](https://leetcode.com/problems/sparse-matrix-multiplication) | [Go](problems/0311-go/main.go) | Medium |
+| 314 | [Binary Tree Vertical Order Traversal](https://leetcode.com/problems/binary-tree-vertical-order-traversal) | [C++](problems/0314-cpp/main.cpp) | Medium |
 | 315 | [Count of Smaller Numbers After Self](https://leetcode.com/problems/count-of-smaller-numbers-after-self) | [Go](problems/0315-go/main.go) | Hard |
+| 317 | [Shortest Distance from All Buildings](https://leetcode.com/problems/shortest-distance-from-all-buildings) | [Go](problems/0317-go/main.go) | Hard |
 | 318 | [Maximum Product of Word Lengths](https://leetcode.com/problems/maximum-product-of-word-lengths) | [Go](problems/0318-go/main.go) | Easy |
 | 322 | [Coin Change](https://leetcode.com/problems/coin-change) | [Go](problems/0322-go/main.go) | Medium |
+| 323 | [Number of Connected Components in an Undirected Graph](https://leetcode.com/problems/number-of-connected-components-in-an-undirected-graph) | [Go](problems/0323-go/main.go) | Medium |
+| 325 | [Maximum Size Subarray Sum Equals k](https://leetcode.com/problems/maximum-size-subarray-sum-equals-k) | [Go](problems/0325-go/main.go) | Medium |
 | 326 | [Power of Three](https://leetcode.com/problems/power-of-three) | [Go](problems/0326-go/main.go) | Easy |
+| 333 | [Largest BST Subtree](https://leetcode.com/problems/largest-bst-subtree) | [Go](problems/0333-go/main.go) | Medium |
 | 343 | [Integer Break](https://leetcode.com/problems/integer-break) | [Go](problems/0343-go/main.go) | Medium |
 | 353 | [Design Snake Game](https://leetcode.com/problems/logger-rate-limiter) | [Go](problems/0353-go/main.go) | Medium |
 | 359 | [Logger Rate Limiter](https://leetcode.com/problems/logger-rate-limiter) | [Go](problems/0359-go/main.go) | Easy |
@@ -142,18 +181,23 @@ LeetCode Problems' Solutions
 | 376 | [Wiggle Subsequence](https://leetcode.com/problems/wiggle-subsequence) | [Go](problems/0376-go/main.go) | Medium |
 | 377 | [Combination Sum IV](https://leetcode.com/problems/combination-sum-iv) | [Go](problems/0377-go/main.go) | Medium |
 | 378 | [Kth Smallest Element in a Sorted Matrix](https://leetcode.com/problems/kth-smallest-element-in-a-sorted-matrix) | [Go](problems/0378-go/main.go) | Medium |
-| 380 | [Insert Delete GetRandom O(1)](https://leetcode.com/problems/insert-delete-getrandom-o1) | [Go](problems/0380-go/main.go) [Python](problems/0380-py/main.py) | Medium |
-| 383 | [Ransom Note](https://leetcode.com/problems/ransom-note) | [Go](problems/0383-go/main.go) | Easy |
+| 380 | [Insert Delete GetRandom O(1)](https://leetcode.com/problems/insert-delete-getrandom-o1) | [C++](problems/0380-cpp/main.cpp) [Go](problems/0380-go/main.go) [Python](problems/0380-py/main.py) | Medium |
+| 381 | [Insert Delete GetRandom O(1) - Duplicates allowed](https://leetcode.com/problems/insert-delete-getrandom-o1-duplicates-allowed) | [C++](problems/0381-cpp/main.cpp) | Hard |
+| 383 | [Ransom Note](https://leetcode.com/problems/ransom-note) | [C++](problems/0383-cpp/main.cpp) [Go](problems/0383-go/main.go) | Easy |
 | 386 | [Lexicographical Numbers](https://leetcode.com/problems/lexicographical-numbers) | [Go](problems/0386-go/main.go) | Medium |
 | 387 | [Roman to Integer](https://leetcode.com/problems/first-unique-character-in-a-string) | [Go](problems/0387-go/main.go) | Easy |
 | 389 | [Find the Difference](https://leetcode.com/problems/find-the-difference) | [Go](problems/0389-go/main.go) | Easy |
-| 392 | [Is Subsequence](https://leetcode.com/problems/is-subsequence) | [Go](problems/0392-go/main.go) | Easy |
+| 392 | [Is Subsequence](https://leetcode.com/problems/is-subsequence) | [Go](problems/0392-go/main.go) [Python](problems/0392-py/main.py) | Easy |
 | 404 | [Sum of Left Leaves](https://leetcode.com/problems/sum-of-left-leaves) | [Go](problems/0404-go/main.go) | Easy |
 | 406 | [Queue Reconstruction by Height](https://leetcode.com/problems/queue-reconstruction-by-height) | [Go](problems/0406-go/main.go) | Medium |
 | 407 | [Trapping Rain Water II](https://leetcode.com/problems/trapping-rain-water-ii) | [Go](problems/0407-go/main.go) [Python](problems/0407-py/main.py) | Medium |
 | 413 | [Arithmetic Slices](https://leetcode.com/problems/arithmetic-slices) | [Go](problems/0413-go/main.go) | Medium |
 | 416 | [Partition Equal Subset Sum](https://leetcode.com/problems/partition-equal-subset-sum) | [Go](problems/0416-go/main.go) | Medium |
+| 425 | [Word Squares](https://leetcode.com/problems/word-squares) | [Go](problems/0425-go/main.go) | Hard |
+| 426 | [Convert Binary Search Tree to Sorted Doubly Linked List](https://leetcode.com/problems/convert-binary-search-tree-to-sorted-doubly-linked-list) | [Go](problems/0426-go/main.go) | Medium |
+| 433 | [Minimum Genetic Mutation](https://leetcode.com/problems/minimum-genetic-mutation) | [Python](problems/0433-py/main.py) | Medium |
 | 440 | [K-th Smallest in Lexicographical Order](https://leetcode.com/problems/k-th-smallest-in-lexicographical-order) | [Go](problems/0440-go/main.go) | Hard |
+| 452 | [Minimum Number of Arrows to Burst Balloons](https://leetcode.com/problems/minimum-number-of-arrows-to-burst-balloons) | [C++](problems/0452-cpp/main.cpp) | Medium |
 | 458 | [Poor Pigs](https://leetcode.com/problems/poor-pigs) | [Go](problems/0458-go/main.go) | Hard |
 | 462 | [Minimum Moves to Equal Array Elements II](https://leetcode.com/problems/minimum-moves-to-equal-array-elements-ii) | [Go](problems/0462-go/main.go) | Medium |
 | 473 | [Matchsticks to Square](https://leetcode.com/problems/matchsticks-to-square) | [Go](problems/0473-go/main.go) | Medium |
@@ -164,19 +208,25 @@ LeetCode Problems' Solutions
 | 515 | [Find Largest Value in Each Tree Row](https://leetcode.com/problems/find-largest-value-in-each-tree-row) | [Go](problems/0515-go/main.go) | Medium |
 | 516 | [Longest Palindromic Subsequence](https://leetcode.com/problems/longest-palindromic-subsequence) | [Go](problems/0516-go/main.go) | Medium |
 | 518 | [Coin Change 2](https://leetcode.com/problems/coin-change-2) | [Go](problems/0518-go/main.go) | Medium |
+| 527 | [Word Abbreviation](https://leetcode.com/problems/word-abbreviation/) | [Go](problems/0527-go/main.go) | Hard |
+| 530 | [Minimum Absolute Difference in BST](https://leetcode.com/problems/minimum-absolute-difference-in-bst) | [Python](problems/0530-py/main.py) | Easy |
 | 566 | [Reshape the Matrix](https://leetcode.com/problems/reshape-the-matrix) | [Go](problems/0566-go/main.go) | Easy |
 | 576 | [Out of Boundary Paths](https://leetcode.com/problems/out-of-boundary-paths) | [Go](problems/0576-go/main.go) | Medium |
 | 583 | [Delete Operation for Two Strings](https://leetcode.com/problems/delete-operation-for-two-strings) | [Go](problems/0583-go/main.go) | Medium |
 | 589 | [N-ary Tree Preorder Traversal](https://leetcode.com/problems/n-ary-tree-preorder-traversal) | [Go](problems/0589-go/main.go) | Easy |
+| 594 | [Longest Harmonious Subsequence](https://leetcode.com/problems/longest-harmonious-subsequence) | [Go](problems/0594-go/main.go) | Easy |
 | 629 | [K Inverse Pairs Array](https://leetcode.com/problems/k-inverse-pairs-array) | [Go](problems/0629-go/main.go) | Hard |
 | 630 | [Course Schedule III](https://leetcode.com/problems/course-schedule-iii) | [Go](problems/0630-go/main.go) | Hard |
 | 633 | [Sum of Square Numbers](https://leetcode.com/problems/sum-of-square-numbers) | [Go](problems/0633-go/main.go) | Medium |
+| 637 | [Average of Levels in Binary Tree](https://leetcode.com/problems/average-of-levels-in-binary-tree) | [Python](problems/0637-py/main.py) | Easy |
+| 641 | [Design Circular Deque](https://leetcode.com/problems/design-circular-deque) | [C++](problems/0641-cpp/main.cpp) | Medium |
 | 663 | [Equal Tree Partition](https://leetcode.com/problems/equal-tree-partition) | [Go](problems/0663-go/main.go) | Medium |
 | 665 | [Non-decreasing Array](https://leetcode.com/problems/non-decreasing-array) | [Go](problems/0665-go/main.go) | Medium |
 | 683 | [K Empty Slots](https://leetcode.com/problems/k-empty-slots) | [Go](problems/0683-go/main.go) | Hard |
 | 684 | [Redundant Connection](https://leetcode.com/problems/redundant-connection) | [Go](problems/0684-go/main.go) | Medium |
 | 689 | [Maximum Sum of 3 Non-Overlapping Subarrays](https://leetcode.com/problems/maximum-sum-of-3-non-overlapping-subarrays) | [Go](problems/0689-go/main.go) | Hard |
 | 695 | [Max Area of Island](https://leetcode.com/problems/max-area-of-island) | [Go](problems/0695-go/main.go) | Medium |
+| 707 | [Design Linked List](https://leetcode.com/problems/design-linked-list) | [C++](problems/0707-cpp/main.cpp) | Medium |
 | 709 | [To Lower Case](https://leetcode.com/problems/to-lower-case) | [Go](problems/0709-go/main.go) | Easy |
 | 714 | [Best Time to Buy and Sell Stock with Transaction Fee](https://leetcode.com/problems/best-time-to-buy-and-sell-stock-with-transaction-fee) | [Go](problems/0714-go/main.go) | Medium |
 | 729 | [My Calendar I](https://leetcode.com/problems/my-calendar-i) | [Go](problems/0729-go/main.go) | Medium |
@@ -190,6 +240,7 @@ LeetCode Problems' Solutions
 | 792 | [Number of Matching Subsequences](https://leetcode.com/problems/number-of-matching-subsequences) | [Go](problems/0792-go/main.go) | Medium |
 | 802 | [Find Eventual Safe States](https://leetcode.com/problems/find-eventual-safe-states) | [Go](problems/0802-go/main.go) | Medium |
 | 804 | [Unique Morse Code Words](https://leetcode.com/problems/unique-morse-code-words) | [Go](problems/0804-go/main.go) | Easy |
+| 808 | [Soup Servings](https://leetcode.com/problems/soup-servings) | [C++](problems/0808-cpp/main.cpp) | Medium |
 | 820 | [Short Encoding of Words](https://leetcode.com/problems/short-encoding-of-words) | [Go](problems/0820-go/main.go) | Medium |
 | 823 | [Binary Trees With Factors](https://leetcode.com/problems/binary-trees-with-factors) | [Go](problems/0823-go/main.go) | Medium |
 | 827 | [Making A Large Island](https://leetcode.com/problems/making-a-large-island) | [Go](problems/0827-go/main.go) | Hard |
@@ -205,6 +256,8 @@ LeetCode Problems' Solutions
 | 885 | [Spiral Matrix III](https://leetcode.com/problems/spiral-matrix-iii) | [Go](problems/0885-go/main.go) | Medium |
 | 889 | [Construct Binary Tree from Preorder and Postorder Traversal](https://leetcode.com/problems/construct-binary-tree-from-preorder-and-postorder-traversal) | [Go](problems/0889-go/main.go) | Medium |
 | 890 | [Find and Replace Pattern](https://leetcode.com/problems/find-and-replace-pattern) | [Go](problems/0890-go/main.go) | Medium |
+| 898 | [Bitwise ORs of Subarrays](https://leetcode.com/problems/bitwise-ors-of-subarrays) | [Go](problems/0898-go/main.go) | Medium |
+| 904 | [Fruit Into Baskets](https://leetcode.com/problems/fruit-into-baskets) | [C++](problems/0904-cpp/main.cpp) | Medium |
 | 909 | [Snakes and Ladders](https://leetcode.com/problems/snakes-and-ladders) | [Go](problems/0909-go/main.go) | Medium |
 | 916 | [Word Subsets](https://leetcode.com/problems/word-subsets) | [Go](problems/0916-go/main.go) | Medium |
 | 918 | [Maximum Sum Circular Subarray](https://leetcode.com/problems/maximum-sum-circular-subarray) | [Go](problems/0918-go/main.go) | Medium |
@@ -213,6 +266,7 @@ LeetCode Problems' Solutions
 | 953 | [Verifying an Alien Dictionary](https://leetcode.com/problems/verifying-an-alien-dictionary) | [Go](problems/0953-go/main.go) | Easy |
 | 959 | [Regions Cut By Slashes](https://leetcode.com/problems/regions-cut-by-slashes) | [Go](problems/0959-go/main.go) | Medium |
 | 968 | [Binary Tree Cameras](https://leetcode.com/problems/binary-tree-cameras) | [Go](problems/0968-go/main.go) | Hard |
+| 975 | [Odd Even Jump](https://leetcode.com/problems/odd-even-jump) | [Go](problems/0975-go/main.go) | Hard |
 | 976 | [Largest Perimeter Triangle](https://leetcode.com/problems/largest-perimeter-triangle) | [Go](problems/0976-go/main.go) | Easy |
 | 983 | [Minimum Cost For Tickets](https://leetcode.com/problems/minimum-cost-for-tickets) | [Go](problems/0983-go/main.go) | Medium |
 | 1007 | [Minimum Domino Rotations For Equal Row](https://leetcode.com/problems/minimum-domino-rotations-for-equal-row) | [Go](problems/1007-go/main.go) | Medium |
@@ -220,6 +274,7 @@ LeetCode Problems' Solutions
 | 1026 | [Determine if String Halves Are Alike](https://leetcode.com/problems/maximum-difference-between-node-and-ancestor) | [Go](problems/1026-go/main.go) | Medium |
 | 1028 | [Recover a Tree From Preorder Traversal](https://leetcode.com/problems/recover-a-tree-from-preorder-traversal) | [Go](problems/1028-go/main.go) | Hard |
 | 1048 | [Longest String Chain](https://leetcode.com/problems/longest-string-chain) | [Go](problems/1048-go/main.go) | Medium |
+| 1055 | [Shortest Way to Form String](https://leetcode.com/problems/shortest-way-to-form-string) | [Go](problems/1055-go/main.go) | Medium |
 | 1061 | [Lexicographically Smallest Equivalent String](https://leetcode.com/problems/lexicographically-smallest-equivalent-string) | [Go](problems/1061-go/main.go) | Medium |
 | 1074 | [Number of Submatrices That Sum to Target](https://leetcode.com/problems/number-of-submatrices-that-sum-to-target) | [Go](problems/1074-go/main.go) | Hard |
 | 1079 | [Letter Tile Possibilities](https://leetcode.com/problems/letter-tile-possibilities) | [Go](problems/1079-go/main.go) | Medium |
@@ -229,9 +284,11 @@ LeetCode Problems' Solutions
 | 1128 | [Number of Equivalent Domino Pairs](https://leetcode.com/problems/number-of-equivalent-domino-pairs) | [Go](problems/1128-go/main.go) | Easy |
 | 1137 | [N-th Tribonacci Number](https://leetcode.com/problems/n-th-tribonacci-number) | [Go](problems/1137-go/main.go) | Easy |
 | 1143 | [Longest Common Subsequence](https://leetcode.com/problems/longest-common-subsequence) | [Go](problems/1143-go/main.go) | Medium |
+| 1198 | [https://leetcode.com/problems/find-smallest-common-element-in-all-rows](Find Smallest Common Element in All Rows) | [C++](problems/1198-cpp/main.cpp) | Medium |
 | 1207 | [Unique Number of Occurrences](https://leetcode.com/problems/unique-number-of-occurrences) | [Go](problems/1207-go/main.go) | Easy |
 | 1220 | [Count Vowels Permutation](https://leetcode.com/problems/count-vowels-permutation) | [Go](problems/1220-go/main.go) | Hard |
 | 1232 | [Check If It Is a Straight Line](https://leetcode.com/problems/check-if-it-is-a-straight-line) | [Go](problems/1232-go/main.go) | Easy |
+| 1233 | [Remove Sub-Folders from the Filesystem](https://leetcode.com/problems/remove-sub-folders-from-the-filesystem) | [Go](problems/1233-go/main.go) | Medium |
 | 1255 | [Maximum Score Words Formed by Letters](https://leetcode.com/problems/maximum-score-words-formed-by-letters) | [Go](problems/1255-go/main.go) | Hard |
 | 1261 | [Find Elements in a Contaminated Binary Tree](https://leetcode.com/problems/find-elements-in-a-contaminated-binary-tree) | [Go](problems/1261-go/main.go) | Medium |
 | 1267 | [Count Servers that Communicate](https://leetcode.com/problems/count-servers-that-communicate) | [Go](problems/1267-go/main.go) | Medium |
@@ -249,10 +306,12 @@ LeetCode Problems' Solutions
 | 1346 | [Check If N and Its Double Exist](https://leetcode.com/problems/check-if-n-and-its-double-exist) | [Go](problems/1346-go/main.go) | Easy |
 | 1347 | [Minimum Number of Steps to Make Two Strings Anagram](https://leetcode.com/problems/minimum-number-of-steps-to-make-two-strings-anagram) | [Go](problems/1347-go/main.go) | Medium |
 | 1352 | [Product of the Last K Numbers](https://leetcode.com/problems/product-of-the-last-k-numbers) | [Go](problems/1352-go/main.go) | Medium |
+| 1353 | [Maximum Number of Events That Can Be Attended](https://leetcode.com/problems/maximum-number-of-events-that-can-be-attended) | [Go](problems/1353-go/main.go) | Medium |
 | 1354 | [Construct Target Array With Multiple Sums](https://leetcode.com/problems/construct-target-array-with-multiple-sums) | [Go](problems/1354-go/main.go) | Hard |
 | 1356 | [Sort Integers by The Number of 1 Bits](https://leetcode.com/problems/sort-integers-by-the-number-of-1-bits) | [Go](problems/1356-go/main.go) | Easy |
 | 1358 | [Number of Substrings Containing All Three Characters](https://leetcode.com/problems/number-of-substrings-containing-all-three-characters) | [Go](problems/1358-go/main.go) | Medium |
 | 1368 | [Minimum Cost to Make at Least One Valid Path in a Grid](https://leetcode.com/problems/minimum-cost-to-make-at-least-one-valid-path-in-a-grid) | [Go](problems/1368-go/main.go) | Hard |
+| 1394 | [Find Lucky Integer in an Array](https://leetcode.com/problems/find-lucky-integer-in-an-array) | [Go](problems/1394-go/main.go) | Easy |
 | 1399 | [Count Largest Group](https://leetcode.com/problems/count-largest-group) | [Go](problems/1399-go/main.go) | Easy |
 | 1400 | [Construct K Palindrome Strings](https://leetcode.com/problems/construct-k-palindrome-strings) | [Go](problems/1400-go/main.go) | Medium |
 | 1405 | [Longest Happy String](https://leetcode.com/problems/longest-happy-string) | [Go](problems/1405-go/main.go) | Medium |
@@ -273,6 +332,7 @@ LeetCode Problems' Solutions
 | 1475 | [Final Prices With a Special Discount in a Shop](https://leetcode.com/problems/final-prices-with-a-special-discount-in-a-shop) | [Go](problems/1475-go/main.go) | Easy |
 | 1480 | [Running Sum of 1d Array](https://leetcode.com/problems/running-sum-of-1d-array) | [Go](problems/1480-go/main.go) | Easy |
 | 1491 | [Average Salary Excluding the Minimum and Maximum Salary](https://leetcode.com/problems/average-salary-excluding-the-minimum-and-maximum-salary) | [Go](problems/1491-go/main.go) | Easy |
+| 1498 | [Number of Subsequences That Satisfy the Given Sum Condition](https://leetcode.com/problems/number-of-subsequences-that-satisfy-the-given-sum-condition) | [Go](problems/1498-go/main.go) | Medium |
 | 1502 | [Can Make Arithmetic Progression From Sequence](https://leetcode.com/problems/can-make-arithmetic-progression-from-sequence) | [Go](problems/1502-go/main.go) | Easy |
 | 1508 | [Range Sum of Sorted Subarray Sums](https://leetcode.com/problems/range-sum-of-sorted-subarray-sums) | [Go](problems/1508-go/main.go) | Medium |
 | 1509 | [Minimum Difference Between Largest and Smallest Value in Three Moves](https://leetcode.com/problems/minimum-difference-between-largest-and-smallest-value-in-three-moves) | [Go](problems/1509-go/main.go) | Medium |
@@ -298,9 +358,11 @@ LeetCode Problems' Solutions
 | 1696 | [Jump Game VI](https://leetcode.com/problems/jump-game-vi) | [Go](problems/1696-go/main.go) | Medium |
 | 1704 | [Determine if String Halves Are Alike](https://leetcode.com/problems/determine-if-string-halves-are-alike) | [Go](problems/1704-go/main.go) | Easy |
 | 1710 | [Maximum Units on a Truck](https://leetcode.com/problems/maximum-units-on-a-truck) | [Go](problems/1710-go/main.go) | Easy |
+| 1717 | [Maximum Score From Removing Substrings](https://leetcode.com/problems/maximum-score-from-removing-substrings) | [Go](problems/1717-go/main.go) | Medium |
 | 1718 | [Construct the Lexicographically Largest Valid Sequence](https://leetcode.com/problems/construct-the-lexicographically-largest-valid-sequence) | [Go](problems/1718-go/main.go) | Medium |
 | 1726 | [Tuple with Same Product](https://leetcode.com/problems/tuple-with-same-product) | [Go](problems/1726-go/main.go) | Medium |
 | 1749 | [Maximum Absolute Sum of Any Subarray](https://leetcode.com/problems/maximum-absolute-sum-of-any-subarray) | [Go](problems/1749-go/main.go) | Medium |
+| 1751 | [Maximum Number of Events That Can Be Attended II](https://leetcode.com/problems/maximum-number-of-events-that-can-be-attended-ii) | [Go](problems/1751-go/main.go) | Medium |
 | 1752 | [Check if Array Is Sorted and Rotated](https://leetcode.com/problems/check-if-array-is-sorted-and-rotated) | [Go](problems/1752-go/main.go) | Easy |
 | 1760 | [Minimum Limit of Balls in a Bag](https://leetcode.com/problems/minimum-limit-of-balls-in-a-bag) | [Go](problems/1760-go/main.go) | Medium |
 | 1765 | [Map of Highest Peak](https://leetcode.com/problems/map-of-highest-peak) | [Go](problems/1765-go/main.go) | Medium |
@@ -314,24 +376,32 @@ LeetCode Problems' Solutions
 | 1822 | [Sign of the Product of an Array](https://leetcode.com/problems/sign-of-the-product-of-an-array) | [Go](problems/1822-go/main.go) | Easy |
 | 1857 | [Largest Color Value in a Directed Graph](https://leetcode.com/problems/largest-color-value-in-a-directed-graph) | [Go](problems/1857-go/main.go) | Hard |
 | 1863 | [Sum of All Subset XOR Totals](https://leetcode.com/problems/sum-of-all-subset-xor-totals) | [Go](problems/1863-go/main.go) | Easy |
+| 1865 | [Finding Pairs With a Certain Sum](https://leetcode.com/problems/finding-pairs-with-a-certain-sum) | [Go](problems/1865-go/main.go) | Medium |
+| 1900 | [The Earliest and Latest Rounds Where Players Compete](https://leetcode.com/problems/the-earliest-and-latest-rounds-where-players-compete) | [Go](problems/1900-go/main.go) | Hard |
 | 1910 | [Remove All Occurrences of a Substring](https://leetcode.com/problems/remove-all-occurrences-of-a-substring) | [Go](problems/1910-go/main.go) | Medium |
 | 1915 | [Number of Wonderful Substrings](https://leetcode.com/problems/number-of-wonderful-substrings) | [Go](problems/1915-go/main.go) | Medium |
 | 1920 | [Build Array from Permutation](https://leetcode.com/problems/build-array-from-permutation) | [Go](problems/1920-go/main.go) | Easy |
 | 1922 | [Count Good Numbers](https://leetcode.com/problems/count-good-numbers) | [Go](problems/1922-go/main.go) | Medium |
 | 1930 | [Unique Length-3 Palindromic Subsequences](https://leetcode.com/problems/unique-length-3-palindromic-subsequences) | [Go](problems/1930-go/main.go) | Medium |
 | 1931 | [Painting a Grid With Three Different Colors](https://leetcode.com/problems/painting-a-grid-with-three-different-colors) | [Go](problems/1931-go/main.go) | Hard |
+| 1948 | [Delete Duplicate Folders in System](https://leetcode.com/problems/delete-duplicate-folders-in-system) | [Go](problems/1948-go/main.go) | Hard |
+| 1957 | [Delete Characters to Make Fancy String](https://leetcode.com/problems/delete-characters-to-make-fancy-string) | [Go](problems/1957-go/main.go) | Easy |
 | 1976 | [Number of Ways to Arrive at Destination](https://leetcode.com/problems/number-of-ways-to-arrive-at-destination) | [Go](problems/1976-go/main.go) | Medium |
 | 1980 | [Find Unique Binary String](https://leetcode.com/problems/find-unique-binary-string) | [Go](problems/1980-go/main.go) | Medium |
 | 2000 | [Reverse Prefix of Word](https://leetcode.com/problems/reverse-prefix-of-word) | [Go](problems/2000-go/main.go) | Easy |
+| 2014 | [Longest Subsequence Repeated k Times](https://leetcode.com/problems/longest-subsequence-repeated-k-times) | [Go](problems/2014-go/main.go) | Hard |
 | 2016 | [Maximum Difference Between Increasing Elements](https://leetcode.com/problems/maximum-difference-between-increasing-elements) | [Go](problems/2016-go/main.go) | Easy |
 | 2017 | [Grid Game](https://leetcode.com/problems/grid-game) | [Go](problems/2017-go/main.go) | Medium |
 | 2033 | [Minimum Operations to Make a Uni-Value Grid](https://leetcode.com/problems/minimum-operations-to-make-a-uni-value-grid) | [Go](problems/2033-go/main.go) | Medium |
 | 2037 | [Minimum Number of Moves to Seat Everyone](https://leetcode.com/problems/minimum-number-of-moves-to-seat-everyone) | [Go](problems/2037-go/main.go) | Easy |
 | 2040 | [Kth Smallest Product of Two Sorted Arrays](https://leetcode.com/problems/kth-smallest-product-of-two-sorted-arrays) | [Go](problems/2040-go/main.go) | Hard |
+| 2044 | [Count Number of Maximum Bitwise-OR Subsets](https://leetcode.com/problems/count-number-of-maximum-bitwise-or-subsets) | [Go](problems/2044-go/main.go) | Medium |
 | 2054 | [Two Best Non-Overlapping Events](https://leetcode.com/problems/two-best-non-overlapping-events) | [Go](problems/2054-go/main.go) | Medium |
 | 2071 | [Maximum Number of Tasks You Can Assign](https://leetcode.com/problems/maximum-number-of-tasks-you-can-assign) | [Go](problems/2071-go/main.go) | Hard |
 | 2081 | [Sum of k-Mirror Numbers](https://leetcode.com/problems/sum-of-k-mirror-numbers) | [Go](problems/2081-go/main.go) | Hard |
 | 2094 | [Finding 3-Digit Even Numbers](https://leetcode.com/problems/finding-3-digit-even-numbers) | [Go](problems/2094-go/main.go) | Easy |
+| 2099 | [Find Subsequence of Length K With the Largest Sum](https://leetcode.com/problems/find-subsequence-of-length-k-with-the-largest-sum) | [Go](problems/2099-go/main.go) | Easy |
+| 2106 | [Maximum Fruits Harvested After at Most K Steps](https://leetcode.com/problems/maximum-fruits-harvested-after-at-most-k-steps) | [C++](problems/2106-cpp/main.cpp) | Hard |
 | 2109 | [Adding Spaces to a String](https://leetcode.com/problems/adding-spaces-to-a-string) | [Go](problems/2109-go/main.go) | Medium |
 | 2115 | [Find All Possible Recipes from Given Supplies](https://leetcode.com/problems/find-all-possible-recipes-from-given-supplies) | [Go](problems/2115-go/main.go) | Medium |
 | 2116 | [Check if a Parentheses String Can Be Valid](https://leetcode.com/problems/check-if-a-parentheses-string-can-be-valid) | [Go](problems/2116-go/main.go) | Medium |
@@ -343,6 +413,7 @@ LeetCode Problems' Solutions
 | 2140 | [Solving Questions With Brainpower](https://leetcode.com/problems/solving-questions-with-brainpower) | [Go](problems/2140-go/main.go) | Medium |
 | 2145 | [Count the Hidden Sequences](https://leetcode.com/problems/count-the-hidden-sequences) | [Go](problems/2145-go/main.go) | Medium |
 | 2161 | [Partition Array According to Given Pivot](https://leetcode.com/problems/partition-array-according-to-given-pivot) | [Go](problems/2161-go/main.go) | Easy |
+| 2163 | [Minimum Difference in Sums After Removal of Elements](https://leetcode.com/problems/minimum-difference-in-sums-after-removal-of-elements) | [Go](problems/2163-go/main.go) | Hard |
 | 2176 | [Count Equal and Divisible Pairs in an Array](https://leetcode.com/problems/count-equal-and-divisible-pairs-in-an-array) | [Go](problems/2176-go/main.go) | Easy |
 | 2179 | [Count Good Triplets in an Array](https://leetcode.com/problems/count-good-triplets-in-an-array) | [Go](problems/2179-go/main.go) | Hard |
 | 2181 | [Merge Nodes in Between Zeros](https://leetcode.com/problems/merge-nodes-in-between-zeros) | [Go](problems/2181-go/main.go) | Medium |
@@ -350,6 +421,7 @@ LeetCode Problems' Solutions
 | 2185 | [Counting Words With a Given Prefix](https://leetcode.com/problems/counting-words-with-a-given-prefix) | [Go](problems/2185-go/main.go) | Easy |
 | 2200 | [Find All K-Distant Indices in an Array](https://leetcode.com/problems/find-all-k-distant-indices-in-an-array) | [Go](problems/2200-go/main.go) | Easy |
 | 2206 | [Divide Array Into Equal Pairs](https://leetcode.com/problems/divide-array-into-equal-pairs) | [Go](problems/2206-go/main.go) | Easy |
+| 2210 | [Count Hills and Valleys in an Array](https://leetcode.com/problems/count-hills-and-valleys-in-an-array) | [Go](problems/2210-go/main.go) | Easy |
 | 2225 | [Find Players With Zero or One Losses](https://leetcode.com/problems/number-of-laser-beams-in-a-bank) | [Go](problems/2225-go/main.go) | Medium |
 | 2266 | [Maximum Candies Allocated to K Children](https://leetcode.com/problems/maximum-candies-allocated-to-k-children) | [Go](problems/2266-go/main.go) | Medium |
 | 2270 | [Number of Ways to Split Array](https://leetcode.com/problems/number-of-ways-to-split-array) | [Go](problems/2270-go/main.go) | Medium |
@@ -359,6 +431,7 @@ LeetCode Problems' Solutions
 | 2319 | [Check if Matrix Is X-Matrix](https://leetcode.com/problems/check-if-matrix-is-x-matrix) | [Go](problems/2319-go/main.go) | Easy |
 | 2320 | [Count Number of Ways to Place Houses](https://leetcode.com/problems/count-number-of-ways-to-place-houses) | [Go](problems/2320-go/main.go) | Medium |
 | 2321 | [Maximum Score Of Spliced Array](https://leetcode.com/problems/maximum-score-of-spliced-array) | [Go](problems/2321-go/main.go) | Hard |
+| 2322 | [Minimum Score After Removals on a Tree](https://leetcode.com/problems/minimum-score-after-removals-on-a-tree) | [Go](problems/2322-go/main.go) | Hard |
 | 2326 | [Spiral Matrix IV](https://leetcode.com/problems/spiral-matrix-iv) | [Go](problems/2326-go/main.go) | Medium |
 | 2331 | [Evaluate Boolean Binary Tree](https://leetcode.com/problems/evaluate-boolean-binary-tree) | [Go](problems/2331-go/main.go) | Easy |
 | 2337 | [Move Pieces to Obtain a String](https://leetcode.com/problems/move-pieces-to-obtain-a-string) | [Go](problems/2337-go/main.go) | Medium |
@@ -370,7 +443,11 @@ LeetCode Problems' Solutions
 | 2379 | [Minimum Recolors to Get K Consecutive Black Blocks](https://leetcode.com/problems/minimum-recolors-to-get-k-consecutive-black-blocks) | [Go](problems/2379-go/main.go) | Easy |
 | 2381 | [Shifting Letters II](https://leetcode.com/problems/shifting-letters-ii) | [Go](problems/2381-go/main.go) | Medium |
 | 2401 | [Longest Nice Subarray](https://leetcode.com/problems/longest-nice-subarray) | [Go](problems/2401-go/main.go) | Medium |
+| 2402 | [Meeting Rooms III](https://leetcode.com/problems/meeting-rooms-iii) | [Go](problems/2402-go/main.go) | Hard |
+| 2410 | [Maximum Matching of Players With Trainers](https://leetcode.com/problems/maximum-matching-of-players-with-trainers) | [Go](problems/2410-go/main.go) | Medium |
+| 2411 | [Smallest Subarrays With Maximum Bitwise OR](https://leetcode.com/problems/smallest-subarrays-with-maximum-bitwise-or) | [Go](problems/2411-go/main.go) | Medium |
 | 2415 | [Reverse Odd Levels of Binary Tree](https://leetcode.com/problems/reverse-odd-levels-of-binary-tree) | [Go](problems/2415-go/main.go) | Medium |
+| 2419 | [Longest Subarray With Maximum Bitwise AND](https://leetcode.com/problems/longest-subarray-with-maximum-bitwise-and) | [Go](problems/2419-go/main.go) | Medium |
 | 2425 | [Bitwise XOR of All Pairings](https://leetcode.com/problems/bitwise-xor-of-all-pairings) | [Go](problems/2425-go/main.go) | Medium |
 | 2429 | [Minimize XOR](https://leetcode.com/problems/minimize-xor) | [Go](problems/2429-go/main.go) | Medium |
 | 2434 | [Using a Robot to Print the Lexicographically Smallest String](httphttps://leetcode.com/problems/using-a-robot-to-print-the-lexicographically-smallest-string) | [Go](problems/2434-go/main.go) | Medium |
@@ -391,6 +468,7 @@ LeetCode Problems' Solutions
 | 2558 | [Take Gifts From the Richest Pile](https://leetcode.com/problems/take-gifts-from-the-richest-pile) | [Go](problems/2558-go/main.go) | Easy |
 | 2559 | [Count Vowel Strings in Ranges](https://leetcode.com/problems/count-vowel-strings-in-ranges) | [Go](problems/2559-go/main.go) | Medium |
 | 2560 | [House Robber IV](https://leetcode.com/problems/count-prefix-and-suffix-pairs-i) | [Go](problems/2560-go/main.go) | Medium |
+| 2561 | [Rearranging Fruits](https://leetcode.com/problems/rearranging-fruits) | [C++](problems/2561-cpp/main.cpp) | Hard |
 | 2563 | [Count the Number of Fair Pairs](https://leetcode.com/problems/count-the-number-of-fair-pairs) | [Go](problems/2563-go/main.go) | Medium |
 | 2566 | [Maximum Difference by Remapping a Digit](https://leetcode.com/problems/maximum-difference-by-remapping-a-digit) | [Go](problems/2566-go/main.go) | Easy |
 | 2570 | [Merge Two 2D Arrays by Summing Values](https://leetcode.com/problems/merge-two-2d-arrays-by-summing-values) | [Go](problems/2570-go/main.go) | Easy |
@@ -443,6 +521,7 @@ LeetCode Problems' Solutions
 | 3085 | [Minimum Deletions to Make String K-Special](https://leetcode.com/problems/minimum-deletions-to-make-string-k-special) | [Go](problems/3085-go/main.go) | Medium |
 | 3105 | [Longest Strictly Increasing or Strictly Decreasing Subarray](https://leetcode.com/problems/longest-strictly-increasing-or-strictly-decreasing-subarray) | [Go](problems/3105-go/main.go) | Easy |
 | 3108 | [Minimum Cost Walk in Weighted Graph](https://leetcode.com/problems/minimum-cost-walk-in-weighted-graph) | [Go](problems/3108-go/main.go) | Hard |
+| 3136 | [Valid Word](https://leetcode.com/problems/valid-word) | [Go](problems/3136-go/main.go) | Easy |
 | 3151 | [Special Array I](https://leetcode.com/problems/special-array-i) | [Go](problems/3151-go/main.go) | Easy |
 | 3152 | [Special Array II](https://leetcode.com/problems/special-array-ii) | [Go](problems/3152-go/main.go) | Medium |
 | 3160 | [Find the Number of Distinct Colors Among the Balls](https://leetcode.com/problems/find-the-number-of-distinct-colors-among-the-balls) | [Go](problems/3160-go/main.go) | Medium |
@@ -450,12 +529,18 @@ LeetCode Problems' Solutions
 | 3170 | [Lexicographically Minimum String After Removing Stars](https://leetcode.com/problems/lexicographically-minimum-string-after-removing-stars) | [Go](problems/3170-go/main.go) | Medium |
 | 3174 | [Clear Digits](https://leetcode.com/problems/clear-digits) | [Go](problems/3174-go/main.go) | Easy |
 | 3191 | [Minimum Operations to Make Binary Array Elements Equal to One I](https://leetcode.com/problems/minimum-operations-to-make-binary-array-elements-equal-to-one-i) | [Go](problems/3191-go/main.go) | Medium |
+| 3201 | [Find the Maximum Length of Valid Subsequence I](https://leetcode.com/problems/find-the-maximum-length-of-valid-subsequence-i) | [Go](problems/3201-go/main.go) | Medium |
+| 3202 | [Find the Maximum Length of Valid Subsequence II](https://leetcode.com/problems/https://leetcode.com/problems/find-the-maximum-length-of-valid-subsequence-ii) | [Go](problems/3202-go/main.go) | Medium |
 | 3203 | [Find Minimum Diameter After Merging Two Trees](https://leetcode.com/problems/find-minimum-diameter-after-merging-two-trees) | [Go](problems/3203-go/main.go) | Hard |
 | 3208 | [Alternating Groups II](https://leetcode.com/problems/alternating-groups-ii) | [Go](problems/3208-go/main.go) | Medium |
 | 3223 | [Minimum Length of String After Operations](https://leetcode.com/problems/minimum-length-of-string-after-operations) | [Go](problems/3223-go/main.go) | Medium |
 | 3264 | [Final Array State After K Multiplication Operations I](https://leetcode.com/problems/final-array-state-after-k-multiplication-operations-i) | [Go](problems/3264-go/main.go) | Easy |
 | 3272 | [Find the Count of Good Integers](https://leetcode.com/problems/find-the-count-of-good-integers) | [Go](problems/3272-go/main.go) | Hard |
+| 3304 | [Find the K-th Character in String Game I](https://leetcode.com/problems/find-the-k-th-character-in-string-game-i) | [Go](problems/3304-go/main.go) | Easy |
 | 3306 | [Count of Substrings Containing Every Vowel and K Consonants II](https://leetcode.com/problems/count-of-substrings-containing-every-vowel-and-k-consonants-ii) | [Go](problems/3306-go/main.go) | Medium |
+| 3307 | [Find the K-th Character in String Game II](https://leetcode.com/problems/find-the-k-th-character-in-string-game-ii) | [Go](problems/3307-go/main.go) | Hard |
+| 3330 | [Find the Original Typed String I](https://leetcode.com/problems/find-the-original-typed-string-i) | [Go](problems/3330-go/main.go) | Easy |
+| 3333 | [Find the Original Typed String II](https://leetcode.com/problems/find-the-original-typed-string-ii) | [Go](problems/3333-go/main.go) | Easy |
 | 3335 | [Zero Array Transformation I](https://leetcode.com/problems/zero-array-transformation-i) | [Go](problems/3335-go/main.go) | Medium |
 | 3337 | [Total Characters in String After Transformations II](https://leetcode.com/problems/total-characters-in-string-after-transformations-ii) | [Go](problems/3337-go/main.go) | Hard |
 | 3341 | [Find Minimum Time to Reach Last Room I](https://leetcode.com/problems/find-minimum-time-to-reach-last-room-i) | [Go](problems/3341-go/main.go) | Medium |
@@ -465,6 +550,7 @@ LeetCode Problems' Solutions
 | 3356 | [Zero Array Transformation II](https://leetcode.com/problems/zero-array-transformation-ii) | [Go](problems/3356-go/main.go) | Medium |
 | 3359 | [Find Closest Node to Given Two Nodes](https://leetcode.com/problems/find-closest-node-to-given-two-nodes) | [Go](problems/3359-go/main.go) | Medium |
 | 3362 | [Zero Array Transformation III](https://leetcode.com/problems/zero-array-transformation-iii) | [Go](problems/3362-go/main.go) | Medium |
+| 3363 | [Find the Maximum Number of Fruits Collected](https://leetcode.com/problems/find-the-maximum-number-of-fruits-collected) | [C++](problems/3363-cpp/main.cpp) | Hard |
 | 3372 | [Maximize the Number of Target Nodes After Connecting Trees I](https://leetcode.com/problems/maximize-the-number-of-target-nodes-after-connecting-trees-i) | [Go](problems/3372-go/main.go) | Medium |
 | 3373 | [Maximize the Number of Target Nodes After Connecting Trees II](https://leetcode.com/problems/maximize-the-number-of-target-nodes-after-connecting-trees-ii) | [Go](problems/3373-go/main.go) | Medium |
 | 3375 | [Minimum Operations to Make Array Values Equal to K](https://leetcode.com/problems/minimum-operations-to-make-array-values-equal-to-k) | [Go](problems/3375-go/main.go) | Medium |
@@ -474,7 +560,13 @@ LeetCode Problems' Solutions
 | 3403 | [Find the Lexicographically Largest String From the Box I](https://leetcode.com/problems/find-the-lexicographically-largest-string-from-the-box-i) | [Go](problems/3403-go/main.go) | Medium |
 | 3405 | [Count the Number of Arrays with K Matching Adjacent Elements](https://leetcode.com/problems/count-the-number-of-arrays-with-k-matching-adjacent-elements) | [Go](problems/3405-go/main.go) | Hard |
 | 3423 | [Maximum Difference Between Adjacent Elements in a Circular Array](https://leetcode.com/problems/maximum-difference-between-adjacent-elements-in-a-circular-array) | [Go](problems/3423-go/main.go) | Easy |
+| 3439 | [Reschedule Meetings for Maximum Free Time I](https://leetcode.com/problems/reschedule-meetings-for-maximum-free-time-i) | [Go](problems/3439-go/main.go) | Medium |
+| 3440 | [Reschedule Meetings for Maximum Free Time II](https://leetcode.com/problems/reschedule-meetings-for-maximum-free-time-ii) | [Go](problems/3440-go/main.go) | Medium |
 | 3442 | [Maximum Difference Between Even and Odd Frequency I](https://leetcode.com/problems/maximum-difference-between-even-and-odd-frequency-i) | [Go](problems/3442-go/main.go) | Easy |
 | 3443 | [Maximum Manhattan Distance After K Changes](https://leetcode.com/problems/maximum-manhattan-distance-after-k-changes) | [Go](problems/3443-go/main.go) | Medium |
 | 3445 | [Maximum Difference Between Even and Odd Frequency II](https://leetcode.com/problems/maximum-difference-between-even-and-odd-frequency-i) | [Go](problems/3445-go/main.go) | Hard |
+| 3477 | [Fruits Into Baskets II](https://leetcode.com/problems/fruits-into-baskets-ii) | [C++](problems/3477-cpp/main.cpp) | Easy |
+| 3479 | [Fruits Into Baskets III](https://leetcode.com/problems/fruits-into-baskets-iii) | [C++](problems/3479-cpp/main.cpp) | Medium |
+| 3480 | [Maximize Subarrays After Removing One Conflicting Pair](https://leetcode.com/problems/maximize-subarrays-after-removing-one-conflicting-pair) | [Go](problems/3480-go/main.go) | Hard |
+| 3487 | [Maximum Unique Subarray Sum After Deletion](https://leetcode.com/problems/maximum-unique-subarray-sum-after-deletion) | [Go](problems/3487-go/main.go) | Easy |
 

@@ -4,37 +4,57 @@
 # Author: Mu Yang <http://muyang.pro>
 
 ################################################################################################################################
-# Given a string containing digits from 2-9 inclusive, return all possible letter combinations that the number could represent.
+# Given a string containing digits from `2-9` inclusive, return all possible letter combinations that the number could represent. Return the answer in **any order**.
 #
-# A mapping of digit to letters (just like on the telephone buttons) is given below. Note that 1 does not map to any letters.
+# A mapping of digits to letters (just like on the telephone buttons) is given below. Note that 1 does not map to any letters.
+# https://assets.leetcode.com/uploads/2022/03/15/1200px-telephone-keypad2svg.png
 #
-# http://upload.wikimedia.org/wikipedia/commons/thumb/7/73/Telephone-keypad2.svg/200px-Telephone-keypad2.svg.png
+# **Example 1:**
 #
-# Example:
+# ```
+# Input: digits = "23"
+# Output: ["ad","ae","af","bd","be","bf","cd","ce","cf"]
+# ```
 #
-#   Input: "23"
-#   Output: ["ad", "ae", "af", "bd", "be", "bf", "cd", "ce", "cf"].
+# **Example 2:**
 #
-# Note:
+# ```
+# Input: digits = ""
+# Output: []
+# ```
 #
-#   Although the above answer is in lexicographical order, your answer could be in any order you want.
+# **Example 3:**
+#
+# ```
+# Input: digits = "2"
+# Output: ["a","b","c"]
+# ```
+#
+# **Constraints:**
+#
+# - `0 <= digits.length <= 4`
+# - `digits[i]` is a digit in the range `['2', '9']`.
 #
 ################################################################################################################################
 
-PHONE = {
-    '2': 'abc',
-    '3': 'def',
-    '4': 'ghi',
-    '5': 'jkl',
-    '6': 'mno',
-    '7': 'pqrs',
-    '8': 'tuv',
-    '9': 'wxyz',
-}
 
 import itertools
+from typing import List
+
 
 class Solution:
     def letterCombinations(self, digits: str) -> List[str]:
-        if digits:
-            yield from map(''.join, itertools.product(*map(PHONE.get, digits)))
+        phone = {
+            "2": "abc",
+            "3": "def",
+            "4": "ghi",
+            "5": "jkl",
+            "6": "mno",
+            "7": "pqrs",
+            "8": "tuv",
+            "9": "wxyz",
+        }
+
+        if not digits:
+            return []
+        return list(map("".join, itertools.product(*map(phone.get, digits))))
