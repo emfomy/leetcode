@@ -1,5 +1,5 @@
-// Source: Find Smallest Common Element in All Rows
-// Title: https://leetcode.com/problems/find-smallest-common-element-in-all-rows
+// Source: https://leetcode.com/problems/find-smallest-common-element-in-all-rows
+// Title: Find Smallest Common Element in All Rows
 // Difficulty: Medium
 // Author: Mu Yang <http://muyang.pro>
 

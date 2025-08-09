@@ -284,7 +284,7 @@ LeetCode Problems' Solutions
 | 1128 | [Number of Equivalent Domino Pairs](https://leetcode.com/problems/number-of-equivalent-domino-pairs) | [Go](problems/1128-go/main.go) | Easy |
 | 1137 | [N-th Tribonacci Number](https://leetcode.com/problems/n-th-tribonacci-number) | [Go](problems/1137-go/main.go) | Easy |
 | 1143 | [Longest Common Subsequence](https://leetcode.com/problems/longest-common-subsequence) | [Go](problems/1143-go/main.go) | Medium |
-| 1198 | [https://leetcode.com/problems/find-smallest-common-element-in-all-rows](Find Smallest Common Element in All Rows) | [C++](problems/1198-cpp/main.cpp) | Medium |
+| 1198 | [Find Smallest Common Element in All Rows](https://leetcode.com/problems/find-smallest-common-element-in-all-rows) | [C++](problems/1198-cpp/main.cpp) | Medium |
 | 1207 | [Unique Number of Occurrences](https://leetcode.com/problems/unique-number-of-occurrences) | [Go](problems/1207-go/main.go) | Easy |
 | 1220 | [Count Vowels Permutation](https://leetcode.com/problems/count-vowels-permutation) | [Go](problems/1220-go/main.go) | Hard |
 | 1232 | [Check If It Is a Straight Line](https://leetcode.com/problems/check-if-it-is-a-straight-line) | [Go](problems/1232-go/main.go) | Easy |
