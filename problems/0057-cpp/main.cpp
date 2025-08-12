@@ -41,8 +41,6 @@
 #include <algorithm>
 #include <vector>
 
-#include "../../utils/print.hpp"
-
 using namespace std;
 
 class Solution {

@@ -41,23 +41,27 @@ struct ListNode {
   int val;
   ListNode* next;
   ListNode(int x) : val(x), next(nullptr) {}
-}
-
-#include <vector>
-
-using namespace std;
+};
 
 class Solution {
  public:
-  ListNode* addTwoNumbers(ListNode* l1, ListNode* l2, int carry = 0) {
-    if (!l1 && !l2) {
-      return carry ? new ListNode(carry) : nullptr;
+  ListNode* addTwoNumbers(ListNode* l1, ListNode* l2) {
+    auto head = new ListNode(0);  // dummy head
+    auto curr = head;
+    auto carry = 0;
+    while (l1 != nullptr || l2 != nullptr || carry != 0) {
+      auto x = l1 ? l1->val : 0;
+      auto y = l2 ? l2->val : 0;
+      auto sum = x + y + carry;
+      carry = sum / 10;
+      curr->next = new ListNode(sum % 10);
+      curr = curr->next;
+      l1 = l1 ? l1->next : nullptr;
+      l2 = l2 ? l2->next : nullptr;
     }
-    carry += (l1 ? l1->val : 0) + (l2 ? l2->val : 0);
-    auto* l3 = new ListNode(carry % 10);
-    l1 = l1 ? l1->next : nullptr;
-    l2 = l2 ? l2->next : nullptr;
-    l3->next = addTwoNumbers(l1, l2, carry / 10);
-    return l3;
+
+    auto ans = head->next;
+    delete head;  // free dummy head
+    return ans;
   }
 };

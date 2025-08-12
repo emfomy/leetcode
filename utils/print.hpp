@@ -4,52 +4,72 @@
 #include <unordered_map>
 #include <vector>
 
+using namespace std;
+
+template <typename T1, typename T2>
+std::ostream& operator<<(std::ostream& os, const std::pair<T1, T2>& p) {
+  return os << "(" << p.first << ", " << p.second << ")";
+}
+
 template <typename T, size_t N>
-void print_array(std::array<T, N>& data) {
-  std::cout << "[ ";
+void print_array(const array<T, N> data) {
+  cout << "[ ";
   for (auto& num : data) {
-    std::cout << num << ", ";
+    cout << num << ", ";
   }
-  std::cout << "]" << std::endl;
+  cout << "]" << endl;
 }
 
 template <typename T>
-void print_vector(std::vector<T>& data, size_t start = 0, size_t end = -1) {
+void print_vector(const vector<T> data, size_t start = 0, size_t end = -1) {
   if (end == -1) end = data.size();
-  std::cout << "[ ";
+  cout << "[ ";
   for (auto i = start; i < end; i++) {
-    std::cout << data[i] << ", ";
+    cout << data[i] << ", ";
   }
-  std::cout << "]" << std::endl;
+  cout << "]" << endl;
 }
 
-template <typename K, typename V>
-void print_unordered_map(std::unordered_map<K, V>& data) {
-  std::cout << "{ ";
-  for (auto& [key, value] : data) {
-    std::cout << key << ": " << value << ", ";
-  }
-  std::cout << "}" << std::endl;
-}
-
-template <typename K, typename V>
-void print_unordered_multimap(std::unordered_multimap<K, V>& data) {
-  std::cout << "{ ";
-  for (auto& [key, value] : data) {
-    std::cout << key << ": " << value << ", ";
-  }
-  std::cout << "}" << std::endl;
-}
-
-template <typename K, typename V>
-void print_unordered_mapmap(std::unordered_map<K, std::unordered_map<K, V>>& data) {
-  std::cout << "{ ";
-  for (auto& [key, value] : data) {
-    std::cout << key << ": { ";
-    for (auto& [key2, value2] : value) {
-      std::cout << key2 << ": " << value2 << ", ";
+template <typename T>
+void print_vector_vector(const vector<vector<T>> data) {
+  cout << "[ ";
+  for (auto& value : data) {
+    cout << "[ ";
+    for (auto& value2 : value) {
+      cout << value2 << ", ";
     }
-    std::cout << "}, ";
+    cout << "], ";
   }
-  std::cout << "}" << std::endl;
+  cout << "]" << endl;
+}
+
+template <typename K, typename V>
+void print_unordered_map(const unordered_map<K, V> data) {
+  cout << "{ ";
+  for (auto& [key, value] : data) {
+    cout << key << ": " << value << ", ";
+  }
+  cout << "}" << endl;
+}
+
+template <typename K, typename V>
+void print_unordered_multimap(const unordered_multimap<K, V> data) {
+  cout << "{ ";
+  for (auto& [key, value] : data) {
+    cout << key << ": " << value << ", ";
+  }
+  cout << "}" << endl;
+}
+
+template <typename K, typename V>
+void print_unordered_map_map(const unordered_map<K, unordered_map<K, V>> data) {
+  cout << "{ ";
+  for (auto& [key, value] : data) {
+    cout << key << ": { ";
+    for (auto& [key2, value2] : value) {
+      cout << key2 << ": " << value2 << ", ";
+    }
+    cout << "}, ";
+  }
+  cout << "}" << endl;
 }

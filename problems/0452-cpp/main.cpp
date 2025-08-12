@@ -46,10 +46,96 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+#include <algorithm>
+#include <cstdint>
 #include <vector>
+
 using namespace std;
 
+// Use Greedy + Sort
+//
+// Sort the balloons by end position.
+// The left-most balloon should be shot at the end coordinate.
+//
+// Say there is a minimal shot with the left-most shot NOT at the end of the left-most (by end) balloon.
+// Say the shot's x coordinate is s, and the end of left-most balloon is b. s < b.
+// For all balloons hit by this shot, we have x_start <= s <= x_end.
+// Note that b is end of the left-most balloon.
+// That is, x_start <= s < b <= x_end.
+// Therefore we can use b instead.
+//
+// Loop this untail all balloon blows.
 class Solution {
  public:
-  int findMinArrowShots(vector<vector<int>>& points) {}
+  int findMinArrowShots(vector<vector<int>> &points) {
+    int n = points.size();
+
+    // Sort
+    auto startIdxs = vector<int>(n);
+    auto endIdxs = vector<int>(n);
+    auto bursted = vector<bool>(n);
+    for (auto i = 0; i < n; i++) {
+      startIdxs[i] = i;
+      endIdxs[i] = i;
+    }
+
+    auto startComp = [&](int i, int j) -> bool { return points[i][0] < points[j][0]; };
+    auto endComp = [&](int i, int j) -> bool { return points[i][1] < points[j][1]; };
+    sort(startIdxs.begin(), startIdxs.end(), startComp);
+    sort(endIdxs.begin(), endIdxs.end(), endComp);
+
+    // Greedy
+    auto ans = 0;
+    auto startIdx = 0;
+    for (auto endIdx = 0; endIdx < n; endIdx++) {
+      // Already bursted
+      if (bursted[endIdxs[endIdx]]) {
+        continue;
+      }
+
+      // Make shot
+      ans++;
+      auto shot = points[endIdxs[endIdx]][1];
+      bursted[endIdxs[endIdx]] = true;
+
+      // Burst balloons
+      while (startIdx < n) {
+        auto &balloon = points[startIdxs[startIdx]];
+        if (balloon[0] > shot) break;  // no need to check end here since shot is at left-most
+        bursted[startIdxs[startIdx]] = true;
+        startIdx++;
+      }
+    }
+
+    return ans;
+  }
+};
+
+// Use Greedy + Sort
+//
+// Same as above, but we don't need to sort by start.
+// In the loop, all balloon start before previous shot must have been bursted.
+class Solution2 {
+ public:
+  int findMinArrowShots(vector<vector<int>> &points) {
+    int n = points.size();
+
+    // Sort
+    auto comp = [](vector<int> &a, vector<int> &b) -> bool { return a[1] < b[1]; };
+    sort(points.begin(), points.end(), comp);
+
+    // Greedy
+    auto ans = 0;
+    auto shot = -(int64_t(1) << 32);
+    for (auto &point : points) {
+      // Already bursted
+      if (point[0] <= shot) continue;
+
+      // Make shot
+      shot = point[1];
+      ans++;
+    }
+
+    return ans;
+  }
 };

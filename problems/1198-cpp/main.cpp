@@ -33,12 +33,9 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 #include <algorithm>
-#include <iterator>
 #include <queue>
 #include <unordered_map>
 #include <vector>
-
-#include "../../utils/print.hpp"
 
 using namespace std;
 
@@ -103,10 +100,6 @@ class Solution2 {
     auto ans = 0;
     auto count = 0;
     while (heap.size() > 0) {
-      for (auto p : idxs) {
-        print_vector(mat[p.first], p.second);
-      }
-
       auto item = heap.top();
       heap.pop();
 
@@ -144,7 +137,6 @@ class Solution3 {
         counter[val]++;
       }
     }
-    print_unordered_map(counter);
 
     auto ans = -1;
     for (auto [val, count] : counter) {
