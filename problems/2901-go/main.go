@@ -12,7 +12,7 @@
 //
 // A **subsequence**is an array that can be derived from another array by deleting some or no elements without changing the order of the remaining elements.
 //
-// - For **adjacent**  indices in the subsequence, their corresponding groups are **unequal** , i.e., `groups[i_j] != groups[i_{j+1}]`, for each `j` where `0 < j + 1 < k`.
+// - For **adjacent** indices in the subsequence, their corresponding groups are **unequal** , i.e., `groups[i_j] != groups[i_{j+1}]`, for each `j` where `0 < j + 1 < k`.
 // - `words[i_j]` and `words[i_{j+1}]` are **equal** in length, and the **hamming distance** between them is `1`, where `0 < j + 1 < k`, for all indices in the subsequence.
 //
 // Return a string array containing the words corresponding to the indices **(in order)** in the selected subsequence. If there are multiple answers, return any of them.

@@ -57,40 +57,42 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+#include <algorithm>
 #include <vector>
 
 using namespace std;
 
-// Use Bit-mask
+// Use Array
+//
+// Use vector<char> instead of vector<bool>
+// since vector<bool> is optimize for space not for speed
 class Solution {
  public:
   bool isValidSudoku(vector<vector<char>>& board) {
+    auto nums = vector<char>(9);
+
     // Rows
     for (auto r = 0; r < 9; r++) {
-      auto bits = 0;
+      fill(nums.begin(), nums.end(), 0);
       for (auto c = 0; c < 9; c++) {
         auto cell = board[r][c];
         if (cell != '.') {
-          auto bit = 1 << (cell - '0');
-          if (bits & bit) {
-            return false;
-          }
-          bits |= bit;
+          auto num = cell - '1';
+          if (nums[num]) return false;
+          nums[num] = true;
         }
       }
     }
 
     // Columns
     for (auto c = 0; c < 9; c++) {
-      auto bits = 0;
+      fill(nums.begin(), nums.end(), 0);
       for (auto r = 0; r < 9; r++) {
         auto cell = board[r][c];
         if (cell != '.') {
-          auto bit = 1 << (cell - '0');
-          if (bits & bit) {
-            return false;
-          }
-          bits |= bit;
+          auto num = cell - '1';
+          if (nums[num]) return false;
+          nums[num] = true;
         }
       }
     }
@@ -98,16 +100,14 @@ class Solution {
     // Boxes
     for (auto br = 0; br < 9; br += 3) {
       for (auto bc = 0; bc < 9; bc += 3) {
-        auto bits = 0;
+        fill(nums.begin(), nums.end(), 0);
         for (auto r = br; r < br + 3; r++) {
           for (auto c = bc; c < bc + 3; c++) {
             auto cell = board[r][c];
             if (cell != '.') {
-              auto bit = 1 << (cell - '0');
-              if (bits & bit) {
-                return false;
-              }
-              bits |= bit;
+              auto num = cell - '1';
+              if (nums[num]) return false;
+              nums[num] = true;
             }
           }
         }

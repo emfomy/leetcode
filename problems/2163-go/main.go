@@ -142,7 +142,7 @@ func minimumDifference2(nums []int) int64 {
 	return ans
 }
 
-// Heap
+// Use Heap
 //
 // Say we split the array at index i.
 // sum1 must be the sum of the minimal n numbers in [0, i).

@@ -47,7 +47,7 @@ import (
 	"github.com/emirpasic/gods/utils"
 )
 
-// Heap
+// Use Heap
 func kthSmallest(matrix [][]int, k int) int {
 	heap := binaryheap.NewWith(func(a, b any) int { return -utils.IntComparator(a, b) })
 	for _, row := range matrix {

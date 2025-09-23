@@ -4,21 +4,39 @@
 // Author: Mu Yang <http://muyang.pro>
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-// Given an array of integers nums sorted in ascending order, find the starting and ending position of a given target value.
+// Given an array of integers `nums` sorted in non-decreasing order, find the starting and ending position of a given `target` value.
 //
-// Your algorithm's runtime complexity must be in the order of O(log n).
+// If `target` is not found in the array, return `[-1, -1]`.
 //
-// If the target is not found in the array, return [-1, -1].
+// You mustwrite an algorithm with`O(log n)` runtime complexity.
 //
-// Example 1:
+// **Example 1:**
 //
-//   Input: nums = [5,7,7,8,8,10], target = 8
-//   Output: [3,4]
+// ```
+// Input: nums = [5,7,7,8,8,10], target = 8
+// Output: [3,4]
+// ```
 //
-// Example 2:
+// **Example 2:**
 //
-//   Input: nums = [5,7,7,8,8,10], target = 6
-//   Output: [-1,-1]
+// ```
+// Input: nums = [5,7,7,8,8,10], target = 6
+// Output: [-1,-1]
+// ```
+//
+// **Example 3:**
+//
+// ```
+// Input: nums = [], target = 0
+// Output: [-1,-1]
+// ```
+//
+// **Constraints:**
+//
+// - `0 <= nums.length <= 10^5`
+// - `-10^9<= nums[i]<= 10^9`
+// - `nums` is a non-decreasing array.
+// - `-10^9<= target<= 10^9`
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -27,18 +45,12 @@
 
 using namespace std;
 
+// Binary Search (STL)
 class Solution {
  public:
   vector<int> searchRange(vector<int>& nums, int target) {
-    if (nums.size() == 0) {
-      return {-1, -1};
-    }
-
-    auto [lower_it, upper_it] = equal_range(nums.cbegin(), nums.cend(), target);
-
-    if (lower_it != nums.cend() && *lower_it == target && upper_it != nums.cbegin() && *(--upper_it) == target) {
-      return {static_cast<int>(lower_it - nums.cbegin()), static_cast<int>(upper_it - nums.cbegin())};
-    }
-    return {-1, -1};
+    auto [lo, hi] = equal_range(nums.cbegin(), nums.cend(), target);
+    if (lo == hi) return {-1, -1};
+    return {int(lo - nums.cbegin()), int(hi - nums.cbegin() - 1)};
   }
 };
