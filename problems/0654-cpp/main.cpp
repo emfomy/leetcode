@@ -46,6 +46,8 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+#include <algorithm>
+#include <iterator>
 #include <vector>
 
 using namespace std;
@@ -61,19 +63,18 @@ struct TreeNode {
 
 class Solution {
  public:
-  TreeNode *constructMaximumBinaryTree(vector<int> &nums, int start = 0, int end = -1) {
-    if (end == -1) end = nums.size();
-    if (start >= end) return nullptr;
-    auto maxIdx = start;
-    for (auto i = start + 1; i < end; ++i) {
-      if (nums[maxIdx] < nums[i]) {
-        maxIdx = i;
-      }
-    }
+  TreeNode *constructMaximumBinaryTree(vector<int> &nums) {  //
+    return dfs(nums.cbegin(), nums.cend());
+  }
 
-    auto node = new TreeNode(nums[maxIdx]);
-    node->left = constructMaximumBinaryTree(nums, start, maxIdx);
-    node->right = constructMaximumBinaryTree(nums, maxIdx + 1, end);
-    return node;
+ private:
+  TreeNode *dfs(vector<int>::const_iterator first, vector<int>::const_iterator last) {
+    if (distance(first, last) <= 0) return nullptr;
+
+    auto it = max_element(first, last);
+    auto left = dfs(first, it);
+    auto right = dfs(it + 1, last);
+
+    return new TreeNode(*it, left, right);
   }
 };

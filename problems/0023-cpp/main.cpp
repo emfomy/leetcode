@@ -65,32 +65,32 @@ struct ListNode {
 class Solution {
  public:
   ListNode* mergeKLists(vector<ListNode*>& lists) {
-    // Prepare queue
-    auto comp = [](ListNode* a, ListNode* b) -> bool { return !(a->val < b->val); };  // heap comp is inverted
-    auto queue = priority_queue(comp, vector<ListNode*>());
-    for (auto& node : lists) {
-      if (node != nullptr) {
-        queue.push(node);
-      }
+    // Heap
+    auto comp = [](ListNode* a, ListNode* b) -> bool {
+      return !(a->val < b->val);  // min-heap
+    };
+    auto heap = priority_queue(comp, vector<ListNode*>());
+
+    // Prepare data
+    for (auto node : lists) {
+      if (node != nullptr) heap.push(node);
     }
 
-    // Sort
-    auto head = new ListNode();
-    auto prev = head;
-    while (!queue.empty()) {
-      auto node = queue.top();
-      queue.pop();
+    // Loop
+    auto dummy = new ListNode();
+    auto node = dummy;
+    while (!heap.empty()) {
+      node->next = heap.top();
+      node = node->next;
+      heap.pop();
 
-      prev->next = node;
-      prev = node;
-      if (node->next) {
-        queue.push(node->next);
-      }
+      if (node->next) heap.push(node->next);
     }
 
-    // Answer
-    auto ans = head->next;
-    delete head;
+    // Delete dummy
+    auto ans = dummy->next;
+    delete dummy;
+
     return ans;
   }
 };

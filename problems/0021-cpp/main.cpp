@@ -54,20 +54,25 @@ struct ListNode {
 class Solution {
  public:
   ListNode* mergeTwoLists(ListNode* list1, ListNode* list2) {
-    auto head = new ListNode();
-    auto curr = head;
+    // Dummy
+    auto dummy = new ListNode();
+
+    // Loop
+    auto node = dummy;
     while (list1 != nullptr && list2 != nullptr) {
-      if (list1->val > list2->val) {
-        swap(list1, list2);
-      }
-      curr->next = list1;
-      curr = list1;
+      // Ensure list1 < list2
+      if (list1->val > list2->val) swap(list1, list2);
+      node->next = list1;
+      node = list1;
       list1 = list1->next;
     }
-    curr->next = list1 ? list1 : list2;
 
-    auto ans = head->next;
-    delete head;
+    node->next = list1 ? list1 : list2;
+
+    // Delete dummy
+    auto ans = dummy->next;
+    delete dummy;
+
     return ans;
   }
 };

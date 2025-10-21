@@ -54,53 +54,46 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 #include <unordered_map>
+#include <unordered_set>
 #include <vector>
 
 using namespace std;
 
-// Multi Hash Map + Array + Key Map
-//
-// Assign each value a PK (auto increment, unique).
-// Use RandomizedSet (previous problem) on PK.
+// Hash Map + Hash Set + Array
 class RandomizedCollection {
   vector<int> vals;
-  vector<int> pks;
-  unordered_map<int, int> pk2idx;
-  unordered_multimap<int, int> val2pks;
-  int lastPk = 10;
+  unordered_map<int, unordered_set<int>> val2idxs;  // value -> indices
 
  public:
   RandomizedCollection() {}
 
   bool insert(int val) {
-    auto pk = lastPk;
-    lastPk++;
-
-    val2pks.insert({val, pk});
-    pk2idx[pk] = pks.size();
+    int idx = vals.size();
     vals.push_back(val);
-    pks.push_back(pk);
 
-    return (val2pks.count(val) == 1);
+    auto &idxs = val2idxs[val];
+    idxs.insert(idx);
+    return idxs.size() == 1;
   }
 
   bool remove(int val) {
-    auto it = val2pks.find(val);
-    if (it == val2pks.cend()) return false;
-    auto pk = it->second;
+    if (!val2idxs.count(val)) return false;
 
-    int n = pks.size();
-    auto idx = pk2idx[pk];
-    if (idx != n - 1) {  // swap with last
-      vals[idx] = vals[n - 1];
-      pks[idx] = pks[n - 1];
-      pk2idx[pks[idx]] = idx;
+    auto &idxs = val2idxs[val];
+    if (idxs.empty()) return false;
+
+    auto idx = *idxs.cbegin();
+    idxs.erase(idx);
+
+    int lastIdx = vals.size() - 1;
+    if (idx != lastIdx) {  // swap with last
+      auto lastVal = vals[lastIdx];
+      vals[idx] = vals[lastIdx];
+      val2idxs[lastVal].erase(lastIdx);
+      val2idxs[lastVal].insert(idx);
     }
 
     vals.pop_back();
-    pks.pop_back();
-    pk2idx.erase(pk);
-    val2pks.erase(it);
     return true;
   }
 

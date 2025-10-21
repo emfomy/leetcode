@@ -6,7 +6,7 @@
 ################################################################################################################################
 # Given a binary tree, find the lowest common ancestor (LCA) of two given nodes in the tree.
 #
-# According to the **definition of LCA on Wikipedia**: “The lowest common ancestor is defined between two nodes `p` and `q` as the lowest node in `T` that has both `p` and `q` as descendants (where we allow <b>a node to be a descendant of itself</b>).”
+# According to the **definition of LCA on Wikipedia**: “The lowest common ancestor is defined between two nodes `p` and `q` as the lowest node in `T` that has both `p` and `q` as descendants (where we allow **a node to be a descendant of itself**).”
 #
 # **Example 1:**
 # https://assets.leetcode.com/uploads/2018/12/14/binarytree.png

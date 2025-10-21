@@ -49,62 +49,56 @@ struct ListNode {
   ListNode(int x, ListNode* next) : val(x), next(next) {}
 };
 
+// Count length
 class Solution {
  public:
   ListNode* removeNthFromEnd(ListNode* head, int n) {
-    auto preHead = new ListNode(0, head);
+    auto dummy = new ListNode(0, head);  // dummy head
 
-    // Find size
-    auto curr = head;
-    auto m = 0;
-    while (curr != nullptr) {
-      curr = curr->next;
-      m++;
-    }
+    // Count length
+    auto len = 0;
+    for (auto node = head; node != nullptr; node = node->next) ++len;
 
-    // Find m-n
-    curr = preHead;
-    for (auto i = 0; i < m - n; i++) {
-      curr = curr->next;
-    }
+    // Find node before target
+    auto node = dummy;
+    for (auto i = 0; i < len - n; ++i) node = node->next;
 
-    // Delete
-    auto next = curr->next;
-    curr->next = next->next;
-    delete next;
+    // Delete node
+    node->next = node->next->next;
 
-    auto ans = preHead->next;
-    delete preHead;
-    return ans;
+    head = dummy->next;
+    delete dummy;
+
+    return head;
   }
 };
 
-// Use two pointer
+// Two pointer
+//
+// Move first pointer n steps, then move both together
 class Solution2 {
  public:
   ListNode* removeNthFromEnd(ListNode* head, int n) {
-    auto preHead = new ListNode(0, head);
+    auto dummy = new ListNode(0, head);  // dummy head
 
-    // Jump
-    auto left = preHead;
-    auto right = preHead;
-    for (auto i = 0; i <= n; i++) {
-      right = right->next;
+    auto fast = dummy;
+    auto slow = dummy;
+
+    // Move fast
+    for (auto i = 0; i <= n; ++i) fast = fast->next;
+
+    // Move both
+    while (fast != nullptr) {
+      fast = fast->next;
+      slow = slow->next;
     }
 
-    // Find end
-    while (right) {
-      left = left->next;
-      right = right->next;
-    }
+    // Delete node
+    slow->next = slow->next->next;
 
-    // Delete
-    auto next = left->next;
-    left->next = next->next;
-    delete next;
+    head = dummy->next;
+    delete dummy;
 
-    auto ans = preHead->next;
-    delete preHead;
-    return ans;
+    return head;
   }
 };

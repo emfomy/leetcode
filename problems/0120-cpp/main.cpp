@@ -44,27 +44,66 @@
 
 using namespace std;
 
-// Use DP
+// Use 2D-DP
+// DP[i, j] = min(DP[i-1, j-1], DP[i-1, j]) + Val[i, j]
 class Solution {
  public:
   int minimumTotal(vector<vector<int>>& triangle) {
     int n = triangle.size();
+    auto dp = vector(n, vector(n, 0));
 
-    // DP
-    auto curr = vector<int>(n);
-    auto prev = vector<int>(n);
-    curr[0] = triangle[0][0];
-
+    dp[0][0] = triangle[0][0];
     for (auto i = 1; i < n; ++i) {
-      swap(curr, prev);
-      curr[0] = prev[0] + triangle[i][0];
+      dp[i][0] = dp[i - 1][0] + triangle[i][0];
       for (auto j = 1; j < i; ++j) {
-        curr[j] = min(prev[j - 1], prev[j]) + triangle[i][j];
+        dp[i][j] = min(dp[i - 1][j - 1], dp[i - 1][j]) + triangle[i][j];
       }
-      curr[i] = prev[i - 1] + triangle[i][i];
+      dp[i][i] = dp[i - 1][i - 1] + triangle[i][i];
     }
 
-    auto ansIt = min_element(curr.cbegin(), curr.cend());
-    return *ansIt;
+    return *min_element(dp[n - 1].cbegin(), dp[n - 1].cend());
+  }
+};
+
+// Use 1D-DP (Top-Down)
+// DP[i, j] = min(DP[i-1, j-1], DP[i-1, j]) + Val[i, j]
+class Solution2 {
+ public:
+  int minimumTotal(vector<vector<int>>& triangle) {
+    const int INF = 1e8;
+
+    int n = triangle.size();
+
+    auto curr = vector(n + 1, INF);
+    auto prev = vector(n + 1, INF);
+    curr[1] = triangle[0][0];
+    for (auto i = 1; i < n; ++i) {
+      swap(curr, prev);
+      for (auto j = 0; j <= i; ++j) {
+        curr[j + 1] = min(prev[j], prev[j + 1]) + triangle[i][j];
+      }
+    }
+
+    return *min_element(curr.cbegin(), curr.cend());
+  }
+};
+
+// Use 1D-DP (Bottom-Up)
+// DP[i, j] = min(DP[i+1, j], DP[i+1, j+1]) + Val[i, j]
+class Solution3 {
+ public:
+  int minimumTotal(vector<vector<int>>& triangle) {
+    int n = triangle.size();
+
+    auto curr = vector(n + 1, 0);
+    auto prev = vector(n + 1, 0);
+    for (auto i = n - 1; i >= 0; --i) {
+      swap(curr, prev);
+      for (auto j = 0; j <= i; ++j) {
+        curr[j] = min(prev[j], prev[j + 1]) + triangle[i][j];
+      }
+    }
+
+    return curr[0];
   }
 };

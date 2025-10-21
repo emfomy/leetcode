@@ -55,63 +55,60 @@
 
 using namespace std;
 
+// Use [begin, end) as data range
 class MyCircularDeque {
   vector<int> data;
   int cap;
   int size;
-  int start;
+  int begin;
   int end;
 
  public:
-  MyCircularDeque(int k) {
-    data.reserve(k);
-    cap = k;
-    size = 0;
-    start = 0;  // included
-    end = 0;    // excluded
+  MyCircularDeque(int k) : data(k, 0), cap(k), size(0), begin(0), end(0) {}
+
+  int getFront() {  //
+    return isEmpty() ? -1 : data[begin];
+  }
+
+  int getRear() {  //
+    return isEmpty() ? -1 : data[(end + cap - 1) % cap];
   }
 
   bool insertFront(int value) {
-    if (size == cap) return false;
-    start = (start - 1 + cap) % cap;
-    data[start] = value;
-    size++;
+    if (isFull()) return false;
+    begin = (begin + cap - 1) % cap;
+    data[begin] = value;
+    ++size;
     return true;
   }
 
   bool insertLast(int value) {
-    if (size == cap) return false;
+    if (isFull()) return false;
     data[end] = value;
     end = (end + 1) % cap;
-    size++;
+    ++size;
     return true;
   }
 
   bool deleteFront() {
-    if (size == 0) return false;
-    start = (start + 1) % cap;
-    size--;
+    if (isEmpty()) return false;
+    begin = (begin + 1) % cap;
+    --size;
     return true;
   }
 
   bool deleteLast() {
-    if (size == 0) return false;
-    end = (end - 1 + cap) % cap;
-    size--;
+    if (isEmpty()) return false;
+    end = (end + cap - 1) % cap;
+    --size;
     return true;
   }
 
-  int getFront() {
-    if (size == 0) return -1;
-    return data[start];
+  bool isEmpty() {  //
+    return size == 0;
   }
 
-  int getRear() {
-    if (size == 0) return -1;
-    return data[(end - 1 + cap) % cap];
+  bool isFull() {  //
+    return size == cap;
   }
-
-  bool isEmpty() { return size == 0; }
-
-  bool isFull() { return size == cap; }
 };

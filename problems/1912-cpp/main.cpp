@@ -62,8 +62,6 @@
 #include <unordered_map>
 #include <vector>
 
-#include "../../utils/cpp/print.hpp"
-
 using namespace std;
 
 // Use tree map for (shop, movie) -> price

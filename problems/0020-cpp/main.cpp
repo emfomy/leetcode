@@ -56,6 +56,7 @@
 
 #include <stack>
 #include <string>
+#include <unordered_map>
 
 using namespace std;
 
@@ -63,35 +64,27 @@ using namespace std;
 class Solution {
  public:
   bool isValid(string s) {
-    auto chars = stack<int>();
-    chars.push(' ');  // push empty char to avoid null check on stack.
+    static const unordered_map<char, char> parenMap = {{'(', ')'}, {'[', ']'}, {'{', '}'}};
+
+    auto st = stack<int>();
+    st.push(' ');  // push empty char to avoid null check on stack.
 
     for (auto ch : s) {
       switch (ch) {
         case '(':
-          chars.push('(');
+        case '[':
+        case '{':
+          st.push(parenMap.at(ch));
           break;
         case ')':
-          if (chars.top() != '(') return false;
-          chars.pop();
-          break;
-        case '[':
-          chars.push('[');
-          break;
         case ']':
-          if (chars.top() != '[') return false;
-          chars.pop();
-          break;
-        case '{':
-          chars.push('{');
-          break;
         case '}':
-          if (chars.top() != '{') return false;
-          chars.pop();
+          if (st.top() != ch) return false;
+          st.pop();
           break;
       }
     }
 
-    return chars.size() == 1;
+    return st.size() == 1;
   }
 };

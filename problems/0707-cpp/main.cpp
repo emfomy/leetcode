@@ -83,38 +83,40 @@ class MyLinkedList {
   }
 };
 
+// Use dummy head & tail
+// Use previous node as iterator
 class MyLinkedList2 {
-  class Node {
-   public:
+  struct Node {
     int val;
     Node* next;
   };
 
-  Node* end;
-  Node* begin;
+  Node* dHead;  // dummy head
+  Node* dTail;  // dummy tail
   int size;
 
+  // Get the iterator to the index
+  // Return nullptr if out-of-bound
   Node* getIter(int index) {
     if (index > size) return nullptr;
-    auto node = begin;
-    for (auto i = 0; i < index; i++) {
+
+    auto node = dHead;
+    for (auto i = 0; i < index; ++i) {
       node = node->next;
     }
     return node;
   }
 
  public:
-  MyLinkedList2() {  //
-    end = new Node();
-    begin = new Node();
-    begin->next = end;
-    size = 0;
+  MyLinkedList2() : size(0) {
+    dHead = new Node();
+    dTail = new Node();
+    dHead->next = dTail;
   }
 
   int get(int index) {  //
     auto it = getIter(index);
-    if (it == nullptr || it->next == end) return -1;
-
+    if (it == nullptr || it->next == dTail) return -1;
     return it->next->val;
   }
 
@@ -126,24 +128,23 @@ class MyLinkedList2 {
     addAtIndex(size, val);
   }
 
-  void addAtIndex(int index, int val) {  //
+  void addAtIndex(int index, int val) {
     auto it = getIter(index);
     if (it == nullptr) return;
 
-    auto node = new Node();
-    node->val = val;
+    auto node = new Node(val);
     node->next = it->next;
     it->next = node;
-    size++;
+    ++size;
   }
 
-  void deleteAtIndex(int index) {  //
+  void deleteAtIndex(int index) {
     auto it = getIter(index);
-    if (it == nullptr || it->next == end) return;
+    if (it == nullptr || it->next == dTail) return;
 
     auto node = it->next;
     it->next = node->next;
     delete node;
-    size--;
+    --size;
   }
 };

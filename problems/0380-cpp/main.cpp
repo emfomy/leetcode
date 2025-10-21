@@ -9,7 +9,7 @@
 // - `RandomizedSet()` Initializes the `RandomizedSet` object.
 // - `bool insert(int val)` Inserts an item `val` into the set if not present. Returns `true` if the item was not present, `false` otherwise.
 // - `bool remove(int val)` Removes an item `val` from the set if present. Returns `true` if the item was present, `false` otherwise.
-// - `int getRandom()` Returns a random element from the current set of elements (it's guaranteed that at least one element exists when this method is called). Each element must have the <b>same probability</b> of being returned.
+// - `int getRandom()` Returns a random element from the current set of elements (it's guaranteed that at least one element exists when this method is called). Each element must have the **same probability** of being returned.
 //
 // You must implement the functions of the class such that each function works in**average**`O(1)`time complexity.
 //
@@ -53,7 +53,7 @@ using namespace std;
 // Hash Map + Array
 class RandomizedSet {
   vector<int> vals;
-  unordered_map<int, int> val2idx;
+  unordered_map<int, int> val2idx;  // value -> index
 
  public:
   RandomizedSet() {}
@@ -69,10 +69,10 @@ class RandomizedSet {
     auto it = val2idx.find(val);
     if (it == val2idx.cend()) return false;
 
-    int n = vals.size();
     auto idx = val2idx[val];
-    if (idx != n - 1) {  // swap with last
-      vals[idx] = vals[n - 1];
+    int lastIdx = vals.size() - 1;
+    if (idx != lastIdx) {  // swap with last
+      vals[idx] = vals[lastIdx];
       val2idx[vals[idx]] = idx;
     }
 

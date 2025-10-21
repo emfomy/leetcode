@@ -41,23 +41,26 @@
 
 using namespace std;
 
-// Use Two pointer
+// Use two pointer
+//
+// Use l and r two pointers that point to the start and end lines.
+// For each step, we calculate the water area of these two lines.
+// Next move the shorter pointer inward.
 class Solution {
  public:
   int maxArea(vector<int>& height) {
-    auto n = height.size();
+    int n = height.size();
+    auto ans = 0;
 
-    int left = 0;
-    int right = n - 1;
-
-    int ans = 0;
-    while (left < right) {
-      if (height[left] < height[right]) {
-        ans = max(ans, height[left] * (right - left));
-        left++;
+    auto l = 0, r = n - 1;
+    while (l < r) {
+      auto left = height[l], right = height[r];
+      if (left <= right) {
+        ans = max(ans, left * (r - l));
+        ++l;
       } else {
-        ans = max(ans, height[right] * (right - left));
-        right--;
+        ans = max(ans, right * (r - l));
+        --r;
       }
     }
 
