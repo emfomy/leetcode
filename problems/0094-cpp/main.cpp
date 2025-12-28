@@ -61,52 +61,47 @@ struct TreeNode {
   TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
 };
 
-// Use DFS (Recursion)
+// DFS (Recursion)
 class Solution {
  public:
   vector<int> inorderTraversal(TreeNode *root) {
     auto ans = vector<int>();
-    _preorder(root, ans);
+    dfs(root, ans);
     return ans;
   }
 
  private:
-  void _preorder(TreeNode *node, vector<int> &ans) {
-    if (!node) return;
-    _preorder(node->left, ans);
+  void dfs(TreeNode *node, vector<int> &ans) {
+    if (node == nullptr) return;
+    dfs(node->left, ans);
     ans.push_back(node->val);
-    _preorder(node->right, ans);
+    dfs(node->right, ans);
   }
 };
 
-// Use DFS (Stack)
+// DFS (Stack + State)
 class Solution2 {
  public:
   vector<int> inorderTraversal(TreeNode *root) {
-    if (!root) return {};
+    // Edge case
+    if (root == nullptr) return {};
 
+    // Prepare
     auto ans = vector<int>();
-    auto st = stack<pair<TreeNode *, int>>();  // (node, pre/in/post)
-    st.push({root, 0});
+    auto st = stack<pair<TreeNode *, bool>>();  // (node, seen)
+    st.push({root, false});
 
+    // Loop
     while (!st.empty()) {
-      auto &item = st.top();
-      switch (item.second) {
-        case 0: {  // pre
-          ++item.second;
-          if (item.first->left) st.push({item.first->left, 0});
-          break;
-        }
-        case 1: {  // in
-          ++item.second;
-          ans.push_back(item.first->val);
-          if (item.first->right) st.push({item.first->right, 0});
-          break;
-        }
-        case 2: {  // post
-          st.pop();
-          break;
-        }
+      auto [node, seen] = st.top();
+      st.pop();
+
+      if (seen) {
+        ans.push_back(node->val);
+      } else {
+        if (node->right) st.push({node->right, false});
+        st.push({node, true});
+        if (node->left) st.push({node->left, false});
       }
     }
 

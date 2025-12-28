@@ -46,10 +46,10 @@
 
 using namespace std;
 
-const int modulo = 1e9 + 7;
-
 // Use prefix product & fast power
 class Solution {
+  constexpr static int modulo = 1e9 + 7;
+
  public:
   vector<int> productQueries(int n, vector<vector<int>>& queries) {
     auto fastPow = [=](int64_t x, int n) -> int64_t {

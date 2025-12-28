@@ -35,6 +35,7 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 #include <stack>
+#include <utility>
 #include <vector>
 
 using namespace std;
@@ -49,43 +50,78 @@ class Node {
   Node(int val, vector<Node*> children) : val(val), children(children) {}
 };
 
-// Use DFS (Recursion)
+// DFS (Recursion)
 class Solution {
  public:
   vector<int> postorder(Node* root) {
     auto ans = vector<int>();
-    _postorder(root, ans);
+    dfs(root, ans);
     return ans;
   }
 
  private:
-  void _postorder(Node* node, vector<int>& ans) {
+  void dfs(Node* node, vector<int>& ans) {
     if (!node) return;
     ans.push_back(node->val);
-    for (auto child : node->children) _postorder(child, ans);
+    for (auto child : node->children) dfs(child, ans);
   }
 };
 
-// Use DFS (Stack)
-//
-// Do preorder from right to left ans then reverse the result
+// DFS (Stack + Reverse)
 class Solution2 {
  public:
   vector<int> postorder(Node* root) {
+    // Edge case
     if (!root) return {};
 
+    // Prepare
     auto ans = vector<int>();
     auto st = stack<Node*>();
     st.push(root);
 
+    // Loop
     while (!st.empty()) {
       auto node = st.top();
       st.pop();
+
       ans.push_back(node->val);
       for (auto child : node->children) st.push(child);
     }
 
+    // Reverse
     reverse(ans.begin(), ans.end());
+
+    return ans;
+  }
+};
+
+// DFS (Stack + State)
+class Solution3 {
+ public:
+  vector<int> postorder(Node* root) {
+    // Edge case
+    if (!root) return {};
+
+    // Prepare
+    auto ans = vector<int>();
+    auto st = stack<pair<Node*, bool>>();  // (node, seen)
+    st.push({root, false});
+
+    // Loop
+    while (!st.empty()) {
+      auto [node, seen] = st.top();
+      st.pop();
+
+      if (seen) {
+        ans.push_back(node->val);
+      } else {
+        st.push({node, true});
+        for (auto it = node->children.crbegin(); it != node->children.crend(); ++it) {
+          st.push({*it, false});
+        }
+      }
+    }
+
     return ans;
   }
 };

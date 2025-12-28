@@ -54,12 +54,10 @@ class Solution {
 
     // Assume k >= n1
     // We only need k pairs
-    if (n1 > k) {
-      n1 = k;
-    }
+    if (n1 > k) n1 = k;
 
     // Prepare data
-    auto data = vector<tuple<int, int, int>>();  //(sum, idx1, idx2)
+    auto data = vector<tuple<int, int, int>>();  // sum, idx1, idx2
     for (auto idx1 = 0; idx1 < n1; ++idx1) {
       data.emplace_back(nums1[idx1] + nums2[0], idx1, 0);
     }

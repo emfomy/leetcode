@@ -48,6 +48,7 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 #include <algorithm>
+#include <iterator>
 #include <stack>
 #include <vector>
 
@@ -62,77 +63,76 @@ struct TreeNode {
   TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
 };
 
-// Use DFS (Recursion)
+// DFS (Recursion)
 class Solution {
  public:
   vector<int> postorderTraversal(TreeNode *root) {
     auto ans = vector<int>();
-    _preorder(root, ans);
+    dfs(root, ans);
     return ans;
   }
 
  private:
-  void _preorder(TreeNode *node, vector<int> &ans) {
-    if (!node) return;
-    _preorder(node->left, ans);
-    _preorder(node->right, ans);
+  void dfs(TreeNode *node, vector<int> &ans) {
+    if (node == nullptr) return;
+    dfs(node->left, ans);
+    dfs(node->right, ans);
     ans.push_back(node->val);
   }
 };
 
-// Use DFS (Stack)
-//
-// Do preorder from right to left ans then reverse the result
+// DFS (Stack) + Reverse
 class Solution2 {
  public:
   vector<int> postorderTraversal(TreeNode *root) {
-    if (!root) return {};
+    // Edge case
+    if (root == nullptr) return {};
 
+    // Prepare
     auto ans = vector<int>();
     auto st = stack<TreeNode *>();
     st.push(root);
 
+    // Loop
     while (!st.empty()) {
       auto node = st.top();
       st.pop();
+
       ans.push_back(node->val);
       if (node->left) st.push(node->left);
       if (node->right) st.push(node->right);
     }
 
+    // Reverse
     reverse(ans.begin(), ans.end());
+
     return ans;
   }
 };
 
-// Use DFS (Stack)
+// DFS (Stack + State)
 class Solution3 {
  public:
   vector<int> postorderTraversal(TreeNode *root) {
-    if (!root) return {};
+    // Edge case
+    if (root == nullptr) return {};
 
+    // Prepare
     auto ans = vector<int>();
-    auto st = stack<pair<TreeNode *, int>>();  // (node, pre/in/post)
-    st.push({root, 0});
+    auto st = stack<pair<TreeNode *, bool>>();  // (node, seen)
+    st.push({root, false});
 
+    // Loop
     while (!st.empty()) {
-      auto &item = st.top();
-      switch (item.second) {
-        case 0: {  // pre
-          ++item.second;
-          if (item.first->left) st.push({item.first->left, 0});
-          break;
-        }
-        case 1: {  // in
-          ++item.second;
-          if (item.first->right) st.push({item.first->right, 0});
-          break;
-        }
-        case 2: {  // post
-          ans.push_back(item.first->val);
-          st.pop();
-          break;
-        }
+      auto [node, seen] = st.top();
+      st.pop();
+
+      if (seen) {
+        ans.push_back(node->val);
+      } else {
+        st.push({node, true});
+        if (node->right) st.push({node->right, false});
+        if (node->left) st.push({node->left, false});
       }
     }
 

@@ -46,71 +46,60 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-#include <utility>
+#include <stack>
+#include <vector>
 
 using namespace std;
 
-struct ListNode {
+struct TreeNode {
   int val;
-  ListNode *next;
-  ListNode(int x) : val(x), next(nullptr) {}
+  TreeNode *left;
+  TreeNode *right;
+  TreeNode() : val(0), left(nullptr), right(nullptr) {}
+  TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
+  TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
 };
 
-// Two Pointer
-//
-// First find length of both list.
-// Move the longer on first, and move both together.
+// DFS (Recursion)
 class Solution {
  public:
-  ListNode *getIntersectionNode(ListNode *headA, ListNode *headB) {
-    // Find length
-    auto lenA = 0;
-    for (auto node = headA; node != nullptr; node = node->next) ++lenA;
+  vector<int> preorderTraversal(TreeNode *root) {
+    auto ans = vector<int>();
+    dfs(root, ans);
+    return ans;
+  }
 
-    auto lenB = 0;
-    for (auto node = headB; node != nullptr; node = node->next) ++lenB;
-
-    // Ensure lenA >= lenB
-    if (lenA < lenB) {
-      swap(headA, headB);
-      swap(lenA, lenB);
-    }
-
-    // Move A
-    while (lenA > lenB) {
-      headA = headA->next;
-      --lenA;
-    }
-
-    // Move both
-    while (headA != headB) {
-      headA = headA->next;
-      headB = headB->next;
-    }
-
-    return headA;
+ private:
+  void dfs(TreeNode *node, vector<int> &ans) {
+    if (node == nullptr) return;
+    ans.push_back(node->val);
+    dfs(node->left, ans);
+    dfs(node->right, ans);
   }
 };
 
-// Two Pointer
-//
-// Say the intersection node is C.
-// Say dist(A, C) = a, dist(B, C) = b, dist(C, tail) = c.
-//
-// Use two pointer P1 & P2.
-// Let P1 traverse A -> C -> Tail -> (jump) -> B -> C.
-// Let P2 traverse B -> C -> Tail -> (jump) -> A -> C
-// Both pointer moves a + b + c steps.
+// DFS (Stack)
 class Solution2 {
  public:
-  ListNode *getIntersectionNode(ListNode *headA, ListNode *headB) {
-    auto nodeA = headA, nodeB = headB;
+  vector<int> preorderTraversal(TreeNode *root) {
+    // Edge case
+    if (root == nullptr) return {};
 
-    while (nodeA != nodeB) {
-      nodeA = nodeA ? nodeA->next : headB;
-      nodeB = nodeB ? nodeB->next : headA;
+    // Prepare
+    auto ans = vector<int>();
+    auto st = stack<TreeNode *>();
+    st.push(root);
+
+    // Loop
+    while (!st.empty()) {
+      auto node = st.top();
+      st.pop();
+
+      ans.push_back(node->val);
+      if (node->right) st.push(node->right);
+      if (node->left) st.push(node->left);
     }
 
-    return nodeA;
+    return ans;
   }
 };

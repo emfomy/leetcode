@@ -50,6 +50,9 @@
 using namespace std;
 
 // Monotonic Stack
+//
+// Note that if price[i] < price[j] and i < j, then price[i] is always better.
+// Then the monotonic stack should be increasing from right to left.
 class Solution {
  public:
   vector<int> finalPrices(vector<int>& prices) {
@@ -57,8 +60,9 @@ class Solution {
 
     auto st = stack<int>();
     auto ans = vector<int>(n);
-    for (int i = n - 1; i >= 0; --i) {
+    for (auto i = n - 1; i >= 0; --i) {
       auto price = prices[i];
+      auto newPrice = price;
       while (!st.empty() && st.top() > price) st.pop();
       ans[i] = st.empty() ? price : price - st.top();
       st.push(price);

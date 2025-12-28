@@ -52,38 +52,44 @@ class Node {
   Node(int val, vector<Node*> children) : val(val), children(children) {}
 };
 
-// Use DFS (Recursion)
+// DFS (Recursion)
 class Solution {
  public:
   vector<int> preorder(Node* root) {
     auto ans = vector<int>();
-    _preorder(root, ans);
+    dfs(root, ans);
     return ans;
   }
 
  private:
-  void _preorder(Node* node, vector<int>& ans) {
+  void dfs(Node* node, vector<int>& ans) {
     if (!node) return;
     ans.push_back(node->val);
-    for (auto child : node->children) _preorder(child, ans);
+    for (auto child : node->children) dfs(child, ans);
   }
 };
 
-// Use DFS (Stack)
+// DFS (Stack)
 class Solution2 {
  public:
   vector<int> preorder(Node* root) {
+    // Edge case
     if (!root) return {};
 
+    // Prepare
     auto ans = vector<int>();
     auto st = stack<Node*>();
     st.push(root);
 
+    // Loop
     while (!st.empty()) {
       auto node = st.top();
       st.pop();
+
       ans.push_back(node->val);
-      for (auto it = node->children.crbegin(); it != node->children.crend(); ++it) st.push(*it);
+      for (auto it = node->children.crbegin(); it != node->children.crend(); ++it) {
+        st.push(*it);
+      }
     }
 
     return ans;

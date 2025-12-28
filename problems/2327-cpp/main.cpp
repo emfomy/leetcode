@@ -53,7 +53,7 @@ using namespace std;
 // DP[i,j] = DP[i-1,j-1], j > 0
 // DP[i,0] = Sum DP[i-1,j-1] for j in [delay, forget)
 class Solution {
-  const int modulo = 1e9 + 7;
+  constexpr static int modulo = 1e9 + 7;
 
  public:
   int peopleAwareOfSecret(int n, int delay, int forget) {
@@ -83,7 +83,7 @@ class Solution {
 // DP[i,j] = DP[i-1,j-1], j > 0
 // DP[i,0] = Sum DP[i-1,j-1] for j in [delay, forget)
 class Solution2 {
-  const int modulo = 1e9 + 7;
+  constexpr static int modulo = 1e9 + 7;
 
  public:
   int peopleAwareOfSecret(int n, int delay, int forget) {
@@ -114,7 +114,7 @@ class Solution2 {
 //
 // Let DP2[i-j] = DP[i,j] to avoid update for j > 0
 class Solution3 {
-  const int modulo = 1e9 + 7;
+  constexpr static int modulo = 1e9 + 7;
 
  public:
   int peopleAwareOfSecret(int n, int delay, int forget) {
@@ -142,7 +142,7 @@ class Solution3 {
 // Use as extra variable to track the number of people that will tell the secret.
 // S[i] = S[i-1] + DP[i-1,delay-1] - DP[i-1,forget-1]
 class Solution4 {
-  const int modulo = 1e9 + 7;
+  constexpr static int modulo = 1e9 + 7;
 
  public:
   int peopleAwareOfSecret(int n, int delay, int forget) {
@@ -174,7 +174,7 @@ class Solution4 {
 // Use DP2[i-j].
 // Use extra variable.
 class Solution5 {
-  const int modulo = 1e9 + 7;
+  constexpr static int modulo = 1e9 + 7;
 
  public:
   int peopleAwareOfSecret(int n, int delay, int forget) {

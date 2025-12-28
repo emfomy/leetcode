@@ -1,4 +1,4 @@
-// Source: https: //leetcode.com/problems/daily-temperatures
+// Source: https://leetcode.com/problems/daily-temperatures
 // Title: Daily Temperatures
 // Difficulty: Medium
 // Author: Mu Yang <http://muyang.pro>
@@ -41,7 +41,9 @@ using namespace std;
 
 // Monotonic Stack
 //
-// Store index of warmer days
+// If day j is farther (i.e. j > i) and cooler than day i, then it will never be a candidate.
+// Then the monotonic stack should be decreasing from right to left.
+// We store the day index in the stack.
 class Solution {
  public:
   vector<int> dailyTemperatures(vector<int>& temperatures) {
@@ -49,11 +51,11 @@ class Solution {
 
     auto st = stack<int>();
     auto ans = vector<int>(n);
-    for (auto i = n - 1; i >= 0; --i) {
-      auto temp = temperatures[i];
-      while (!st.empty() && temperatures[st.top()] <= temp) st.pop();
-      ans[i] = st.empty() ? 0 : (st.top() - i);
-      st.push(i);
+    for (auto day = n - 1; day >= 0; --day) {
+      auto temp = temperatures[day];
+      while (!st.empty() && temperatures[st.top()] <= temp) st.pop();  // pop cooler days
+      ans[day] = st.empty() ? 0 : (st.top() - day);
+      st.push(day);
     }
 
     return ans;
