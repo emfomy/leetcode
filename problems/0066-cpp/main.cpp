@@ -62,9 +62,7 @@ class Solution {
       digits[i] %= 10;
     }
 
-    if (carry) {
-      digits.insert(digits.begin(), carry);
-    }
+    if (carry) digits.insert(digits.begin(), carry);
 
     return digits;
   }

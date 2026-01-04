@@ -60,8 +60,10 @@ func countVowelPermutation(n int) int {
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-// Its an markov chain
-// M = [
+// Math, Eigen Decomposition in Finite Field
+//
+// Define the transition matrix
+// A = [
 // 0   1   1   0   1
 // 1   0   1   0   0
 // 0   1   0   1   0
@@ -73,11 +75,12 @@ func countVowelPermutation(n int) int {
 // A = U * D * U^{-1}, U is the right eigenvectors
 // Write e = (1, 1, 1, 1, 1), u = U' * e, v = U^{-1} * e
 // The solution is
-// e' * A^(n-1) * e = e' * U * D^(n-1) * U^{-1} * e
-//              = (U' * e)' * D^(n-1) * (U^{-1} * e)
-//              = u' * D^(n-1) * v
-//              = sum(u @ v @ d^(n-1)), where @ is element-wise product
-//              = sum(c @ d^n), Write c = (u @ v @ (1/d))
+// e' * A^(n-1) * e
+// = e' * U * D^(n-1) * U^{-1} * e
+// = (U' * e)' * D^(n-1) * (U^{-1} * e)
+// = u' * D^(n-1) * v
+// = sum(u @ v @ d^(n-1)), where @ is element-wise product
+// = sum(c @ d^(n-1)), Write c = (u @ v)
 //
 // Use sage:
 //
