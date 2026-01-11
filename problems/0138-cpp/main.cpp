@@ -70,70 +70,68 @@ class Solution {
  public:
   Node* copyRandomList(Node* head) {
     auto nodeMap = unordered_map<Node*, Node*>();  // from old to new node
+
+    // Helper
     auto getNode = [&](Node* oldNode) -> Node* {
       if (oldNode == nullptr) return nullptr;
 
-      // Find new node
+      // Get existing node
       auto it = nodeMap.find(oldNode);
-      if (it != nodeMap.cend()) {
-        return it->second;
-      }
+      if (it != nodeMap.cend()) return it->second;
 
       // Create new node
       auto newNode = new Node(oldNode->val);
-      nodeMap.insert(it, {oldNode, newNode});
-      return newNode;
+      return nodeMap[oldNode] = newNode;
     };
 
-    auto newHead = getNode(head);
-    auto newCurr = newHead;
-    auto curr = head;
-    while (curr != nullptr) {
-      newCurr->next = getNode(curr->next);
-      newCurr->random = getNode(curr->random);
-      newCurr = newCurr->next;
-      curr = curr->next;
+    // Loop
+    auto node = head;
+    while (node != nullptr) {
+      auto newNode = getNode(node);
+      newNode->next = getNode(node->next);
+      newNode->random = getNode(node->random);
+      node = node->next;
     }
 
-    return newHead;
+    return getNode(head);
   }
 };
 
-// Assume that we allowed to modify the original list.
+// Three-Pass
 //
-// First build an alternative list (with old new old new ...).
+// For first loop, create new nodes (store in old->next and set new->next to the real next)
+// For second loop, set the random pointer for the new nodes.
+// For third loop, set the next pointer for the new nodes, and restore old->next.
 class Solution2 {
  public:
   Node* copyRandomList(Node* head) {
-    if (head == nullptr) return nullptr;
+    if (head == nullptr) return head;
 
-    // Weave list
-    auto curr = head;
-    while (curr != nullptr) {
-      auto newCurr = new Node(curr->val);
-      newCurr->next = curr->next;
-      curr->next = newCurr;
-      curr = newCurr->next;
+    // First pass
+    for (auto node = head; node != nullptr; node = node->next->next) {
+      auto next = node->next;
+      auto newNode = new Node(node->val);
+      node->next = newNode;  // node->new = new
+      newNode->next = next;  // new->next = next
+    }
+    auto newHead = head->next;
+
+    // Second pass
+    for (auto node = head; node != nullptr; node = node->next->next) {
+      if (node->random) {
+        node->next->random = node->random->next;  // new->random = random->new
+      }
     }
 
-    // Copy random
-    curr = head;
-    while (curr != nullptr) {
-      curr->next->random = curr->random ? curr->random->next : nullptr;
-      curr = curr->next->next;
+    // Third pass
+    for (auto node = head; node != nullptr; node = node->next) {
+      auto next = node->next->next;
+      if (next) {
+        node->next->next = next->next;  // new->next = next->new
+      }
+      node->next = next;
     }
 
-    // Unweave lists
-    curr = head;
-    auto newCurr = head->next;
-    auto ans = newCurr;
-    while (curr != nullptr) {
-      curr->next = curr->next->next;
-      newCurr->next = newCurr->next ? newCurr->next->next : nullptr;
-      curr = curr->next;
-      newCurr = newCurr->next;
-    }
-
-    return ans;
+    return newHead;
   }
 };

@@ -44,7 +44,7 @@ using namespace std;
 // For right part, we use a increasing monotonic stack.
 // If the top bar in the stack is taller than current bar,
 // which means the top bar can only extend to the bar left of current bar.
-// Note that is a bar is never popped, then it can extend to the right end (i.e. n);
+// Note that if a bar is never popped, then it can extend to the right end (i.e. n);
 //
 // Same algorithm also works for the left part.
 class Solution {

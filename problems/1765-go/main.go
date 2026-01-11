@@ -49,7 +49,7 @@
 // - `isWater[i][j]` is `0` or `1`.
 // - There is at least **one** water cell.
 //
-// **Note:** This question is the same as 542: <a href="https://leetcode.com/problems/01-matrix/description/" target="_blank">https://leetcode.com/problems/01-matrix/</a>
+// **Note:** This question is the same as 542: https://leetcode.com/problems/01-matrix
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 

@@ -71,8 +71,7 @@ class Solution {
     // Prefix sum
     auto ans = n;
     auto idxs = unordered_map<int, int>();  // rightmost index of each remainder
-
-    idxs[0] = -1;  // handle the case where subarray is the whole prefix
+    idxs[0] = -1;                           // handle the case where subarray is the whole prefix
 
     auto currR = 0;
     for (int i = 0; i < n; ++i) {
