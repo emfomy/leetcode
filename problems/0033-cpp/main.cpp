@@ -51,85 +51,37 @@ using namespace std;
 
 // Binary Search
 //
-// If nums[0] < nums[n-1], then k = 0.
-// Otherwise, use binary search to find k such that nums[k-1] >= nums[0] and nums[k] < nums[0].
+// Say the array rotate at k. That is,
+// a[k+1] < a[k+2] < ... < a[n-1] < a[0] < a[1] < ... < a[k]
 //
-// Next use binary search find the target on nums[k, ..., n-1, 0, ..., l-1].
+// Therefore, in binary search,
+// we treat all number less than a[0] greater then all number greater than a[0]
 class Solution {
  public:
   int search(vector<int>& nums, int target) {
     int n = nums.size();
 
-    // Find k
-    int k;
-    if (nums[0] <= nums[n - 1]) {  // use `=` for n = 1
-      k = 0;
-    } else {
-      auto front = nums[0];
-      auto lo = 1, hi = n;  // [1, n) is unknown
-      while (lo < hi) {
-        auto mid = lo + (hi - lo) / 2;
-        if (nums[mid] >= front) {
-          lo = mid + 1;  // [mid+1, hi)
-        } else {
-          hi = mid;  // [lo, mid)
-        }
-      }
-      // nums[lo-1] >= front, nums[lo=hi] < front
-      k = lo;
-    }
+    // Helper
+    auto num0 = nums[0];
+    auto myLess = [=](int a, int b) -> bool {
+      if (a >= num0 && b < num0) return true;
+      if (a < num0 && b >= num0) return false;
+      return a < b;
+    };
 
     // Binary search
-    {
-      auto lo = k, hi = n + k;  // [k, n+k) is unknown
-      while (lo < hi) {
-        auto mid = lo + (hi - lo) / 2;
-        auto val = nums[mid % n];
-        if (val == target) return mid % n;
-        if (val < target) {
-          lo = mid + 1;  // [mid+1, hi)
-        } else {
-          hi = mid;
-        }
+    // nums[lo-1] < target, nums[hi] > target
+    auto lo = 0, hi = n;
+    while (lo < hi) {
+      auto mid = lo + (hi - lo) / 2;
+      if (nums[mid] == target) return mid;
+      if (myLess(nums[mid], target)) {
+        lo = mid + 1;
+      } else {
+        hi = mid;
       }
     }
 
-    return -1;
-  }
-};
-
-// Binary Search (STL)
-//
-// First compare target and nums[0].
-// If target >= nums[0], then treat all number with val < nums[0] as inf.
-// Othersize, then treat all number with val >= nums[0] as -inf.
-class Solution2 {
- public:
-  int search(vector<int>& nums, int target) {
-    int n = nums.size();
-
-    const int INF = 1e5;
-
-    // Comp
-    function<bool(int, int)> comp;
-    auto front = nums[0];
-    if (target >= front) {
-      comp = [=](int a, int b) -> bool {
-        if (a < front) a = INF;
-        if (b < front) b = INF;
-        return a <= b;
-      };
-    } else {
-      comp = [=](int a, int b) -> bool {
-        if (a >= front) a = -INF;
-        if (b >= front) b = -INF;
-        return a <= b;
-      };
-    }
-
-    // Binary search
-    auto it = lower_bound(nums.cbegin(), nums.cend(), target, comp);
-    if (it != nums.cend() && *it == target) return it - nums.cbegin();
     return -1;
   }
 };

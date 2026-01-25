@@ -47,26 +47,29 @@ struct ListNode {
   ListNode(int x, ListNode* next) : val(x), next(next) {}
 };
 
-// Vector + Monotonic Stack
+// Monotonic Stack
+//
+// Loop through the list, and store the node into the stack.
+// Keep the stack non-strictly decreasing.
+//
+// For each node pop from the stack, we point that node to current node.
+
 class Solution {
  public:
   vector<int> nextLargerNodes(ListNode* head) {
-    // Convert to vector
-    auto nums = vector<int>();
-    while (head != nullptr) {
-      nums.push_back(head->val);
-      head = head->next;
-    }
+    auto ans = vector<int>();
+    auto st = stack<pair<int, int>>();  // (number, index)
 
-    // Monotonic stack
-    int n = nums.size();
-    auto st = stack<int>();
-    auto ans = vector<int>(n);
-    for (auto i = n - 1; i >= 0; --i) {
-      auto num = nums[i];
-      while (!st.empty() && st.top() <= num) st.pop();
-      ans[i] = st.empty() ? 0 : st.top();
-      st.push(num);
+    auto idx = 1;
+    while (head != nullptr) {
+      while (!st.empty() && st.top().first < head->val) {
+        ans[st.top().second - 1] = head->val;
+        st.pop();
+      }
+      st.push({head->val, idx});
+      ans.push_back(0);
+      head = head->next;
+      ++idx;
     }
 
     return ans;
