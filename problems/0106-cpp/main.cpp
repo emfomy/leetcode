@@ -49,62 +49,88 @@ struct TreeNode {
   TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
 };
 
-// Use reverse iterator
-// in:   [left, root, right]
-// post: [left, right, root]
-class Solution {
+// Divide and Conquer
+//
+// inorder:  [left, root,  right]
+// preorder: [left, right, root]
+class Solution1 {
+ public:
+  TreeNode *buildTree(vector<int> &inorder, vector<int> &postorder) {
+    int n = inorder.size();
+    return build(inorder, postorder, n, 0, 0);
+  }
+
+  TreeNode *build(vector<int> &inorder, vector<int> &postorder, int size, int inShift, int postShift) {
+    if (size == 0) return nullptr;
+
+    auto rootVal = postorder[postShift + size - 1];
+    auto leftSize = 0;
+    while (inorder[inShift + leftSize] != rootVal) ++leftSize;
+    auto rightSize = size - leftSize - 1;
+
+    auto root = new TreeNode(rootVal);
+    root->left = build(inorder, postorder, leftSize, inShift, postShift);
+    root->right = build(inorder, postorder, rightSize, inShift + leftSize + 1, postShift + leftSize);
+    return root;
+  }
+};
+
+// Divide and Conquer + Reverse iterator
+//
+// inorder:  [left, root,  right]
+// preorder: [left, right, root]
+class Solution2 {
   using Iter = vector<int>::const_reverse_iterator;
 
  public:
   TreeNode *buildTree(vector<int> &inorder, vector<int> &postorder) {
-    return dfs(postorder.crbegin(), inorder.crbegin(), inorder.crend());
+    return build(inorder.crbegin(), inorder.crend(), postorder.crbegin());
   }
 
- private:
-  TreeNode *dfs(Iter postFirst, Iter inFirst, Iter inLast) {
-    if (distance(inFirst, inLast) <= 0) return nullptr;
+  TreeNode *build(Iter inBegin, Iter inEnd, Iter postBegin) {
+    if (distance(inBegin, inEnd) <= 0) return nullptr;
 
-    auto rootVal = *(postFirst++);
-    auto inMid = find(inFirst, inLast, rootVal);
+    auto rootVal = *postBegin;
+    auto inMid = find(inBegin, inEnd, rootVal);  // root at inorder
+    auto rightSize = distance(inBegin, inMid);
 
-    auto rightSize = inMid - inFirst;
-    auto right = dfs(postFirst, inFirst, inMid);
-    auto left = dfs(postFirst + rightSize, inMid + 1, inLast);
-
-    return new TreeNode(rootVal, left, right);
+    auto root = new TreeNode(rootVal);
+    root->right = build(inBegin, inMid, postBegin + 1);
+    root->left = build(inMid + 1, inEnd, postBegin + 1 + rightSize);
+    return root;
   }
 };
 
-// Use reverse iterator
-// in:   [left, root, right]
-// post: [left, right, root]
-class Solution2 {
+// Divide and Conquer + Reverse iterator + Index map
+//
+// inorder:  [left, root,  right]
+// preorder: [left, right, root]
+//
+// Instead of find root at inorder each time, we find the mapping at first
+class Solution3 {
   using Iter = vector<int>::const_reverse_iterator;
   using IterMap = unordered_map<int, Iter>;
 
  public:
   TreeNode *buildTree(vector<int> &inorder, vector<int> &postorder) {
-    auto n = postorder.size();
     auto inMap = IterMap();
     for (auto it = inorder.crbegin(); it != inorder.crend(); ++it) {
       inMap[*it] = it;
     }
 
-    return dfs(inMap, postorder.crbegin(), inorder.crbegin(), n);
+    return build(inorder.crbegin(), inorder.crend(), postorder.crbegin(), inMap);
   }
 
- private:
-  TreeNode *dfs(IterMap &inMap, Iter postFirst, Iter inFirst, int size) {
-    if (size <= 0) return nullptr;
+  TreeNode *build(Iter inBegin, Iter inEnd, Iter postBegin, IterMap &inMap) {
+    if (distance(inBegin, inEnd) <= 0) return nullptr;
 
-    auto rootVal = *postFirst;
-    ++postFirst, --size;
-
+    auto rootVal = *postBegin;
     auto inMid = inMap[rootVal];
-    auto rightSize = inMid - inFirst;
-    auto right = dfs(inMap, postFirst, inFirst, rightSize);
-    auto left = dfs(inMap, postFirst + rightSize, inMid + 1, size - rightSize);
+    auto rightSize = distance(inBegin, inMid);
 
-    return new TreeNode(rootVal, left, right);
+    auto root = new TreeNode(rootVal);
+    root->right = build(inBegin, inMid, postBegin + 1, inMap);
+    root->left = build(inMid + 1, inEnd, postBegin + 1 + rightSize, inMap);
+    return root;
   }
 };
