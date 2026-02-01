@@ -43,152 +43,88 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+#include <iterator>
 #include <vector>
 
 using namespace std;
 
-// Segment Tree (Tree)
+// Segment Tree
 class NumArray {
-  struct Node {
-    int val;
-    int l, r;  // [l, r]
-    Node *left, *right;
-
-    inline int mid() { return l + (r - l) / 2; }
-  };
-
-  vector<int>& nums;
-  Node* root;
+  int n;
+  vector<int> tree;
 
  public:
-  NumArray(vector<int>& nums) : nums(nums) {
-    int n = nums.size();
-    root = _build(nums, 0, n - 1);
+  NumArray(vector<int>& nums) {
+    n = ssize(nums);
+    tree.resize(2 * n);
+
+    // Init data
+    for (auto i = 0; i < n; ++i) tree[i + n] = nums[i];                         // leaves
+    for (auto i = n - 1; i >= 1; --i) tree[i] = tree[2 * i] + tree[2 * i + 1];  // parents
   }
 
-  void update(int index, int val) {  //
-    _update(root, index, val);
-  }
+  // Update nums[idx] = val
+  void update(int idx, int val) {
+    // Update leaf
+    idx += n;
+    tree[idx] = val;
 
-  int sumRange(int left, int right) {  //
-    return _query(root, left, right);
-  }
-
- private:
-  Node* _build(vector<int>& nums, int l, int r) {
-    // Check leaf
-    if (l == r) {
-      return new Node(nums[l], l, r);
+    // Update parents
+    for (idx /= 2; idx >= 1; idx /= 2) {
+      tree[idx] = tree[2 * idx] + tree[2 * idx + 1];
     }
-
-    // DFS
-    auto node = new Node(0, l, r);
-    auto mid = node->mid();
-    node->left = _build(nums, l, mid);
-    node->right = _build(nums, mid + 1, r);
-
-    // Root
-    node->val = node->left->val + node->right->val;
-    return node;
   }
 
-  void _update(Node* node, int index, int val) {
-    // Check leaf
-    if (node->l == node->r) {
-      node->val = val;
-      return;
+  int sumRange(int left, int right) {
+    ++right;  // [left, right)
+    auto sum = 0;
+    for (left += n, right += n; left < right; left /= 2, right /= 2) {
+      if (left & 1) sum += tree[left++];
+      if (right & 1) sum += tree[--right];
     }
-
-    // DFS
-    if (index <= node->mid()) {
-      _update(node->left, index, val);
-    } else {
-      _update(node->right, index, val);
-    }
-
-    // Root
-    node->val = node->left->val + node->right->val;
-  }
-
-  int _query(Node* node, int qL, int qR) {
-    // Found node
-    if (node->l == qL && node->r == qR) {
-      return node->val;
-    }
-
-    // DFS
-    auto val = 0;
-    auto mid = node->mid();
-    if (qL <= mid) val += _query(node->left, qL, min(qR, mid));
-    if (qR > mid) val += _query(node->right, max(qL, mid + 1), qR);
-    return val;
+    return sum;
   }
 };
 
-// Segment Tree (Array)
+// Fenwick Tree
 class NumArray2 {
   int n;
-  vector<int> data;  // 4n length, child of node i are 2i+1 & 2i+2
+  vector<int>& nums;
+  vector<int> tree;
 
  public:
-  NumArray2(vector<int>& nums) {
-    n = nums.size();
-    data.resize(4 * n);
-    _build(nums, 0, 0, n - 1);
-  }
+  NumArray2(vector<int>& nums) : nums(nums) {
+    n = ssize(nums);
+    tree.resize(n + 1);  // [i-lowbit(i), i)
 
-  void update(int index, int val) {  //
-    _update(0, 0, n - 1, index, val);
-  }
-
-  int sumRange(int left, int right) {  //
-    return _query(0, 0, n - 1, left, right);
-  }
-
- private:
-  void _build(vector<int>& nums, int id, int l, int r) {
-    // Check leaf
-    if (l == r) {
-      data[id] = nums[l];
-      return;
+    // Init data
+    for (auto i = 0; i < n; ++i) tree[i + 1] = nums[i];
+    for (auto i = 1; i <= n; ++i) {
+      auto parent = i + (i & -i);
+      if (parent <= n) tree[parent] += tree[i];
     }
-
-    // DFS
-    auto val = 0;
-    auto mid = l + (r - l) / 2;
-    _build(nums, id * 2 + 1, l, mid);
-    _build(nums, id * 2 + 2, mid + 1, r);
-    data[id] = data[id * 2 + 1] + data[id * 2 + 2];
   }
 
-  void _update(int id, int l, int r, int index, int val) {
-    // Check leaf
-    if (l == r) {
-      data[id] = val;
-      return;
+  // Update nums[idx] = val
+  void update(int idx, int val) {
+    auto delta = val - nums[idx];
+    nums[idx] = val;
+    for (auto i = idx + 1; i <= n; i += (i & -i)) {
+      tree[i] += delta;
     }
-
-    // DFS
-    auto mid = l + (r - l) / 2;
-    if (index <= mid) {
-      _update(id * 2 + 1, l, mid, index, val);
-    } else {
-      _update(id * 2 + 2, mid + 1, r, index, val);
-    }
-    data[id] = data[id * 2 + 1] + data[id * 2 + 2];
   }
 
-  int _query(int id, int l, int r, int qL, int qR) {
-    // Found node
-    if (l == qL && r == qR) {
-      return data[id];
+  // Query [0, r)
+  int query(int r) {
+    auto sum = 0;
+    for (auto i = r; i > 0; i -= (i & -i)) {
+      sum += tree[i];
     }
+    return sum;
+  }
 
-    // DFS
-    auto val = 0;
-    auto mid = l + (r - l) / 2;
-    if (qL <= mid) val += _query(id * 2 + 1, l, mid, qL, min(qR, mid));
-    if (qR > mid) val += _query(id * 2 + 2, mid + 1, r, max(qL, mid + 1), qR);
-    return val;
+  int sumRange(int left, int right) {
+    ++right;  // [left, right)
+    return query(right) - query(left);
   }
 };

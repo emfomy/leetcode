@@ -70,41 +70,38 @@ class Solution {
 
 // Fenwick Tree
 //
-// Scan the array. Store the visited numbers in the tree.
+// Scan the array. Store the numbers in the tree.
 // For each nums[j], count number greater than 2*nums[j].
 class Solution2 {
   struct FenwickTree {
     int n;
     vector<int64_t>& xs;  // all possible queries
-    vector<int> tree;     // 1-based
+    vector<int> tree;     // sum of [i-lowbit(i), i)
 
     FenwickTree(vector<int64_t>& xs) : xs(xs) {
       n = xs.size();
-      tree.resize(n + 1);
+      tree.assign(n + 1, 0);
     }
 
-    // data[x] += delta
-    void update(int64_t x, int delta) {
-      // xs[idx-1] < x <= xs[idx]
-      auto idx = distance(xs.cbegin(), lower_bound(xs.cbegin(), xs.cend(), x));
-      ++idx;  // convert to 1-based
-      if (idx > n) return;
+    // find first xs[idx] >= x
+    int getIdx(int64_t x) {
+      auto it = lower_bound(xs.cbegin(), xs.cend(), x);
+      return distance(xs.cbegin(), it);
+    }
 
-      while (idx <= n) {
-        tree[idx] += delta;
-        idx += idx & (-idx);  // idx += lowbit(idx)
+    // data[i] += delta
+    void update(int64_t x, int delta) {
+      // start at i+1 since x in [0, x+1)
+      for (auto i = getIdx(x) + 1; i <= n; i += (i & -i)) {
+        tree[i] += delta;
       }
     }
 
-    // count [1, x]
-    int query(int64_t x) {
-      // xs[idx-1] <= x < xs[idx]
-      auto idx = distance(xs.cbegin(), upper_bound(xs.cbegin(), xs.cend(), x));
-
-      auto sum = 0;
-      while (idx > 0) {
-        sum += tree[idx];
-        idx -= idx & (-idx);
+    // Sum [0, r)
+    int query(int64_t r) {
+      int sum = 0;
+      for (auto i = getIdx(r); i > 0; i -= (i & -i)) {
+        sum += tree[i];
       }
       return sum;
     }
@@ -125,74 +122,8 @@ class Solution2 {
     auto ans = 0;
     for (auto i = 0; i < n; ++i) {
       int64_t num = nums[i];
-      ans += i - tree.query(num * 2);
+      ans += i - tree.query(num * 2 + 1);  // use 2num+1 since we want to count [0, 2num]
       tree.update(num, 1);
-    }
-
-    return ans;
-  }
-};
-
-// Fenwick Tree
-//
-// Scan the array. Store the visited numbers in the tree.
-// For each nums[j], count number greater than 2*nums[j].
-//
-// To avoid overflow, we store the ceil(num/2) in the tree.
-class Solution3 {
-  struct FenwickTree {
-    int n;
-    vector<int>& xs;   // all possible queries
-    vector<int> tree;  // 1-based
-
-    FenwickTree(vector<int>& xs) : xs(xs) {
-      n = xs.size();
-      tree.resize(n + 1);
-    }
-
-    // data[x] += delta
-    void update(int x, int delta) {
-      // xs[idx-1] < x <= xs[idx]
-      auto idx = distance(xs.cbegin(), lower_bound(xs.cbegin(), xs.cend(), x));
-      ++idx;  // convert to 1-based
-      if (idx > n) return;
-
-      while (idx <= n) {
-        tree[idx] += delta;
-        idx += idx & (-idx);  // idx += lowbit(idx)
-      }
-    }
-
-    // count [1, x]
-    int query(int x) {
-      // xs[idx-1] <= x < xs[idx]
-      auto idx = distance(xs.cbegin(), upper_bound(xs.cbegin(), xs.cend(), x));
-
-      auto sum = 0;
-      while (idx > 0) {
-        sum += tree[idx];
-        idx -= idx & (-idx);
-      }
-      return sum;
-    }
-  };
-
- public:
-  int reversePairs(vector<int>& nums) {
-    int n = nums.size();
-
-    // Find unique numbers
-    auto xs = vector<int>(nums.cbegin(), nums.cend());  // all nums
-    sort(xs.begin(), xs.end());
-    xs.erase(unique(xs.begin(), xs.end()), xs.end());
-
-    // Loop
-    auto tree = FenwickTree(xs);
-    auto ans = 0;
-    for (auto i = 0; i < n; ++i) {
-      int num = nums[i];
-      ans += i - tree.query(num);
-      tree.update(ceil(num / 2.0), 1);
     }
 
     return ans;

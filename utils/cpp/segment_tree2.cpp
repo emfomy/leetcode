@@ -10,6 +10,7 @@ void prepare() {
   coords.erase(unique(coords.begin(), coords.end()), coords.end());
 }
 
+// Iteration Version (ZKW) + Coordinates
 class SegmentTree {
   int n;
   const vector<int>& coords;

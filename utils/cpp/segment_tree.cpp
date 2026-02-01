@@ -30,6 +30,7 @@ using namespace std;
 // If r is odd, then (r-1) it is the left child of its parent, which means its parent is not is [l, r).
 // Now we must add tree[r-1] to the result and decrease r (exclude current node).
 
+// Iteration Version (ZKW)
 class SegmentTree {
   int n;
   vector<int> tree;  // parent i -> child 2i & 2i+1
@@ -47,14 +48,14 @@ class SegmentTree {
   }
 
   // Update: O(logN)
-  void update(int p, int value) {
+  void update(int i, int value) {
     // Update leaf
-    p += n;
-    tree[p] = value;
+    i += n;
+    tree[i] = value;
 
     // Update parents
-    for (p /= 2; p >= 1; p /= 2) {
-      tree[p] = tree[2 * p] + tree[2 * p + 1];
+    for (i /= 2; i >= 1; i /= 2) {
+      tree[i] = tree[2 * i] + tree[2 * i + 1];
     }
   }
 
