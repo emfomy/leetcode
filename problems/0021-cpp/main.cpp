@@ -41,6 +41,7 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 #include <utility>
+
 using namespace std;
 
 struct ListNode {
@@ -54,25 +55,22 @@ struct ListNode {
 class Solution {
  public:
   ListNode* mergeTwoLists(ListNode* list1, ListNode* list2) {
-    // Dummy
-    auto dummy = new ListNode();
+    auto dummy = ListNode();
 
-    // Loop
-    auto node = dummy;
+    auto node = &dummy;
     while (list1 != nullptr && list2 != nullptr) {
-      // Ensure list1 < list2
-      if (list1->val > list2->val) swap(list1, list2);
-      node->next = list1;
-      node = list1;
-      list1 = list1->next;
+      if (list1->val < list2->val) {
+        node->next = list1;
+        list1 = list1->next;
+      } else {
+        node->next = list2;
+        list2 = list2->next;
+      }
+      node = node->next;
     }
 
     node->next = list1 ? list1 : list2;
 
-    // Delete dummy
-    auto ans = dummy->next;
-    delete dummy;
-
-    return ans;
+    return dummy.next;
   }
 };

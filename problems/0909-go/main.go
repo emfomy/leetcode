@@ -56,7 +56,7 @@
 
 package main
 
-// Use BFS (Dijkstra)
+// BFS + Heap (Dijkstra)
 func snakesAndLadders(board [][]int) int {
 	n := len(board)
 	m := n * n

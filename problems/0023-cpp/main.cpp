@@ -65,32 +65,30 @@ struct ListNode {
 class Solution {
  public:
   ListNode* mergeKLists(vector<ListNode*>& lists) {
-    // Heap
-    auto comp = [](ListNode* a, ListNode* b) -> bool {
+    // Prepare heap
+    auto comp = [](ListNode* a, ListNode* b) {
       return !(a->val < b->val);  // min-heap
     };
-    auto heap = priority_queue(comp, vector<ListNode*>());
+    auto heap = priority_queue(comp, std::move(vector<ListNode*>()));
 
     // Prepare data
-    for (auto node : lists) {
-      if (node != nullptr) heap.push(node);
+    for (auto head : lists) {
+      if (head != nullptr) heap.push(head);
     }
 
-    // Loop
-    auto dummy = new ListNode();
-    auto node = dummy;
+    // Merge
+    auto dummy = ListNode();
+    auto node = &dummy;
     while (!heap.empty()) {
       node->next = heap.top();
       node = node->next;
       heap.pop();
 
       if (node->next) heap.push(node->next);
+
+      // node->next = nullptr;
     }
 
-    // Delete dummy
-    auto ans = dummy->next;
-    delete dummy;
-
-    return ans;
+    return dummy.next;
   }
 };

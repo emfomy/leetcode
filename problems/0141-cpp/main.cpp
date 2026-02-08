@@ -56,15 +56,16 @@ struct ListNode {
 };
 
 // Use two pointer
+//
+// Use fast and slow pointers.
 class Solution {
  public:
   bool hasCycle(ListNode *head) {
-    auto fast = head;
-    auto slow = head;
-    while (fast != nullptr && fast->next != nullptr) {
+    auto fast = head, slow = head;
+    while (fast != nullptr && fast->next != nullptr) {  // we only need to check fast
       fast = fast->next->next;
       slow = slow->next;
-      if (fast == slow) return true;
+      if (slow == fast) return true;
     }
     return false;
   }

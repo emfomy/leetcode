@@ -40,21 +40,18 @@
 
 using namespace std;
 
-// Use sliding window + hash set
+// Hash Set
 class Solution {
  public:
   bool containsNearbyDuplicate(vector<int>& nums, int k) {
-    if (k == 0) return false;
-
     int n = nums.size();
 
-    unordered_map<int, bool> numSet;
-    for (auto idx = 0; idx < n; idx++) {
-      if (numSet[nums[idx]]) return true;
-      numSet[nums[idx]] = true;
-      if (idx - k >= 0) numSet[nums[idx - k]] = false;
+    auto seenMap = unordered_map<int, int>();  // number -> last seen index
+    for (auto i = 0; i < n; ++i) {
+      auto num = nums[i];
+      if (seenMap.contains(num) && seenMap[num] >= i - k) return true;
+      seenMap[num] = i;
     }
-
     return false;
   }
 };

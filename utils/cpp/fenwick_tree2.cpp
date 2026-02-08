@@ -1,6 +1,7 @@
 #include <algorithm>
 #include <iterator>
 #include <vector>
+
 using namespace std;
 
 void prepare() {
