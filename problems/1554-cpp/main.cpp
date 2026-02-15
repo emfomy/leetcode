@@ -11,23 +11,23 @@
 // **Example 1:**
 //
 // ```
-// **Input:** dict = ["abcd","acbd", "aacd"]
-// **Output:** true
-// **Explanation:** Strings "a**b**cd" and "a**a**cd" differ only by one character in the index 1.
+// Input: dict = ["abcd","acbd", "aacd"]
+// Output: true
+// Explanation: Strings "a**b**cd" and "a**a**cd" differ only by one character in the index 1.
 // ```
 //
 // **Example 2:**
 //
 // ```
-// **Input:** dict = ["ab","cd","yz"]
-// **Output:** false
+// Input: dict = ["ab","cd","yz"]
+// Output: false
 // ```
 //
 // **Example 3:**
 //
 // ```
-// **Input:** dict = ["abcd","cccc","abyd","abab"]
-// **Output:** true
+// Input: dict = ["abcd","cccc","abyd","abab"]
+// Output: true
 // ```
 //
 // **Constraints:**

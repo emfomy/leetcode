@@ -15,9 +15,9 @@
 // **Example 1:**
 //
 // ```
-// **Input:** s = "babab"
-// **Output:** 9
-// **Explanation:**
+// Input: s = "babab"
+// Output: 9
+// Explanation:
 // For s_1 == "b", the longest common prefix is "b" which has a score of 1.
 // For s_2 == "ab", there is no common prefix so the score is 0.
 // For s_3 == "bab", the longest common prefix is "bab" which has a score of 3.
@@ -28,9 +28,9 @@
 // **Example 2:**
 //
 // ```
-// **Input:** s = "azbazbzaz"
-// **Output:** 14
-// **Explanation:**
+// Input: s = "azbazbzaz"
+// Output: 14
+// Explanation:
 // For s_2 == "az", the longest common prefix is "az" which has a score of 2.
 // For s_6 == "azbzaz", the longest common prefix is "azb" which has a score of 3.
 // For s_9 == "azbazbzaz", the longest common prefix is "azbazbzaz" which has a score of 9.

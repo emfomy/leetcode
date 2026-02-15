@@ -1,4 +1,3 @@
-#include <climits>
 #include <vector>
 
 using namespace std;
@@ -65,10 +64,10 @@ class SegmentTree {
   // Query: O(logN); Max in [l, r)
   int query(int l, int r, int node, int lo, int hi) {
     // Out of range
-    if (r < lo || l > hi) return INT_MIN;
+    if (r <= lo || hi <= l) return INT_MIN;
 
-    // Total overlap
-    if (lo <= l && r <= hi) return tree[node];
+    // Full overlap
+    if (l <= lo && hi <= r) return tree[node];
 
     // Partial overlap
     auto mid = lo + (hi - lo) / 2;
@@ -80,7 +79,7 @@ class SegmentTree {
   // QueryFirst: O(logN); Find first in [l, r) such that val >= k
   int queryFirst(int l, int r, int k, int node, int lo, int hi) {
     // Out of range
-    if (r < lo || l > hi) return -1;
+    if (r <= lo || hi <= l) return -1;
 
     // Not found
     if (tree[node] < k) return -1;

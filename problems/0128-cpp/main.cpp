@@ -38,90 +38,103 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 #include <algorithm>
+#include <numeric>
 #include <unordered_map>
 #include <unordered_set>
 #include <vector>
 
 using namespace std;
 
-// Use hash map + union-find
+// Union-Find + Hash Map
+//
+// Use a hash map to assign a increment ID to each unique number.
+// Use union find the find the maximum sequence.
 class Solution {
-  vector<int> parent;
-  vector<int> size;
-  int maxSize;
+  struct UnionFind {
+    vector<int> parents;
+    vector<int> sizes;  // rank is faster, but we need size here.
 
-  void build(int n) {
-    parent.resize(n);
-    size.resize(n);
-    for (auto i = 0; i < n; i++) {
-      parent[i] = i;
-      size[i] = 1;
-    }
-    maxSize = 1;
-  }
-
-  int find(int x) {
-    if (parent[x] != x) {
-      parent[x] = find(parent[x]);
-    }
-    return parent[x];
-  }
-
-  void merge(int x, int y) {  // the keyword union is reserved
-    x = find(x);
-    y = find(y);
-    if (x == y) return;
-
-    // Ensure size(x) >= size(y)
-    if (size[x] < size[y]) {
-      swap(x, y);
+    UnionFind(const int n) : parents(n), sizes(n, 1) {  //
+      iota(parents.begin(), parents.end(), 0);
     }
 
-    parent[y] = x;
-    size[x] += size[y];
-    maxSize = max(maxSize, size[x]);
-  }
+    // Find parent of x
+    int find(const int x) {
+      if (parents[x] != x) {
+        parents[x] = find(parents[x]);
+      }
+      return parents[x];
+    }
+
+    // Union x and y
+    void unite(int x, int y) {
+      x = find(x);
+      y = find(y);
+      if (x == y) return;
+
+      // Ensure size(x) >= size(y)
+      if (sizes[x] < sizes[y]) swap(x, y);
+
+      // Merge y into y
+      sizes[x] += sizes[y];
+      parents[y] = x;
+    }
+  };
 
  public:
   int longestConsecutive(vector<int>& nums) {
-    int n = nums.size();
-    if (n == 0) return 0;
+    if (nums.empty()) return 0;
 
-    unordered_map<int, int> num2idx;
-    for (auto i = 0; i < n; i++) {
-      num2idx[nums[i]] = i;
+    // Assign each unique number an ID
+    int n = 0;                               // number of unique numbers
+    auto idMap = unordered_map<int, int>();  // number to ID
+    idMap.reserve(nums.size());
+    for (int num : nums) {
+      if (!idMap.contains(num)) {
+        idMap[num] = n++;
+      }
     }
 
-    build(n);
-
-    for (auto [x, _] : num2idx) {
-      auto y = x + 1;
-      if (!num2idx.count(y)) continue;
-      merge(num2idx[x], num2idx[y]);
+    // Union-find on unique numbers
+    auto uf = UnionFind(n);
+    for (auto [num, id] : idMap) {
+      // Unite with next number
+      if (idMap.contains(num + 1)) {
+        uf.unite(id, idMap[num + 1]);
+      }
     }
 
-    return maxSize;
+    // Find maximum group
+    auto maxIt = max_element(uf.sizes.cbegin(), uf.sizes.cend());
+    return *maxIt;  // uf.sizes is not empty
   }
 };
 
-// Use hash set
+// Hash Set
+//
+// Use a hash set to store the unique numbers.
+// For each unique number x, if x-1 not exist (i.e. x is start of a sequence),
+// we loop through x+1, x+2, ... to find the length of this sequence.
 class Solution2 {
  public:
   int longestConsecutive(vector<int>& nums) {
-    int n = nums.size();
-    if (n == 0) return 0;
+    // Unique numbers
+    const auto numSet = unordered_set(nums.cbegin(), nums.cend());
 
-    unordered_set<int> numSet(nums.begin(), nums.end());
+    // Find sequences
+    int maxLen = 0;
+    for (int num : numSet) {
+      if (numSet.contains(num - 1)) continue;  // not start of a sequence
 
-    auto ans = 0;
-    for (auto num : numSet) {
-      if (numSet.count(num - 1)) continue;  // not start of a sequence
+      // Find current length
+      int currLen = 1;
+      while (numSet.contains(num + currLen)) {
+        ++currLen;
+      }
 
-      auto end = num + 1;
-      for (; numSet.count(end); end++);
-      ans = max(ans, end - num);
+      maxLen = max(maxLen, currLen);
     }
 
-    return ans;
+    return maxLen;
   }
 };

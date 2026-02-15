@@ -4,11 +4,10 @@
 using namespace std;
 
 class UnionFind {
-  int n;
   vector<int> parents;
   vector<int> ranks;
 
-  UnionFind(int n) : n(n), parents(n), ranks(n) {  //
+  UnionFind(int n) : parents(n), ranks(n) {  //
     iota(parents.begin(), parents.end(), 0);
   }
 

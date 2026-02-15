@@ -37,32 +37,37 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 #include <vector>
+
 using namespace std;
 
 // DFS (Recursion)
 class Solution {
  public:
-  vector<vector<int>> allPathsSourceTarget(vector<vector<int>>& graph) {
-    auto ans = vector<vector<int>>();
-    auto st = vector<int>();
-    st.push_back(0);
-    dfs(graph, ans, st);
-    return ans;
+  vector<vector<int>> allPathsSourceTarget(const vector<vector<int>>& graph) {
+    const int n = graph.size();
+    if (n == 0) return {};
+
+    auto path = vector<int>();
+    auto allPaths = vector<vector<int>>();
+    dfs(0, n - 1, path, allPaths, graph);
+
+    return allPaths;
   }
 
  private:
-  void dfs(vector<vector<int>>& graph, vector<vector<int>>& ans, vector<int>& st) {
-    int n = graph.size();
-    auto node = st.back();
-    if (node == n - 1) {
-      ans.push_back(st);  // copy
-      return;
+  void dfs(int curr, int target, vector<int>& path, vector<vector<int>>& allPaths, const vector<vector<int>>& graph) {
+    path.push_back(curr);
+
+    if (curr == target) {
+      // Reach target
+      allPaths.push_back(path);  // copy
+    } else {
+      // Find next
+      for (int next : graph[curr]) {
+        dfs(next, target, path, allPaths, graph);
+      }
     }
 
-    for (auto next : graph[node]) {
-      st.push_back(next);
-      dfs(graph, ans, st);
-      st.pop_back();
-    }
+    path.pop_back();
   }
 };

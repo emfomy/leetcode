@@ -34,22 +34,24 @@ using namespace std;
 
 class Solution {
  public:
-  string addBinary(string a, string b) {
-    int i = a.size(), j = b.size();
+  string addBinary(const string &a, const string &b) {
+    const int aLen = a.size(), bLen = b.size();
+
+    // Prepare c
+    string c;
+    c.reserve(max(aLen, bLen) + 1);
 
     // Add
-    string c;
-    auto carry = 0;
-    while (i > 0 || j > 0) {
-      i--;
-      j--;
-      auto aBit = (i >= 0) ? (a[i] - '0') : 0;
-      auto bBit = (j >= 0) ? (b[j] - '0') : 0;
-      carry += aBit + bBit;
+    int i = aLen - 1;  // a index
+    int j = bLen - 1;  // b index
+    int carry = 0;
+    for (; i >= 0 || j >= 0 || carry > 0; --i, --j) {
+      if (i >= 0) carry += (a[i] - '0');
+      if (j >= 0) carry += (b[j] - '0');
+
       c.push_back('0' + carry % 2);
       carry /= 2;
     }
-    if (carry) c.push_back('1');
 
     // Reverse
     reverse(c.begin(), c.end());

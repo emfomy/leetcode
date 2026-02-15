@@ -17,11 +17,11 @@
 //
 // **Example 1:**
 //
-// **Input:** nums = [3,-2,1,1]
+// Input: nums = [3,-2,1,1]
 //
-// **Output:** [1,1,1,3]
+// Output: [1,1,1,3]
 //
-// **Explanation:**
+// Explanation:
 //
 // - For `nums[0]` that is equal to 3, If we move 3 steps to right, we reach `nums[3]`. So `result[0]` should be 1.
 // - For `nums[1]` that is equal to -2, If we move 2 steps to left, we reach `nums[3]`. So `result[1]` should be 1.
@@ -30,11 +30,11 @@
 //
 // **Example 2:**
 //
-// **Input:** nums = [-1,4,-1]
+// Input: nums = [-1,4,-1]
 //
-// **Output:** [-1,-1,4]
+// Output: [-1,-1,4]
 //
-// **Explanation:**
+// Explanation:
 //
 // - For `nums[0]` that is equal to -1, If we move 1 step to left, we reach `nums[2]`. So `result[0]` should be -1.
 // - For `nums[1]` that is equal to 4, If we move 4 steps to right, we reach `nums[2]`. So `result[1]` should be -1.

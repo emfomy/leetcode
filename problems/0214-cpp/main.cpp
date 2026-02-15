@@ -11,15 +11,15 @@
 // **Example 1:**
 //
 // ```
-// **Input:** s = "aacecaaa"
-// **Output:** "aaacecaaa"
+// Input: s = "aacecaaa"
+// Output: "aaacecaaa"
 // ```
 //
 // **Example 2:**
 //
 // ```
-// **Input:** s = "abcd"
-// **Output:** "dcbabcd"
+// Input: s = "abcd"
+// Output: "dcbabcd"
 // ```
 //
 // **Constraints:**

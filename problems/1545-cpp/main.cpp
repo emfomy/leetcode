@@ -23,18 +23,18 @@
 // **Example 1:**
 //
 // ```
-// **Input:** n = 3, k = 1
-// **Output:** "0"
-// **Explanation:** S_3 is "**0**111001".
+// Input: n = 3, k = 1
+// Output: "0"
+// Explanation: S_3 is "**0**111001".
 // The 1^st bit is "0".
 // ```
 //
 // **Example 2:**
 //
 // ```
-// **Input:** n = 4, k = 11
-// **Output:** "1"
-// **Explanation:** S_4 is "0111001101**1**0001".
+// Input: n = 4, k = 11
+// Output: "1"
+// Explanation: S_4 is "0111001101**1**0001".
 // The 11^th bit is "1".
 // ```
 //
