@@ -30,23 +30,33 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-package main
+#include <bit>
+#include <cstddef>
+#include <vector>
 
-func subsets(nums []int) [][]int {
-	m := 1 << len(nums)
-	res := make([][]int, 0, m)
-	for mask := 0; mask < m; mask++ {
-		res = append(res, _subset(nums, mask))
-	}
-	return res
-}
+using namespace std;
 
-func _subset(nums []int, mask int) []int {
-	res := make([]int, 0, len(nums))
-	for i, num := range nums {
-		if mask&(1<<i) != 0 {
-			res = append(res, num)
-		}
-	}
-	return res
-}
+class Solution {
+ public:
+  vector<vector<int>> subsets(vector<int>& nums) {
+    const int n = nums.size(), m = 1 << n;  // m = 2^n
+
+    auto subsets = vector<vector<int>>();
+    subsets.reserve(m);
+
+    for (size_t bits = 0; bits < m; ++bits) {
+      auto subset = vector<int>();
+      subset.reserve(popcount(bits));
+
+      for (auto b = 0; b < n; ++b) {
+        if (bits & (size_t(1) << b)) {
+          subset.push_back(nums[b]);
+        }
+      }
+
+      subsets.push_back(std::move(subset));
+    }
+
+    return subsets;
+  }
+};

@@ -25,7 +25,7 @@
 // ```
 // Input: strs = ["10","0","1"], m = 1, n = 1
 // Output: 2
-// <b>Explanation:</b> The largest subset is {"0", "1"}, so the answer is 2.
+// Explanation: The largest subset is {"0", "1"}, so the answer is 2.
 // ```
 //
 // **Constraints:**

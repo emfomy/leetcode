@@ -50,26 +50,32 @@
 
 using namespace std;
 
-// Use monotonic stack
+// Monotonic Stack
 //
-// We use monotonic decreasing stack to store nums2 from back to front.
+// Use monotonic stack to find the next greater element of nums2.
+// The data in the stack is the elements that has not found next greater element.
 class Solution {
  public:
-  vector<int> nextGreaterElement(vector<int>& nums1, vector<int>& nums2) {
-    int m = nums2.size();
+  vector<int> nextGreaterElement(const vector<int>& nums1, const vector<int>& nums2) {
     auto ansMap = unordered_map<int, int>();
     auto st = stack<int>();
 
-    for (auto i = m - 1; i >= 0; --i) {
-      auto num = nums2[i];
-      while (!st.empty() && st.top() <= num) st.pop();
-      ansMap[num] = st.empty() ? -1 : st.top();
+    // Find next greater
+    for (int num : nums2) {
+      while (!st.empty() && num > st.top()) {
+        ansMap[st.top()] = num;
+        st.pop();
+      }
+
       st.push(num);
     }
 
+    // Answer
     auto ans = vector<int>();
-    for (auto num : nums1) {
-      ans.push_back(ansMap[num]);
+    ans.reserve(nums1.size());
+    for (int num : nums1) {
+      auto it = ansMap.find(num);
+      ans.push_back(it == ansMap.cend() ? -1 : it->second);
     }
 
     return ans;

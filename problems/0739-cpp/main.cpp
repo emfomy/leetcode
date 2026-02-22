@@ -41,21 +41,50 @@ using namespace std;
 
 // Monotonic Stack
 //
-// If day j is farther (i.e. j > i) and cooler than day i, then it will never be a candidate.
-// Then the monotonic stack should be decreasing from right to left.
-// We store the day index in the stack.
+// We store the day which has not been processed in the stack.
 class Solution {
  public:
-  vector<int> dailyTemperatures(vector<int>& temperatures) {
-    int n = temperatures.size();
+  vector<int> dailyTemperatures(const vector<int>& temperatures) {
+    const int n = temperatures.size();
 
-    auto st = stack<int>();
     auto ans = vector<int>(n);
-    for (auto day = n - 1; day >= 0; --day) {
-      auto temp = temperatures[day];
-      while (!st.empty() && temperatures[st.top()] <= temp) st.pop();  // pop cooler days
-      ans[day] = st.empty() ? 0 : (st.top() - day);
-      st.push(day);
+    auto st = stack<pair<int, int>>();  // (temp, day)
+
+    for (int i = 0; i < n; ++i) {
+      int temp = temperatures[i];
+
+      while (!st.empty() && temp > st.top().first) {
+        ans[st.top().second] = i - st.top().second;
+        st.pop();
+      }
+
+      st.emplace(temp, i);
+    }
+
+    return ans;
+  }
+};
+
+// Monotonic Stack
+//
+// We store the day which has not been processed in the stack.
+class Solution2 {
+ public:
+  vector<int> dailyTemperatures(const vector<int>& temperatures) {
+    const int n = temperatures.size();
+
+    auto ans = vector<int>(n);
+    auto st = stack<int>();  // day
+
+    for (int i = 0; i < n; ++i) {
+      int temp = temperatures[i];
+
+      while (!st.empty() && temp > temperatures[st.top()]) {
+        ans[st.top()] = i - st.top();
+        st.pop();
+      }
+
+      st.emplace(i);
     }
 
     return ans;

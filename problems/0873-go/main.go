@@ -25,8 +25,7 @@
 // ```
 // Input: arr = [1,3,7,11,12,14,18]
 // Output: 3
-// Explanation
-// :****The longest subsequence that is fibonacci-like: [1,11,12], [3,11,14] or [7,11,18].```
+// Explanation:****The longest subsequence that is fibonacci-like: [1,11,12], [3,11,14] or [7,11,18].```
 
 // **Constraints:**
 

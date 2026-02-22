@@ -17,8 +17,7 @@
 // ```
 // Input: s = "daabcbaabcbc", part = "abc"
 // Output: "dab"
-// Explanation
-// : The following operations are done:
+// Explanation: The following operations are done:
 // - s = "da**abc** baabcbc", remove "abc" starting at index 2, so s = "dabaabcbc".
 // - s = "daba**abc** bc", remove "abc" starting at index 4, so s = "dababc".
 // - s = "dab**abc** ", remove "abc" starting at index 3, so s = "dab".
@@ -30,8 +29,7 @@
 // ```
 // Input: s = "axxxxyyyyb", part = "xy"
 // Output: "ab"
-// Explanation
-// : The following operations are done:
+// Explanation: The following operations are done:
 // - s = "axxx**xy** yyyb", remove "xy" starting at index 4 so s = "axxxyyyb".
 // - s = "axx**xy** yyb", remove "xy" starting at index 3 so s = "axxyyb".
 // - s = "ax**xy** yb", remove "xy" starting at index 2 so s = "axyb".

@@ -61,31 +61,26 @@ class MyQueue {
   MyQueue() {}
 
   void push(int x) {  //
-    right.push(x);
+    left.push(x);
   }
 
   int pop() {
-    if (left.empty()) move();
-    auto ans = left.top();
-    left.pop();
-    return ans;
+    int top = peek();
+    right.pop();
+    return top;
   }
 
   int peek() {
-    if (left.empty()) move();
-    return left.top();
+    if (right.empty()) {
+      while (!left.empty()) {
+        right.push(left.top());
+        left.pop();
+      }
+    }
+    return right.top();
   }
 
   bool empty() {  //
     return left.empty() && right.empty();
-  }
-
- private:
-  // Move right to left
-  void move() {
-    while (!right.empty()) {
-      left.push(right.top());
-      right.pop();
-    }
   }
 };

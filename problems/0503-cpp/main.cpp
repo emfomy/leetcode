@@ -39,19 +39,25 @@ using namespace std;
 
 // Monotonic Stack
 //
-// Use stack from right to left with decreasing values.
+// We put unprocessed data in the stack.
+// Note that since we are finding greater element,
+// we don't need to care about the element itself.
 class Solution {
  public:
-  vector<int> nextGreaterElements(vector<int>& nums) {
-    int n = nums.size();
+  vector<int> nextGreaterElements(const vector<int>& nums) {
+    const int n = nums.size();
 
     auto st = stack<int>();
-    auto ans = vector<int>(n);
-    for (auto i = 2 * n - 1; i >= 0; --i) {
-      auto num = nums[i % n];
-      while (!st.empty() && st.top() <= num) st.pop();
-      ans[i % n] = st.empty() ? -1 : st.top();
-      st.push(num);
+    auto ans = vector<int>(n, -1);
+    for (int i = 0; i < 2 * n; ++i) {
+      const int idx = i % n;
+      const int num = nums[idx];
+      while (!st.empty() && num > nums[st.top()]) {
+        ans[st.top()] = nums[idx];
+        st.pop();
+      }
+
+      st.push(idx);
     }
 
     return ans;

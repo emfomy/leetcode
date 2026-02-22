@@ -9,7 +9,7 @@
 // The graph is given as follows: `graph[i]` is a list of all nodes you can visit from node `i` (i.e., there is a directed edge from node `i` to node `graph[i][j]`).
 //
 // **Example 1:**
-// <img alt="" src="https://assets.leetcode.com/uploads/2020/09/28/all_1.jpg" style="width: 242px; height: 242px;">
+// https://assets.leetcode.com/uploads/2020/09/28/all_1.jpg
 //
 // ```
 // Input: graph = [[1,2],[3],[3],[]]
@@ -18,7 +18,7 @@
 // ```
 //
 // **Example 2:**
-// <img alt="" src="https://assets.leetcode.com/uploads/2020/09/28/all_2.jpg" style="width: 423px; height: 301px;">
+// https://assets.leetcode.com/uploads/2020/09/28/all_2.jpg
 //
 // ```
 // Input: graph = [[4,3,1],[3,2,4],[3],[4],[]]
@@ -55,7 +55,11 @@ class Solution {
   }
 
  private:
-  void dfs(int curr, int target, vector<int>& path, vector<vector<int>>& allPaths, const vector<vector<int>>& graph) {
+  void dfs(                                              //
+      const int curr, const int target,                  //
+      vector<int>& path, vector<vector<int>>& allPaths,  //
+      const vector<vector<int>>& graph                   //
+  ) {
     path.push_back(curr);
 
     if (curr == target) {
@@ -63,7 +67,7 @@ class Solution {
       allPaths.push_back(path);  // copy
     } else {
       // Find next
-      for (int next : graph[curr]) {
+      for (const int next : graph[curr]) {
         dfs(next, target, path, allPaths, graph);
       }
     }

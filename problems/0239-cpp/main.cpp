@@ -39,68 +39,61 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-#include <deque>
 #include <queue>
 #include <vector>
 
 using namespace std;
 
-// Monotonic Queue
+// Heap
 class Solution {
-  class MonotonicQueue {
-    queue<int> que;
-    deque<int> inc;   // increasing values
-    deque<int> desc;  // decreasing values
-
-   public:
-    void push(int val) {  //
-      que.push(val);
-
-      while (!inc.empty() && inc.back() > val) inc.pop_back();
-      inc.push_back(val);
-
-      while (!desc.empty() && desc.back() < val) desc.pop_back();
-      desc.push_back(val);
-    }
-
-    void pop() {  //
-      auto front = que.front();
-      que.pop();
-      if (inc.front() == front) inc.pop_front();
-      if (desc.front() == front) desc.pop_front();
-    }
-
-    int min() {  //
-      return inc.front();
-    }
-
-    int max() {  //
-      return desc.front();
-    }
-
-    int front() {  //
-      return que.front();
-    }
-
-    int back() {  //
-      return que.back();
-    }
-
-    int size() {  //
-      return que.size();
-    }
-  };
-
  public:
-  vector<int> maxSlidingWindow(vector<int>& nums, int k) {
-    auto window = MonotonicQueue();
+  vector<int> maxSlidingWindow(const vector<int>& nums, const int k) {
+    const int n = nums.size();
 
+    auto heap = priority_queue<pair<int, int>>();  // (num, idx)
     auto ans = vector<int>();
-    for (auto num : nums) {
-      window.push(num);
-      if (window.size() == k) {
-        ans.push_back(window.max());
-        window.pop();
+    ans.reserve(n - k + 1);
+
+    for (int i = 0; i < n; ++i) {
+      heap.emplace(nums[i], i);
+
+      if (i >= k - 1) {
+        // Remove outdated number
+        while (heap.top().second <= i - k) heap.pop();
+
+        ans.push_back(heap.top().first);
+      }
+    }
+
+    return ans;
+  }
+};
+
+// Monotonic Queue
+//
+// Store index in the queue.
+// The number must be increasing (from back to front) in the queue.
+class Solution2 {
+ public:
+  vector<int> maxSlidingWindow(const vector<int>& nums, const int k) {
+    const int n = nums.size();
+
+    auto que = deque<int>();  // index
+    auto ans = vector<int>();
+    ans.reserve(n - k + 1);
+
+    for (int i = 0; i < n; ++i) {
+      // Remove useless data from back
+      while (!que.empty() && nums[i] >= nums[que.back()]) que.pop_back();
+
+      // Push index
+      que.emplace_back(i);
+
+      if (i >= k - 1) {
+        // Remove outdated number
+        while (que.front() <= i - k) que.pop_front();
+
+        ans.push_back(nums[que.front()]);
       }
     }
 
