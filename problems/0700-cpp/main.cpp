@@ -48,7 +48,7 @@ struct TreeNode {
 class Solution {
  public:
   TreeNode *searchBST(TreeNode *root, int val) {
-    if (root == nullptr) return nullptr;
+    if (!root) return nullptr;
 
     if (val == root->val) return root;
 
@@ -60,17 +60,20 @@ class Solution {
   }
 };
 
-// Loop
+// Iteration
 class Solution2 {
  public:
   TreeNode *searchBST(TreeNode *root, int val) {
-    while (root != nullptr && root->val != val) {
-      if (root->val > val) {
+    while (root) {
+      if (val == root->val) return root;
+
+      if (val < root->val) {
         root = root->left;
       } else {
         root = root->right;
       }
     }
-    return root;
+
+    return nullptr;
   }
 };

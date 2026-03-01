@@ -60,34 +60,37 @@ class Solution {
 
 // Binary Search
 //
-// Let d[i] = sign(nums[i]-nums[i-1]) be the sign of the differences.
-// We know that d[0] > 0 and d[n] < 0 since outside is -inf.
+// Define D[i] = sign(A[i] - A[i-1]), + for positive, - for negative
+// D[0] = +, D[n] = -
+// Find in [1, n)
 //
-// Say `nums[p]` is the peak number. We have d[p] > 0 and d[p+1] < 0.
-// By intermediate value theorem, such p exists.
+// For [lo, hi), we pick the middle point mid.
+// We have D[lo-1] = + and D[hi] = -
 //
-// We can use binary search to find it.
+// If D[mid] = +, then there must be a peak in [mid+1, hi).
+// If D[mid] = -, then there must be a peak in [lo, mid).
+//
+// ---
+//
+// Note that since A[i] != A[i-1], we don't need to worry about the case with D=0.
+// Here is an example for D=0: an array with all 1 and only one 2.
+// In this case, we can't solve the problem under linear time.
 class Solution2 {
  public:
-  int findPeakElement(vector<int>& nums) {
-    int n = nums.size();
+  int findPeakElement(const vector<int>& nums) {
+    const int n = nums.size();
 
-    if (n == 1) return 0;
-    if (nums[0] > nums[1]) return 0;
-    if (nums[n - 1] > nums[n - 2]) return n - 1;
-
-    // Binary search
-    auto lo = 1, hi = n;  // [1, n) is unknown
+    // Find in [1, n)
+    // D[lo-1] = +, D[hi] = -
+    int lo = 1, hi = n;
     while (lo < hi) {
-      auto mid = lo + (hi - lo) / 2;
-      auto d = nums[mid] - nums[mid - 1];
-      if (d > 0) {
-        lo = mid + 1;  // [mid+1, hi)
+      int mid = lo + (hi - lo) / 2;
+      if (nums[mid] - nums[mid - 1] > 0) {
+        lo = mid + 1;
       } else {
-        hi = mid;  // [lo, mid)
+        hi = mid;
       }
     }
-    // d[lo-1] > 0, d[lo=hi] < 0
 
     return lo - 1;
   }

@@ -38,7 +38,7 @@ class SegmentTree {
       return;
     }
 
-    auto mid = lo + (hi - lo) / 2;
+    int mid = lo + (hi - lo) / 2;
     build(nums, leftChild(node), lo, mid);
     build(nums, rightChild(node), mid, hi);
     pushUp(node);
@@ -52,7 +52,7 @@ class SegmentTree {
       return;
     }
 
-    auto mid = lo + (hi - lo) / 2;
+    int mid = lo + (hi - lo) / 2;
     if (idx < mid) {
       update(idx, val, leftChild(node), lo, mid);
     } else {
@@ -70,9 +70,9 @@ class SegmentTree {
     if (l <= lo && hi <= r) return tree[node];
 
     // Partial overlap
-    auto mid = lo + (hi - lo) / 2;
-    auto leftVal = query(l, r, leftChild(node), lo, mid);
-    auto rightVal = query(l, r, rightChild(node), mid, hi);
+    int mid = lo + (hi - lo) / 2;
+    int leftVal = query(l, r, leftChild(node), lo, mid);
+    int rightVal = query(l, r, rightChild(node), mid, hi);
     return max(leftVal, rightVal);
   }
 
@@ -88,8 +88,8 @@ class SegmentTree {
     if (lo == hi - 1) return lo;
 
     // Recursion
-    auto mid = lo + (hi - lo) / 2;
-    auto res = queryFirst(l, r, k, leftChild(node), lo, mid);
+    int mid = lo + (hi - lo) / 2;
+    int res = queryFirst(l, r, k, leftChild(node), lo, mid);
     if (res != -1) return res;
     return queryFirst(l, r, k, rightChild(node), mid, hi);
   }

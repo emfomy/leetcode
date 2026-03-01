@@ -43,6 +43,8 @@
 
 using namespace std;
 
+// Binary Search
+//
 // Use binary search on diff[i] = arr[i+1] - arr[i]
 class Solution {
  public:

@@ -206,7 +206,9 @@ class Solution3 {
     for (auto k = 0; k < 26; ++k) {
       for (auto i = 0; i < 26; ++i) {
         for (auto j = 0; j < 26; ++j) {
-          if (graph[i][j] > graph[i][k] + graph[k][j]) graph[i][j] = graph[i][k] + graph[k][j];
+          if (graph[i][j] > graph[i][k] + graph[k][j]) {
+            graph[i][j] = graph[i][k] + graph[k][j];
+          }
         }
       }
     }

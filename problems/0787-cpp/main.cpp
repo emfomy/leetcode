@@ -160,21 +160,28 @@ class Solution2 {
 
 // Bellman Ford
 class Solution3 {
+  constexpr static int kInf = INT_MAX / 2;
+
  public:
-  int findCheapestPrice(int n, vector<vector<int>>& flights, int src, int dst, int k) {
-    auto currCosts = vector(n, INT_MAX);
+  int findCheapestPrice(int n, const vector<vector<int>>& flights, int src, int dst, int k) {
+    auto currCosts = vector(n, kInf);
     currCosts[src] = 0;
 
     for (int step = 0; step <= k; ++step) {
       auto nextCosts = currCosts;  // copy, avoid racing
-      for (auto& flight : flights) {
+      bool updated = false;
+      for (const auto& flight : flights) {
         int from = flight[0], to = flight[1], price = flight[2];
-        if (currCosts[from] == INT_MAX) continue;  // skip unreachable, avoid overflow
-        nextCosts[to] = min(nextCosts[to], currCosts[from] + price);
+        int nextCost = currCosts[from] + price;
+        if (nextCosts[to] > nextCost) {
+          nextCosts[to] = nextCost;
+          updated = true;
+        }
       }
+      if (!updated) break;
       swap(currCosts, nextCosts);
     }
 
-    return currCosts[dst] != INT_MAX ? currCosts[dst] : -1;
+    return currCosts[dst] >= kInf ? -1 : currCosts[dst];
   }
 };

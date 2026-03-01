@@ -23,17 +23,17 @@ class FenwickTree {
     tree.assign(n + 1, 0);
 
     // build: O(N)
-    for (auto i = 0; i < n; i++) tree[i + 1] = nums[i];
-    for (auto i = 1; i <= n; ++i) {
-      auto parent = i + (i & -i);
-      if (parent <= n) tree[parent] += tree[i];
+    for (int i = 0; i < n; i++) tree[i + 1] = nums[i];
+    for (int i = 1; i <= n; ++i) {
+      int p = i + (i & -i);  // parent
+      if (p <= n) tree[p] += tree[i];
     }
   }
 
   // Update: O(logN); nums[idx] += delta
   void update(int idx, int delta) {
     // start at x+1 since x in [0, x+1)
-    for (auto i = idx + 1; i <= n; i += (i & -i)) {
+    for (int i = idx + 1; i <= n; i += (i & -i)) {
       tree[i] += delta;
     }
   }
@@ -41,7 +41,7 @@ class FenwickTree {
   // Query: O(logN); Sum of [0, r)
   int query(int r) {
     int sum = 0;
-    for (auto i = r; i > 0; i -= (i & -i)) {
+    for (int i = r; i > 0; i -= (i & -i)) {
       sum += tree[i];
     }
     return sum;

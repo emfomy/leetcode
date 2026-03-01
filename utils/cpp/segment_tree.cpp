@@ -44,8 +44,8 @@ class SegmentTree {
     tree.resize(2 * n);  // only need 2n for iteration version
 
     // build: O(N)
-    for (auto i = 0; i < n; ++i) tree[n + i] = nums[i];  // leaves
-    for (auto i = n - 1; i > 0; --i) tree[i] = tree[2 * i] + tree[2 * i + 1];
+    for (int i = 0; i < n; ++i) tree[n + i] = nums[i];  // leaves
+    for (int i = n - 1; i > 0; --i) tree[i] = tree[2 * i] + tree[2 * i + 1];
   }
 
   // Update: O(logN)

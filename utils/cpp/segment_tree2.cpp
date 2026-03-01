@@ -32,7 +32,7 @@ class SegmentTree {
   // Update: O(logN)
   void update(int coord, int value) {
     // Update leaf
-    auto p = getIdx(coord) + n;
+    int p = getIdx(coord) + n;
     tree[p] = value;
 
     // Update parents
@@ -44,7 +44,7 @@ class SegmentTree {
   // Query: O(logN); Sum in [l, r)
   int query(int lCoord, int rCoord) {
     int sum = 0;
-    auto l = getIdx(lCoord) + n, r = getIdx(rCoord) + n;
+    int l = getIdx(lCoord) + n, r = getIdx(rCoord) + n;
     for (; l < r; l /= 2, r /= 2) {
       if (l & 1) sum += tree[l++];  // l is odd, should add tree[l]; then move l
       if (r & 1) sum += tree[--r];  // r is odd, should add tree[r-1]; then move r

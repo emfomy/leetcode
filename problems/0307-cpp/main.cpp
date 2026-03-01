@@ -43,7 +43,6 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-#include <iterator>
 #include <vector>
 
 using namespace std;
@@ -51,36 +50,37 @@ using namespace std;
 // Segment Tree
 class NumArray {
   int n;
-  vector<int> tree;
+  vector<int> tree;  // parent i -> children 2i & 2i+1
 
  public:
-  NumArray(vector<int>& nums) {
-    n = ssize(nums);
+  NumArray(const vector<int>& nums) {
+    n = nums.size();
     tree.resize(2 * n);
 
-    // Init data
-    for (auto i = 0; i < n; ++i) tree[i + n] = nums[i];                         // leaves
-    for (auto i = n - 1; i >= 1; --i) tree[i] = tree[2 * i] + tree[2 * i + 1];  // parents
+    // build
+    for (int i = 0; i < n; ++i) tree[i + n] = nums[i];  // Leaves
+    for (int i = n - 1; i > 0; --i) tree[i] = tree[2 * i] + tree[2 * i + 1];
   }
 
-  // Update nums[idx] = val
-  void update(int idx, int val) {
-    // Update leaf
-    idx += n;
-    tree[idx] = val;
+  // Set data[i] = val
+  void update(int i, int val) {
+    // Leaf
+    i += n;
+    tree[i] = val;
 
-    // Update parents
-    for (idx /= 2; idx >= 1; idx /= 2) {
-      tree[idx] = tree[2 * idx] + tree[2 * idx + 1];
+    // Push up
+    for (i /= 2; i > 0; i /= 2) {
+      tree[i] = tree[2 * i] + tree[2 * i + 1];
     }
   }
 
-  int sumRange(int left, int right) {
-    ++right;  // [left, right)
-    auto sum = 0;
-    for (left += n, right += n; left < right; left /= 2, right /= 2) {
-      if (left & 1) sum += tree[left++];
-      if (right & 1) sum += tree[--right];
+  // Sum of [l, r]
+  int sumRange(int l, int r) {
+    int sum = 0;
+    ++r;  // convert ti [l, r)
+    for (l += n, r += n; l < r; l /= 2, r /= 2) {
+      if (l & 1) sum += tree[l++];
+      if (r & 1) sum += tree[--r];
     }
     return sum;
   }
@@ -89,42 +89,43 @@ class NumArray {
 // Fenwick Tree
 class NumArray2 {
   int n;
-  vector<int>& nums;
-  vector<int> tree;
+  vector<int>& data;
+  vector<int> tree;  // tree[i] = sum of [i-lowbit(i), i)
 
  public:
-  NumArray2(vector<int>& nums) : nums(nums) {
-    n = ssize(nums);
-    tree.resize(n + 1);  // [i-lowbit(i), i)
+  NumArray2(vector<int>& nums) : data(nums) {
+    n = nums.size();
+    tree.assign(n + 1, 0);
 
-    // Init data
-    for (auto i = 0; i < n; ++i) tree[i + 1] = nums[i];
-    for (auto i = 1; i <= n; ++i) {
-      auto parent = i + (i & -i);
-      if (parent <= n) tree[parent] += tree[i];
+    // build
+    for (int i = 0; i < n; ++i) tree[i + 1] = nums[i];
+    for (int i = 1; i <= n; ++i) {
+      int p = i + (i & -i);
+      if (p <= n) tree[p] += tree[i];
     }
   }
 
-  // Update nums[idx] = val
+  // Set data[i] = val
   void update(int idx, int val) {
-    auto delta = val - nums[idx];
-    nums[idx] = val;
-    for (auto i = idx + 1; i <= n; i += (i & -i)) {
+    const int delta = val - data[idx];
+    data[idx] = val;
+
+    for (int i = idx + 1; i <= n; i += (i & -i)) {  // start from [?, idx+1)
       tree[i] += delta;
     }
   }
 
-  // Query [0, r)
-  int query(int r) {
-    auto sum = 0;
-    for (auto i = r; i > 0; i -= (i & -i)) {
+  // Sum of [0, r]
+  int sumRange(int r) {
+    int sum = 0;
+    for (int i = r + 1; i > 0; i -= (i & -i)) {  // start from [?, r+1)
       sum += tree[i];
     }
     return sum;
   }
 
-  int sumRange(int left, int right) {
-    ++right;  // [left, right)
-    return query(right) - query(left);
+  // Sum of [l, r]
+  int sumRange(int l, int r) {  //
+    return sumRange(r) - sumRange(l - 1);
   }
 };

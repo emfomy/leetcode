@@ -51,17 +51,94 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-#include <functional>
+#include <algorithm>
+#include <climits>
+#include <numeric>
 #include <vector>
 
 using namespace std;
+
+// Brute-Force + Permutation
+//
+// Try all matching.
+class Solution {
+  int getDist(const vector<int>& p1, const vector<int>& p2) {  //
+    return abs(p1[0] - p2[0]) + abs(p1[1] - p2[1]);
+  }
+
+ public:
+  int assignBikes(const vector<vector<int>>& workers, const vector<vector<int>>& bikes) {
+    int n = workers.size(), m = bikes.size();
+
+    // Guard
+    if (n > m) return -1;
+
+    // Init index
+    auto idxs = vector<int>(m);  // assign worker i to bike idxs[i]
+    iota(idxs.begin(), idxs.end(), 0);
+
+    // All permutation
+    int minDist = INT_MAX;
+    do {
+      int dist = 0;
+      for (int i = 0; i < n; ++i) {
+        dist += getDist(workers[i], bikes[idxs[i]]);
+      }
+      minDist = min(minDist, dist);
+    } while (next_permutation(idxs.begin(), idxs.end()));
+
+    return minDist;
+  }
+};
+
+// Brute-Force + Permutation
+//
+// Try all matching.
+//
+// Note that we don't need all permutation of size-m.
+// We only need the size-n subset.
+//
+// We can reverse all result in [n, m) after calling next_permutation.
+// This operation will skip all permutations for the last (m-n) elements.
+class Solution2 {
+  int getDist(const vector<int>& p1, const vector<int>& p2) {  //
+    return abs(p1[0] - p2[0]) + abs(p1[1] - p2[1]);
+  }
+
+ public:
+  int assignBikes(const vector<vector<int>>& workers, const vector<vector<int>>& bikes) {
+    int n = workers.size(), m = bikes.size();
+
+    // Guard
+    if (n > m) return -1;
+
+    // Init index
+    auto idxs = vector<int>(m);  // assign worker i to bike idxs[i]
+    iota(idxs.begin(), idxs.end(), 0);
+
+    // All permutation
+    int minDist = INT_MAX;
+    do {
+      int dist = 0;
+      for (int i = 0; i < n; ++i) {
+        dist += getDist(workers[i], bikes[idxs[i]]);
+      }
+      minDist = min(minDist, dist);
+
+      // Skip permutations for unused part
+      reverse(idxs.begin() + n, idxs.end());
+    } while (next_permutation(idxs.begin(), idxs.end()));
+
+    return minDist;
+  }
+};
 
 // Use DFS + DP
 //
 // Loop for each worker, choose any available bike.
 // We cache the state (worker ID, used bikes)
 // Note that we use bit mask to store bikes.
-class Solution {
+class Solution3 {
  public:
   int assignBikes(vector<vector<int>>& workers, vector<vector<int>>& bikes) {
     int n = workers.size(), m = bikes.size();
@@ -69,18 +146,16 @@ class Solution {
 
     function<int(int, int)> dfs = [&](int i, int mask) -> int {
       if (i == n) return 0;
-
       if (cache[i][mask]) {
         return cache[i][mask];
       }
 
       auto xi = workers[i][0], yi = workers[i][1];
-      int dist = 1e5;  // (1000 + 1000) * 10
+      int dist = INT_MAX;
       for (auto j = 0; j < m; j++) {
-        auto jBit = 1 << j;
         auto xj = bikes[j][0], yj = bikes[j][1];
-        if (!(mask & jBit)) {
-          auto dist2 = dfs(i + 1, mask | jBit);
+        if ((mask & (1 << j)) == 0) {
+          auto dist2 = dfs(i + 1, mask | (1 << j));
           dist = min(dist, abs(xi - xj) + abs(yi - yj) + dist2);
         }
       }
@@ -89,6 +164,81 @@ class Solution {
       return dist;
     };
 
-    return dfs(0, {});
+    return dfs(0, 0);
+  }
+};
+
+// DP + Backtracking
+//
+// We fisrt consider a simple case: N = 1.
+// In this case, just pick the nearest bike.
+//
+// Now assume we want to find the bast solution of a K-size subset.
+// Say we know the solution of all (K-1)-size sub-subsets,
+// we can make the new worker pick the nearest non-pick bike.
+// Among all above cases, we pick the best distance for this K-size subset.
+//
+// Use bit mask to represent the subsets.
+class Solution4 {
+  int getDist(const vector<int>& p1, const vector<int>& p2) { return abs(p1[0] - p2[0]) + abs(p1[1] - p2[1]); }
+
+  using Mask = unsigned int;
+
+ public:
+  int assignBikes(const vector<vector<int>>& workers, const vector<vector<int>>& bikes) {
+    const int n = workers.size(), m = bikes.size();
+    const unsigned int N = 1u << n;  // 2^n;
+
+    // Init DP array
+    auto minDists = vector<int>(N, INT_MAX);
+    auto usedBikes = vector<Mask>(N);
+    minDists[0] = 0;
+
+    // Group subset by size
+    auto maskGroups = vector<vector<Mask>>(n + 1);
+    for (unsigned int mask = 1; mask < N; ++mask) {
+      maskGroups[popcount(mask)].push_back(mask);
+    }
+
+    // loop through all mask with different size
+    for (int k = 1; k <= n; ++k) {
+      for (Mask mask : maskGroups[k]) {
+        for (int worker = 0; worker < n; ++worker) {
+          Mask workerBit = 1u << worker;
+
+          // Guard, check worker in subset
+          if ((mask & workerBit) == 0) continue;
+
+          Mask subset = mask - workerBit;
+          int subsetDist = minDists[subset];
+          Mask subsetUsedBikes = usedBikes[subset];
+
+          // Find nearest bike
+          int bestBike = -1;
+          int bestBikeDist = INT_MAX;
+          for (int bike = 0; bike < m; ++bike) {
+            Mask bikeBit = 1u << bike;
+
+            // Guard, bike used
+            if (usedBikes[subset] & bikeBit) continue;
+
+            int dist = getDist(workers[worker], bikes[bike]);
+            if (bestBikeDist > dist) {
+              bestBikeDist = dist;
+              bestBike = bike;
+            }
+          }
+
+          // Update DP
+          int newDist = subsetDist + bestBikeDist;
+          if (minDists[mask] > newDist) {
+            minDists[mask] = newDist;
+            usedBikes[mask] = subsetUsedBikes | (1u << bestBike);
+          }
+        }
+      }
+    }
+
+    return minDists[N - 1];
   }
 };

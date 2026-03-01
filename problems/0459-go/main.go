@@ -44,7 +44,7 @@ import "strings"
 func repeatedSubstringPattern(s string) bool {
 	n := len(s)
 	for l := 1; l <= n/2; l++ {
-		if n % l != 0 {
+		if n%l != 0 {
 			continue
 		}
 		if s == strings.Repeat(s[:l], n/l) {
@@ -55,6 +55,6 @@ func repeatedSubstringPattern(s string) bool {
 }
 
 func repeatedSubstringPattern2(s string) bool {
-	t := s+s
+	t := s + s
 	return strings.Contains(t[1:len(t)-1], s)
 }

@@ -33,7 +33,7 @@ class FenwickTree {
   // Update: O(logN); nums[idx] += delta
   void update(int coord, int delta) {
     // start at x+1 since x in [0, x+1)
-    for (auto i = getIdx(coord) + 1; i <= n; i += (i & -i)) {
+    for (int i = getIdx(coord) + 1; i <= n; i += (i & -i)) {
       tree[i] += delta;
     }
   }
@@ -41,7 +41,7 @@ class FenwickTree {
   // Query: O(logN); Sum of [0, r)
   int query(int r) {
     int sum = 0;
-    for (auto i = getIdx(r); i > 0; i -= (i & -i)) {
+    for (int i = getIdx(r); i > 0; i -= (i & -i)) {
       sum += tree[i];
     }
     return sum;

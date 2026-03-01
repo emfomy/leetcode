@@ -42,6 +42,7 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+#include <functional>
 using namespace std;
 
 struct TreeNode {
@@ -57,42 +58,85 @@ struct TreeNode {
 class Solution {
  public:
   TreeNode *insertIntoBST(TreeNode *root, int val) {
-    if (root == nullptr) return new TreeNode(val);
+    if (!root) return new TreeNode(val);
 
-    // Skip equal case
     if (val < root->val) {
       root->left = insertIntoBST(root->left, val);
     } else {
       root->right = insertIntoBST(root->right, val);
     }
+
     return root;
   }
 };
 
-// Loop
+// Iteration
 class Solution2 {
  public:
   TreeNode *insertIntoBST(TreeNode *root, int val) {
-    // Edge case
-    if (root == nullptr) return new TreeNode(val);
+    if (!root) return new TreeNode(val);
 
-    // Loop
-    auto node = root;
-    while (node != nullptr) {
-      if (node->val > val) {
-        if (node->left == nullptr) {
+    TreeNode *node = root;
+    while (node) {
+      if (val < node->val) {
+        if (!node->left) {
           node->left = new TreeNode(val);
           break;
         }
         node = node->left;
       } else {
-        if (node->right == nullptr) {
+        if (!node->right) {
           node->right = new TreeNode(val);
           break;
         }
         node = node->right;
       }
     }
+
+    return root;
+  }
+};
+
+// Iteration, Double Pointer
+class Solution3 {
+ public:
+  TreeNode *insertIntoBST(TreeNode *root, int val) {
+    // Find
+    TreeNode **nodePtr = &root;
+    while (*nodePtr) {
+      if (val < (*nodePtr)->val) {
+        nodePtr = &((*nodePtr)->left);
+      } else {
+        nodePtr = &((*nodePtr)->right);
+      }
+    }
+
+    // Insert
+    *nodePtr = new TreeNode(val);
+
+    return root;
+  }
+};
+
+// Iteration, Reference Wrapper
+class Solution4 {
+  using NodeRef = reference_wrapper<TreeNode *>;
+
+ public:
+  TreeNode *insertIntoBST(TreeNode *root, int val) {
+    // Find
+    NodeRef nodeRef = root;
+    while (nodeRef.get()) {
+      if (val < nodeRef.get()->val) {
+        nodeRef = nodeRef.get()->left;
+      } else {
+        nodeRef = nodeRef.get()->right;
+      }
+    }
+
+    // Insert
+    nodeRef.get() = new TreeNode(val);
+
     return root;
   }
 };

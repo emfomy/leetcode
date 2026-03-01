@@ -48,36 +48,96 @@ struct TreeNode {
   TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
 };
 
+// Hash Set + DFS
+//
+// First convert toDelete into a hash set.
+// Next do DFS on the tree.
+// If a node it deleteing, tell its children to put themself into the forest
 class Solution {
  public:
-  vector<TreeNode *> delNodes(TreeNode *root, vector<int> &to_delete) {
-    auto delSet = unordered_set<int>(to_delete.cbegin(), to_delete.cend());
-    auto ans = vector<TreeNode *>();
+  vector<TreeNode *> delNodes(TreeNode *root, const vector<int> &toDelete) {
+    // Trivial case
+    if (toDelete.empty()) return {root};
 
-    if (!_delNodes(root, delSet, ans)) {
-      ans.push_back(root);
-    }
+    // Prepare data
+    auto deleteSet = unordered_set<int>(toDelete.cbegin(), toDelete.cend());
+    auto forest = vector<TreeNode *>();
 
-    return ans;
+    // DFS
+    dfs(root, true, deleteSet, forest);
+
+    return forest;
   }
 
  private:
-  bool _delNodes(TreeNode *node, unordered_set<int> &delSet, vector<TreeNode *> &ans) {
-    if (!node) return false;
+  // Returns updated node
+  TreeNode *dfs(TreeNode *node, bool parentDeleted, const unordered_set<int> &deleteSet, vector<TreeNode *> &forest) {
+    // Empty node
+    if (!node) return nullptr;
 
-    if (_delNodes(node->left, delSet, ans)) {
-      node->left = nullptr;
-    }
-    if (_delNodes(node->right, delSet, ans)) {
-      node->right = nullptr;
+    // Delete current node
+    bool currentDeleted = deleteSet.contains(node->val);
+
+    // Traversal
+    node->left = dfs(node->left, currentDeleted, deleteSet, forest);
+    node->right = dfs(node->right, currentDeleted, deleteSet, forest);
+
+    // Delete node
+    if (currentDeleted) {
+      delete node;
+      return nullptr;
     }
 
-    if (delSet.contains(node->val)) {
-      if (node->left) ans.push_back(node->left);
-      if (node->right) ans.push_back(node->right);
-      return true;
+    // Put into forest
+    if (parentDeleted) {
+      forest.push_back(node);
     }
 
-    return false;
+    return node;
+  }
+};
+
+// Hash Set + DFS
+//
+// First convert toDelete into a hash set.
+// Next do post-order DFS on the tree.
+// If a node is deleting, then put its non-nil children into the forest
+class Solution2 {
+ public:
+  vector<TreeNode *> delNodes(TreeNode *root, vector<int> &toDelete) {
+    // Trivial case
+    if (toDelete.empty()) return {root};
+
+    // Prepare data
+    auto deleteSet = unordered_set<int>(toDelete.cbegin(), toDelete.cend());
+    auto forest = vector<TreeNode *>();
+
+    // DFS and check root node
+    if (dfs(root, deleteSet, forest)) {
+      forest.push_back(root);
+    }
+
+    return forest;
+  }
+
+ private:
+  // Returns updated node
+  TreeNode *dfs(TreeNode *node, const unordered_set<int> &deleteSet, vector<TreeNode *> &forest) {
+    // Empty node
+    if (!node) return nullptr;
+
+    // Traversal
+    node->left = dfs(node->left, deleteSet, forest);
+    node->right = dfs(node->right, deleteSet, forest);
+
+    // Delete node
+    if (deleteSet.contains(node->val)) {
+      if (node->left) forest.push_back(node->left);
+      if (node->right) forest.push_back(node->right);
+      delete node;
+      return nullptr;
+    }
+
+    return node;
   }
 };

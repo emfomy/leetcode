@@ -123,7 +123,7 @@ class SegmentTree {
       return;
     }
 
-    auto mid = lo + (hi - lo) / 2;
+    int mid = lo + (hi - lo) / 2;
     build(nums, leftChild(node), lo, mid);
     build(nums, rightChild(node), mid, hi);
     pushUp(node);
@@ -142,7 +142,7 @@ class SegmentTree {
 
     // Partial overlap
     pushDown(p);
-    auto mid = lo + (hi - lo) / 2;
+    int mid = lo + (hi - lo) / 2;
     update(l, r, leftChild(p), lo, mid, t);
     update(l, r, rightChild(p), lo, mid, t);
     pushUp(p);
@@ -158,7 +158,7 @@ class SegmentTree {
 
     // Partial overlap
     pushDown(node);
-    auto mid = lo + (hi - lo) / 2;
+    int mid = lo + (hi - lo) / 2;
     auto leftInfo = query(l, r, leftChild(node), lo, mid);
     auto rightInfo = query(l, r, rightChild(node), mid, hi);
     return Info::merge(leftInfo, rightInfo);
