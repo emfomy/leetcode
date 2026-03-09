@@ -158,7 +158,7 @@ class Solution2 {
   }
 };
 
-// Bellman Ford
+// Bellman-Ford
 class Solution3 {
   constexpr static int kInf = INT_MAX / 2;
 

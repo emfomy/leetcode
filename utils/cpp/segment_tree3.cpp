@@ -3,14 +3,14 @@
 using namespace std;
 
 // Recursion Version
-class SegmentTree {
+class SegmentTree2D {
   int n;
   vector<int> tree;  // parent i -> child 2i & 2i+1
 
  public:
-  SegmentTree(int n) : n(n), tree(4 * n, 0) {}
+  SegmentTree2D(int n) : n(n), tree(4 * n, 0) {}
 
-  SegmentTree(vector<int>& nums) {
+  SegmentTree2D(const vector<int>& nums) {
     n = nums.size();
     tree.resize(4 * n);
     build(nums, 1, 0, n);
@@ -22,8 +22,8 @@ class SegmentTree {
 
  private:
   // Left/right son
-  int leftChild(int node) { return 2 * node; }
-  int rightChild(int node) { return 2 * node + 1; }
+  inline int leftChild(int node) const { return 2 * node; }
+  inline int rightChild(int node) const { return 2 * node + 1; }
 
   // Push Up
   void pushUp(int node) {  //
@@ -31,7 +31,7 @@ class SegmentTree {
   }
 
   // Build: O(n)
-  void build(vector<int>& nums, int node, int lo, int hi) {
+  void build(const vector<int>& nums, int node, int lo, int hi) {
     // leaf node
     if (lo == hi - 1) {
       tree[node] = nums[lo];
@@ -62,7 +62,7 @@ class SegmentTree {
   }
 
   // Query: O(logN); Max in [l, r)
-  int query(int l, int r, int node, int lo, int hi) {
+  int query(int l, int r, int node, int lo, int hi) const {
     // Out of range
     if (r <= lo || hi <= l) return INT_MIN;
 
@@ -77,7 +77,7 @@ class SegmentTree {
   }
 
   // QueryFirst: O(logN); Find first in [l, r) such that val >= k
-  int queryFirst(int l, int r, int k, int node, int lo, int hi) {
+  int queryFirst(int l, int r, int k, int node, int lo, int hi) const {
     // Out of range
     if (r <= lo || hi <= l) return -1;
 

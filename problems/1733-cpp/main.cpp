@@ -9,8 +9,8 @@
 // You are given an integer `n`, an array `languages`, and an array `friendships` where:
 //
 // - There are `n` languages numbered `1` through `n`,
-// - `languages[i]` is the set of languages the `i^​​​​​​th`​​​​ user knows, and
-// - `friendships[i] = [u_​​​​​​i​​​, v_​​​​​​i]` denotes a friendship between the users `u^​​​​​_​​​​​​i`​​​​​ and `v_i`.
+// - `languages[i]` is the set of languages the `i^th` user knows, and
+// - `friendships[i] = [u_i, v_i]` denotes a friendship between the users `u^_i` and `v_i`.
 //
 // You can choose **one** language and teach it to some users so that all friends can communicate with each other. Return the **minimum** number of users you need to teach.
 // Note that friendships are not transitive, meaning if `x` is a friend of `y` and `y` is a friend of `z`, this doesn't guarantee that `x` is a friend of `z`.
@@ -38,9 +38,9 @@
 // - `1 <= m <= 500`
 // - `1 <= languages[i].length <= n`
 // - `1 <= languages[i][j] <= n`
-// - `1 <= u_​​​​​​i < v_​​​​​​i <= languages.length`
+// - `1 <= u_i < v_i <= languages.length`
 // - `1 <= friendships.length <= 500`
-// - All tuples `(u_​​​​​i, v_​​​​​​i)` are unique
+// - All tuples `(u_i, v_i)` are unique
 // - `languages[i]` contains only unique values
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

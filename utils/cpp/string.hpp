@@ -18,7 +18,7 @@ vector<string> string_split(const string &s, char delim = ' ') {
 template <typename T>
 string string_join(const vector<string> &words, char delim = ' ') {
   ostringstream oss;
-  for (size_t i = 0; i < words.size(); i++) {
+  for (size_t i = 0; i < words.size(); ++i) {
     if (i) oss << delim;
     oss << words[i];
   }

@@ -200,22 +200,22 @@ class Solution4 {
   constexpr static int64_t modulo = 1e9 + 7;
 
   // Element in Fp
-  struct Int {
+  struct Zp {
     int64_t val;
 
-    inline constexpr Int operator+(Int other) {  //
+    inline constexpr Zp operator+(Zp other) {  //
       return {(val + other.val) % modulo};
     }
 
-    inline constexpr Int operator*(Int other) {  //
+    inline constexpr Zp operator*(Zp other) {  //
       return {(val * other.val) % modulo};
     }
   };
 
   // Element in Fp(sqrt17)
   struct Elem {
-    Int real;
-    Int imag;
+    Zp real;
+    Zp imag;
 
     inline constexpr Elem operator+(Elem other) {  //
       return {real + other.real, imag + other.imag};
@@ -223,7 +223,7 @@ class Solution4 {
 
     inline constexpr Elem operator*(Elem other) {  //
       return {
-          real * other.real + imag * other.imag * Int{17},
+          real * other.real + imag * other.imag * Zp{17},
           real * other.imag + imag * other.real,
       };
     }
@@ -272,22 +272,22 @@ class Solution5 {
   constexpr static int64_t modulo = 1e9 + 7;
 
   // Element in Fp
-  struct Int {
+  struct Zp {
     int64_t val;
 
-    inline constexpr Int operator+(Int other) {  //
+    inline constexpr Zp operator+(Zp other) {  //
       return {(val + other.val) % modulo};
     }
 
-    inline constexpr Int operator*(Int other) {  //
+    inline constexpr Zp operator*(Zp other) {  //
       return {(val * other.val) % modulo};
     }
   };
 
   // Element in Fp[A]/<P(A)>
   struct Poly {
-    Int val0;
-    Int val1;
+    Zp val0;
+    Zp val1;
 
     inline constexpr Poly operator+(Poly other) {  //
       return {val0 + other.val0, val1 + other.val1};
@@ -295,8 +295,8 @@ class Solution5 {
 
     inline constexpr Poly operator*(Poly other) {  //
       return {
-          val0 * other.val0 + val1 * other.val1 * Int{modulo - 2},
-          val0 * other.val1 + val1 * other.val0 + val1 * other.val1 * Int{5},
+          val0 * other.val0 + val1 * other.val1 * Zp{modulo - 2},
+          val0 * other.val1 + val1 * other.val0 + val1 * other.val1 * Zp{5},
       };
     }
   };
@@ -314,6 +314,6 @@ class Solution5 {
  public:
   int numOfWays(int n) {
     auto poly = fastPow({0, 1}, n - 1);  // A^(n-1)
-    return (poly.val0 * Int{12} + poly.val1 * Int{54}).val;
+    return (poly.val0 * Zp{12} + poly.val1 * Zp{54}).val;
   }
 };

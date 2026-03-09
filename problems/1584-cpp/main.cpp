@@ -37,116 +37,117 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+#include <algorithm>
+#include <climits>
+#include <functional>
 #include <numeric>
 #include <queue>
 #include <vector>
 
 using namespace std;
 
-// Sort + Union-Find
+// Kruskal's algorithm (Sort + Union-Find)
 //
-// Sort all edge by length.
-// For each edge, connect them if two ends are in different components.
+// Use Kruskal's algorithm to find the MST.
 class Solution {
   struct UnionFind {
-    vector<int> parent;
-    vector<int> rank;
+    mutable vector<int> parents;
+    mutable vector<int> ranks;
 
-    UnionFind(int n) : parent(n), rank(n) {  //
-      iota(parent.begin(), parent.end(), 0);
+    UnionFind(int n) : parents(n), ranks(n) {  //
+      iota(parents.begin(), parents.end(), 0);
     }
 
-    int find(int x) {
-      if (parent[x] != x) {
-        parent[x] = find(parent[x]);
+    int find(int x) const {
+      if (parents[x] != x) {
+        parents[x] = find(parents[x]);
       }
-      return parent[x];
+      return parents[x];
     }
 
-    bool merge(int x, int y) {
+    bool isConnected(int x, int y) const {  //
+      return find(x) == find(y);
+    }
+
+    void unite(int x, int y) {
       x = find(x);
       y = find(y);
-      if (x == y) return false;
+      if (x == y) return;
 
-      // Ensure rank(x) > rank(y)
-      if (rank[x] < rank[y]) {
-        swap(x, y);
-      }
+      // Ensure rank(x) >= rank(y)
+      if (ranks[x] < ranks[y]) swap(x, y);
 
       // Merge y into x
-      parent[y] = x;
-      if (rank[x] == rank[y]) ++rank[x];
-      return true;
+      if (ranks[x] == ranks[y]) ++ranks[x];
+      parents[y] = x;
     }
   };
 
-  using Point = tuple<int, int, int>;  // length, p, q
+  using Edge = tuple<int, int, int>;  // weight, node, node
+
+  int getDist(const vector<int>& u, const vector<int>& v) {  //
+    return abs(u[0] - v[0]) + abs(u[1] - v[1]);
+  }
 
  public:
-  int minCostConnectPoints(vector<vector<int>>& points) {
-    int n = points.size();
+  int minCostConnectPoints(const vector<vector<int>>& points) {
+    const int n = points.size();
 
-    // Edges
-    auto edges = vector<Point>();
-    for (auto p = 0; p < n; ++p) {
-      auto px = points[p][0], py = points[p][1];
-      for (auto q = p + 1; q < n; ++q) {
-        auto qx = points[q][0], qy = points[q][1];
-        auto len = abs(px - qx) + abs(py - qy);
-        edges.emplace_back(len, p, q);
+    // Build and sort edges
+    auto edges = vector<Edge>();
+    for (int v = 0; v < n; ++v) {
+      for (int u = 0; u < v; ++u) {
+        edges.emplace_back(getDist(points[u], points[v]), u, v);
       }
     }
     sort(edges.begin(), edges.end());
 
-    // Loop
-    auto ans = 0;
+    // Kruskal's algorithm
     auto uf = UnionFind(n);
-    for (auto [len, p, q] : edges) {
-      if (uf.merge(p, q)) ans += len;
+    int mstWeight = 0;
+    for (const auto [w, u, v] : edges) {
+      if (uf.isConnected(u, v)) continue;
+
+      uf.unite(u, v);
+      mstWeight += w;
     }
 
-    return ans;
+    return mstWeight;
   }
 };
 
-// Heap
+// Dense Prim's algorithm (Sort)
 //
-// Pick an point as start.
-// For each point added, put all its non-visited neighbor into the heap.
-// Always pick the nearest non-visited point as next point.
+// Use Prim's algorithm to find the MST.
 class Solution2 {
-  using Point = pair<int, int>;  // -distance, point
+  int getDist(const vector<int>& u, const vector<int>& v) {  //
+    return abs(u[0] - v[0]) + abs(u[1] - v[1]);
+  }
 
  public:
-  int minCostConnectPoints(vector<vector<int>>& points) {
-    int n = points.size();
-
-    // Helper
-    auto getDist = [&](int p, int q) -> int {  // distance of points
-      return abs(points[p][0] - points[q][0]) + abs(points[p][1] - points[q][1]);
-    };
+  int minCostConnectPoints(const vector<vector<int>>& points) {
+    const int n = points.size();
 
     // Prepare
-    auto heap = priority_queue<Point>();  // min-heap for "distance"
     auto visited = vector<bool>(n);
-    heap.emplace(0, 0);
+    auto dists = vector<int>(n, INT_MAX);
+    dists[0] = 0;
 
-    // Loop
-    auto ans = 0;
-    while (!heap.empty()) {
-      auto [negDist, point] = heap.top();
-      heap.pop();
+    // Prims's algorithm
+    int mstWeight = 0;
+    for (int iter = 0; iter < n; ++iter) {
+      // Find nearest unvisited point
+      int u = min_element(dists.cbegin(), dists.cend()) - dists.cbegin();
+      visited[u] = true;
+      mstWeight += dists[u];
+      dists[u] = INT_MAX;  // remove from target set
 
-      if (visited[point]) continue;
-      visited[point] = true;
-      ans -= negDist;
-
-      for (auto next = 0; next < n; ++next) {
-        if (visited[next]) continue;
-        heap.emplace(-getDist(point, next), next);
+      for (int v = 0; v < n; ++v) {
+        if (visited[v]) continue;
+        dists[v] = min(dists[v], getDist(points[u], points[v]));
       }
     }
 
-    return ans;
+    return mstWeight;
   }
 };

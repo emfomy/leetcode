@@ -8,7 +8,7 @@
 //
 // Each bid is associated with a `userId`, an `itemId`, and a `bidAmount`.
 //
-// Implement the `AuctionSystem` class:​​​​​​​
+// Implement the `AuctionSystem` class:
 //
 // - `AuctionSystem()`: Initializes the `AuctionSystem` object.
 // - `void addBid(int userId, int itemId, int bidAmount)`: Adds a new bid for `itemId` by `userId` with `bidAmount`. If the same `userId` **already** has a bid on `itemId`, **replace** it with the new `bidAmount`.

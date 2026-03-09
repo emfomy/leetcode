@@ -38,7 +38,7 @@
 // Modify [1, 2]  | [-1, 0, 1]  | (-1 × 4) + (0 × 2) + (1 × 8) = -4 + 0 + 8 | 4
 //
 // <table style="border: 1px solid black;"><thead><tr><th style="border: 1px solid black;">Modification</th><th style="border: 1px solid black;">Strategy</th><th style="border: 1px solid black;">Profit Calculation</th><th style="border: 1px solid black;">Profit</th></tr></thead><tbody><tr><td style="border: 1px solid black;">Original</td><td style="border: 1px solid black;">[-1, 0, 1]</td><td style="border: 1px solid black;">(-1 × 4) + (0 × 2) + (1 × 8) = -4 + 0 + 8</td><td style="border: 1px solid black;">4</td></tr><tr><td style="border: 1px solid black;">Modify [0, 1]</td><td style="border: 1px solid black;">[0, 1, 1]</td><td style="border: 1px solid black;">(0 × 4) + (1 × 2) + (1 × 8) = 0 + 2 + 8</td><td style="border: 1px solid black;">10</td></tr><tr><td style="border: 1px solid black;">Modify [1, 2]</td><td style="border: 1px solid black;">[-1, 0, 1]</td><td style="border: 1px solid black;">(-1 × 4) + (0 × 2) + (1 × 8) = -4 + 0 + 8</td><td style="border: 1px solid black;">4</td></tr></tbody></table>
-// Thus, the maximum possible profit is 10, which is achieved by modifying the subarray `[0, 1]`​​​​​​​.
+// Thus, the maximum possible profit is 10, which is achieved by modifying the subarray `[0, 1]`.
 // ```
 //
 // **Example 2:**

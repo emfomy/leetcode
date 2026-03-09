@@ -107,20 +107,20 @@ class Solution2 {
   constexpr static int64_t modulo = 1e9 + 7;
 
   // Element in Fp
-  struct Int {
+  struct Zp {
     int64_t val;
 
-    inline constexpr Int operator+(Int other) {  //
+    inline constexpr Zp operator+(Zp other) {  //
       return {(val + other.val) % modulo};
     }
 
-    inline constexpr Int operator*(Int other) {  //
+    inline constexpr Zp operator*(Zp other) {  //
       return {(val * other.val) % modulo};
     }
   };
 
-  inline Int fastPow(Int x, int n) {
-    auto res = Int{1};
+  inline Zp fastPow(Zp x, int n) {
+    auto res = Zp{1};
     while (n > 0) {
       if (n % 2) res = res * x;
       n /= 2;
@@ -131,32 +131,33 @@ class Solution2 {
 
  public:
   int countVowelPermutation(int n) {
-    return (Int{74674987} * fastPow({882979097}, n - 1) +   //
-            Int{155923322} * fastPow({653592850}, n - 1) +  //
-            Int{984156423} * fastPow({419376480}, n - 1) +  //
-            Int{785245287} * fastPow({44051588}, n - 1))
+    return (Zp{74674987} * fastPow({882979097}, n - 1) +   //
+            Zp{155923322} * fastPow({653592850}, n - 1) +  //
+            Zp{984156423} * fastPow({419376480}, n - 1) +  //
+            Zp{785245287} * fastPow({44051588}, n - 1))
         .val;
   }
 };
 
+// Instead of c * d^(n-1), we rewrite as (c/d) * d^n
 class Solution3 {
   constexpr static int64_t modulo = 1e9 + 7;
 
   // Element in Fp
-  struct Int {
+  struct Zp {
     int64_t val;
 
-    inline constexpr Int operator+(Int other) {  //
+    inline constexpr Zp operator+(Zp other) {  //
       return {(val + other.val) % modulo};
     }
 
-    inline constexpr Int operator*(Int other) {  //
+    inline constexpr Zp operator*(Zp other) {  //
       return {(val * other.val) % modulo};
     }
   };
 
-  inline Int fastPow(Int x, int n) {
-    auto res = Int{1};
+  inline Zp fastPow(Zp x, int n) {
+    auto res = Zp{1};
     while (n > 0) {
       if (n % 2) res = res * x;
       n /= 2;
@@ -167,10 +168,10 @@ class Solution3 {
 
  public:
   int countVowelPermutation(int n) {
-    return (Int{514029000} * fastPow({882979097}, n) +  //
-            Int{638771916} * fastPow({653592850}, n) +  //
-            Int{784439686} * fastPow({419376480}, n) +  //
-            Int{62759413} * fastPow({44051588}, n))
+    return (Zp{514029000} * fastPow({882979097}, n) +  //
+            Zp{638771916} * fastPow({653592850}, n) +  //
+            Zp{784439686} * fastPow({419376480}, n) +  //
+            Zp{62759413} * fastPow({44051588}, n))
         .val;
   }
 };

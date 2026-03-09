@@ -32,27 +32,27 @@ using namespace std;
 // Now we must add tree[r-1] to the result and decrease r (exclude current node).
 
 // Iteration Version (ZKW)
-class SegmentTree {
+class SegmentTree2D {
   int n;
   vector<int> tree;  // parent i -> child 2i & 2i+1
 
  public:
-  SegmentTree(int n) : n(n), tree(2 * n, 0) {}
+  SegmentTree2D(int n) : n(n), tree(2 * n, 0) {}
 
-  SegmentTree(vector<int>& nums) {
+  SegmentTree2D(const vector<int>& nums) {
     n = nums.size();
     tree.resize(2 * n);  // only need 2n for iteration version
 
     // build: O(N)
-    for (int i = 0; i < n; ++i) tree[n + i] = nums[i];  // leaves
-    for (int i = n - 1; i > 0; --i) tree[i] = tree[2 * i] + tree[2 * i + 1];
+    for (int i = 0; i < n; ++i) tree[i + n] = nums[i];  // leaves
+    for (int i = n - 1; i >= 1; --i) tree[i] = tree[2 * i] + tree[2 * i + 1];
   }
 
-  // Update: O(logN)
-  void update(int i, int value) {
+  // Update: O(logN); nums[i] = val
+  void update(int i, int val) {
     // Update leaf
     i += n;
-    tree[i] = value;
+    tree[i] = val;
 
     // Update parents
     for (i /= 2; i >= 1; i /= 2) {
@@ -61,7 +61,7 @@ class SegmentTree {
   }
 
   // Query: O(logN); Sum in [l, r)
-  int query(int l, int r) {
+  int query(int l, int r) const {
     int sum = 0;
     for (l += n, r += n; l < r; l /= 2, r /= 2) {
       if (l & 1) sum += tree[l++];  // l is odd, should add tree[l]; then move l

@@ -29,7 +29,7 @@
 // Add:    "5222"
 // Add:    "5121"
 // Rotate: "2151"
-// Add:    "2050"​​​​​
+// Add:    "2050"
 // There is no way to obtain a string that is lexicographically smaller than "2050".
 // ```
 //
@@ -41,8 +41,8 @@
 // Explanation: We can apply the following operations:
 // Start:  "74"
 // Rotate: "47"
-// ​​​​​​​Add:    "42"
-// ​​​​​​​Rotate: "24"​​​​​​​​​​​​
+// Add:    "42"
+// Rotate: "24"
 // There is no way to obtain a string that is lexicographically smaller than "24".
 // ```
 //

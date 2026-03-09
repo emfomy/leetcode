@@ -4,7 +4,7 @@
 // Author: Mu Yang <http://muyang.pro>
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-// You are given a string s consisting only of characters 'a' and 'b'​​​​.
+// You are given a string s consisting only of characters 'a' and 'b'.
 //
 // You can delete any number of characters in s to make s balanced. s is balanced if there is no pair of indices (i,j) such that i < j and s[i] = 'b' and s[j]= 'a'.
 //
@@ -27,7 +27,7 @@
 // Constraints:
 //
 //   1 <= s.length <= 10^5
-//   s[i] is 'a' or 'b'​​.
+//   s[i] is 'a' or 'b'.
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 

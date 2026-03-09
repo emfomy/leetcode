@@ -54,6 +54,7 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 #include <deque>
+#include <random>
 #include <string>
 #include <unordered_map>
 #include <vector>
@@ -117,7 +118,7 @@ class Solution2 {
   struct UnionFind {
     unordered_map<string, string> parents;
     unordered_map<string, int> ranks;
-    unordered_map<string, double> ratios;  // parent / self
+    unordered_map<string, double> ratios;  // self / parent
 
     void insert(string x) {
       parents[x] = x;
@@ -125,34 +126,34 @@ class Solution2 {
       ratios[x] = 1.0;
     }
 
-    pair<string, double> find(string x) {  // return parent and parent / self
-      if (!parents.contains(x)) return {"", -1.0};
+    string find(string x) {
+      if (!parents.contains(x)) return "";
 
+      string p = parents[x];
       if (parents[x] != x) {
-        auto [p, r] = find(parents[x]);
-        parents[x] = p;
-        ratios[x] *= r;
+        string root = find(parents[x]);
+        parents[x] = root;
+        ratios[x] *= ratios[p];  // x/root = x/p * p/root
       }
-      return {parents[x], ratios[x]};
+      return parents[x];
     }
 
-    void unite(string x, string y, double r) {  // r = x / y
-      auto [px, rx] = find(x);                  // rx = px / x
-      auto [py, ry] = find(y);                  // ry = py / y
+    void unite(string x, string y, double r) {  // r = x/y
+      string px = find(x);
+      string py = find(y);
       if (px == py) return;
 
-      // Ensure rank(px) >= rank(py)
-      if (ranks[px] < ranks[py]) {
+      // Ensure rank(px) <= rank(py)
+      if (ranks[px] > ranks[py]) {
         swap(x, y);
         swap(px, py);
-        swap(rx, ry);
         r = 1.0 / r;
       }
 
-      // Merge py into px
-      if (ranks[px] == ranks[py]) ++ranks[px];
-      parents[py] = px;
-      ratios[py] *= rx * r / ry;  // px / py = px/x * x/y * y/py
+      // Merge px into py
+      if (ranks[px] == ranks[py]) ++ranks[py];
+      parents[px] = py;
+      ratios[px] = ratios[y] * r / ratios[x];  // px/py = px/x * x/y * y/py
     }
   };
 
@@ -179,13 +180,13 @@ class Solution2 {
     auto ans = vector<double>();
     for (auto& query : queries) {
       auto x = query[0], y = query[1];
-      auto [px, rx] = uf.find(x);
-      auto [py, ry] = uf.find(y);
+      string px = uf.find(x);
+      string py = uf.find(y);
 
       if (px == "" || py == "" || px != py) {
-        ans.push_back(-1);
+        ans.push_back(-1.0);
       } else {
-        ans.push_back(ry / rx);  // x/y = x/p * p/y
+        ans.push_back(uf.ratios[x] / uf.ratios[y]);  // x/y = x/p * p/y
       }
     }
 

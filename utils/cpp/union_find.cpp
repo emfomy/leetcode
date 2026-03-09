@@ -4,15 +4,18 @@
 using namespace std;
 
 class UnionFind {
-  vector<int> parents;
-  vector<int> ranks;
+  mutable vector<int> parents;
+  mutable vector<int> ranks;
 
+ public:
   UnionFind(int n) : parents(n), ranks(n) {  //
     iota(parents.begin(), parents.end(), 0);
   }
 
-  int find(int x) {
-    if (parents[x] != x) parents[x] = find(parents[x]);
+  int find(int x) const {
+    if (parents[x] != x) {
+      parents[x] = find(parents[x]);
+    }
     return parents[x];
   }
 

@@ -13,19 +13,19 @@ void prepare() {
   coords.erase(unique(coords.begin(), coords.end()), coords.end());
 }
 
-class FenwickTree {
+class FenwickTree2D {
   int n;
   const vector<int>& coords;
   vector<int> tree;  // tree[i] = sum of range [i-lowbit(i), i); length is lowbit(i)
 
  public:
-  FenwickTree(vector<int>& coords) : coords(coords) {
+  FenwickTree2D(const vector<int>& coords) : coords(coords) {
     n = coords.size();
     tree.assign(n + 1, 0);
   }
 
   // O(logN); find first coords[idx] >= coord
-  int getIdx(int coord) {  //
+  inline int getIdx(int coord) const {
     auto it = lower_bound(coords.cbegin(), coords.cend(), coord);
     return distance(coords.cbegin(), it);
   }
@@ -39,7 +39,7 @@ class FenwickTree {
   }
 
   // Query: O(logN); Sum of [0, r)
-  int query(int r) {
+  int query(int r) const {
     int sum = 0;
     for (int i = getIdx(r); i > 0; i -= (i & -i)) {
       sum += tree[i];
@@ -48,7 +48,7 @@ class FenwickTree {
   }
 
   // Range Query: O(logN); Sum of [l, r)
-  int query(int l, int r) {
+  int query(int l, int r) const {
     if (l >= r) return 0;
     return query(r) - query(l);
   }

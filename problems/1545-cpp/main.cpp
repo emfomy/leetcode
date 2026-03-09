@@ -45,24 +45,96 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+#include <bit>
 using namespace std;
 
 // Recursion
 //
-// Denote B(n, k) be the bit we want. (k is 1-indexed).
+// Denote B(n, k) be the kth bit in S_n. (k is 1-indexed).
 //
-// The length of Sn is 2^n-1. Let m = 2^(n-1)
-// If k == m (middle), then B(n, k) = 1.
-// If k < m, then B(n, k) = B(n-1, k).
-// If k > m, then B(n, k) = !B(n-1, 2m-k).
+// Let m = 2^(n-1). Length of S_n is 2m-1.
+// If k = m (middle),    then B(n, k) = 1.
+// If k < m (left half), then B(n, k) = B(n-1, k).
+// If k > m (right half), then B(n, k) = !B(n-1, 2m-k).
 class Solution {
  public:
   char findKthBit(int n, int k) {
     if (n == 1) return '0';
 
-    int mid = (1 << (n - 1));
-    if (k == mid) return '1';                             // middle
-    if (k < mid) return findKthBit(n - 1, k);             // left half
-    return ('1' + '0') - findKthBit(n - 1, 2 * mid - k);  // right half
+    const int m = 1 << (n - 1);
+    if (k == m) return '1';
+    if (k < m) return findKthBit(n - 1, k);
+    return findKthBit(n - 1, 2 * m - k) ^ '0' ^ '1';  // flip 0 and 1
+  }
+};
+
+// Iteration
+//
+// Denote B(n, k) be the kth bit in S_n. (k is 1-indexed).
+//
+// Let m = 2^(n-1). Length of S_n is 2m-1.
+// If k = m (middle),    then B(n, k) = 1.
+// If k < m (left half), then B(n, k) = B(n-1, k).
+// If k > m (right half), then B(n, k) = !B(n-1, 2m-k).
+//
+// Note that we don't need n in the loop, we can simply use m as terminate condition.
+class Solution2 {
+ public:
+  char findKthBit(int n, int k) {
+    bool flip = false;
+
+    for (int m = 1 << (n - 1); m > 1; m >>= 1) {
+      if (k == m) return flip ? '0' : '1';
+
+      if (k > m) {
+        flip = !flip;
+        k = 2 * m - k;
+      }
+    }
+
+    return flip ? '1' : '0';
+  }
+};
+
+// Bit Manipulation
+//
+// Denote B(n, k) be the kth bit in S_n. (k is 1-indexed).
+//
+// Denote $ as reversion operator, ! as inversion operator, @ = $!.
+// @(x + y) = $!(x + y) = $(!x + !y) = $!y + $!x = @y + @x.
+// @@x = x.
+//
+// S_n = S_(n-1)               + 1 + @S_(n-1)
+//     = S_(n-2) + 1 + @S_(n-2)+ 1 + @(S_(n-2) + 1 + @S_(n-2))
+//     = S_(n-2) + 1 + @S_(n-2)+ 1 + @@S_(n-2) + 1 + @S_(n-2)
+//     = S_(n-2) + 1 + @S_(n-2)+ 1 + S_(n-2) + 0 + @S_(n-2)
+//     = S  1  @S  1   S  0  @S  1   S  1  @S  0    S  0  @S
+// We found that the left and right part of S_n are similar (except the center part).
+//
+// We claim that above series is always in the following pattern:
+// S_n = S 1 @S ? S 0 @S ? S 1 @S ? S 0 @S ? ...
+// The even position are always S, and is alternative between S and @S.
+// The odd position are always 0 or 1,
+// and is alternative between 1 and 0 with skipping a item.
+//
+// Now thats prove above claim.
+// S_n =   S    1   @S   ?   S    0   @S   ?   S    1   @S   ?   S    0   @S   ? ...
+//     = S 1 @S ? S 0 @S ? S 1 @S ? S 0 @S ? S 1 @S ? S 0 @S ? S 1 @S ? S 0 @S ? ...
+// We discovers that the pattern repeats.
+// Note that the indices of these alternative 1 and 0 are p, 3p, 5p, 7p, ...,
+// where p is a power of 2.
+//
+// Therefore we only need to find the series for k.
+// We know that p is the largest power of 2 that divides k.
+// If p > 1, then the index of k in the series is (n-1)/2p (i.e. floor(n/2p)).
+// However, if p = 1, then k is in the series of S @S S @S ..., where S = S_1.
+// Here the series is 0 1 0 1 (is different from other series).
+class Solution3 {
+ public:
+  char findKthBit(int n, int k) {
+    int t = countr_zero(unsigned(k));  // p = 2^t
+    bool bit1 = (k >> (t + 1)) & 1;    // parity of (n-1)/2p
+    bool bit2 = t > 0;                 // parity of p
+    return '0' + (bit1 ^ bit2);
   }
 };

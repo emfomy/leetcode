@@ -25,7 +25,7 @@
 // Input: s = "zzabccy"
 // Output: 4
 // Explanation:
-// The longest balanced substring is `"zabc"` because the distinct characters `'z'`, `'a'`, `'b'`, and `'c'` each appear exactly 1 time.​​​​​​​
+// The longest balanced substring is `"zabc"` because the distinct characters `'z'`, `'a'`, `'b'`, and `'c'` each appear exactly 1 time.
 // ```
 //
 // **Example 3:**

@@ -11,19 +11,19 @@ using namespace std;
 // To update 5, we need to update [5, 5] [5, 6], [5, 8], ... (1-indexed)
 // Note that we skip the len 4 node.
 
-class FenwickTree {
+class FenwickTree2D {
   int n;
   vector<int> tree;  // tree[i] = sum of range [i-lowbit(i), i); length is lowbit(i)
 
  public:
-  FenwickTree(int n) : n(n), tree(n + 1, 0) {}
+  FenwickTree2D(int n) : n(n), tree(n + 1, 0) {}
 
-  FenwickTree(vector<int>& nums) {
+  FenwickTree2D(const vector<int>& nums) {
     n = nums.size();
     tree.assign(n + 1, 0);
 
     // build: O(N)
-    for (int i = 0; i < n; i++) tree[i + 1] = nums[i];
+    for (int i = 1; i <= n; ++i) tree[i] = nums[i - 1];
     for (int i = 1; i <= n; ++i) {
       int p = i + (i & -i);  // parent
       if (p <= n) tree[p] += tree[i];
@@ -39,16 +39,16 @@ class FenwickTree {
   }
 
   // Query: O(logN); Sum of [0, r)
-  int query(int r) {
+  int query(int r) const {
     int sum = 0;
-    for (int i = r; i > 0; i -= (i & -i)) {
+    for (int i = r; i >= 1; i -= (i & -i)) {
       sum += tree[i];
     }
     return sum;
   }
 
   // Range Query: O(logN); Sum of [l, r)
-  int query(int l, int r) {
+  int query(int l, int r) const {
     if (l >= r) return 0;
     return query(r) - query(l);
   }

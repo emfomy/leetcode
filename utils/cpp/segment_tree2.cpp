@@ -12,28 +12,28 @@ void prepare() {
 }
 
 // Iteration Version (ZKW) + Coordinates
-class SegmentTree {
+class SegmentTree2D {
   int n;
   const vector<int>& coords;
   vector<int> tree;  // parent i -> child 2i & 2i+1
 
  public:
-  SegmentTree(vector<int>& coords) : coords(coords) {
+  SegmentTree2D(const vector<int>& coords) : coords(coords) {
     n = coords.size();
     tree.assign(2 * n, 0);
   }
 
   // O(logN); find first coords[idx] >= coord
-  int getIdx(int coord) {  //
+  inline int getIdx(int coord) const {
     auto it = lower_bound(coords.cbegin(), coords.cend(), coord);
     return distance(coords.cbegin(), it);
   }
 
   // Update: O(logN)
-  void update(int coord, int value) {
+  void update(int coord, int val) {
     // Update leaf
     int p = getIdx(coord) + n;
-    tree[p] = value;
+    tree[p] = val;
 
     // Update parents
     for (p /= 2; p >= 1; p /= 2) {
@@ -42,7 +42,7 @@ class SegmentTree {
   }
 
   // Query: O(logN); Sum in [l, r)
-  int query(int lCoord, int rCoord) {
+  int query(int lCoord, int rCoord) const {
     int sum = 0;
     int l = getIdx(lCoord) + n, r = getIdx(rCoord) + n;
     for (; l < r; l /= 2, r /= 2) {

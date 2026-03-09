@@ -7,7 +7,7 @@ using namespace std;
 //
 // [l, r) query/update range
 // [lo, hi) segment of node p
-class SegmentTree {
+class SegmentTree2D {
   // Lazy Tag
   struct Tag {
     int64_t toAdd;  // 0 mean no need to update
@@ -68,12 +68,12 @@ class SegmentTree {
   };
 
   int n;
-  vector<Node> tree;  // parent i -> child 2i & 2i+1
+  mutable vector<Node> tree;  // parent i -> child 2i & 2i+1
 
  public:
-  SegmentTree(int n) : n(n), tree(4 * n) {}
+  SegmentTree2D(int n) : n(n), tree(4 * n) {}
 
-  SegmentTree(const vector<int>& nums) {
+  SegmentTree2D(const vector<int>& nums) {
     n = nums.size();
     tree.resize(4 * n);
     build(nums, 1, 0, n);
@@ -91,11 +91,11 @@ class SegmentTree {
 
  private:
   // Left/right son
-  int leftChild(int p) { return 2 * p; }
-  int rightChild(int node) { return 2 * node + 1; }
+  inline int leftChild(int p) const { return 2 * p; }
+  inline int rightChild(int p) const { return 2 * p + 1; }
 
   // Apply tag
-  void apply(int p, const Tag& t) {
+  void apply(int p, const Tag& t) const {
     tree[p].info.apply(t);
     tree[p].tag.apply(t);
   }
@@ -106,7 +106,7 @@ class SegmentTree {
   }
 
   // Push down to childs
-  void pushDown(int p) {  //
+  void pushDown(int p) const {  //
     auto& node = tree[p];
 
     if (!node.tag.isLazy()) return;
@@ -149,7 +149,7 @@ class SegmentTree {
   }
 
   // Query: O(logN); query info in [l, r)
-  Info query(int l, int r, int node, int lo, int hi) {
+  Info query(int l, int r, int node, int lo, int hi) const {
     // Out of range
     if (r <= lo || hi <= l) return {};
 

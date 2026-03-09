@@ -45,7 +45,7 @@ template <typename T>
 void print_vector(const vector<T> data, size_t start = 0, size_t end = -1) {
   if (end == -1) end = data.size();
   cout << "[ ";
-  for (auto i = start; i < end; i++) {
+  for (auto i = start; i < end; ++i) {
     cout << data[i] << ", ";
   }
   cout << "]" << endl;
