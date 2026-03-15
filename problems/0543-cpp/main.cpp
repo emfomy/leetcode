@@ -33,8 +33,7 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-#include <queue>
-#include <vector>
+#include <algorithm>
 
 using namespace std;
 
@@ -51,20 +50,18 @@ struct TreeNode {
 class Solution {
  public:
   int diameterOfBinaryTree(TreeNode* root) {
-    auto diameter = 0;
-    dfs(root, diameter);
-    return diameter;
+    int ans = 0;
+    dfs(root, ans);
+    return ans;
   }
 
  private:
-  int dfs(TreeNode* node, int& diameter) {  // depth
-    if (node == nullptr) return 0;
+  int dfs(TreeNode* root, int& ans) {
+    if (!root) return 0;
 
-    auto leftDepth = dfs(node->left, diameter);
-    auto rightDepth = dfs(node->right, diameter);
-
-    diameter = max(diameter, leftDepth + rightDepth);
-
+    int leftDepth = dfs(root->left, ans);
+    int rightDepth = dfs(root->right, ans);
+    ans = max(ans, leftDepth + rightDepth);
     return max(leftDepth, rightDepth) + 1;
   }
 };

@@ -116,7 +116,7 @@ class Solution {
   }
 };
 
-// Dense Prim's algorithm (Sort)
+// Dense Prim's algorithm
 //
 // Use Prim's algorithm to find the MST.
 class Solution2 {

@@ -41,97 +41,69 @@
 
 #include <algorithm>
 #include <numeric>
-#include <queue>
 #include <vector>
 
 using namespace std;
 
-// Minimal Span Tree (Heap)
+// Kruskal (Sort + Union Find)
+//
+// Use Kruskal's algorithm to find MST.
 class Solution {
-  using Edge = pair<int, int>;  // -cost, node id
-
- public:
-  int minimumCost(int n, vector<vector<int>>& edges) {
-    auto graph = vector<vector<Edge>>(n);
-    for (auto& edge : edges) {
-      auto x = edge[0] - 1, y = edge[1] - 1, w = edge[2];
-      graph[x].emplace_back(-w, y);
-      graph[y].emplace_back(-w, x);
-    }
-
-    auto heap = priority_queue<Edge>();
-    auto visited = vector<bool>(n);
-    auto ans = 0;
-    auto count = 0;
-
-    heap.push({0, 0});
-    while (!heap.empty()) {
-      auto [nCost, node] = heap.top();
-      heap.pop();
-
-      if (visited[node]) continue;
-      visited[node] = true;
-      ans -= nCost;
-      ++count;
-
-      for (auto edge : graph[node]) {
-        if (visited[edge.second]) continue;
-        heap.push(edge);
-      }
-    }
-
-    return (count < n) ? -1 : ans;
-  }
-};
-
-// Minimal Span Tree (Union Find)
-class Solution2 {
   struct UnionFind {
-    vector<int> parent;
-    vector<int> rank;
-    int size;
+    mutable vector<int> parents;
+    mutable vector<int> ranks;
+    int count;  // connected components
 
-    UnionFind(int n) : parent(n), rank(n), size(n) {  //
-      iota(parent.begin(), parent.end(), 0);
+    UnionFind(int n) : parents(n), ranks(n), count(n) {  //
+      iota(parents.begin(), parents.end(), 0);
     }
 
-    int find(int x) {
-      if (parent[x] != x) {
-        parent[x] = find(parent[x]);
+    int find(int x) const {
+      if (parents[x] != x) {
+        parents[x] = find(parents[x]);
       }
-      return parent[x];
+      return parents[x];
     }
 
-    bool merge(int x, int y) {
+    bool isConnected(int x, int y) const {  //
+      return find(x) == find(y);
+    }
+
+    void unite(int x, int y) {
       x = find(x);
       y = find(y);
-      if (x == y) return false;
+      if (x == y) return;
 
       // Ensure rank(x) >= rank(y)
-      if (rank[x] < rank[y]) swap(x, y);
+      if (ranks[x] < ranks[y]) swap(x, y);
 
       // Merge y into x
-      parent[y] = x;
-      if (rank[x] == rank[y]) ++rank[x];
-      --size;
-      return true;
+      if (ranks[x] == ranks[y]) ++ranks[x];
+      parents[y] = x;
+      --count;
     }
   };
 
  public:
   int minimumCost(int n, vector<vector<int>>& edges) {
-    auto uf = UnionFind(n);
+    // Sort edges
+    auto comp = [](const vector<int>& a, const vector<int>& b) -> bool { return a[2] < b[2]; };
+    sort(edges.begin(), edges.end(), comp);
 
-    // Sort by cost
-    sort(edges.begin(), edges.end(), [](auto& a, auto& b) { return a[2] < b[2]; });
+    // Kruskal
+    UnionFind uf(n);
+    int mstWeight = 0;
+    for (const auto& edge : edges) {
+      // Early stop
+      if (uf.count == 1) break;
 
-    // Loop
-    auto ans = 0;
-    for (auto& edge : edges) {
-      auto x = edge[0] - 1, y = edge[1] - 1, w = edge[2];
-      if (uf.merge(x, y)) ans += w;
+      // Merge
+      int u = edge[0] - 1, v = edge[1] - 1, w = edge[2];
+      if (uf.isConnected(u, v)) continue;
+      uf.unite(u, v);
+      mstWeight += w;
     }
 
-    return (uf.size > 1) ? -1 : ans;
+    return (uf.count == 1) ? mstWeight : -1;
   }
 };

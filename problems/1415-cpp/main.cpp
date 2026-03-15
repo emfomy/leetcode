@@ -50,41 +50,36 @@
 
 using namespace std;
 
-// The first letter has 3 cases. Each of the other letter only has 2 cases.
-//
-// Here we use 0-based index.
-//
-// There are 3 * 2^(n-1) happy strings with length n.
-// If k < 2^(n-1), then the first letter is a (and so on).
-// That is, the first letter must be 'a' + floor(k / (2^n-1)).
+// There are total 3*2^(n-1) happy string with length n.
+// First 1/3 starts with a, middle 1/3 starts with b, last 1/3 starts with c.
 // We can use the same idea to find each letter.
 class Solution {
+  // char map
+  constexpr static char nextCharMap[3][2] = {
+      {'b', 'c'},  // a
+      {'a', 'c'},  // b
+      {'a', 'b'},  // c
+  };
+
  public:
   string getHappyString(int n, int k) {
-    int m = (1 << (n - 1));               // 2^(n-1), the number of happy string start with a.
-    if (k < 0 || k > (3 * m)) return "";  // invalid
+    int m = 1 << (n - 1);
 
-    // Reserve the answer string
+    --k;  // convert to zero-based index
+    if (k < 0 || k >= 3 * m) return "";
+
+    // Prepare answer
     string ans;
     ans.reserve(n);
 
-    --k;  // covert to 0-based index.
-
-    // Check first letter
-    ans.push_back(k / m + 'a');
+    // First letter
+    ans.push_back('a' + k / m);
     k %= m;
     m /= 2;
 
-    // Check other letters
-    char nextLetterMap[3][2] = {
-        {'b', 'c'},  // a
-        {'a', 'c'},  // b
-        {'a', 'b'},  // c
-    };
+    // Other letters
     for (int i = 1; i < n; ++i) {
-      int nextId = k / m;
-      char nextChar = nextLetterMap[ans.back() - 'a'][nextId];
-      ans.push_back(nextChar);
+      ans.push_back(nextCharMap[ans.back() - 'a'][k / m]);
       k %= m;
       m /= 2;
     }

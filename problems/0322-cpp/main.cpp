@@ -40,76 +40,32 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+#include <algorithm>
 #include <climits>
-#include <queue>
 #include <vector>
 
 using namespace std;
 
-// DP, O(amount * len(coins))
+// DP
+//
+// Let DP[i] be the number of coins to sum to i.
+// DP[i] = INF if it is impossible.
+// DP[0] = 0
+// For each kind of coin, try to apply this coin to all DP values.
 class Solution {
+  constexpr static int kInf = INT_MAX / 2;
+
  public:
-  int coinChange(vector<int>& coins, int amount) {
-    auto dp = vector(amount + 1, INT_MAX);
-    dp[amount] = 0;
-
-    for (auto i = amount; i > 0; --i) {
-      if (dp[i] == INT_MAX) continue;
-      for (auto coin : coins) {
-        auto j = i - coin;
-        if (j < 0) continue;
-        dp[j] = min(dp[j], dp[i] + 1);
-      }
-    }
-
-    return dp[0] == INT_MAX ? -1 : dp[0];
-  }
-};
-
-// DP, O(amount * len(coins))
-class Solution2 {
- public:
-  int coinChange(vector<int>& coins, int amount) {
-    auto dp = vector(amount + 1, INT_MAX);
+  int coinChange(const vector<int>& coins, const int amount) {
+    // DP
+    auto dp = vector<int>(amount + 1, kInf);
     dp[0] = 0;
-
-    for (auto i = 0; i < amount; ++i) {
-      if (dp[i] == INT_MAX) continue;
-      for (auto coin : coins) {
-        auto j = uint32_t(i) + coin;
-        if (j > amount) continue;
-        dp[j] = min(dp[j], dp[i] + 1);
+    for (const int coin : coins) {
+      for (int i = 0; i <= amount - coin; ++i) {
+        dp[i + coin] = min(dp[i + coin], dp[i] + 1);
       }
     }
 
-    return dp[amount] == INT_MAX ? -1 : dp[amount];
-  }
-};
-
-// DP + Heap, O(amount * len(coins))
-class Solution3 {
- public:
-  int coinChange(vector<int>& coins, int amount) {
-    auto dp = vector(amount + 1, -1);
-    auto pq = priority_queue(greater(), vector<int>());  // min-heap
-    dp[0] = 0;
-    pq.push(0);
-    while (!pq.empty()) {
-      auto i = pq.top();
-      pq.pop();
-
-      for (auto coin : coins) {
-        auto j = uint32_t(i) + coin;
-        if (j > amount) continue;
-        if (dp[j] < 0) {
-          pq.push(j);
-          dp[j] = dp[i] + 1;
-        } else {
-          dp[j] = min(dp[j], dp[i] + 1);
-        }
-      }
-    }
-
-    return dp[amount];
+    return dp[amount] >= kInf ? -1 : dp[amount];
   }
 };

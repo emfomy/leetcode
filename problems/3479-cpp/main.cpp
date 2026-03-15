@@ -46,88 +46,77 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+#include <bit>
+#include <cstddef>
 #include <vector>
 
 using namespace std;
 
-// Use Segment Tree
+// Segment Tree
 //
-// Use the segment tree to store the maximum bucket of any range.
+// Use segment tree to track the maximum value of baskets.
 class Solution {
-  class SegmentTree {
-    int n;
+  struct SegmentTree {
+    int m;
     vector<int> tree;  // parent i -> child 2i & 2i+1
 
-   public:
-    SegmentTree(vector<int>& nums) {
-      n = nums.size();
-      tree.resize(4 * n);
-      build(nums, 1, 0, n);
+    // Requires: all nums >= 0
+    // Padding [n, m) to zero and will never be matched.
+    SegmentTree(const vector<int>& nums) {
+      int n = nums.size();
+      m = 1u << bit_width(static_cast<unsigned>(n));  // pad to power of 2
+      tree.resize(2 * m);
+
+      // Build O(N)
+      for (int i = 0; i < n; ++i) tree[i + m] = nums[i];
+      for (int i = m - 1; i >= 1; --i) tree[i] = max(tree[2 * i], tree[2 * i + 1]);
     }
 
-    void build(vector<int>& nums, int node, int lo, int hi) {
-      // leaf node
-      if (lo == hi - 1) {
-        tree[node] = nums[lo];
-        return;
-      }
+    // Update O(logN); nums[i] = val
+    void update(int i, int val) {
+      // Update leaf
+      i += m;
+      tree[i] = val;
 
-      auto mid = lo + (hi - lo) / 2;
-      build(nums, 2 * node, lo, mid);
-      build(nums, 2 * node + 1, mid, hi);
-      tree[node] = max(tree[2 * node], tree[2 * node + 1]);
+      // Update parents
+      for (i /= 2; i >= 1; i /= 2) {
+        tree[i] = max(tree[2 * i], tree[2 * i + 1]);
+      }
     }
 
-    // Update: O(logN)
-    void update(int idx, int val) { update(idx, val, 1, 0, n); }
-    void update(int idx, int val, int node, int lo, int hi) {
-      // Leaf node
-      if (lo == hi - 1) {
-        tree[node] = val;
-        return;
-      }
+    // Top Down Query O(logN); find leftmost i with nums[i] >= limit
+    int query(int limit) {
+      // Root
+      int i = 1;
+      if (tree[i] < limit) return m;  // no answer
 
-      auto mid = lo + (hi - lo) / 2;
-      if (idx < mid) {
-        update(idx, val, 2 * node, lo, mid);
-      } else {
-        update(idx, val, 2 * node + 1, mid, hi);
+      // Parents
+      for (i *= 2; i < m; i *= 2) {
+        i += (tree[i] < limit);  // go to sibling
       }
-      tree[node] = max(tree[2 * node], tree[2 * node + 1]);
-    }
-
-    // QueryFirst: O(logN); Find first such that val >= k
-    int queryFirst(int k) { return queryFirst(k, 1, 0, n); }
-    int queryFirst(int k, int node, int lo, int hi) {
-      // Not found
-      if (tree[node] < k) return -1;
 
       // Leaf
-      if (lo == hi - 1) return lo;
+      i += (tree[i] < limit);  // go to sibling
 
-      // Recursion
-      auto mid = lo + (hi - lo) / 2;
-      auto res = queryFirst(k, 2 * node, lo, mid);
-      if (res != -1) return res;
-      return queryFirst(k, 2 * node + 1, mid, hi);
+      return i - m;
     }
   };
 
  public:
   int numOfUnplacedFruits(vector<int>& fruits, vector<int>& baskets) {
-    auto tree = SegmentTree(baskets);
+    const int n = baskets.size();
 
-    // Loop
-    auto ans = 0;
-    for (auto fruit : fruits) {
-      auto idx = tree.queryFirst(fruit);
-      if (idx >= 0) {
-        tree.update(idx, 0);
+    int remains = 0;
+    auto tree = SegmentTree(baskets);
+    for (const int fruit : fruits) {
+      int i = tree.query(fruit);
+      if (i < n) {
+        tree.update(i, 0);
       } else {
-        ++ans;
+        ++remains;
       }
     }
 
-    return ans;
+    return remains;
   }
 };

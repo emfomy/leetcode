@@ -134,9 +134,8 @@ class Solution {
 
       // Relax
       if (costs[node] < cost) continue;
-      costs[node] = cost;
 
-      // Traversal
+      // Traverse
       for (auto [nextNode, weight] : graph[node]) {
         int64_t nextCost = cost + weight;
         if (costs[nextNode] <= nextCost) continue;

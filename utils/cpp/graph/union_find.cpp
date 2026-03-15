@@ -6,9 +6,10 @@ using namespace std;
 class UnionFind {
   mutable vector<int> parents;
   mutable vector<int> ranks;
+  int count;  // connected components
 
  public:
-  UnionFind(int n) : parents(n), ranks(n) {  //
+  UnionFind(int n) : parents(n), ranks(n), count(n) {  //
     iota(parents.begin(), parents.end(), 0);
   }
 
@@ -30,5 +31,6 @@ class UnionFind {
     // Merge y into x
     if (ranks[x] == ranks[y]) ++ranks[x];
     parents[y] = x;
+    --count;
   }
 };
