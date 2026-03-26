@@ -6,59 +6,51 @@ __copyright__ = "Copyright 2025"
 
 import glob
 import os
+import sys
 
 LANG = {
-    ".c": "C",
-    ".cpp": "C++",
-    ".go": "Go",
-    ".py": "Python",
-    ".sh": "Bash",
+    "c": "C",
+    "cpp": "C++",
+    "go": "Go",
+    "py": "Python",
+    "sh": "Bash",
 }
 
 
 def myprint(*args, file=None, **kwargs):
     print(*args, **kwargs)
-    print(*args, **kwargs, file=file)
+    if file is not None:
+        print(*args, **kwargs, file=file)
 
 
 def main():
 
     data = {}
+    errors = []
 
     for prob_dir in sorted(glob.glob("problems/*-*")):
         if not os.path.isdir(prob_dir):
+            errors.append(f"Expected {prob_dir} to be a directory")
             continue
 
         basename = os.path.basename(prob_dir)
-        if "-" not in basename:
-            continue
-
         prob_num_str, lang_code = basename.split("-", 1)
-        try:
-            prob_num = int(prob_num_str)
-        except ValueError:
+        prob_num = int(prob_num_str)
+
+        filepath = os.path.join(prob_dir, f"main.{lang_code}")
+        if not os.path.isfile(filepath):
+            errors.append(f"Expected {filepath} to exist")
             continue
 
-        # Try to find the main source file
-        files = [f for f in os.listdir(prob_dir) if f.startswith("main.")]
-        if not files:
-            continue
-
-        filename = files[0]
-        filepath = os.path.join(prob_dir, filename)
-        ext = os.path.splitext(filename)[-1]
-
-        prob_lang = LANG.get(ext)
+        prob_lang = LANG.get(lang_code)
         if not prob_lang:
+            errors.append(f"Unknown lang_code: {lang_code}")
             continue
 
         with open(filepath) as fin:
-            try:
-                prob_source = fin.readline().split(":", 1)[-1].strip()
-                prob_title = fin.readline().split(":", 1)[-1].strip()
-                prob_difficulty = fin.readline().split(":", 1)[-1].strip()
-            except Exception:
-                continue
+            prob_source = fin.readline().split(":", 1)[-1].strip()
+            prob_title = fin.readline().split(":", 1)[-1].strip()
+            prob_difficulty = fin.readline().split(":", 1)[-1].strip()
 
         if prob_num not in data:
             data[prob_num] = {
@@ -71,10 +63,18 @@ def main():
             }
         else:
             prob = data[prob_num]
-            assert prob["source"] == prob_source, prob
-            assert prob["title"] == prob_title, prob
-            assert prob["difficulty"] == prob_difficulty, prob
+            if prob["source"] != prob_source:
+                errors.append(f"Problem {prob_num}: source mismatch ({prob['source']!r} vs {prob_source!r})")
+            if prob["title"] != prob_title:
+                errors.append(f"Problem {prob_num}: title mismatch ({prob['title']!r} vs {prob_title!r})")
+            if prob["difficulty"] != prob_difficulty:
+                errors.append(f"Problem {prob_num}: difficulty mismatch ({prob['difficulty']!r} vs {prob_difficulty!r})")
             prob["solution"][prob_lang] = filepath
+
+    if errors:
+        for error in errors:
+            print(f"ERROR: {error}", file=sys.stderr)
+        sys.exit(1)
 
     with open("./README.md", "w") as fout:
 

@@ -17,26 +17,22 @@
 // **Example 1:**
 //
 // ```
-// Input
-//
-// ["LRUCache", "put", "put", "get", "put", "get", "put", "get", "get", "get"]
-// [[2], [1, 1], [2, 2], [1], [3, 3], [2], [4, 4], [1], [3], [4]]
-// Output
-//
-// [null, null, null, 1, null, -1, null, -1, 3, 4]
-//
-// Explanation
-//
-// LRUCache lRUCache = new LRUCache(2);
-// lRUCache.put(1, 1); // cache is {1=1}
-// lRUCache.put(2, 2); // cache is {1=1, 2=2}
-// lRUCache.get(1);    // return 1
-// lRUCache.put(3, 3); // LRU key was 2, evicts key 2, cache is {1=1, 3=3}
-// lRUCache.get(2);    // returns -1 (not found)
-// lRUCache.put(4, 4); // LRU key was 1, evicts key 1, cache is {4=4, 3=3}
-// lRUCache.get(1);    // return -1 (not found)
-// lRUCache.get(3);    // return 3
-// lRUCache.get(4);    // return 4
+// Input:
+//   ["LRUCache", "put", "put", "get", "put", "get", "put", "get", "get", "get"]
+//   [[2], [1, 1], [2, 2], [1], [3, 3], [2], [4, 4], [1], [3], [4]]
+// Output:
+//   [null, null, null, 1, null, -1, null, -1, 3, 4]
+// Explanation:
+//   LRUCache lRUCache = new LRUCache(2);
+//   lRUCache.put(1, 1); // cache is {1=1}
+//   lRUCache.put(2, 2); // cache is {1=1, 2=2}
+//   lRUCache.get(1);    // return 1
+//   lRUCache.put(3, 3); // LRU key was 2, evicts key 2, cache is {1=1, 3=3}
+//   lRUCache.get(2);    // returns -1 (not found)
+//   lRUCache.put(4, 4); // LRU key was 1, evicts key 1, cache is {4=4, 3=3}
+//   lRUCache.get(1);    // return -1 (not found)
+//   lRUCache.get(3);    // return 3
+//   lRUCache.get(4);    // return 4
 // ```
 //
 // **Constraints:**
@@ -49,128 +45,130 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 #include <list>
+#include <map>
+#include <queue>
 #include <unordered_map>
 #include <utility>
 
-#include "../../utils/print.hpp"
-
 using namespace std;
 
-// Use Hash-Map + Double-Linked-List
+// Hash Map + Tree Map
+//
+// Use a incremental id as timestamp.
+//
+// Use a hashmap to store key -> (value, timestamp).
+// Use a treemap to store timestamp -> key.
+//
+// After any operation (get/put), increate the timestamp.
+// If reach the capacity, drop the oldest data by timestamp.
 class LRUCache {
-  class Node {
-   public:
-    int key;
-    int value;
-    Node* prev;
-    Node* next;
+  const int capacity;
+  int now = 0;
 
-    Node(int key, int value) : key(key), value(value) {}
-  };
-
-  Node* head;
-  Node* tail;
-  unordered_map<int, Node*> nodeMap;
-  int capacity;
-
-  void remove(Node* node) {
-    node->prev->next = node->next;
-    node->next->prev = node->prev;
-  }
-
-  void insert(Node* node) {
-    auto next = tail;
-    auto prev = tail->prev;
-
-    prev->next = node;
-    node->prev = prev;
-    node->next = next;
-    next->prev = node;
-  }
+  unordered_map<int, pair<int, int>> key2val;  // key -> (val, ts)
+  map<int, int> ts2key;                        // ts -> key
 
  public:
-  LRUCache(int capacity) {
-    this->capacity = capacity;
-    head = new Node(-1, -1);
-    tail = new Node(-1, -1);
-    head->next = tail;
-    tail->prev = head;
+  LRUCache(int capacity) : capacity(capacity) {
+    key2val.reserve(capacity);  //
   }
 
   int get(int key) {
-    auto it = nodeMap.find(key);
-    if (it == nodeMap.cend()) return -1;
-    auto curr = it->second;
-    remove(curr);
-    insert(curr);
-    return curr->value;
+    ++now;
+
+    // Search
+    const auto it = key2val.find(key);
+    if (it == key2val.cend()) return -1;
+
+    // Get
+    const auto [val, ts] = it->second;
+
+    // Update
+    it->second.second = now;
+    ts2key.erase(ts);
+    ts2key[now] = key;
+
+    return val;
   }
 
   void put(int key, int value) {
-    // Remove old node
-    auto it = nodeMap.find(key);
-    if (it != nodeMap.cend()) {
-      remove(it->second);
-    }
+    ++now;
 
-    // Insert new node
-    auto node = new Node(key, value);
-    insert(node);
-    nodeMap[key] = node;
+    const auto it = key2val.find(key);
+    if (it != key2val.cend()) {
+      // Update
+      const auto [oldVal, oldTs] = it->second;
+      it->second = {value, now};
+      ts2key.erase(oldTs);
+      ts2key[now] = key;
+    } else {
+      // Evict
+      if (key2val.size() == capacity) {
+        const auto evictIt = ts2key.cbegin();
+        int evictKey = evictIt->second;
+        ts2key.erase(evictIt);
+        key2val.erase(evictKey);
+      }
 
-    // Remove oldest node
-    if (nodeMap.size() > capacity) {
-      auto old = head->next;
-      remove(old);
-      nodeMap.erase(old->key);
+      // Insert
+      key2val[key] = {value, now};
+      ts2key[now] = key;
     }
   }
 };
 
-// Use Hash-Map + List (builtin)
+// Hash Map + Linked List
+//
+// Use a hashmap to store key -> node.
+// Use a linked list to store data.
 class LRUCache2 {
-  typedef pair<int, int> int2;  // (key, value)
+  const int capacity;
+  int now = 0;
 
-  unordered_map<int, list<int2>::iterator> nodeMap;
-  list<int2> nodeList;
-  int capacity;
+  struct Data {
+    int key;
+    int value;
+  };
+
+  using List = list<Data>;
+  using Node = List::iterator;
+
+  unordered_map<int, Node> key2node;  // key -> node
+  List nodes;                         // newest at front
 
  public:
-  LRUCache2(int capacity) : capacity(capacity) {}
+  LRUCache2(int capacity) : capacity(capacity) {
+    key2node.reserve(capacity);  //
+  }
 
   int get(int key) {
-    auto it = nodeMap.find(key);
-    if (it == nodeMap.cend()) return -1;
-    auto value = it->second->second;
+    const auto it = key2node.find(key);
+    if (it == key2node.cend()) return -1;
 
-    // Remove old node
-    nodeList.erase(it->second);
-    nodeMap.erase(it);
-
-    // Insert new node
-    nodeList.push_front({key, value});
-    nodeMap[key] = nodeList.begin();
-
-    return value;
+    // Update
+    const Node& node = it->second;
+    nodes.splice(nodes.cbegin(), nodes, node);
+    return node->value;
   }
 
   void put(int key, int value) {
-    // Remove old node
-    auto it = nodeMap.find(key);
-    if (it != nodeMap.cend()) {
-      nodeList.erase(it->second);
-      nodeMap.erase(it);
-    }
+    const auto it = key2node.find(key);
+    if (it != key2node.cend()) {
+      // Update
+      Node& node = it->second;
+      nodes.splice(nodes.cbegin(), nodes, node);
+      node->value = value;
+    } else {
+      // Evict
+      if (nodes.size() == capacity) {
+        const int evictKey = nodes.back().key;
+        nodes.pop_back();
+        key2node.erase(evictKey);
+      }
 
-    // Insert new node
-    nodeList.push_front({key, value});
-    nodeMap[key] = nodeList.begin();
-
-    // Remove oldest node
-    if (nodeMap.size() > capacity) {
-      auto it = nodeMap.find(nodeList.crbegin()->first);
-      nodeMap.erase(it);
-      nodeList.pop_back();
+      // Insert
+      nodes.push_front({key, value});
+      key2node[key] = nodes.begin();
     }
   }
 };

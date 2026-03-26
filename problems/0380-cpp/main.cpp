@@ -46,43 +46,57 @@
 
 #include <cstdlib>
 #include <unordered_map>
+#include <utility>
 #include <vector>
 
 using namespace std;
 
 // Hash Map + Array
+//
+// Use array for random get. Stores the values.
+// Use hash map for fast insert/remove. Stores value to index mapping.
+//
+// When insert, push at the end of the array.
+// When remove, swap the value to the end of the array and then pop it.
 class RandomizedSet {
   vector<int> vals;
-  unordered_map<int, int> val2idx;  // value -> index
+  unordered_map<int, int> val2idx;
 
  public:
   RandomizedSet() {}
 
   bool insert(int val) {
-    if (val2idx.count(val)) return false;
+    // Check existence
+    if (val2idx.contains(val)) return false;
+
+    // Insert
     val2idx[val] = vals.size();
     vals.push_back(val);
     return true;
   }
 
   bool remove(int val) {
-    auto it = val2idx.find(val);
+    // Check existence
+    const auto it = val2idx.find(val);
     if (it == val2idx.cend()) return false;
 
-    auto idx = val2idx[val];
-    int lastIdx = vals.size() - 1;
-    if (idx != lastIdx) {  // swap with last
-      vals[idx] = vals[lastIdx];
-      val2idx[vals[idx]] = idx;
-    }
+    // Get values
+    const int idx = it->second;
+    const int lastVal = vals.back();
 
-    vals.pop_back();
+    // Remove
     val2idx.erase(it);
+    vals.pop_back();
+
+    // Move last to here
+    if (val != lastVal) {
+      val2idx[lastVal] = idx;
+      vals[idx] = lastVal;
+    }
     return true;
   }
 
-  int getRandom() {
-    int idx = rand() % vals.size();
-    return vals[idx];
+  int getRandom() {  //
+    return vals[rand() % vals.size()];
   }
 };

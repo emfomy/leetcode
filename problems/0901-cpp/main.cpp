@@ -46,30 +46,45 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+#include <climits>
 #include <stack>
 
 using namespace std;
 
 // Monotonic Stack
 //
-// Use index of decreasing stack.
-// For each step, find previous larger price.
+// The problem is equal to find the nearest greater value to the left.
+//
+// Use a strictly monotonic stack with smallest at top.
+// For each new value, pop everything smaller, and then push the new value in.
+//
+// We put INT_MAX as sentinel at bottom of the stack.
 class StockSpanner {
-  vector<int> prices;
-  stack<int> idxs;
+  struct Stock {
+    int price;
+    int day;
+  };
+
+  int now = 0;  // current day
+  stack<Stock> stocks;
 
  public:
   StockSpanner() {  //
-    prices.push_back(1e6);
-    idxs.push(0);
+    stocks.emplace(INT_MAX, now);
   }
 
   int next(int price) {
-    auto idx = prices.size();
-    while (!idxs.empty() && prices[idxs.top()] <= price) idxs.pop();
-    auto ans = idx - idxs.top();
-    prices.push_back(price);
-    idxs.push(idx);
-    return ans;
+    ++now;
+
+    // Pop
+    while (stocks.top().price <= price) stocks.pop();
+
+    // Get consecutive length
+    int len = now - stocks.top().day;
+
+    // Push
+    stocks.emplace(price, now);
+
+    return len;
   }
 };

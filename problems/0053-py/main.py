@@ -1,6 +1,6 @@
 # Source: https://leetcode.com/problems/maximum-subarray
 # Title: Maximum Subarray
-# Difficulty: Easy
+# Difficulty: Medium
 # Author: Mu Yang <http://muyang.pro>
 
 ################################################################################################################################

@@ -41,38 +41,45 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+#include <algorithm>
 #include <vector>
 
 using namespace std;
 
 // Binary Search
+//
+// We first compute how long will Koko finish eating with speed k.
+// The total time is sum(ceil(pile/k)) for all piles.
+//
+// We can apply binary to find the maximum k.
+// Note the maximum solution is the largest pile (eat a pile per hour).
+// Therefore the search range is [1, max(piles)].
 class Solution {
  public:
-  int minEatingSpeed(vector<int>& piles, int h) {
-    auto maxPile = 0;
-    for (auto pile : piles) {
-      maxPile = max(maxPile, pile);
-    }
+  int minEatingSpeed(const vector<int>& piles, int h) {
+    const int n = piles.size();
+    if (n == 0 || h < n) return -1;
+
+    const int maxPile = *max_element(piles.cbegin(), piles.cend());
 
     // Helper
-    auto check = [&](int k) -> bool {
-      auto hour = 0;
-      for (auto pile : piles) {
-        hour += (pile + k - 1) / k;  // ceil
+    auto check = [&piles, h](int k) -> bool {
+      int total = 0;
+      for (int pile : piles) {
+        total += (pile + k - 1) / k;  // ceil
       }
-      return hour <= h;
+      return total <= h;
     };
 
     // Binary search
-    // check(0) = false, check(maxPile) = true
     // check(lo-1) = false, check(hi) = true
-    auto lo = 1, hi = maxPile;  // unknown [lo, hi)
+    int lo = 1, hi = maxPile;
     while (lo < hi) {
-      auto mid = lo + (hi - lo) / 2;
+      int mid = lo + (hi - lo) / 2;
       if (check(mid)) {
-        hi = mid;  // [lo, mid)
+        hi = mid;
       } else {
-        lo = mid + 1;  // [mid+1, hi)
+        lo = mid + 1;
       }
     }
 

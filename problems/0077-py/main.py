@@ -1,5 +1,5 @@
 # Source: https://leetcode.com/problems/combinations
-# Title: Letter Combinations
+# Title: Combinations
 # Difficulty: Medium
 # Author: Mu Yang <http://muyang.pro>
 

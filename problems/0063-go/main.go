@@ -1,4 +1,4 @@
-// Source: https://leetcode.com/problems/unique-paths-ii/
+// Source: https://leetcode.com/problems/unique-paths-ii
 // Title: Unique Paths II
 // Difficulty: Medium
 // Author: Mu Yang <http://muyang.pro>

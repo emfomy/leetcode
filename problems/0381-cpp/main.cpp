@@ -60,45 +60,68 @@
 using namespace std;
 
 // Hash Map + Hash Set + Array
+//
+// Use array for random get. Stores the values.
+// Use hash map & hash set for fast insert/remove. Stores value to indices mapping.
+//
+// When insert, push at the end of the array.
+// When remove, swap the value to the end of the array and then pop it.
 class RandomizedCollection {
+  using Set = unordered_set<int>;
+
   vector<int> vals;
-  unordered_map<int, unordered_set<int>> val2idxs;  // value -> indices
+  unordered_map<int, Set> val2idxs;
 
  public:
   RandomizedCollection() {}
 
   bool insert(int val) {
-    int idx = vals.size();
+    // Find
+    Set& idxs = val2idxs[val];
+
+    // Insert
+    idxs.insert(vals.size());
     vals.push_back(val);
 
-    auto &idxs = val2idxs[val];
-    idxs.insert(idx);
     return idxs.size() == 1;
   }
 
   bool remove(int val) {
-    if (!val2idxs.count(val)) return false;
+    // Check existence
+    const auto it = val2idxs.find(val);
+    if (it == val2idxs.cend()) return false;
 
-    auto &idxs = val2idxs[val];
-    if (idxs.empty()) return false;
+    // Get values
+    Set& idxs = it->second;  // must be non-empty
+    const auto idxIt = idxs.cbegin();
+    const int idx = *idxIt;
+    const int lastVal = vals.back();
+    const int lastIdx = static_cast<int>(vals.size()) - 1;
 
-    auto idx = *idxs.cbegin();
-    idxs.erase(idx);
+    // Remove
+    if (val != lastVal) {
+      // Move last to here
+      Set& lastIdxs = val2idxs.at(lastVal);
+      lastIdxs.erase(lastIdx);
+      lastIdxs.insert(idx);
+      vals[idx] = lastVal;
 
-    int lastIdx = vals.size() - 1;
-    if (idx != lastIdx) {  // swap with last
-      auto lastVal = vals[lastIdx];
-      vals[idx] = vals[lastIdx];
-      val2idxs[lastVal].erase(lastIdx);
-      val2idxs[lastVal].insert(idx);
+      // Pop last
+      idxs.erase(idxIt);
+      vals.pop_back();
+    } else {
+      // Pop last
+      idxs.erase(lastIdx);
+      vals.pop_back();
     }
 
-    vals.pop_back();
+    // Cleanup
+    if (idxs.empty()) val2idxs.erase(it);
+
     return true;
   }
 
-  int getRandom() {
-    int idx = rand() % vals.size();
-    return vals[idx];
+  int getRandom() {  //
+    return vals[rand() % vals.size()];
   }
 };

@@ -6,14 +6,12 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // Given a string `s`, find the length of the **longest substring** without duplicate characters.
 //
-// A **substring** is a contiguous **non-empty** sequence of characters within a string.
-//
 // **Example 1:**
 //
 // ```
 // Input: s = "abcabcbb"
 // Output: 3
-// Explanation: The answer is "abc", with the length of 3.
+// Explanation: The answer is "abc", with the length of 3. Note that `"bca"` and `"cab"` are also correct answers.
 // ```
 //
 // **Example 2:**
@@ -41,31 +39,29 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 #include <string>
-#include <unordered_map>
+#include <vector>
 
 using namespace std;
 
-// Use Sliding Window & Hash Map
+// Sliding Window + Hash Map (Array)
+//
+// Store the last index of each letter.
 class Solution {
  public:
-  int lengthOfLongestSubstring(string s) {
-    int n = s.size();
+  int lengthOfLongestSubstring(const string &s) {
+    const int n = s.size();
 
-    unordered_map<char, int> counter;
-    int left = 0;
-    int right = 0;
-    int ans = 0;
-    while (right < n) {
-      if (counter[s[right]] > 0) {
-        counter[s[left]]--;
-        left++;
-      } else {
-        counter[s[right]]++;
-        right++;
-      }
-      ans = max(ans, right - left);
+    auto lastIdxs = vector<int>(128, -1);  // -1 means no occurrence
+
+    int maxLen = 0;     // max substring length
+    int startIdx = -1;  // (startIdx, i] is current substring
+    for (int i = 0; i < n; ++i) {
+      char ch = s[i];
+      startIdx = max(startIdx, lastIdxs[ch]);
+      maxLen = max(maxLen, i - startIdx);
+      lastIdxs[ch] = i;
     }
 
-    return ans;
+    return maxLen;
   }
 };

@@ -4,7 +4,7 @@
 // Author: Mu Yang <http://muyang.pro>
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-// Given an array of `intervals`where `intervals[i] = [start_i, end_i]`, merge all overlapping intervals, and return an array of the non-overlapping intervals that cover all the intervals in the input.
+// Given an arrayof `intervals`where `intervals[i] = [start_i, end_i]`, merge all overlapping intervals, and return an array of the non-overlapping intervals that cover all the intervals in the input.
 //
 // **Example 1:**
 //
@@ -22,6 +22,14 @@
 // Explanation: Intervals [1,4] and [4,5] are considered overlapping.
 // ```
 //
+// **Example 3:**
+//
+// ```
+// Input: intervals = [[4,7],[1,4]]
+// Output: [[1,7]]
+// Explanation: Intervals [1,4] and [4,7] are considered overlapping.
+// ```
+//
 // **Constraints:**
 //
 // - `1 <= intervals.length <= 10^4`
@@ -35,31 +43,71 @@
 
 using namespace std;
 
-// Use sort
+// Sort
 class Solution {
  public:
   vector<vector<int>> merge(vector<vector<int>>& intervals) {
-    int n = intervals.size();
-
+    if (intervals.empty()) return {};
     // Sort
-    sort(intervals.begin(), intervals.end(), [](vector<int>& a, vector<int>& b) -> bool { return a[0] < b[0]; });
+    const auto comp = [](const vector<int>& a, const vector<int>& b) -> bool { return a[0] < b[0]; };
+    sort(intervals.begin(), intervals.end(), comp);
+
+    // Merge
+    auto merged = vector<vector<int>>();
+    int currStart = intervals[0][0], currEnd = intervals[0][1];
+    for (const auto& interval : intervals) {
+      const int start = interval[0], end = interval[1];
+      if (start > currEnd) {
+        merged.push_back({currStart, currEnd});
+        currStart = start;
+      }
+      currEnd = max(currEnd, end);
+    }
+    merged.push_back({currStart, currEnd});
+
+    return merged;
+  }
+};
+
+// Sort + Line Sweep
+class Solution2 {
+  // we want to sort START before END since [a, b] & [b, c] is consider overlapping.
+  enum Label { START = 0, END = 1 };
+
+  using Point = pair<int, Label>;
+
+ public:
+  vector<vector<int>> merge(const vector<vector<int>>& intervals) {
+    if (intervals.empty()) return {};
+    const int n = intervals.size();
+
+    // Sort points
+    auto points = vector<Point>();
+    points.reserve(2 * n);
+    for (const auto& interval : intervals) {
+      points.emplace_back(interval[0], START);
+      points.emplace_back(interval[1], END);
+    }
+    sort(points.begin(), points.end());
 
     // Loop
-    vector<vector<int>> ans;
-    int left = intervals[0][0];
-    int right = intervals[0][1];
-    for (auto i = 1; i < n; i++) {
-      auto& interval = intervals[i];
-      if (interval[0] > right) {  // not overlap
-        ans.push_back({left, right});
-        left = interval[0];
-        right = interval[1];
-      } else {
-        right = max(right, interval[1]);
+    auto merged = vector<vector<int>>();
+    int startIdx = -1;
+    int count = 0;  // number of active intervals
+    for (const auto [idx, label] : points) {
+      // Start of a merged interval
+      if (count == 0) {
+        startIdx = idx;
+      }
+
+      count += (label == START) ? +1 : -1;
+
+      // End of a merged interval
+      if (count == 0) {
+        merged.push_back({startIdx, idx});
       }
     }
-    ans.push_back({left, right});
 
-    return ans;
+    return merged;
   }
 };

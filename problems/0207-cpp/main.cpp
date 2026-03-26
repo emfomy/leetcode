@@ -39,7 +39,6 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 #include <queue>
-#include <unordered_map>
 #include <vector>
 
 using namespace std;
@@ -47,34 +46,37 @@ using namespace std;
 // Topology Sort
 class Solution {
  public:
-  bool canFinish(int n, vector<vector<int>>& prerequisites) {
-    // Construct
-    auto inDegrees = vector<int>(n);
-    auto graph = unordered_map<int, vector<int>>();  // pre -> posts
-    for (auto& pair : prerequisites) {
-      auto post = pair[0], pre = pair[1];
-      graph[pre].push_back(post);
-      inDegrees[post]++;
+  bool canFinish(const int numCourses, const vector<vector<int>>& prerequisites) {
+    // Prepare graph
+    auto graph = vector<vector<int>>(numCourses);  // dependency -> dependent
+    auto inDegree = vector<int>(numCourses);
+    for (const auto& prerequisite : prerequisites) {
+      int dependent = prerequisite[0], dependency = prerequisite[1];
+      graph[dependency].push_back(dependent);
+      ++inDegree[dependent];
     }
 
-    // Prepare
-    auto visited = 0;
-    auto que = queue<int>();  // nodes with zero in-degree
-    for (auto i = 0; i < n; ++i) {
-      if (inDegrees[i] == 0) que.push(i);
+    // BFS
+    int visits = 0;
+    auto que = queue<int>();
+    for (int course = 0; course < numCourses; ++course) {
+      if (inDegree[course] == 0) {
+        que.push(course);
+        ++visits;
+      }
     }
-
-    // Loop
-    while (!que.empty()) {
-      auto node = que.front();
+    while (!que.empty() && visits < numCourses) {
+      int course = que.front();
       que.pop();
-      ++visited;
 
-      for (auto post : graph[node]) {
-        if (--inDegrees[post] == 0) que.push(post);
+      for (int dependent : graph[course]) {
+        if (--inDegree[dependent] == 0) {
+          que.push(dependent);
+          ++visits;
+        }
       }
     }
 
-    return visited == n;
+    return visits == numCourses;
   }
 };

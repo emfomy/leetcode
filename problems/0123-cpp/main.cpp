@@ -42,36 +42,32 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+#include <algorithm>
 #include <climits>
 #include <vector>
 
 using namespace std;
 
-// Use DP
+// DP
 //
-// Say we buy and sell on day x1, x2 & y1, y2.
-// Note that we may complete **at most** two transactions;
-// that is, we can buy & sell at the same day;
-// tat is, x1 <= y1 <= x2 <= y2.
-//
-// The profit is -prices[x1] + prices[y1] - prices[x2] + prices[y2].
-// Let a1 =      prices[x1]
-// Let b1 = a1 + prices[y1]
-// Let a2 = b1 - prices[x2]
-// Let b2 = a2 + prices[y2]
-//
-// We want to maximize a and b
+// Flat0[i] = 0
+// Hold1[i] be the maximum profit with holding the first stock
+// Flat1[i] be the maximum profit after selling the first stock.
+// Hold2[i] be the maximum profit with holding the second stock
+// Flat2[i] be the maximum profit after selling the second stock.
 class Solution {
  public:
-  int maxProfit(vector<int>& prices) {
-    auto a1 = INT_MIN, a2 = INT_MIN, b1 = INT_MIN, b2 = INT_MIN;
+  int maxProfit(const vector<int>& prices) {
+    int flat0 = 0, flat1 = 0, flat2 = 0;
+    int hold1 = INT_MIN, hold2 = INT_MIN;
 
-    for (auto price : prices) {
-      a1 = max(a1, -price);
-      b1 = max(b1, a1 + price);
-      a2 = max(a2, b1 - price);
-      b2 = max(b2, a2 + price);
+    for (int price : prices) {
+      flat2 = max(flat2, hold2 + price);
+      hold2 = max(hold2, flat1 - price);
+      flat1 = max(flat1, hold1 + price);
+      hold1 = max(hold1, flat0 - price);
     }
-    return b2;
+
+    return flat2;
   }
 };

@@ -1,6 +1,6 @@
 # Source: https://leetcode.com/problems/edit-distance
 # Title: Edit Distance
-# Difficulty: Hard
+# Difficulty: Medium
 # Author: Mu Yang <http://muyang.pro>
 
 ################################################################################################################################

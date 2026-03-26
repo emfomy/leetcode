@@ -46,7 +46,6 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 #include <queue>
-#include <unordered_map>
 #include <vector>
 
 using namespace std;
@@ -54,34 +53,78 @@ using namespace std;
 // Topology Sort
 class Solution {
  public:
-  vector<int> findOrder(int n, vector<vector<int>>& prerequisites) {
-    // Construct
-    auto inDegrees = vector<int>(n);
-    auto graph = unordered_map<int, vector<int>>();  // pre -> posts
-    for (auto& pair : prerequisites) {
-      auto post = pair[0], pre = pair[1];
-      graph[pre].push_back(post);
-      inDegrees[post]++;
+  vector<int> findOrder(const int numCourses, const vector<vector<int>>& prerequisites) {
+    // Prepare graph
+    auto graph = vector<vector<int>>(numCourses);  // dependency -> dependent
+    auto inDegree = vector<int>(numCourses);
+    for (const auto& prerequisite : prerequisites) {
+      int dependent = prerequisite[0], dependency = prerequisite[1];
+      graph[dependency].push_back(dependent);
+      ++inDegree[dependent];
     }
 
-    // Prepare
-    auto ans = vector<int>();
-    auto que = queue<int>();  // nodes with zero in-degree
-    for (auto i = 0; i < n; ++i) {
-      if (inDegrees[i] == 0) que.push(i);
+    // BFS
+    auto que = queue<int>();
+    auto order = vector<int>();
+    order.reserve(numCourses);
+    for (int course = 0; course < numCourses; ++course) {
+      if (inDegree[course] == 0) {
+        que.push(course);
+        order.push_back(course);
+      }
     }
-
-    // Loop
-    while (!que.empty()) {
-      auto node = que.front();
+    while (!que.empty() && order.size() < numCourses) {
+      int course = que.front();
       que.pop();
-      ans.push_back(node);
 
-      for (auto post : graph[node]) {
-        if (--inDegrees[post] == 0) que.push(post);
+      for (int dependent : graph[course]) {
+        if (--inDegree[dependent] == 0) {
+          que.push(dependent);
+          order.push_back(dependent);
+        }
       }
     }
 
-    return (ans.size() == n) ? ans : vector<int>();
+    if (order.size() < numCourses) return {};
+    return order;
+  }
+};
+
+// Topology Sort
+//
+// Use output as queue.
+class Solution2 {
+ public:
+  vector<int> findOrder(const int numCourses, const vector<vector<int>>& prerequisites) {
+    // Prepare graph
+    auto graph = vector<vector<int>>(numCourses);  // dependency -> dependent
+    auto inDegree = vector<int>(numCourses);
+    for (const auto& prerequisite : prerequisites) {
+      int dependent = prerequisite[0], dependency = prerequisite[1];
+      graph[dependency].push_back(dependent);
+      ++inDegree[dependent];
+    }
+
+    // BFS
+    auto order = vector<int>();
+    order.reserve(numCourses);
+    for (int course = 0; course < numCourses; ++course) {
+      if (inDegree[course] == 0) {
+        order.push_back(course);
+      }
+    }
+    for (int i = 0; i < order.size(); ++i) {
+      if (order.size() == numCourses) break;  // early stop
+      int course = order[i];
+
+      for (int dependent : graph[course]) {
+        if (--inDegree[dependent] == 0) {
+          order.push_back(dependent);
+        }
+      }
+    }
+
+    if (order.size() < numCourses) return {};
+    return order;
   }
 };

@@ -57,38 +57,45 @@
 
 using namespace std;
 
-// Use [begin, end) as data range
+// Vector
+//
+// Use a vector to simulate circular queue since the size is fixed.
+// We maintain the start and end position of the queue.
+// Use an extra variable size since start=end for both empty and full.
 class MyCircularQueue {
   vector<int> data;
-  int cap;
-  int size;
-  int begin;
-  int end;
+
+  const int cap;  // capacity
+  int size;       // size
+  int start;      // include
+  int end;        // exclude
+
+  int mod(int x) { return (x % cap + cap) % cap; }
 
  public:
-  MyCircularQueue(int k) : data(k, 0), cap(k), size(0), begin(0), end(0) {}
-
-  int Front() {  //
-    return isEmpty() ? -1 : data[begin];
-  }
-
-  int Rear() {  //
-    return isEmpty() ? -1 : data[(end + cap - 1) % cap];
-  }
+  MyCircularQueue(int k) : cap(k), size(0), start(0), end(0), data(k) {}
 
   bool enQueue(int value) {
     if (isFull()) return false;
     data[end] = value;
-    end = (end + 1) % cap;
+    end = mod(end + 1);
     ++size;
     return true;
   }
 
   bool deQueue() {
     if (isEmpty()) return false;
-    begin = (begin + 1) % cap;
+    start = mod(start + 1);
     --size;
     return true;
+  }
+
+  int Front() {  //
+    return isEmpty() ? -1 : data[start];
+  }
+
+  int Rear() {  //
+    return isEmpty() ? -1 : data[mod(end - 1)];
   }
 
   bool isEmpty() {  //

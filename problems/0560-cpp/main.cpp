@@ -35,72 +35,26 @@
 
 using namespace std;
 
-// Loop & Sum
+// Prefix Sum + Hash Map
+//
+// Compute the prefix sums.
+// Use a hash map to store the counts of each sum value.
+// For each prefix sum, add the counts for sum-k.
 class Solution {
  public:
-  int subarraySum(vector<int>& nums, int k) {
-    int n = nums.size();
-
-    // Loop
-    auto ans = 0;
-    for (auto i = 0; i < n; ++i) {
-      auto sum = 0;
-      for (auto j = i; j < n; ++j) {
-        sum += nums[j];
-        if (sum == k) {
-          ++ans;
-        }
-      }
-    }
-
-    return ans;
-  }
-};
-
-// Prefix Sum + Hash Map Count
-//
-// Precompute prefix sum.
-// Use idea of two sum to find the answer.
-//
-// A - B = k, B = a - k.
-class Solution2 {
- public:
-  int subarraySum(vector<int>& nums, int k) {
-    int n = nums.size();
+  int subarraySum(const vector<int>& nums, const int k) {
+    const int n = nums.size();
+    auto sumMap = unordered_map<int, int>();  // prefix sum -> count
+    sumMap.reserve(n);
 
     // Prefix sum
-    auto prefixs = vector<int>(n + 1);
-    for (auto i = 0; i < n; ++i) {
-      prefixs[i + 1] = prefixs[i] + nums[i];
-    }
-
-    // Difference
-    auto ans = 0;
-    auto counter = unordered_map<int, int>();
-    for (auto prefix : prefixs) {
-      ans += counter[prefix - k];
-      counter[prefix]++;
-    }
-
-    return ans;
-  }
-};
-
-// Prefix Sum + Hash Map Count
-//
-// We don't need array for prefix sum
-class Solution3 {
- public:
-  int subarraySum(vector<int>& nums, int k) {
-    auto counter = unordered_map<int, int>();
-
-    // Prefix sum
-    auto ans = 0, prefix = 0;
-    counter[0] = 1;
-    for (auto num : nums) {
-      prefix += num;
-      ans += counter[prefix - k];
-      counter[prefix]++;
+    int ans = 0;
+    int sum = 0;
+    ++sumMap[sum];
+    for (int num : nums) {
+      sum += num;
+      ans += sumMap[sum - k];
+      ++sumMap[sum];
     }
 
     return ans;

@@ -36,20 +36,15 @@
 
 using namespace std;
 
-// Use counter
+// Counter
 class Solution {
  public:
-  bool isAnagram(string s, string t) {
-    array<int, 26> sCounter;
-    array<int, 26> tCounter;
+  bool isAnagram(const string &s, const string &t) {
+    if (s.size() != t.size()) return false;
 
-    for (auto ch : s) {
-      sCounter[ch - 'a']++;
-    }
-    for (auto ch : t) {
-      tCounter[ch - 'a']++;
-    }
-
-    return sCounter == tCounter;
+    auto sCount = array<int, 128>(), tCount = array<int, 128>();
+    for (char c : s) ++sCount[c];
+    for (char c : t) ++tCount[c];
+    return sCount == tCount;
   }
 };

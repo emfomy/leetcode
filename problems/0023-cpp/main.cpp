@@ -61,33 +61,41 @@ struct ListNode {
   ListNode(int x, ListNode* next) : val(x), next(next) {}
 };
 
-// Use Heap
+// Heap
+//
+// Use a min heap to store the front node of the lists.
+// For each loop, pop the node, push into the result list,
+// and push its successor into the heap.
 class Solution {
- public:
-  ListNode* mergeKLists(vector<ListNode*>& lists) {
-    // Prepare heap
-    auto comp = [](ListNode* a, ListNode* b) {
+  struct Comp {
+    bool operator()(const ListNode* a, const ListNode* b) {
       return !(a->val < b->val);  // min-heap
-    };
-    auto heap = priority_queue(comp, std::move(vector<ListNode*>()));
+    }
+  };
+  using Heap = priority_queue<ListNode*, vector<ListNode*>, Comp>;
 
-    // Prepare data
-    for (auto head : lists) {
-      if (head != nullptr) heap.push(head);
+ public:
+  ListNode* mergeKLists(const vector<ListNode*>& lists) {
+    ListNode dummy;  // dummy head
+
+    // Initialize the heap
+    Heap heap;
+    for (ListNode* node : lists) {
+      if (node) heap.push(node);
     }
 
     // Merge
-    auto dummy = ListNode();
-    auto node = &dummy;
+    ListNode* tail = &dummy;
     while (!heap.empty()) {
-      node->next = heap.top();
-      node = node->next;
+      ListNode* node = heap.top();
       heap.pop();
 
-      if (node->next) heap.push(node->next);
+      tail->next = node;
+      tail = node;
 
-      // node->next = nullptr;
+      if (node->next) heap.push(node->next);
     }
+    tail->next = nullptr;  // clear end, no-op
 
     return dummy.next;
   }

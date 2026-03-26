@@ -13,13 +13,13 @@ void prepare() {
   coords.erase(unique(coords.begin(), coords.end()), coords.end());
 }
 
-class FenwickTree2D {
+class FenwickTree {
   int n;
   const vector<int>& coords;
   vector<int> tree;  // tree[i] = sum of range [i-lowbit(i), i); length is lowbit(i)
 
  public:
-  FenwickTree2D(const vector<int>& coords) : coords(coords) {
+  FenwickTree(const vector<int>& coords) : coords(coords) {
     n = coords.size();
     tree.assign(n + 1, 0);
   }

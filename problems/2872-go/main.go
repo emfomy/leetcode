@@ -1,6 +1,6 @@
 // Source: https://leetcode.com/problems/maximum-number-of-k-divisible-components
 // Title: Maximum Number of K-Divisible Components
-// Difficulty: Hard
+// Difficulty: Medium
 // Author: Mu Yang <http://muyang.pro>
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

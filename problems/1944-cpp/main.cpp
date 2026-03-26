@@ -48,28 +48,35 @@
 using namespace std;
 
 // Monotonic Stack
+//
+// We use an decreasing monotonic stack to store the visible people.
+//
+// Loop for each person from end to front.
+// Say you are the current person.
+// Pop all shorter person from the stack (they are blocked by you),
+// and add 1 for each to your count (you can see them).
+// After popping,
+// add extra 1 to your count if the stack is not empty (you can see the top one),
+// and put you into the stack.
 class Solution {
  public:
-  vector<int> canSeePersonsCount(vector<int>& heights) {
-    int n = heights.size();
+  vector<int> canSeePersonsCount(const vector<int>& heights) {
+    const int n = heights.size();
 
-    auto st = stack<int>();
     auto ans = vector<int>(n);
-    for (auto i = n - 1; i >= 0; --i) {
-      auto num = heights[i];
-      auto count = 0;
-      while (!st.empty() && st.top() <= num) {
+    auto st = stack<int>();  // person height
+    for (int i = n - 1; i >= 0; --i) {
+      int height = heights[i];
+
+      while (!st.empty() && st.top() <= height) {
         st.pop();
-        ++ans[i];  // can see this one
+        ++ans[i];
       }
-      if (!st.empty()) ++ans[i];  // can see top
-      st.push(num);
+
+      if (!st.empty()) ++ans[i];
+      st.push(height);
     }
 
     return ans;
   }
 };
-
-//  9   11  5   8   6   10
-//  0   1   1   2
-// st:  11  8

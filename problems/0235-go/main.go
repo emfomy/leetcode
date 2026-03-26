@@ -1,6 +1,6 @@
 // Source: https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-search-tree
 // Title: Lowest Common Ancestor of a Binary Search Tree
-// Difficulty: Easy
+// Difficulty: Medium
 // Author: Mu Yang <http://muyang.pro>
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

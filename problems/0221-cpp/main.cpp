@@ -44,49 +44,48 @@
 
 using namespace std;
 
-// Use 2D-DP
+// 2D-DP
 //
-// dp[i, j] is the size of the largest square with (i, j) as top-left corner.
-// If matrix[i, j] = 1, then dp[i, j] = min(dp[i+1,j+1], dp[i+1,j], dp[i,j+1])+1
+// Let DP[i, j] be the maximum size with (i, j) as top-left corner.
+// We loop from bottom-right to compute the values.
+//
+// DP[i, j] = 0                                             if matrix[i, j] = 0
+// DP[i, j] = min(DP[i+1, j], DP[i, j+1], DP[i+1, j+1]) + 1 if matrix[i, j] = 1
 class Solution {
  public:
-  int maximalSquare(vector<vector<char>>& matrix) {
-    int m = matrix.size(), n = matrix[0].size();
+  int maximalSquare(const vector<vector<char>>& matrix) {
+    const int m = matrix.size(), n = matrix[0].size();
 
-    // DP
-    auto ans = 0;
-    auto dp = vector(m + 1, vector(n + 1, 0));
-    for (auto i = m - 1; i >= 0; --i) {
-      for (auto j = n - 1; j >= 0; --j) {
-        if (matrix[i][j] == '1') {
-          dp[i][j] = min({dp[i + 1][j + 1], dp[i + 1][j], dp[i][j + 1]}) + 1;
-          ans = max(ans, dp[i][j]);
-        }
+    int maxSize = 0;
+    auto dp = vector<vector<int>>(m + 1, vector<int>(n + 1, 0));
+    for (int i = m - 1; i >= 0; --i) {
+      for (int j = n - 1; j >= 0; --j) {
+        dp[i][j] = (matrix[i][j] == '0') ? 0 : (min({dp[i][j + 1], dp[i + 1][j], dp[i + 1][j + 1]}) + 1);
+        maxSize = max(maxSize, dp[i][j]);
       }
     }
 
-    return ans * ans;
+    return maxSize * maxSize;
   }
 };
 
-// Use 1D-DP
+// 1D-DP
 class Solution2 {
  public:
-  int maximalSquare(vector<vector<char>>& matrix) {
-    int m = matrix.size(), n = matrix[0].size();
+  int maximalSquare(const vector<vector<char>>& matrix) {
+    const int m = matrix.size(), n = matrix[0].size();
 
-    // DP
-    auto ans = 0;
-    auto curr = vector(n + 1, 0);
-    auto prev = vector(n + 1, 0);
-    for (auto i = m - 1; i >= 0; --i) {
+    int maxSize = 0;
+    auto prev = vector<int>(n + 1, 0);
+    auto curr = vector<int>(n + 1, 0);
+    for (int i = m - 1; i >= 0; --i) {
       swap(curr, prev);
-      for (auto j = n - 1; j >= 0; --j) {
-        curr[j] = (matrix[i][j] == '0') ? 0 : min({prev[j + 1], prev[j], curr[j + 1]}) + 1;
-        ans = max(ans, curr[j]);
+      for (int j = n - 1; j >= 0; --j) {
+        curr[j] = (matrix[i][j] == '0') ? 0 : (min({curr[j + 1], prev[j], prev[j + 1]}) + 1);
+        maxSize = max(maxSize, curr[j]);
       }
     }
 
-    return ans * ans;
+    return maxSize * maxSize;
   }
 };

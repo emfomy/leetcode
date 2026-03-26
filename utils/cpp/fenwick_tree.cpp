@@ -1,3 +1,4 @@
+#include <bit>
 #include <vector>
 
 using namespace std;
@@ -11,14 +12,14 @@ using namespace std;
 // To update 5, we need to update [5, 5] [5, 6], [5, 8], ... (1-indexed)
 // Note that we skip the len 4 node.
 
-class FenwickTree2D {
+class FenwickTree {
   int n;
   vector<int> tree;  // tree[i] = sum of range [i-lowbit(i), i); length is lowbit(i)
 
  public:
-  FenwickTree2D(int n) : n(n), tree(n + 1, 0) {}
+  FenwickTree(int n) : n(n), tree(n + 1, 0) {}
 
-  FenwickTree2D(const vector<int>& nums) {
+  FenwickTree(const vector<int>& nums) {
     n = nums.size();
     tree.assign(n + 1, 0);
 
@@ -51,5 +52,19 @@ class FenwickTree2D {
   int query(int l, int r) const {
     if (l >= r) return 0;
     return query(r) - query(l);
+  }
+
+  // Query: O(logN); Find last r with sum [0, r) < k
+  int queryFirst(int k) {
+    int r = 0;
+    const int highbit = 1 << bit_width(static_cast<unsigned>(n - 1));
+    for (int b = highbit; b > 0 && k > 0; b >>= 1) {
+      if (r + b <= n && tree[r + b] < k) {
+        r += b;
+        k -= tree[r];
+      }
+    }
+
+    return r;
   }
 };

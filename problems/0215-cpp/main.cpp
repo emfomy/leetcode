@@ -39,90 +39,50 @@
 
 using namespace std;
 
-// Use STL
+// STL
 class Solution {
  public:
   int findKthLargest(vector<int>& nums, int k) {
     nth_element(nums.begin(), nums.begin() + k - 1, nums.end(), greater<int>{});
-    return nums[k];
+    return nums[k - 1];
   }
 };
 
-// Use Heap
+// Heap
 class Solution2 {
  public:
-  int findKthLargest(vector<int>& nums, int k) {
-    auto pq = priority_queue(greater(), vector<int>());  // min-heap
-    for (auto num : nums) {
-      pq.push(num);
-      if (pq.size() > k) pq.pop();
+  int findKthLargest(const vector<int>& nums, int k) {
+    auto heap = priority_queue<int, vector<int>, greater<>>();  // min-heap
+    for (int num : nums) {
+      heap.push(num);
+      if (heap.size() > k) heap.pop();
     }
-    return pq.top();
+
+    return heap.top();
   }
 };
 
 // Quick Select
-//
-// Time: Best O(n), Worst O(n^2), Average O(n)
-// Space: O(n)
 class Solution3 {
  public:
   int findKthLargest(vector<int>& nums, int k) {
-    int pivot = nums[0];
+    const int n = nums.size();
+    if (k <= 0 || k > n) return -1;
 
-    auto left = vector<int>();   // greater
-    auto mid = vector<int>();    // equal
-    auto right = vector<int>();  // less
-
-    for (auto num : nums) {
-      if (num > pivot) {
-        left.push_back(num);
-      } else if (num < pivot) {
-        right.push_back(num);
-      } else {
-        mid.push_back(num);
-      }
-    }
-
-    auto lSize = left.size();
-    if (k <= lSize) {
-      return findKthLargest(left, k);
-    }
-    k -= lSize;
-
-    auto mSize = mid.size();
-    if (k <= mSize) {
-      return pivot;
-    }
-    k -= mSize;
-
-    return findKthLargest(right, k);
-  }
-};
-
-// Quick Select
-//
-// Time: Best O(n), Worst O(n^2), Average O(n)
-// Space: O(1)
-class Solution4 {
- public:
-  int findKthLargest(vector<int>& nums, int k) {
-    int lo = 0, hi = nums.size();
-
+    // Find in [lo, hi)
+    int lo = 0, hi = n;
     while (true) {
-      auto pivot = nums[lo];
+      int pivot = nums[lo];
 
-      // [lo, l) > pivot, [l, i) = pivot, [i, r) unknown, [r, hi) < pivot
-      auto l = lo;
-      auto i = lo;
-      auto r = hi;
+      // [lo, l): greater, [l, i) equal, [i, r): unknown, [r, hi): less
+      int l = lo, i = lo, r = hi;
       while (i < r) {
         if (nums[i] > pivot) {
-          swap(nums[l++], nums[i++]);  // increase i since left l is known
+          swap(nums[i++], nums[l++]);
         } else if (nums[i] < pivot) {
-          swap(nums[i], nums[--r]);  // don't increase i since left r-1 is unknown
+          swap(nums[i], nums[--r]);
         } else {
-          i++;
+          ++i;
         }
       }
 

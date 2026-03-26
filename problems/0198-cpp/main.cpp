@@ -39,21 +39,16 @@ using namespace std;
 
 // DP
 //
-// Rob(i+1)  = Skip(i) + Nums[i+1]
-// Skip(i+1) = max(Skip(i), Rob(i))
+// Rob[i]  = Skip[i-1] + Nums[i]
+// Skip[i] = max(Skip[i-1], Rob[i-1])
 class Solution {
  public:
-  int rob(vector<int>& nums) {
-    int n = nums.size();
-
-    auto prevRob = 0, prevSkip = 0;
-
-    for (auto num : nums) {
-      auto nextRob = prevSkip + num;
-      auto nextSkip = max(prevSkip, prevRob);
-      prevRob = nextRob, prevSkip = nextSkip;
+  int rob(const vector<int>& nums) {
+    int rob = 0, skip = 0;
+    for (int num : nums) {
+      tie(rob, skip) = tuple{skip + num, max(skip, rob)};
     }
 
-    return max(prevRob, prevSkip);
+    return max(skip, rob);
   }
 };

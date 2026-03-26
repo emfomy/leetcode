@@ -76,7 +76,7 @@ class SegmentTree2D {
     return max(leftVal, rightVal);
   }
 
-  // QueryFirst: O(logN); Find first in [l, r) such that val >= k
+  // Query: O(logN); Find first in [l, r) such that val >= k
   int queryFirst(int l, int r, int k, int node, int lo, int hi) const {
     // Out of range
     if (r <= lo || hi <= l) return -1;

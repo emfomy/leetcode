@@ -54,37 +54,46 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-#include <stack>
 #include <string>
-#include <unordered_map>
+#include <vector>
 
 using namespace std;
 
 // Use stack
 class Solution {
+  constexpr static char match[128] = {
+      [')'] = '(',
+      [']'] = '[',
+      ['}'] = '{',
+  };
+
  public:
-  bool isValid(string s) {
-    static const unordered_map<char, char> parenMap = {{'(', ')'}, {'[', ']'}, {'{', '}'}};
+  bool isValid(const string &s) {
+    const int n = s.size();
 
-    auto st = stack<int>();
-    st.push(' ');  // push empty char to avoid null check on stack.
+    auto st = vector<char>();
+    st.reserve(n);
 
-    for (auto ch : s) {
+    for (char ch : s) {
       switch (ch) {
         case '(':
         case '[':
-        case '{':
-          st.push(parenMap.at(ch));
+        case '{': {
+          st.push_back(ch);
           break;
+        }
         case ')':
         case ']':
-        case '}':
-          if (st.top() != ch) return false;
-          st.pop();
+        case '}': {
+          if (st.empty() || st.back() != match[ch]) return false;
+          st.pop_back();
           break;
+        }
+        default:
+          return false;
       }
     }
 
-    return st.size() == 1;
+    return st.empty();
   }
 };

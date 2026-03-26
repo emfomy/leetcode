@@ -60,7 +60,7 @@ class Solution {
     // Sort frequency
     auto freqs = vector<pair<int, int>>();
     for (auto [num, freq] : freqMap) freqs.push_back({freq, num});
-    sort(freqs.begin(), freqs.end(), greater<>());
+    sort(freqs.begin(), freqs.end(), greater());
 
     // Answer
     auto ans = vector<int>();

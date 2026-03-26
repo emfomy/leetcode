@@ -1,5 +1,5 @@
-// Source: https://leetcode.com/problems/coin-change-2
-// Title: Coin Change 2
+// Source: https://leetcode.com/problems/coin-change-ii
+// Title: Coin Change II
 // Difficulty: Medium
 // Author: Mu Yang <http://muyang.pro>
 

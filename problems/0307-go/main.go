@@ -1,6 +1,6 @@
-// Source: https://leetcode.com/problems/range-sum-query-immutable
-// Title: Range Sum Query - Immutable
-// Difficulty: Easy
+// Source: https://leetcode.com/problems/range-sum-query-mutable
+// Title: Range Sum Query - Mutable
+// Difficulty: Medium
 // Author: Mu Yang <http://muyang.pro>
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

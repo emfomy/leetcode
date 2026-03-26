@@ -6,7 +6,7 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // Given strings `s1`, `s2`, and `s3`, find whether `s3` is formed by an **interleaving** of `s1` and `s2`.
 //
-// An **interleaving** of two strings `s` and `t` is a configuration where `s` and `t` are divided into `n` and `m` <button type="button" aria-haspopup="dialog" aria-expanded="false" aria-controls="radix-:r1m:" data-state="closed" class="">substrings</button> respectively, such that:
+// An **interleaving** of two strings `s` and `t` is a configuration where `s` and `t` are divided into `n` and `m` <button>substrings</button> respectively, such that:
 //
 // - `s = s_1 + s_2 + ... + s_n`
 // - `t = t_1 + t_2 + ... + t_m`
@@ -16,7 +16,6 @@
 // **Note:** `a + b` is the concatenation of strings `a` and `b`.
 //
 // **Example 1:**
-//
 // https://assets.leetcode.com/uploads/2020/09/02/interleave.jpg
 //
 // ```
@@ -48,126 +47,84 @@
 // - `0 <= s1.length, s2.length <= 100`
 // - `0 <= s3.length <= 200`
 // - `s1`, `s2`, and `s3` consist of lowercase English letters.
-//
+
 // **Follow up:** Could you solve it using only `O(s2.length)` additional memory space?
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-#include <functional>
+#include <cstdint>
 #include <string>
 #include <vector>
 
 using namespace std;
 
-// Use DFS
+// 2D-DP
 //
-// Note that we only need to store if a case is visited.
-// Since if we found the solution, we can just leave the DFS.
+// Let DP[i][j] = true if s3[:(i+j)] can be form by s1[:i] and s2[:j].
+//
+// DP[0][0] = true
+// DP[i][j] = (DP[i-1][j] AND s3[i+j-1] == s1[i-1])
+//         OR (DP[i][j-1] AND s3[i+j-1] == s2[j-1])
 class Solution {
+  using Bool = uint8_t;
+
  public:
-  bool isInterleave(string s1, string s2, string s3) {
-    int n1 = s1.size(), n2 = s2.size(), n3 = s3.size();
-    if (n1 + n2 != n3) return false;
+  bool isInterleave(const string &s1, const string &s2, const string &s3) {
+    const int m = s1.size(), n = s2.size();
 
-    auto visited = vector(n1 + 1, vector(n2 + 1, false));
+    // Guard
+    if (s3.size() != m + n) return false;
 
-    function<int(int, int)> dfs = [&](int i1, int i2) -> bool {
-      auto i3 = i1 + i2;
-      if (i3 == n3) return true;
-
-      if (visited[i1][i2]) return false;
-      visited[i1][i2] = true;
-
-      if (i1 < n1 && s1[i1] == s3[i3]) {
-        if (dfs(i1 + 1, i2)) return true;
-      }
-      if (i2 < n2 && s2[i2] == s3[i3]) {
-        if (dfs(i1, i2 + 1)) return true;
-      }
-
-      return false;
-    };
-
-    return dfs(0, 0);
-  }
-};
-
-// Use 2D-DP
-//
-// The problem is the same as find path from top-left to bottom-right.
-//
-// If s1[i1] == s3[i1+i2], then we can go down
-// If s2[i2] == s3[i1+i2], then we can go right
-class Solution2 {
- public:
-  bool isInterleave(string s1, string s2, string s3) {
-    int n1 = s1.size(), n2 = s2.size(), n3 = s3.size();
-    if (n1 + n2 != n3) return false;
-
-    auto dp = vector(n1 + 1, vector(n2 + 1, false));
+    // DP
+    auto dp = vector<vector<Bool>>(m + 1, vector<Bool>(n + 1, false));
     dp[0][0] = true;
-    for (auto i1 = 0; i1 <= n1; ++i1) {
-      for (auto i2 = 0; i2 <= n2; ++i2) {
-        if (!dp[i1][i2]) continue;
-        auto i3 = i1 + i2;
-        if (i1 < n1 && s1[i1] == s3[i3]) dp[i1 + 1][i2] = true;
-        if (i2 < n2 && s2[i2] == s3[i3]) dp[i1][i2 + 1] = true;
+
+    for (int j = 1; j <= n; ++j) {
+      dp[0][j] = (dp[0][j - 1] && (s3[j - 1] == s2[j - 1]));
+    }
+    for (int i = 1; i <= m; ++i) {
+      dp[i][0] = (dp[i - 1][0] && (s3[i - 1] == s1[i - 1]));
+    }
+    for (int i = 1; i <= m; ++i) {
+      for (int j = 1; j <= n; ++j) {
+        dp[i][j] = (dp[i - 1][j] && (s3[i + j - 1] == s1[i - 1])) ||  //
+                   (dp[i][j - 1] && (s3[i + j - 1] == s2[j - 1]));    //
       }
     }
 
-    return dp[n1][n2];
+    return dp[m][n];
   }
 };
 
-// Use 2D-DP
-//
-// The problem is the same as find path from bottom-right to top-left.
-//
-// dp[i1][i2] = (dp[i1+1][i2] AND s1[i1] == s3[i1+i2]) OR (dp[i1][i2+1] AND s2[i2] == s3[i1+i2])
-class Solution3 {
- public:
-  bool isInterleave(string s1, string s2, string s3) {
-    int n1 = s1.size(), n2 = s2.size(), n3 = s3.size();
-    if (n1 + n2 != n3) return false;
+// 1D-DP
+class Solution2 {
+  using Bool = uint8_t;
 
-    auto dp = vector(n1 + 1, vector(n2 + 1, false));
-    for (auto i1 = n1; i1 >= 0; --i1) {
-      for (auto i2 = n2; i2 >= 0; --i2) {
-        auto i3 = i1 + i2;
-        dp[i1][i2] = (i1 < n1 && dp[i1 + 1][i2] && s1[i1] == s3[i1 + i2]) ||  //
-                     (i2 < n2 && dp[i1][i2 + 1] && s2[i2] == s3[i1 + i2]) ||  //
-                     (i1 == n1 && i2 == n2);
-      }
+ public:
+  bool isInterleave(const string &s1, const string &s2, const string &s3) {
+    const int m = s1.size(), n = s2.size();
+
+    // Guard
+    if (s3.size() != m + n) return false;
+
+    // DP
+    auto prev = vector<Bool>(n + 1, false);
+    auto curr = vector<Bool>(n + 1, false);
+    curr[0] = true;
+
+    for (int j = 1; j <= n; ++j) {
+      curr[j] = (curr[j - 1] && (s3[j - 1] == s2[j - 1]));
     }
 
-    return dp[0][0];
-  }
-};
-
-// Use 1D-DP
-//
-// The problem is the same as find path from bottom-right to top-left.
-//
-// dp[i1][i2] = (dp[i1+1][i2] AND s1[i1] == s3[i1+i2]) OR (dp[i1][i2+1] AND s2[i2] == s3[i1+i2])
-class Solution4 {
- public:
-  bool isInterleave(string s1, string s2, string s3) {
-    int n1 = s1.size(), n2 = s2.size(), n3 = s3.size();
-    if (n1 + n2 != n3) return false;
-
-    auto curr = vector(n2 + 1, false);
-    auto prev = vector(n2 + 1, false);
-    curr[n2] = true;
-    for (auto i1 = n1; i1 >= 0; --i1) {
+    for (int i = 1; i <= m; ++i) {
       swap(curr, prev);
-      for (auto i2 = n2; i2 >= 0; --i2) {
-        auto i3 = i1 + i2;
-        curr[i2] = (i1 < n1 && prev[i2] && s1[i1] == s3[i1 + i2]) ||      //
-                   (i2 < n2 && curr[i2 + 1] && s2[i2] == s3[i1 + i2]) ||  //
-                   (i1 == n1 && i2 == n2);
+      curr[0] = (prev[0] && (s3[i - 1] == s1[i - 1]));
+      for (int j = 1; j <= n; ++j) {
+        curr[j] = (prev[j] && (s3[i + j - 1] == s1[i - 1])) ||    //
+                  (curr[j - 1] && (s3[i + j - 1] == s2[j - 1]));  //
       }
     }
 
-    return curr[0];
+    return curr[n];
   }
 };

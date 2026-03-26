@@ -49,33 +49,34 @@ struct TreeNode {
   TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
 };
 
-// DFS, Two-Pass
+// DFS, Two Pass
 //
-// First loop through all node and compute sum of each subtree.
-// Next loop again and compute the products.
+// First use DFS to compute the total sum.
+// Next run DFS again and compute the sum of each subtree.
 class Solution {
   constexpr static int64_t modulo = 1e9 + 7;
 
  public:
-  int maxProduct(TreeNode *root) {
-    auto ans = int64_t(-1);
-    auto sum = dfsSum(root);
-    dfsProd(root, sum, ans);
-    return ans % modulo;
+  int maxProduct(const TreeNode *root) {
+    int64_t totalSum = dfsSum(root);
+    int64_t maxProd = 0;
+    dfsProd(root, totalSum, maxProd);
+    return maxProd % modulo;
   }
 
-  // DFS, store subtree sum into val
-  int dfsSum(TreeNode *node) {
-    if (node == nullptr) return 0;
-    node->val += dfsSum(node->left) + dfsSum(node->right);
-    return node->val;
+  // Find total sum
+  int64_t dfsSum(const TreeNode *root) {
+    if (!root) return 0;
+    return root->val + dfsSum(root->left) + dfsSum(root->right);
   }
 
-  // DFS, find maximum product
-  void dfsProd(TreeNode *node, int totalSum, int64_t &ans) {
-    if (node == nullptr) return;
-    ans = max(ans, int64_t(node->val) * int64_t(totalSum - node->val));
-    dfsProd(node->left, totalSum, ans);
-    dfsProd(node->right, totalSum, ans);
+  // Find max product
+  int64_t dfsProd(const TreeNode *root, const int64_t totalSum, int64_t &maxProd) {
+    if (!root) return 0;
+    int64_t sum = root->val +                               //
+                  dfsProd(root->left, totalSum, maxProd) +  //
+                  dfsProd(root->right, totalSum, maxProd);  //
+    maxProd = max(maxProd, sum * (totalSum - sum));
+    return sum;
   }
 };

@@ -1,4 +1,4 @@
-// Source: htthttps://leetcode.com/problems/count-odd-numbers-in-an-interval-range
+// Source: https://leetcode.com/problems/count-odd-numbers-in-an-interval-range
 // Title: Count Odd Numbers in an Interval Range
 // Difficulty: Easy
 // Author: Mu Yang <http://muyang.pro>

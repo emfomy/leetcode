@@ -1,6 +1,6 @@
 # Source: https://leetcode.com/problems/binary-tree-inorder-traversal
 # Title: Binary Tree Inorder Traversal
-# Difficulty: Medium
+# Difficulty: Easy
 # Author: Mu Yang <http://muyang.pro>
 
 ################################################################################################################################
