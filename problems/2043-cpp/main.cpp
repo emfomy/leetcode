@@ -57,37 +57,48 @@
 using namespace std;
 
 class Bank {
-  vector<long long> balance;
+  vector<long long>& balance;
+
+  bool validAccount(int account) {  //
+    return 0 <= account && account < balance.size();
+  }
 
  public:
-  Bank(vector<long long>& balance) : balance(balance) {}
+  Bank(vector<long long>&& balance) : balance(balance) {}
 
   bool transfer(int account1, int account2, long long money) {
-    int n = balance.size();
-    --account1, --account2;
-    if (account1 >= n || account2 >= n) return false;
+    --account1, --account2;  // convert to 0-indexed
+
+    // Guard
+    if (!validAccount(account1)) return false;
+    if (!validAccount(account2)) return false;
     if (balance[account1] < money) return false;
 
+    // Transaction
     balance[account1] -= money;
     balance[account2] += money;
     return true;
   }
 
   bool deposit(int account, long long money) {
-    int n = balance.size();
-    --account;
-    if (account >= n) return false;
+    --account;  // convert to 0-indexed
 
+    // Guard
+    if (!validAccount(account)) return false;
+
+    // Transaction
     balance[account] += money;
     return true;
   }
 
   bool withdraw(int account, long long money) {
-    int n = balance.size();
-    --account;
-    if (account >= n) return false;
+    --account;  // convert to 0-indexed
+
+    // Guard
+    if (!validAccount(account)) return false;
     if (balance[account] < money) return false;
 
+    // Transaction
     balance[account] -= money;
     return true;
   }
