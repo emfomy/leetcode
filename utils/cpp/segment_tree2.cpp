@@ -26,7 +26,7 @@ class SegmentTree2D {
   // O(logN); find first coords[idx] >= coord
   inline int getIdx(int coord) const {
     auto it = lower_bound(coords.cbegin(), coords.cend(), coord);
-    return distance(coords.cbegin(), it);
+    return it - coords.cbegin();
   }
 
   // Update: O(logN)

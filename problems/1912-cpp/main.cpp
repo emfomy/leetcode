@@ -56,63 +56,75 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-#include <cstddef>
-#include <map>
 #include <set>
 #include <unordered_map>
 #include <vector>
 
 using namespace std;
 
-// Use tree map for (shop, movie) -> price
-// Use tree set per movie for (price, shop)
-// Use tree set for rented (price, shop, movie)
+// Hash Map + Tree Set
+//
+// For search, use a tree set of (price, shop) per movie (only unrented).
+// For report, use a tree set of (price, shop, movie) for all movies (only rented).
+// Use a hash map from (shop, movie) to price for rent and drop.
 class MovieRentingSystem {
-  map<pair<int, int>, int> data;                      // (shop, movie) -> price
-  unordered_map<int, set<pair<int, int>>> available;  // movie -> { (price, shop) }
-  set<tuple<int, int, int>> rented;                   // (price, shop, movie)
+  constexpr static int kLimit = 5;  // return limit
+
+  using Item = tuple<int, int, int>;  // price, shop, movie
+
+  unordered_map<int, unordered_map<int, int>> database;  // (shop, movie) -> price
+  unordered_map<int, set<Item>> unrented;                // unrented movies
+  set<Item> rented;                                      // rented movies
 
  public:
-  MovieRentingSystem(int n, vector<vector<int>>& entries) {
-    for (auto& entry : entries) {
-      auto shop = entry[0], movie = entry[1], price = entry[2];
-      data[{shop, movie}] = price;
-      available[movie].insert({price, shop});
+  MovieRentingSystem(int n, const vector<vector<int>>& entries) {
+    for (const vector<int>& entry : entries) {
+      const int shop = entry[0], movie = entry[1], price = entry[2];
+      Item item{price, shop, movie};
+      database[shop][movie] = price;
+      unrented[movie].insert(item);
     }
   }
 
   void rent(int shop, int movie) {
-    auto price = data[{shop, movie}];
-    available[movie].erase({price, shop});
-    rented.insert({price, shop, movie});
+    int price = database[shop][movie];
+    Item item{price, shop, movie};
+    unrented[movie].erase(item);
+    rented.insert(item);
   }
 
   void drop(int shop, int movie) {
-    auto price = data[{shop, movie}];
-    available[movie].insert({price, shop});
-    rented.erase({price, shop, movie});
+    int price = database[shop][movie];
+    Item item{price, shop, movie};
+    unrented[movie].insert(item);
+    rented.erase(item);
   }
 
-  vector<int> search(int movie) {
-    if (!available.count(movie)) return {};
-    auto& prices = available[movie];
+  vector<int> search(int movie) const {
+    if (!unrented.contains(movie)) return {};
 
-    auto ans = vector<int>();
-    auto cnt = 0;
-    for (auto it = prices.cbegin(); it != prices.cend() && cnt < 5; ++it, ++cnt) {
-      auto [price, shop] = *it;
-      ans.push_back(shop);
+    auto shops = vector<int>();
+    shops.reserve(kLimit);
+
+    int count = 0;
+    for (auto [_, shop, _2] : unrented.at(movie)) {
+      shops.push_back(shop);
+      if (++count == kLimit) break;
     }
-    return ans;
+
+    return shops;
   }
 
-  vector<vector<int>> report() {
-    auto ans = vector<vector<int>>();
-    auto cnt = 0;
-    for (auto it = rented.cbegin(); it != rented.cend() && cnt < 5; ++it, ++cnt) {
-      auto [price, shop, movie] = *it;
-      ans.push_back({shop, movie});
+  vector<vector<int>> report() const {
+    auto movies = vector<vector<int>>();
+    movies.reserve(kLimit);
+
+    int count = 0;
+    for (auto [_, shop, movie] : rented) {
+      movies.push_back({shop, movie});
+      if (++count == kLimit) break;
     }
-    return ans;
+
+    return movies;
   }
 };

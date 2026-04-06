@@ -34,17 +34,19 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-#include <numeric>
+#include <algorithm>
 #include <vector>
 
 using namespace std;
 
 class Solution {
+  using Bool = unsigned char;
+
  public:
   int countPrimes(int n) {
     if (n <= 1) return 0;
 
-    auto primes = vector<bool>(n, true);
+    auto primes = vector<Bool>(n, true);
     primes[0] = false;
     primes[1] = false;
 
@@ -55,6 +57,6 @@ class Solution {
       }
     }
 
-    return accumulate(primes.cbegin(), primes.cend(), 0);
+    return count(primes.cbegin(), primes.cend(), true);
   }
 };

@@ -32,10 +32,36 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+#include <algorithm>
 #include <numeric>
 #include <vector>
 
 using namespace std;
+
+// Bit Mask + Permutation
+class Solution {
+ public:
+  vector<vector<int>> combine(int n, int k) {
+    if (k < 0 || k > n) return {};  // invalid
+    if (k == 0) return {};          // edge case
+
+    // Prepare indices
+    auto temp = vector<int>(n, 1);
+    fill(temp.begin(), temp.begin() + k, 0);  // [0, ..., 0, 1, ..., 1], first k are 0
+
+    // Loop
+    auto ans = vector<vector<int>>();
+    do {
+      ans.emplace_back();
+      ans.back().reserve(k);
+      for (int i = 0; i < n; ++i) {
+        if (temp[i] == 0) ans.back().push_back(i + 1);
+      }
+    } while (next_permutation(temp.begin(), temp.end()));
+
+    return ans;
+  }
+};
 
 // First fill the state with largest k numbers.
 //
@@ -45,11 +71,11 @@ using namespace std;
 //
 // If above operation is invalid (e.g. 1256 -> 1267; n = 6), then choose third last number (and so on),
 // and fill the number right of the chosen number contiguous increasing (e.g. 1256 -> 1345; n=6).
-class Solution {
+class Solution2 {
  public:
   vector<vector<int>> combine(int n, int k) {
     if (k < 0 || k > n) return {};  // invalid
-    if (k == 0) return {{}};        // edge case
+    if (k == 0) return {};          // edge case
 
     // Init state
     auto state = vector<int>(k);

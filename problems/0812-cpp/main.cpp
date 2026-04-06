@@ -36,32 +36,38 @@ using namespace std;
 
 // Brute-Force
 //
-// Use cross product for triangle area
-// 2Area = |AB x AC|
-//       = |(x2-x1, y2-y1) x (x3-x1, y3-y1)|
-//       = |(x2-x1)(y3-y1) - (x3-x1)(y2-y1)|
-//       = |x1(y2-y3) + x2(y3-y1) + x3(y1-y2)|
+// Loop for all points triplets.
+// Area(ABC)
+// = 1/2 * abs(det [
+//   1 x1 y1
+//   1 x2 y2
+//   1 x3 y3
+// ])
+// = abs(x1(y2-y3) + x2(y3-y1) + x3(y1-y2))/2
 class Solution {
  public:
-  double largestTriangleArea(vector<vector<int>>& points) {
-    int n = points.size();
+  double largestTriangleArea(const vector<vector<int>>& points) {
+    const int n = points.size();
 
-    auto getArea = [&](int i, int j, int k) {
-      auto x1 = points[i][0], y1 = points[i][1];
-      auto x2 = points[j][0], y2 = points[j][1];
-      auto x3 = points[k][0], y3 = points[k][1];
-      return abs(0.5 * (x1 * (y2 - y3) + x2 * (y3 - y1) + x3 * (y1 - y2)));
+    // Get the parallelogram area, which is the double of the triangle area.
+    auto getArea = [&points](int p1, int p2, int p3) -> int {
+      int x1 = points[p1][0], y1 = points[p1][1];
+      int x2 = points[p2][0], y2 = points[p2][1];
+      int x3 = points[p3][0], y3 = points[p3][1];
+
+      return abs(x1 * (y2 - y3) + x2 * (y3 - y1) + x3 * (y1 - y2));
     };
 
-    auto ans = 0.0;
-    for (auto i = 0; i < n; ++i) {
-      for (auto j = i + 1; j < n; ++j) {
-        for (auto k = j + 1; k < n; ++k) {
-          ans = max(ans, getArea(i, j, k));
+    // Find maximum parallelogram area
+    int maxArea = 0;
+    for (int p1 = 0; p1 < n; ++p1) {
+      for (int p2 = 0; p2 < p1; ++p2) {
+        for (int p3 = 0; p3 < p2; ++p3) {
+          maxArea = max(maxArea, getArea(p1, p2, p3));
         }
       }
     }
 
-    return ans;
+    return double(maxArea * 0.5);
   }
 };

@@ -40,17 +40,55 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+#include <unordered_set>
 using namespace std;
 
-// Loop
+// Hash Map
 class Solution {
  public:
   int smallestRepunitDivByK(int k) {
-    int n = 1;
-    for (auto i = 1; i <= k; ++i) {
-      if (n % k == 0) return i;
-      n = (10 * n + 1) % k;
+    auto visited = unordered_set<int>();
+    int i = 1, n = (1 % k);
+    visited.insert(n);
+    while (n != 0) {
+      n = (n * 10 + 1) % k;
+      ++i;
+      auto [_, ok] = visited.insert(n);
+      if (!ok) return -1;  // loop detected
+    }
+    return i;
+  }
+};
+
+// Math
+//
+// In previous approach, we use a hash map to detect loop.
+// However, in mod k ring, the maximum loop is size k.
+// Therefore, we can simply run the loop for k times without checkint the loop.
+class Solution2 {
+ public:
+  int smallestRepunitDivByK(int k) {
+    int n = (1 % k);
+    for (int i = 1; i <= k; ++i) {
+      if (n == 0) return i;
+      n = (n * 10 + 1) % k;
     }
     return -1;
+  }
+};
+
+// Math
+//
+// Answer exists iff. gcd(10, k) = 1.
+class Solution3 {
+ public:
+  int smallestRepunitDivByK(int k) {
+    if (k % 2 == 0 || k % 5 == 0) return -1;
+    int n = (1 % k);
+    for (int i = 1; i <= k; ++i) {
+      if (n == 0) return i;
+      n = (n * 10 + 1) % k;
+    }
+    return -1;  // unreachable
   }
 };

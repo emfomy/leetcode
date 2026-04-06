@@ -39,29 +39,33 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-// There are more 2 than 5. We only need to count 5.
+// Consider the prime factorization of n!.
+// Since there are more 2 than 5, we just compute the number of 5s.
 class Solution {
  public:
   int trailingZeroes(int n) {
-    auto ans = 0;
-    auto fives = 5;
-    while (n >= fives) {
-      ans += n / fives;
-      fives *= 5;
+    int zeros = 0;  // trailing zeros
+
+    int fivePow = 5;  // power of 5
+    while (fivePow <= n) {
+      zeros += n / fivePow;
+      fivePow *= 5;
     }
-    return ans;
+
+    return zeros;
   }
 };
 
-// There are more 2 than 5. We only need to count 5.
 class Solution2 {
  public:
   int trailingZeroes(int n) {
-    auto ans = 0;
+    int zeros = 0;  // trailing zeros
+
     while (n > 0) {
       n /= 5;
-      ans += n;
+      zeros += n;
     }
-    return ans;
+
+    return zeros;
   }
 };

@@ -47,7 +47,7 @@ class Solution {
 
     auto aArea = (ax2 - ax1) * (ay2 - ay1);
     auto bArea = (bx2 - bx1) * (by2 - by1);
-    auto cArea = ((cx2 - cx1) > 0 && (cy2 - cy1) > 0) ? (cx2 - cx1) * (cy2 - cy1) : 0;
+    auto cArea = max(cx2 - cx1, 0) * max(cy2 - cy1, 0);
 
     return aArea + bArea - cArea;
   }

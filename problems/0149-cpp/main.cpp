@@ -31,6 +31,7 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+#include <algorithm>
 #include <cmath>
 #include <numeric>
 #include <unordered_map>
@@ -38,18 +39,27 @@
 
 using namespace std;
 
-// Use Hash Map + Union Find
+// Hash Map + Union Find
 //
-// Compute slope of each point pairs.
-// Group pair by slopes, and use union find to group the pairs with common point.
+// Pick a line of points.
+// All pairs of these points has the same slope.
+//
+// We loop through all pairs of the points, and group them by their slopes.
+// For each slope group, use union find the group them into lines.
 class Solution {
   struct UnionFind {
     vector<int> parents;
     vector<int> sizes;
     int maxSize;
 
-    UnionFind(int n) : parents(vector(n, 0)), sizes(vector(n, 1)), maxSize(1) {  //
+    UnionFind(int n) : parents(n), sizes(n, 1), maxSize(1) {  //
       iota(parents.begin(), parents.end(), 0);
+    }
+
+    void reset() {
+      iota(parents.begin(), parents.end(), 0);
+      fill(sizes.begin(), sizes.end(), 1);
+      maxSize = 1;
     }
 
     int find(int x) {
@@ -59,72 +69,139 @@ class Solution {
       return parents[x];
     }
 
-    int union_(int x, int y) {
+    void unite(int x, int y) {
       x = find(x);
       y = find(y);
-      if (x == y) return sizes[x];
+      if (x == y) return;
 
-      // WLOG, assume size(x) >= size(y)
-      if (sizes[x] < sizes[y]) {
-        swap(x, y);
-      }
+      // Ensure size(x) >= size(y)
+      if (sizes[x] < sizes[y]) swap(x, y);
 
       // Merge y into x
-      parents[y] = x;
       sizes[x] += sizes[y];
-      return sizes[x];
+      parents[y] = x;
+      maxSize = max(maxSize, sizes[x]);
     }
   };
 
  public:
-  int maxPoints(vector<vector<int>>& points) {
-    int n = points.size();
+  int maxPoints(const vector<vector<int>>& points) {
+    const int n = points.size();
+    if (n <= 2) return n;  // trivial
 
-    // Pairs
-    auto pairMap = unordered_map<double, vector<pair<int, int>>>();  // slope -> (i, j);
-    for (auto i = 0; i < n; ++i) {
-      for (auto j = i + 1; j < n; ++j) {
-        double dx = points[i][0] - points[j][0], dy = points[i][1] - points[j][1];
-        auto slope = dx ? dy / dx : INFINITY;
-        pairMap[slope].emplace_back(i, j);
+    // Group by slopes
+    // We use INF for vertical line
+    auto slopeGroups = unordered_map<double, vector<pair<int, int>>>();
+    for (int i = 0; i < n; ++i) {
+      for (int j = 0; j < i; ++j) {
+        int x1 = points[i][0], y1 = points[i][1];
+        int x2 = points[j][0], y2 = points[j][1];
+        int dx = x2 - x1, dy = y2 - y1;
+        double slope =            //
+            dy == 0   ? 0.0       // avoid +0.0 & -0.0
+            : dx == 0 ? INFINITY  // avoid +INF & -INF
+                      : double(dy) / double(dx);
+        slopeGroups[slope].emplace_back(i, j);
       }
     }
 
-    auto ans = 1;
-    for (auto& item : pairMap) {
-      auto pairs = item.second;
-      auto uf = UnionFind(n);
-      for (auto [i, j] : pairs) {
-        auto s = uf.union_(i, j);
-        ans = max(ans, s);
+    // Loop for slopes
+    int maxLine = 2;
+    auto uf = UnionFind(n);
+    for (auto& [slope, pairs] : slopeGroups) {
+      uf.reset();
+      for (auto [x, y] : pairs) {
+        uf.unite(x, y);
       }
+      maxLine = max(maxLine, uf.maxSize);
     }
 
-    return ans;
+    return maxLine;
   }
 };
 
-// Use Hash Map
+// Hash Map
 //
-// Loop for all point.
-// Compute slope to each other points.
-// Group them by slopes.
+// Instead of handling all pairs at ones, we focus on lines passing a point.
+// Fix a point (we call it anchor),
+// loop for all other points to find the slopes.
+// We group the slopes using hash map.
+// All points with the same slopes are in a line.
+//
+// Since the maximum point must pass one of these points,
+// this algorithm guarantees to find the answer.
 class Solution2 {
  public:
   int maxPoints(vector<vector<int>>& points) {
-    int n = points.size();
+    const int n = points.size();
+    if (n <= 2) return n;  // trivial
 
-    auto ans = 1;
+    // Prepare slope counter
+    auto counter = unordered_map<double, int>();
+    counter.reserve(n);
+
+    // Loop all points
+    int maxCount = 1;
     for (int i = 0; i < n; ++i) {
-      auto slopeCount = unordered_map<double, int>();
-      for (auto j = i + 1; j < n; ++j) {
-        double dx = points[i][0] - points[j][0], dy = points[i][1] - points[j][1];
-        auto slope = dx ? dy / dx : INFINITY;
-        slopeCount[slope]++;
-        ans = max(ans, 1 + slopeCount[slope]);
+      counter.clear();
+      int x1 = points[i][0], y1 = points[i][1];
+
+      // no need to check previous points
+      for (int j = i + 1; j < n; ++j) {
+        int x2 = points[j][0], y2 = points[j][1];
+        int dx = x2 - x1, dy = y2 - y1;
+        double slope =            //
+            dy == 0   ? 0.0       // avoid +0.0 & -0.0
+            : dx == 0 ? INFINITY  // avoid +INF & -INF
+                      : double(dy) / double(dx);
+
+        maxCount = max(maxCount, ++counter[slope]);
       }
     }
 
-    return ans;
+    return maxCount + 1;  // add one for the anchor point
+  }
+};
+
+// Hash Map
+//
+// Use GCD for slope.
+class Solution3 {
+ public:
+  int maxPoints(vector<vector<int>>& points) {
+    const int n = points.size();
+    if (n <= 2) return n;  // trivial
+
+    // Prepare slope counter
+    auto counter = unordered_map<int, int>();
+    counter.reserve(n);
+
+    // Loop all points
+    int maxCount = 1;
+    for (int i = 0; i < n; ++i) {
+      counter.clear();
+      int x1 = points[i][0], y1 = points[i][1];
+
+      // no need to check previous points
+      for (int j = i + 1; j < n; ++j) {
+        int x2 = points[j][0], y2 = points[j][1];
+        int dx = x2 - x1, dy = y2 - y1;
+        int g = gcd(abs(dx), abs(dy));
+        dx /= g, dy /= g;
+        if (dx < 0) {
+          dx = -dx;
+          dy = -dy;
+        } else if (dx == 0) {
+          dy = 1;  // vertical
+        } else if (dy == 0) {
+          dx = 1;  // horizontal
+        }
+
+        int slope = (dx << 16) ^ dy;  // values are 16 bits
+        maxCount = max(maxCount, ++counter[slope]);
+      }
+    }
+
+    return maxCount + 1;  // add one for the anchor point
   }
 };

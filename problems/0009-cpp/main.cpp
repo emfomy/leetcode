@@ -41,6 +41,7 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 #include <algorithm>
+#include <cstdint>
 #include <string>
 
 using namespace std;
@@ -49,25 +50,40 @@ using namespace std;
 class Solution {
  public:
   bool isPalindrome(int x) {
-    auto sx = to_string(x);
-    auto sy = sx;
-    reverse(sy.begin(), sy.end());
-    return sx == sy;
+    string sx = to_string(x);
+    return equal(sx.cbegin(), sx.cend(), sx.rbegin());
   }
 };
 
-// Integer
+// Integer Division
 class Solution2 {
  public:
-  bool isPalindrome(int x) {
-    if (x == 0) return true;
-    if (x < 0 || x % 10 == 0) return false;
+  bool isPalindrome(const int x) {
+    if (x == 0) return true;                 // trivial
+    if (x < 0 || x % 10 == 0) return false;  // reverse is not number
 
-    auto y = 0;
+    int64_t y = 0;
+    int64_t tmp = x;
+    while (tmp > 0) {
+      y = y * 10 + tmp % 10;
+      tmp /= 10;
+    }
+    return x == y;
+  }
+};
+
+// Integer Division
+class Solution3 {
+ public:
+  bool isPalindrome(int x) {
+    if (x == 0) return true;                 // trivial
+    if (x < 0 || x % 10 == 0) return false;  // reverse is not number
+
+    int y = 0;
     while (y < x) {
-      y = 10 * y + x % 10;
+      y = y * 10 + x % 10;
       x /= 10;
     }
-    return (x == y) || x == y / 10;  // compare to y/10 is length is odd
+    return (x == y) || x == y / 10;  // compare x to y/10 when length is odd
   }
 };

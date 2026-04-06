@@ -6,35 +6,38 @@
 using namespace std;
 
 void all_permutation(int n) {
-  auto idxs = vector<int>(n);
-  iota(idxs.begin(), idxs.end(), 0);
+  auto temp = vector<int>(n);
+  iota(temp.begin(), temp.end(), 0);
 
   do {
     // DO!
-  } while (next_permutation(idxs.begin(), idxs.end()));
+    // Result is temp
+  } while (next_permutation(temp.begin(), temp.end()));
 }
 
 void all_partial_permutation(int n, int k) {
   assert(k <= n);
 
-  auto idxs = vector<int>(n);
-  iota(idxs.begin(), idxs.end(), 0);
+  auto temp = vector<int>(n);
+  iota(temp.begin(), temp.end(), 0);
 
   do {
     // DO!
+    // Result is temp[0, k)
 
     // Skip unused permutation
-    reverse(idxs.begin() + k, idxs.end());
-  } while (next_permutation(idxs.begin(), idxs.end()));
+    reverse(temp.begin() + k, temp.end());
+  } while (next_permutation(temp.begin(), temp.end()));
 }
 
 void all_combination(int n, int k) {
   assert(k <= n);
 
-  auto idxs = vector<int>(n, 0);
-  fill(idxs.begin() + n - k, idxs.end(), 1);  // [0, ..., 0, 1, ..., 1], k times 1
+  auto temp = vector<int>(n, 1);
+  fill(temp.begin(), temp.begin() + k, 0);  // [0, ..., 0, 1, ..., 1], first k are 0
 
   do {
     // DO!
-  } while (next_permutation(idxs.begin(), idxs.end()));
+    // Result is zero indices in temp
+  } while (next_permutation(temp.begin(), temp.end()));
 }

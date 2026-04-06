@@ -59,7 +59,7 @@ using namespace std;
 //
 // The matrix must be symmetric.
 // The main diagonal must be n, n-1, n-2, ..., 1.
-// For other diagonal. If LCP[i][j] > 0, then LCP[i+1][j+1] must be LCP[i][j]-1.
+// For other diagonal. If LCP[i, j] > 0, then LCP[i+1, j+1] must be LCP[i, j]-1.
 //
 // Next loop for each row.
 // Focus on LCP[i, j] with i < j.

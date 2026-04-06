@@ -49,7 +49,6 @@
 #include <iterator>
 #include <list>
 #include <numeric>
-#include <vector>
 
 using namespace std;
 
@@ -68,7 +67,7 @@ class Solution {
 };
 
 class Solution2 {
-  const int facts[9] = {
+  constexpr static int factorials[9] = {
       1,
       1,
       1 * 2,
@@ -82,20 +81,23 @@ class Solution2 {
 
  public:
   string getPermutation(int n, int k) {
-    auto nums = list<char>(n);
-    iota(nums.begin(), nums.end(), '1');
+    // Digit pools
+    auto digits = list<char>(n);
+    iota(digits.begin(), digits.end(), '1');
 
     string ans;
     --k;
     for (auto i = n - 1; i >= 0; --i) {
-      auto d = k / facts[i];
-      k %= facts[i];
+      auto d = k / factorials[i];
+      k %= factorials[i];
 
-      auto it = nums.begin();
+      // Pick the d-th largest digit
+      auto it = digits.begin();
       advance(it, d);
 
+      // Use the digit
       ans += (*it);
-      nums.erase(it);
+      digits.erase(it);
     }
 
     return ans;

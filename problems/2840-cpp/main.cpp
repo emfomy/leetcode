@@ -39,6 +39,7 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+#include <algorithm>
 #include <array>
 #include <string>
 
@@ -57,12 +58,33 @@ class Solution {
     const int n = s1.size();
 
     // Count
-    Sets sets1 = {}, sets2 = {};
+    Sets counts1 = {}, counts2 = {};
     for (int i = 0; i < n; ++i) {
-      ++sets1[i % 2][s1[i]];
-      ++sets2[i % 2][s2[i]];
+      ++counts1[i % 2][s1[i]];
+      ++counts2[i % 2][s2[i]];
     }
 
-    return sets1 == sets2;
+    return counts1 == counts2;
+  }
+};
+
+// Optimized
+class Solution2 {
+  using Set = array<int, 26>;
+  using Sets = array<Set, 2>;  // even and odd sets
+
+ public:
+  bool checkStrings(string s1, string s2) {
+    const int n = s1.size();
+
+    // Count
+    Sets counts = {};
+    constexpr Sets zeros = {};
+    for (int i = 0; i < n; ++i) {
+      ++counts[i % 2][s1[i] - 'a'];
+      --counts[i % 2][s2[i] - 'a'];
+    }
+
+    return counts == zeros;
   }
 };

@@ -33,13 +33,14 @@
 #include <cstdint>
 #include <cstring>
 #include <string>
+#include <vector>
 
 using namespace std;
 
 // Built-in
 class Solution {
  public:
-  int strStr(string haystack, string needle) {  //
+  int strStr(const string &haystack, const string &needle) {  //
     return haystack.find(needle);
   }
 };
@@ -59,8 +60,8 @@ class Solution2 {
   }
 
  public:
-  int strStr(string haystack, string needle) {
-    int n = haystack.size(), l = needle.size();
+  int strStr(const string &haystack, const string &needle) {
+    const int n = haystack.size(), l = needle.size();
 
     if (l == 0) return 0;
     if (n < l) return -1;
@@ -96,5 +97,50 @@ class Solution2 {
     }
 
     return -1;
+  }
+};
+
+// KMP
+class Solution3 {
+  vector<int> buildLPS(const string &str) {
+    const int n = str.size();
+    auto lps = vector<int>(n);
+
+    int prev = 0;
+    int i = 1;
+    while (i < n) {
+      if (str[i] == str[prev]) {
+        lps[i++] = ++prev;
+      } else if (prev == 0) {
+        lps[i++] = 0;
+      } else {
+        prev = lps[prev - 1];
+      }
+    }
+    return lps;
+  }
+
+ public:
+  int strStr(const string &haystack, const string &needle) {
+    const int n = haystack.size(), m = needle.size();
+
+    const vector<int> lps = buildLPS(needle);
+
+    int i = 0, j = 0;
+    while (i < n) {
+      if (haystack[i] == needle[j]) {
+        ++i, ++j;
+      } else if (j == 0) {
+        ++i;
+      } else {
+        j = lps[j - 1];
+      }
+
+      if (j == m) {
+        return i - j;  // found
+      }
+    }
+
+    return -1;  // not found
   }
 };

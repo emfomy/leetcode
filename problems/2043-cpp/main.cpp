@@ -64,7 +64,7 @@ class Bank {
   }
 
  public:
-  Bank(vector<long long>&& balance) : balance(balance) {}
+  Bank(vector<long long>& balance) : balance(balance) {}
 
   bool transfer(int account1, int account2, long long money) {
     --account1, --account2;  // convert to 0-indexed
