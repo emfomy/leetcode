@@ -55,67 +55,45 @@ using namespace std;
 
 // Use Heap
 //
-// Use 2 heaps, one for the smaller numbers and another for the larger numbers.
+// Use 2 heaps, one for the lower half and another for the upper half.
 //
-// If size is odd, we put medium on both heap.
+// When the total size is even, both half are the same size.
+// When the total size is odd, the upper have is larger by 1.
+// That is, size(lower) <= size(upper) <= size(lower)+1.
 //
-// Let x be the new number, S / L be the smaller / larger heaps, s / l be the top numbers.
-//
-// For size is even:
-// * If s <= x <= l, then x is the medium; put x in both heaps.
-// * If x < s,       then s is the medium; put x in S and s in L.
-// * If l < x,       then l is the medium; put l in S and x in L.
-//
-// For size is odd (s = l):
-// * If s = l = x, then (x, s) is the medium pair; do nothing.
-// * If x < s = l, then push x in S and pop S.
-// * If s = l < x, then push x in L and pop L.
+// When adding a number number, first put it into the lower part.
+// Next move the largest from lower to upper. (rebalance)
+// Next maintain the sizes.
 class MedianFinder {
-  int size;
-  priority_queue<int, vector<int>, less<int>> smalls;     // max-heap
-  priority_queue<int, vector<int>, greater<int>> larges;  // min-heap
+  using LowerHeap = priority_queue<int, vector<int>, less<>>;     // max-heap
+  using UpperHeap = priority_queue<int, vector<int>, greater<>>;  // min-heap
+
+  LowerHeap lower;
+  UpperHeap upper;
 
  public:
-  MedianFinder() : size(0) {}
+  MedianFinder() {}
 
   void addNum(int num) {
-    if (size == 0) {
-      size = 1;
-      smalls.push(num);
-      larges.push(num);
-      return;
-    }
+    // Push
+    lower.push(num);
 
-    auto s = smalls.top();
-    auto l = larges.top();
-    if (size % 2 == 0) {  // even size
-      if (num < s) {
-        l = s;
-        s = num;
-      } else if (l < num) {
-        s = l;
-        l = num;
-      } else {
-        s = num;
-        l = num;
-      }
-      smalls.push(s);
-      larges.push(l);
-    } else {  // odd size
-      if (num < s) {
-        smalls.push(num);
-        smalls.pop();
-      } else if (l < num) {
-        larges.push(num);
-        larges.pop();
-      } else {
-        // do nothing
-      }
+    // Rebalance
+    upper.push(lower.top());
+    lower.pop();
+
+    // Maintain the sizes
+    if (upper.size() > lower.size() + 1) {
+      lower.push(upper.top());
+      upper.pop();
     }
-    ++size;
   }
 
-  double findMedian() {  //
-    return double(smalls.top() + larges.top()) / 2;
+  double findMedian() {
+    if (upper.size() > lower.size()) {
+      return static_cast<double>(upper.top());
+    } else {
+      return static_cast<double>(upper.top() + lower.top()) / 2;
+    }
   }
 };

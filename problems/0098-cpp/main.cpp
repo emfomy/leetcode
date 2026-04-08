@@ -36,7 +36,6 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-#include <cstdint>
 #include <stack>
 
 using namespace std;
@@ -53,42 +52,83 @@ struct TreeNode {
 // Recursion
 class Solution {
  public:
-  bool isValidBST(TreeNode *root, TreeNode *minNode = nullptr, TreeNode *maxNode = nullptr) {
+  bool isValidBST(TreeNode *root, optional<int> minVal = nullopt, optional<int> maxVal = nullopt) {
     if (root == nullptr) return true;
 
-    // Check current node
-    if (minNode && root->val <= minNode->val) return false;
-    if (maxNode && root->val >= maxNode->val) return false;
+    // Check root
+    if (minVal && minVal >= root->val) return false;
+    if (maxVal && maxVal <= root->val) return false;
 
-    // Check child nodes
-    return isValidBST(root->left, minNode, root) && isValidBST(root->right, root, maxNode);
+    // Check children
+    return isValidBST(root->left, minVal, root->val) && isValidBST(root->right, root->val, maxVal);
   }
 };
 
-// Stack + State
+// Iteration + Stack
+//
+// Use pre-order traversal.
 class Solution2 {
+  struct State {
+    TreeNode *root;
+    optional<int> minVal;
+    optional<int> maxVal;
+  };
+
  public:
   bool isValidBST(TreeNode *root) {
-    // Prepare
-    auto st = stack<pair<TreeNode *, bool>>();  // node, seen
-    st.push({root, false});
+    if (!root) return true;
 
-    // Loop
-    auto prev = INT64_MIN;
+    // Traversal
+    auto st = stack<State>();
+    st.push(State{root, nullopt, nullopt});
+    while (!st.empty()) {
+      auto [node, minVal, maxVal] = st.top();
+      st.pop();
+
+      // Check node
+      if (minVal && *minVal >= node->val) return false;
+      if (maxVal && *maxVal <= node->val) return false;
+
+      // Push child
+      if (node->left) st.push(State{node->left, minVal, node->val});
+      if (node->right) st.push(State{node->right, node->val, maxVal});
+    }
+
+    return true;
+  }
+};
+
+// Iteration + Stack
+//
+// Use in-order traversal.
+// Compare with previous value.
+class Solution3 {
+  struct State {
+    TreeNode *root;
+    bool seen;
+  };
+
+ public:
+  bool isValidBST(TreeNode *root) {
+    // Traversal
+    optional<int> prevVal = nullopt;
+    auto st = stack<State>();
+    st.push(State{root, false});
     while (!st.empty()) {
       auto [node, seen] = st.top();
       st.pop();
 
-      if (node == nullptr) continue;
+      if (!node) continue;
 
-      if (seen) {
-        if (node->val <= prev) return false;
-        prev = node->val;
-      } else {
-        st.push({node->right, false});
-        st.push({node, true});
-        st.push({node->left, false});
+      if (!seen) {
+        st.push(State{node->right, false});
+        st.push(State{node, true});
+        st.push(State{node->left, false});
+        continue;
       }
+
+      if (prevVal && *prevVal >= node->val) return false;
+      prevVal = node->val;
     }
 
     return true;

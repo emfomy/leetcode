@@ -39,87 +39,16 @@
 
 #include <algorithm>
 #include <climits>
-#include <functional>
-#include <numeric>
-#include <queue>
 #include <vector>
 
 using namespace std;
 
-// Kruskal's algorithm (Sort + Union-Find)
-//
-// Use Kruskal's algorithm to find the MST.
-class Solution {
-  struct UnionFind {
-    mutable vector<int> parents;
-    mutable vector<int> ranks;
-
-    UnionFind(int n) : parents(n), ranks(n) {  //
-      iota(parents.begin(), parents.end(), 0);
-    }
-
-    int find(int x) const {
-      if (parents[x] != x) {
-        parents[x] = find(parents[x]);
-      }
-      return parents[x];
-    }
-
-    bool isConnected(int x, int y) const {  //
-      return find(x) == find(y);
-    }
-
-    void unite(int x, int y) {
-      x = find(x);
-      y = find(y);
-      if (x == y) return;
-
-      // Ensure rank(x) >= rank(y)
-      if (ranks[x] < ranks[y]) swap(x, y);
-
-      // Merge y into x
-      if (ranks[x] == ranks[y]) ++ranks[x];
-      parents[y] = x;
-    }
-  };
-
-  using Edge = tuple<int, int, int>;  // weight, node, node
-
-  int getDist(const vector<int>& u, const vector<int>& v) {  //
-    return abs(u[0] - v[0]) + abs(u[1] - v[1]);
-  }
-
- public:
-  int minCostConnectPoints(const vector<vector<int>>& points) {
-    const int n = points.size();
-
-    // Build and sort edges
-    auto edges = vector<Edge>();
-    for (int v = 0; v < n; ++v) {
-      for (int u = 0; u < v; ++u) {
-        edges.emplace_back(getDist(points[u], points[v]), u, v);
-      }
-    }
-    sort(edges.begin(), edges.end());
-
-    // Kruskal's algorithm
-    auto uf = UnionFind(n);
-    int mstWeight = 0;
-    for (const auto [w, u, v] : edges) {
-      if (uf.isConnected(u, v)) continue;
-
-      uf.unite(u, v);
-      mstWeight += w;
-    }
-
-    return mstWeight;
-  }
-};
-
 // Dense Prim's algorithm
 //
 // Use Prim's algorithm to find the MST.
-class Solution2 {
+class Solution {
+  using Bool = unsigned char;
+
   int getDist(const vector<int>& u, const vector<int>& v) {  //
     return abs(u[0] - v[0]) + abs(u[1] - v[1]);
   }
@@ -129,19 +58,22 @@ class Solution2 {
     const int n = points.size();
 
     // Prepare
-    auto visited = vector<bool>(n);
+    auto visited = vector<Bool>(n);
     auto dists = vector<int>(n, INT_MAX);
     dists[0] = 0;
 
-    // Prims's algorithm
+    // Loop
     int mstWeight = 0;
     for (int iter = 0; iter < n; ++iter) {
-      // Find nearest unvisited point
+      // Find nearest point
       int u = min_element(dists.cbegin(), dists.cend()) - dists.cbegin();
-      visited[u] = true;
+
+      // Add into graph
       mstWeight += dists[u];
+      visited[u] = true;
       dists[u] = INT_MAX;  // remove from target set
 
+      // Update neighbor
       for (int v = 0; v < n; ++v) {
         if (visited[v]) continue;
         dists[v] = min(dists[v], getDist(points[u], points[v]));

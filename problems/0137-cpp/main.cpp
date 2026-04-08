@@ -30,6 +30,7 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+#include <cstdint>
 #include <vector>
 
 using namespace std;
@@ -37,13 +38,13 @@ using namespace std;
 // Bit Count
 class Solution {
  public:
-  int singleNumber(vector<int>& nums) {
+  int singleNumber(const vector<int>& nums) {
     int ans = 0;
 
-    for (auto i = 0; i < 32; i++) {
-      auto count = 0;
+    for (int i = 0; i < 32; i++) {
+      int count = 0;
       uint32_t bit = 1u << i;
-      for (auto num : nums) {
+      for (const int num : nums) {
         if (bit & num) count++;
       }
       if (count % 3) ans |= bit;
@@ -57,21 +58,23 @@ class Solution {
 //
 // Use `once` for bits that occurs once (mod 3).
 // Use `twice` for bits that occurs twice (mod 3).
+// Note that once are twice are mutually exclusive.
 //
-// num=0 => keep
+// For each bit,
+// num=0 => keep old value
 // num=1, once=0, twice=0 => once=1, twice=0
 // num=1, once=1, twice=0 => once=0, twice=1
-// num=1, once=1, twice=1 => once=0, twice=0
+// num=1, once=0, twice=1 => once=0, twice=0
 class Solution2 {
  public:
   int singleNumber(vector<int>& nums) {
-    auto once = 0;
-    auto twice = 0;
+    int once = 0;
+    int twice = 0;
 
     for (auto num : nums) {
-      auto once2 = (~num & once) | (num & ~once & ~twice);
-      auto twice2 = (~num & twice) | (num & once & ~twice);
-      once = once2, twice = twice2;
+      int onceNext = (~num & once) | (num & ~once & ~twice);
+      int twiceNext = (~num & twice) | (num & once & ~twice);
+      once = onceNext, twice = twiceNext;
     }
 
     return once;
@@ -82,6 +85,7 @@ class Solution2 {
 //
 // Use `once` for bits that occurs once (mod 3).
 // Use `twice` for bits that occurs twice (mod 3).
+// Note that once are twice are mutually exclusive.
 //
 // In the following, we fucus on a single bit.
 //
@@ -98,10 +102,10 @@ class Solution2 {
 class Solution3 {
  public:
   int singleNumber(vector<int>& nums) {
-    auto once = 0;
-    auto twice = 0;
+    int once = 0;
+    int twice = 0;
 
-    for (auto num : nums) {
+    for (int num : nums) {
       once = (num ^ once) & ~twice;
       twice = (num ^ twice) & ~once;
     }
@@ -115,20 +119,19 @@ class Solution3 {
 // Note that (A ^ B) & C = (A ^ C) & (B ^ C).
 //
 // First we have `(once ^ num) & ~twice = (once & ~twice) ^ (num & ~twice)`.
-// Note that if `once` is 1, `twice` must be 0 (a bit is either seen once or twice),
-// we have `once & ~twice = once`.
+// Since `once` and `twice` are mutually exclusive, we have `once & ~twice = once`.
 // Therefore `once <- once ^ (num & ~twice)`.
 //
 // Similarly, we have `(twice ^ num) & ~once = (twice & ~once) ^ (num & ~once)`.
-// Here, if `twice` is 1, `once` must be 0 (a bit is either seen once or twice, it also can't be updated to 1).
+// Also, we have `twice & ~once = twice`
 // Therefore `twice <- twice ^ (num & ~once)`.
 class Solution4 {
  public:
   int singleNumber(vector<int>& nums) {
-    auto once = 0;
-    auto twice = 0;
+    int once = 0;
+    int twice = 0;
 
-    for (auto num : nums) {
+    for (int num : nums) {
       once ^= num & ~twice;
       twice ^= num & ~once;
     }

@@ -37,7 +37,7 @@ class Kruskal {
 
 // Dense Prim, O(V^2); Good for dense graph.
 class Prim {
-  // Graph: [i][j] -> edge weight
+  // Graph: [i][j] -> weight
   void solve(const vector<vector<int>>& graph) {
     const int n = graph.size();
 

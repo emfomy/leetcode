@@ -14,7 +14,7 @@
 //
 // **Note** that if an array has less than `x` distinct elements, its **x-sum** is the sum of the array.
 //
-// Return an integer array `answer` of length `n - k + 1` where `answer[i]` is the **x-sum** of the <button type="button" aria-haspopup="dialog" aria-expanded="false" aria-controls="radix-:r1k:" data-state="closed" class="">subarray</button> `nums[i..i + k - 1]`.
+// Return an integer array `answer` of length `n - k + 1` where `answer[i]` is the **x-sum** of the subarray `nums[i..i + k - 1]`.
 //
 // **Example 1:**
 //

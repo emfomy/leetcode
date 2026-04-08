@@ -41,11 +41,12 @@
 
 using namespace std;
 
+// XOR
 class Solution {
  public:
-  int singleNumber(vector<int>& nums) {
-    auto ans = 0;
-    for (auto num : nums) {
+  int singleNumber(const vector<int>& nums) {
+    int ans = 0;
+    for (int num : nums) {
       ans ^= num;
     }
     return ans;

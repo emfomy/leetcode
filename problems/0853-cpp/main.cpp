@@ -61,41 +61,40 @@
 
 using namespace std;
 
-// Sort + Simulation
+// Sort
 //
-// First sort the car by their positions.
-//
-// Loop from the farthest car.
-// For each car, check if it can catch the fleet,
-// if so, join that fleet; if not, create a new fleet with the car as leader.
+// Sort the cars by its position.
+// Loop from the rightmost car.
+// If the previous car reach the target earlier, then they are in the same fleet
 class Solution {
+  using Car = pair<int, int>;  // distance, speed
+
  public:
-  int carFleet(int target, vector<int>& positions, vector<int>& speeds) {
-    int n = positions.size();
+  int carFleet(int target, const vector<int>& position, const vector<int>& speed) {
+    const int n = position.size();
 
-    // Prepare cars
-    auto cars = vector<pair<double, double>>();  // distance, speed
-    for (auto i = 0; i < n; ++i) {
-      cars.emplace_back(target - positions[i], speeds[i]);
+    // Transform & Sort
+    auto cars = vector<Car>();
+    cars.reserve(n);
+    for (int i = 0; i < n; ++i) {
+      cars.emplace_back(target - position[i], speed[i]);
     }
-
-    // Sort by distance
     sort(cars.begin(), cars.end());
 
-    // Simulation
-    auto fleets = 0;
-    auto fleetTime = 0.0;  // arriving time of current fleet
-    for (auto [dist, speed] : cars) {
-      auto carTime = dist / speed;
+    // Loop
+    double fleetReachTime = -1.0;  // dummy fleet
+    int fleetCount = 0;
+    for (auto [dist, spd] : cars) {
+      double reachTime = static_cast<double>(dist) / spd;
 
-      // join current fleet
-      if (carTime <= fleetTime) continue;
+      // In the same fleet
+      if (reachTime <= fleetReachTime) continue;
 
-      // create new fleet
-      ++fleets;
-      fleetTime = carTime;
+      // Start a new fleet
+      fleetReachTime = reachTime;
+      ++fleetCount;
     }
 
-    return fleets;
+    return fleetCount;
   }
 };

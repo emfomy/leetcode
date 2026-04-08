@@ -53,38 +53,31 @@ using namespace std;
 
 // Monotonic Stack
 //
-// The problem is equal to find the nearest greater value to the left.
-//
-// Use a strictly monotonic stack with smallest at top.
-// For each new value, pop everything smaller, and then push the new value in.
-//
-// We put INT_MAX as sentinel at bottom of the stack.
+// Put prices in the monotonic stack.
+// The top is the smallest.
 class StockSpanner {
-  struct Stock {
-    int price;
-    int day;
-  };
+  using Data = pair<int, int>;  // price, day
 
-  int now = 0;  // current day
-  stack<Stock> stocks;
+  stack<Data> st;
+  int now = 0;
 
  public:
-  StockSpanner() {  //
-    stocks.emplace(INT_MAX, now);
+  StockSpanner() {
+    st.push(Data{INT_MAX, now});  // sentinel
   }
 
   int next(int price) {
     ++now;
 
-    // Pop
-    while (stocks.top().price <= price) stocks.pop();
+    // Maintain stack
+    while (st.top().first <= price) st.pop();
 
-    // Get consecutive length
-    int len = now - stocks.top().day;
+    // Get span
+    int span = now - st.top().second;
 
     // Push
-    stocks.emplace(price, now);
+    st.push(Data{price, now});
 
-    return len;
+    return span;
   }
 };

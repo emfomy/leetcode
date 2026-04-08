@@ -41,24 +41,24 @@ using namespace std;
 
 // Monotonic Stack
 //
-// We store the day which has not been processed in the stack.
+// We put unprocessed days in the stack.
+// The top is the lowest.
 class Solution {
  public:
   vector<int> dailyTemperatures(const vector<int>& temperatures) {
     const int n = temperatures.size();
 
-    auto ans = vector<int>(n);
-    auto st = stack<pair<int, int>>();  // (temp, day)
+    // Prepare data
+    auto ans = vector<int>(n, 0);
+    auto st = stack<int>();  // unprocessed indices
 
+    // Loop
     for (int i = 0; i < n; ++i) {
-      int temp = temperatures[i];
-
-      while (!st.empty() && temp > st.top().first) {
-        ans[st.top().second] = i - st.top().second;
+      while (!st.empty() && temperatures[st.top()] < temperatures[i]) {
+        ans[st.top()] = i - st.top();
         st.pop();
       }
-
-      st.emplace(temp, i);
+      st.push(i);
     }
 
     return ans;
@@ -67,24 +67,27 @@ class Solution {
 
 // Monotonic Stack
 //
-// We store the day which has not been processed in the stack.
+// Loop from the last day.
+// We put warmer candidate in the stack.
+// The top is the lowest.
 class Solution2 {
  public:
   vector<int> dailyTemperatures(const vector<int>& temperatures) {
     const int n = temperatures.size();
 
-    auto ans = vector<int>(n);
-    auto st = stack<int>();  // day
+    // Prepare data
+    auto ans = vector<int>(n, 0);
+    auto st = stack<int>();  // candidate indices
 
-    for (int i = 0; i < n; ++i) {
-      int temp = temperatures[i];
-
-      while (!st.empty() && temp > temperatures[st.top()]) {
-        ans[st.top()] = i - st.top();
+    // Loop
+    for (int i = n - 1; i >= 0; --i) {
+      while (!st.empty() && temperatures[st.top()] <= temperatures[i]) {
         st.pop();
       }
-
-      st.emplace(i);
+      if (!st.empty()) {
+        ans[i] = st.top() - i;
+      }
+      st.push(i);
     }
 
     return ans;

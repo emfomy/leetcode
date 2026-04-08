@@ -39,67 +39,37 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 #include <deque>
-#include <stack>
 #include <string>
-#include <vector>
 
 using namespace std;
 
-// 2D-DP, TLE
+// Greedy + Monotonic Stack
 //
-// DP[i, j] be the minimal number with length i before idx j
-// DP[i, i] = num[:i]
-// DP[i, j] = min(DP[i, j-1], DP[i-1, j-1]*10+num[j-1])
+// The output string tends to be increasing.
+//
+// We loop from left to right, put the digits into a stack.
+// For each new digit, pop the larger top digits if we still have quota (k > 0).
+// Each pop decrease k by 1.
+//
+// After processing all digits, if there is quota left (k > 0), pop from the back.
 class Solution {
  public:
-  string removeKdigits(string num, int k) {
-    int n = num.size();
-    auto dp = vector(n - k + 1, vector<string>(n + 1));
-
-    // Helper
-    auto minStr = [](string a, string b) -> string {
-      if (a.size() != b.size()) return a.size() < b.size() ? a : b;
-      return a < b ? a : b;
-    };
-
-    // DP
-    for (auto i = 1; i <= n - k; ++i) {
-      dp[i][i] = dp[i - 1][i - 1] + num[i - 1];
-      for (auto j = i + 1; j <= n; ++j) {
-        dp[i][j] = minStr(dp[i][j - 1], dp[i - 1][j - 1] + num[j - 1]);
-      }
-    }
-
-    // Remove leading zeros
-    auto ans = dp[n - k][n];
-    auto i = 0;  // first nonzero index
-    while (i < ans.size() && ans[i] == '0') ++i;
-    ans = ans.substr(i);
-
-    return ans.empty() ? "0" : ans;
-  }
-};
-
-// Greedy
-//
-// First make the number monotonic increasing by removing some numbers.
-// If k is still positive, remove from the last
-class Solution2 {
- public:
-  string removeKdigits(string num, int k) {
+  string removeKdigits(const string &num, int k) {
+    // Loop
     auto st = deque<char>();
-
-    // Monotonic stack
-    for (auto ch : num) {
-      while (!st.empty() && st.back() > ch && k > 0) {
+    for (char ch : num) {
+      // Pop larger digits
+      while (k > 0 && !st.empty() && st.back() > ch) {
         st.pop_back();
         --k;
       }
+
+      // Push
       st.push_back(ch);
     }
 
-    // Pop from last until k=0
-    while (!st.empty() && k > 0) {
+    // Still have quota
+    while (k > 0 && !st.empty()) {
       st.pop_back();
       --k;
     }
@@ -109,16 +79,10 @@ class Solution2 {
       st.pop_front();
     }
 
-    // Zero case
+    // Edge case
     if (st.empty()) return "0";
 
-    // Answer
-    string ans;
-    while (!st.empty()) {
-      ans.push_back(st.front());
-      st.pop_front();
-    }
-
-    return ans;
+    // Build answer
+    return string(st.cbegin(), st.cend());
   }
 };

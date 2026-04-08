@@ -40,28 +40,34 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 #include <queue>
+#include <set>
 #include <vector>
 
 using namespace std;
 
-// Heap
+// Sliding Window + Tree Set
+//
+// Store the numbers in the window in the tree set.
 class Solution {
+  using Data = pair<int, int>;  // number, index
+
  public:
-  vector<int> maxSlidingWindow(const vector<int>& nums, const int k) {
+  vector<int> maxSlidingWindow(const vector<int>& nums, int k) {
     const int n = nums.size();
 
-    auto heap = priority_queue<pair<int, int>>();  // (num, idx)
+    // Prepare data
     auto ans = vector<int>();
     ans.reserve(n - k + 1);
+    auto window = set<Data>();
 
+    // Loop
     for (int i = 0; i < n; ++i) {
-      heap.emplace(nums[i], i);
-
-      if (i >= k - 1) {
-        // Remove outdated number
-        while (heap.top().second <= i - k) heap.pop();
-
-        ans.push_back(heap.top().first);
+      window.insert(Data{nums[i], i});
+      if (i >= k) {  // window size > k
+        window.erase(Data{nums[i - k], i - k});
+      }
+      if (i >= k - 1) {  // window size == k
+        ans.push_back(window.crbegin()->first);
       }
     }
 
@@ -69,32 +75,73 @@ class Solution {
   }
 };
 
-// Monotonic Queue
+// Sliding Window + Heap
 //
-// Store index in the queue.
-// The number must be increasing (from back to front) in the queue.
+// Store the numbers in the window in the heap.
+// We remove the element lazily.
 class Solution2 {
+  using Data = pair<int, int>;        // number, index
+  using Heap = priority_queue<Data>;  // max-heap
+
  public:
-  vector<int> maxSlidingWindow(const vector<int>& nums, const int k) {
+  vector<int> maxSlidingWindow(const vector<int>& nums, int k) {
     const int n = nums.size();
 
-    auto que = deque<int>();  // index
+    // Prepare data
     auto ans = vector<int>();
     ans.reserve(n - k + 1);
+    Heap window;
 
+    // Loop
     for (int i = 0; i < n; ++i) {
-      // Remove useless data from back
-      while (!que.empty() && nums[i] >= nums[que.back()]) que.pop_back();
+      window.push(Data{nums[i], i});
 
-      // Push index
-      que.emplace_back(i);
-
-      if (i >= k - 1) {
-        // Remove outdated number
-        while (que.front() <= i - k) que.pop_front();
-
-        ans.push_back(nums[que.front()]);
+      // window size < k
+      if (i < k - 1) {
+        continue;
       }
+
+      // Remove outdated element
+      while (window.top().second <= i - k) window.pop();
+
+      // Get largest
+      ans.push_back(window.top().first);
+    }
+
+    return ans;
+  }
+};
+
+// Sliding Window + Monotonic Queue
+//
+// Store the numbers in the window in the monotonic queue.
+// The front is the largest, and the back is the smallest.
+class Solution3 {
+ public:
+  vector<int> maxSlidingWindow(const vector<int>& nums, int k) {
+    const int n = nums.size();
+
+    // Prepare data
+    auto ans = vector<int>();
+    ans.reserve(n - k + 1);
+    auto window = deque<int>();  // indices
+
+    // Loop
+    for (int i = 0; i < n; ++i) {
+      // Maintain decreasing
+      while (!window.empty() && nums[window.back()] < nums[i]) window.pop_back();
+      window.push_back(i);
+
+      // window size < k
+      if (i < k - 1) {
+        continue;
+      }
+
+      // Remove outdated element
+      if (window.front() <= i - k) window.pop_front();
+
+      // Get largest
+      ans.push_back(nums[window.front()]);
     }
 
     return ans;

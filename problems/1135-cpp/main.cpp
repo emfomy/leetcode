@@ -54,7 +54,7 @@ class Solution {
     mutable vector<int> ranks;
     int count;  // connected components
 
-    UnionFind(int n) : parents(n), ranks(n), count(n) {  //
+    UnionFind(int n) : parents(n), ranks(n, 0), count(n) {  //
       iota(parents.begin(), parents.end(), 0);
     }
 
@@ -86,22 +86,23 @@ class Solution {
 
  public:
   int minimumCost(int n, vector<vector<int>>& edges) {
-    // Sort edges
-    auto comp = [](const vector<int>& a, const vector<int>& b) -> bool { return a[2] < b[2]; };
+    // Sort
+    const auto comp = [](vector<int>& a, vector<int>& b) -> bool {  //
+      return a[2] < b[2];
+    };
     sort(edges.begin(), edges.end(), comp);
 
-    // Kruskal
-    UnionFind uf(n);
+    // Loop
     int mstWeight = 0;
-    for (const auto& edge : edges) {
-      // Early stop
-      if (uf.count == 1) break;
-
-      // Merge
-      int u = edge[0] - 1, v = edge[1] - 1, w = edge[2];
+    auto uf = UnionFind(n);
+    for (const vector<int>& edge : edges) {
+      const int u = edge[0] - 1, v = edge[1] - 1, w = edge[2];
       if (uf.isConnected(u, v)) continue;
       uf.unite(u, v);
       mstWeight += w;
+
+      // Early Stop
+      if (uf.count == 1) break;
     }
 
     return (uf.count == 1) ? mstWeight : -1;

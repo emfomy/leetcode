@@ -4,7 +4,7 @@
 // Author: Mu Yang <http://muyang.pro>
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-// Given two strings `s` and `t`, return `true` if `t` is an <button type="button" aria-haspopup="dialog" aria-expanded="false" aria-controls="radix-:rs:" data-state="closed" class="">anagram</button> of `s`, and `false` otherwise.
+// Given two strings `s` and `t`, return `true` if `t` is an **anagram** of `s`, and `false` otherwise.
 //
 // **Example 1:**
 //

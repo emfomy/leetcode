@@ -38,52 +38,44 @@ using namespace std;
 
 // Monotonic Stack
 //
-// We first discover that the height of every rectangle is always the height of a bar.
-// Therefore, for each bar, we only need to know the how far it can reach to the left/right.
+// We put (height, position) in the stack, both of them are increasing.
+// It represent the leftmost possible rectangle of each height.
 //
-// For right part, we use a increasing monotonic stack.
-// If the top bar in the stack is taller than current bar,
-// which means the top bar can only extend to the bar left of current bar.
-// Note that if a bar is never popped, then it can extend to the right end (i.e. n);
-//
-// Same algorithm also works for the left part.
+// We loop the bars from the left.
+// If the new bar is shorter than the top height,
+// then pop it and compute the maximum rectangle,
+// and then push the new bar height with the previous top position.
+// Next push the new bar if it is taller than the top height.
 class Solution {
+  struct State {
+    int height;
+    int pos;
+  };
+
  public:
-  int largestRectangleArea(vector<int>& heights) {
-    int n = heights.size();
+  int largestRectangleArea(const vector<int>& heights) {
+    const int n = heights.size();
+    int maxArea = 0;
 
-    // Right
-    auto rights = vector<int>(n, n);  // rightmost is n
-    {
-      auto st = stack<int>();
-      for (auto i = 0; i < n; ++i) {
-        while (!st.empty() && heights[st.top()] > heights[i]) {
-          rights[st.top()] = i;  // right of the bar at the left is current index
-          st.pop();
-        }
-        st.push(i);
+    auto st = stack<State>();
+    st.push(State{0, 0});  // first sentinel
+    for (int i = 0; i <= n; ++i) {
+      int height = i < n ? heights[i] : 0;  // sentinel at i=n
+      int pos = i;
+
+      // Pop
+      while (st.top().height > height) {
+        maxArea = max(maxArea, st.top().height * (i - st.top().pos));
+        pos = st.top().pos;
+        st.pop();
+      }
+
+      // Push
+      if (st.top().height < height) {
+        st.push(State{height, pos});
       }
     }
 
-    // Left
-    auto lefts = vector<int>(n, 0);  // leftmost is 0
-    {
-      auto st = stack<int>();
-      for (auto i = n - 1; i >= 0; --i) {
-        while (!st.empty() && heights[st.top()] > heights[i]) {
-          lefts[st.top()] = i + 1;  // left of the bar at the right is current index + 1
-          st.pop();
-        }
-        st.push(i);
-      }
-    }
-
-    // Answer
-    auto ans = 0;
-    for (auto i = 0; i < n; ++i) {
-      ans = max(ans, heights[i] * (rights[i] - lefts[i]));
-    }
-
-    return ans;
+    return maxArea;
   }
 };

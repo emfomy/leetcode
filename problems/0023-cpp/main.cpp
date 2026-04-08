@@ -63,39 +63,43 @@ struct ListNode {
 
 // Heap
 //
-// Use a min heap to store the front node of the lists.
-// For each loop, pop the node, push into the result list,
-// and push its successor into the heap.
+// Use a min-heap for the head of the lists.
 class Solution {
   struct Comp {
-    bool operator()(const ListNode* a, const ListNode* b) {
+    bool operator()(ListNode* a, ListNode* b) {
       return !(a->val < b->val);  // min-heap
     }
   };
+
   using Heap = priority_queue<ListNode*, vector<ListNode*>, Comp>;
 
  public:
   ListNode* mergeKLists(const vector<ListNode*>& lists) {
-    ListNode dummy;  // dummy head
-
-    // Initialize the heap
+    // Init heap
     Heap heap;
     for (ListNode* node : lists) {
       if (node) heap.push(node);
     }
 
-    // Merge
+    // Loop
+    ListNode dummy;
     ListNode* tail = &dummy;
     while (!heap.empty()) {
       ListNode* node = heap.top();
       heap.pop();
 
+      // Push into new list
       tail->next = node;
-      tail = node;
+      tail = tail->next;
 
-      if (node->next) heap.push(node->next);
+      // Push next into heap
+      if (node->next) {
+        heap.push(node->next);
+      }
     }
-    tail->next = nullptr;  // clear end, no-op
+
+    // Clear end, no-op
+    tail->next = nullptr;
 
     return dummy.next;
   }

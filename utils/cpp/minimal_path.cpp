@@ -13,7 +13,7 @@ class Dijkstra {
 
   using Heap = priority_queue<Edge, vector<Edge>, greater<>>;  // min-heap
 
-  // Graph: from -> (to, weight) pairs
+  // Graph: from -> (weight, to) pairs
   int solve(const vector<vector<Edge>>& graph, int source, int target) {
     const int n = graph.size();
 
@@ -53,7 +53,7 @@ class DijkstraDense {
 
   using Heap = priority_queue<Edge, vector<Edge>, greater<>>;  // min-heap
 
-  // Graph: from -> (to, weight) pairs
+  // Graph: (from, to) -> weight, INT_MAX for no edge
   int solve(const vector<vector<int>>& graph, int source, int target) {
     const int n = graph.size();
 

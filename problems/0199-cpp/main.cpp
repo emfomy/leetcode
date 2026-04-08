@@ -45,6 +45,7 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+#include <queue>
 #include <stack>
 #include <utility>
 #include <vector>
@@ -64,25 +65,25 @@ struct TreeNode {
 class Solution {
  public:
   vector<int> rightSideView(TreeNode *root) {
-    // Edge case
-    if (root == nullptr) return {};
+    // Trivial case
+    if (!root) return {};
 
     // Prepare
+    auto next = vector<TreeNode *>();
     auto curr = vector<TreeNode *>();
-    auto prev = vector<TreeNode *>();
     curr.push_back(root);
 
     // Loop
     auto ans = vector<int>();
     while (!curr.empty()) {
-      swap(prev, curr);
-      curr.clear();
+      ans.push_back(curr.back()->val);
 
-      ans.push_back(prev.front()->val);
-      for (auto node : prev) {
-        if (node->right) curr.push_back(node->right);
-        if (node->left) curr.push_back(node->left);
+      next.clear();
+      for (TreeNode *node : curr) {
+        if (node->left) next.push_back(node->left);
+        if (node->right) next.push_back(node->right);
       }
+      swap(curr, next);
     }
 
     return ans;
@@ -91,24 +92,29 @@ class Solution {
 
 // DFS (Stack)
 class Solution2 {
+  struct State {
+    TreeNode *node;
+    int depth;
+  };
+
  public:
   vector<int> rightSideView(TreeNode *root) {
-    // Edge case
-    if (root == nullptr) return {};
+    // Trivial case
+    if (!root) return {};
 
     // Prepare
-    auto st = stack<pair<TreeNode *, int>>();  // node, level
-    st.push({root, 1});
+    auto st = stack<State>();
+    st.emplace(root, 0);
 
     // Loop
     auto ans = vector<int>();
     while (!st.empty()) {
-      auto [node, level] = st.top();
+      auto [node, depth] = st.top();
       st.pop();
 
-      if (ans.size() < level) ans.push_back(node->val);
-      if (node->left) st.push({node->left, level + 1});
-      if (node->right) st.push({node->right, level + 1});
+      if (depth == ans.size()) ans.push_back(node->val);
+      if (node->left) st.emplace(node->left, depth + 1);
+      if (node->right) st.emplace(node->right, depth + 1);
     }
 
     return ans;

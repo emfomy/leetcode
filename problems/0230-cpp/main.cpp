@@ -44,32 +44,36 @@ struct TreeNode {
   TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
 };
 
-// Stack + State
+// Iteration + Stack
 //
-// Traverse
+// Use in-order traversal.
 class Solution {
+  struct State {
+    TreeNode *root;
+    bool seen;
+  };
+
  public:
   int kthSmallest(TreeNode *root, int k) {
-    // Prepare
-    auto st = stack<pair<TreeNode *, bool>>();  // node, seen
-    st.push({root, false});
-
-    int ans = 0;
-    while (k > 0) {
+    auto st = stack<State>();
+    st.push(State{root, false});
+    while (!st.empty()) {
       auto [node, seen] = st.top();
       st.pop();
 
-      if (node == nullptr) continue;
-      if (seen) {
-        ans = node->val;
-        --k;
-      } else {
-        st.push({node->right, false});
-        st.push({node, true});
-        st.push({node->left, false});
+      if (!node) continue;
+
+      if (!seen) {
+        st.push(State{node->right, false});
+        st.push(State{node, true});
+        st.push(State{node->left, false});
+        continue;
       }
+
+      --k;
+      if (k == 0) return node->val;
     }
 
-    return ans;
+    return 0;  // should not reach here
   }
 };
