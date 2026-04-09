@@ -56,132 +56,108 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+#include <algorithm>
 #include <climits>
-#include <functional>
 #include <queue>
 #include <vector>
 
 using namespace std;
 
-// BFS + Heap (Dijkstra)
+// Dijkstra
+//
+// Duplicate and stack the graph into k+2 layers.
+// Redirect the edge to the next layer.
 class Solution {
-  using Item = tuple<int, int, int>;  // cost, city, step
-  using Edge = pair<int, int>;        // to, price
+  using Edge = pair<int, int>;            // price, to
+  using DFSState = tuple<int, int, int>;  // cost, node, step
+
+  using Heap = priority_queue<DFSState, vector<DFSState>, greater<>>;  // min-heap
 
  public:
-  int findCheapestPrice(int n, vector<vector<int>>& flights, int src, int dst, int k) {
-    // Init graph
-    auto graph = vector(n, vector<Edge>());
-    for (auto& flight : flights) {
+  int findCheapestPrice(                   //
+      const int n,                         //
+      const vector<vector<int>>& flights,  //
+      const int src,                       //
+      const int dst,                       //
+      int k                                //
+  ) {
+    // Build graph
+    auto graph = vector<vector<Edge>>(n);
+    for (const auto& flight : flights) {
       int from = flight[0], to = flight[1], price = flight[2];
-      graph[from].push_back({to, price});
+      graph[from].push_back(Edge{price, to});
     }
 
-    // BFS
-    auto costs = vector(n, vector(k + 2, INT_MAX));  // (city, step) -> cost
+    // Prepare
+    auto costs = vector<vector<int>>(n, vector<int>(k + 2, INT_MAX));
+    Heap heap;
+    costs[src][0] = 0;
+    heap.push(DFSState{0, src, 0});
 
-    auto queue = priority_queue(greater(), std::move(vector<Item>()));  // min-heap
-    queue.push({0, src, 0});
+    // Loop
+    while (!heap.empty()) {
+      const auto [cost, from, step] = heap.top();
+      heap.pop();
 
-    while (!queue.empty()) {
-      auto [cost, city, step] = queue.top();
-      queue.pop();
+      // Early Stop
+      if (from == dst) return cost;
 
-      // Found
-      if (city == dst) return cost;
+      // Relax
+      if (costs[from][step] < cost || step == k + 1) continue;
 
-      // Visited
-      if (cost >= costs[city][step]) continue;
-      costs[city][step] = cost;
-
-      // No more step
-      if (step == k + 1) continue;
-
-      // Next step
-      auto nextStep = step + 1;
-      for (auto [next, price] : graph[city]) {
-        auto nextCost = cost + price;
-        if (nextCost >= costs[next][nextStep]) continue;
-        queue.push({nextCost, next, nextStep});
+      // Traversal
+      for (const auto [price, to] : graph[from]) {
+        int nextCost = cost + price;
+        if (costs[to][step + 1] <= nextCost) continue;
+        costs[to][step + 1] = nextCost;
+        heap.push(DFSState{nextCost, to, step + 1});
       }
     }
 
-    return -1;
-  }
-};
-
-// BFS + Queue
-class Solution2 {
-  using Edge = pair<int, int>;   // to, price
-  using Item = tuple<int, int>;  // cost, city
-
- public:
-  int findCheapestPrice(int n, vector<vector<int>>& flights, int src, int dst, int k) {
-    // Init graph
-    auto graph = vector(n, vector<Edge>());
-    for (auto& flight : flights) {
-      int from = flight[0], to = flight[1], price = flight[2];
-      graph[from].push_back({to, price});
-    }
-
-    // BFS
-    auto costs = vector(n, INT_MAX);  // city -> cost
-
-    auto currQueue = queue<Item>();
-    auto nextQueue = queue<Item>();
-    currQueue.push({0, src});
-
-    for (int step = 0; step <= k + 1; ++step) {
-      while (!currQueue.empty()) {
-        auto [cost, city] = currQueue.front();
-        currQueue.pop();
-
-        // Visited
-        if (cost >= costs[city]) continue;
-        costs[city] = cost;
-
-        // No more steps
-        if (step == k + 1) continue;
-
-        // Next step
-        for (auto [next, price] : graph[city]) {
-          auto nextCost = cost + price;
-          if (nextCost >= costs[next]) continue;
-          nextQueue.push({nextCost, next});
-        }
-      }
-
-      swap(currQueue, nextQueue);
-    }
-
-    return costs[dst] != INT_MAX ? costs[dst] : -1;
+    return -1;  // unreachable
   }
 };
 
 // Bellman-Ford
-class Solution3 {
-  constexpr static int kInf = INT_MAX / 2;
-
+//
+// Loop for at most k+1 steps.
+class Solution2 {
  public:
-  int findCheapestPrice(int n, const vector<vector<int>>& flights, int src, int dst, int k) {
-    auto currCosts = vector(n, kInf);
+  int findCheapestPrice(                   //
+      const int n,                         //
+      const vector<vector<int>>& flights,  //
+      const int src,                       //
+      const int dst,                       //
+      const int k                          //
+  ) {
+    // Prepare
+    auto prevCosts = vector<int>(n);
+    auto currCosts = vector<int>(n, INT_MAX);
     currCosts[src] = 0;
 
-    for (int step = 0; step <= k; ++step) {
-      auto nextCosts = currCosts;  // copy, avoid racing
+    // Loop
+    for (int stop = 0; stop <= k; ++stop) {
       bool updated = false;
+
+      // Copy, avoid racing
+      copy(currCosts.begin(), currCosts.end(), prevCosts.begin());
+
+      // Loop
       for (const auto& flight : flights) {
         int from = flight[0], to = flight[1], price = flight[2];
-        int nextCost = currCosts[from] + price;
-        if (nextCosts[to] > nextCost) {
-          nextCosts[to] = nextCost;
+        if (prevCosts[from] == INT_MAX) continue;
+
+        int nextCost = prevCosts[from] + price;
+        if (currCosts[to] > nextCost) {
+          currCosts[to] = nextCost;
           updated = true;
         }
       }
+
+      // Early Stop
       if (!updated) break;
-      swap(currCosts, nextCosts);
     }
 
-    return currCosts[dst] >= kInf ? -1 : currCosts[dst];
+    return currCosts[dst] == INT_MAX ? -1 : currCosts[dst];
   }
 };

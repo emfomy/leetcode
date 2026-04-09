@@ -44,153 +44,85 @@
 
 #include <algorithm>
 #include <climits>
-#include <functional>
 #include <queue>
 #include <vector>
 
 using namespace std;
 
-// BFS + Heap (Dijkstra), O(E logN)
+// Bellman-Ford
 class Solution {
-  struct Edge {
-    int dest;    // dest node
-    int weight;  // edge weight
-  };
-
-  using HeapItem = pair<int, int>;  // cost, node
-
  public:
-  int networkDelayTime(const vector<vector<int>>& times, const int n, int k) {
-    // Convert to 0-indexed
+  int networkDelayTime(const vector<vector<int>>& times, int n, int k) {
     --k;
+    if (n < 0 || k < 0 || k >= n) return -1;
 
-    // Guard
-    if (n <= 0 || k < 0 || k >= n) return -1;
+    auto costs = vector<int>(n, INT_MAX);
+    costs[k] = 0;
 
-    // Init Graph
-    auto graph = vector(n, vector<Edge>());
-    for (const auto& edge : times) {
-      const int u = edge[0] - 1, v = edge[1] - 1, w = edge[2];
-      graph[u].push_back({v, w});
+    for (int iter = 0; iter < n - 1; ++iter) {
+      bool updated = false;
+
+      for (const vector<int>& edge : times) {
+        int u = edge[0] - 1, v = edge[1] - 1, w = edge[2];
+        if (costs[u] == INT_MAX) continue;
+        int nextCost = costs[u] + w;
+        if (costs[v] > nextCost) {
+          costs[v] = nextCost;
+          updated = true;
+        }
+      }
+
+      // Early Stop
+      if (!updated) break;
     }
 
-    // BFS
-    auto heap = priority_queue<HeapItem, vector<HeapItem>, greater<HeapItem>>();  // min-heap
-    auto costs = vector<int>(n, INT_MAX);                                         // min-cost for all nodes
-    heap.emplace(0, k);
+    int maxDelay = *max_element(costs.cbegin(), costs.cend());
+    return maxDelay == INT_MAX ? -1 : maxDelay;
+  }
+};
+
+// Dijkstra
+class Solution2 {
+  using Edge = pair<int, int>;   // weight, node
+  using State = pair<int, int>;  // cost, node
+
+  using Heap = priority_queue<State, vector<State>, greater<>>;  // min-heap
+
+ public:
+  int networkDelayTime(const vector<vector<int>>& times, int n, int k) {
+    --k;
+    if (n < 0 || k < 0 || k >= n) return -1;
+
+    // Build graph
+    auto graph = vector<vector<Edge>>(n);
+    for (const vector<int>& edge : times) {
+      int u = edge[0] - 1, v = edge[1] - 1, w = edge[2];
+      graph[u].push_back(Edge{w, v});
+    }
+
+    // Loop
+    auto costs = vector<int>(n, INT_MAX);
+    Heap heap;
     costs[k] = 0;
+    heap.push(State{0, k});
+
     while (!heap.empty()) {
-      auto [cost, node] = heap.top();
+      const auto [cost, u] = heap.top();
       heap.pop();
 
       // Relax
-      if (costs[node] < cost) continue;
+      if (costs[u] < cost) continue;
 
       // Traversal
-      for (auto [nextNode, weight] : graph[node]) {
-        int nextCost = cost + weight;
-        if (costs[nextNode] <= nextCost) continue;  // Relax
-        costs[nextNode] = nextCost;
-        heap.emplace(nextCost, nextNode);
+      for (const auto [w, v] : graph[u]) {
+        int nextCost = cost + w;
+        if (costs[v] <= nextCost) continue;  // relax
+        costs[v] = nextCost;
+        heap.push(State{nextCost, v});
       }
     }
 
-    // Answer
-    int maxCost = *max_element(costs.cbegin(), costs.cend());
-    return maxCost == INT_MAX ? -1 : maxCost;
-  }
-};
-
-// Floyd–Warshall, O(N^3)
-class Solution2 {
-  constexpr static int kInf = INT_MAX / 2;
-
- public:
-  int networkDelayTime(const vector<vector<int>>& times, const int n, int k) {
-    // Convert to 0-indexed
-    --k;
-
-    // Guard
-    if (n <= 0 || k < 0 || k >= n) return -1;
-
-    // Init Graph
-    auto graph = vector(n, vector<int>(n, kInf));
-    for (auto u = 0; u < n; ++u) {
-      graph[u][u] = 0;
-    }
-    for (const auto& edge : times) {
-      const int u = edge[0] - 1, v = edge[1] - 1, w = edge[2];
-      graph[u][v] = min(graph[u][v], w);
-    }
-
-    // Floyd–Warshall
-    for (int i = 0; i < n; ++i) {
-      for (int u = 0; u < n; ++u) {
-        for (int v = 0; v < n; ++v) {
-          graph[u][v] = min(graph[u][v], graph[u][i] + graph[i][v]);
-        }
-      }
-    }
-
-    // Answer
-    int maxCost = *max_element(graph[k].cbegin(), graph[k].cend());
-    return maxCost >= kInf ? -1 : maxCost;
-  }
-};
-
-// BFS (Dense Dijkstra), O(N^2), used when E ~= N^2
-class Solution3 {
-  constexpr static int kInf = INT_MAX / 2;
-
- public:
-  int networkDelayTime(const vector<vector<int>>& times, const int n, int k) {
-    // Convert to 0-indexed
-    --k;
-
-    // Guard
-    if (n <= 0 || k < 0 || k >= n) return -1;
-
-    // Init Graph
-    auto graph = vector(n, vector<int>(n, kInf));
-    for (auto u = 0; u < n; ++u) {
-      graph[u][u] = 0;
-    }
-    for (const auto& edge : times) {
-      const int u = edge[0] - 1, v = edge[1] - 1, w = edge[2];
-      graph[u][v] = min(graph[u][v], w);
-    }
-
-    // BFS
-    auto costs = vector<int>(n, kInf);
-    auto dones = vector<bool>(n, false);
-    costs[k] = 0;
-    for (int step = 0; step < n; ++step) {
-      // Find minimal non-finished node
-      int u = -1;
-      int cost = kInf;
-      for (int i = 0; i < n; ++i) {
-        if (!dones[i] && costs[i] < cost) {
-          u = i;
-          cost = costs[i];
-        }
-      }
-
-      // Guard
-      if (u == -1) break;
-
-      // Update
-      dones[u] = true;
-
-      // Traversal
-      for (int v = 0; v < n; ++v) {
-        if (!dones[v]) {
-          costs[v] = min(costs[v], costs[u] + graph[u][v]);
-        }
-      }
-    }
-
-    // Answer
-    int maxCost = *max_element(costs.cbegin(), costs.cend());
-    return maxCost >= kInf ? -1 : maxCost;
+    int maxDelay = *max_element(costs.cbegin(), costs.cend());
+    return maxDelay == INT_MAX ? -1 : maxDelay;
   }
 };

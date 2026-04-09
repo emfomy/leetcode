@@ -9,9 +9,10 @@ using namespace std;
 // Dijkstra, O(E logV)
 // Sparse, Single Source, No Negative Cycle
 class Dijkstra {
-  using Edge = pair<int, int>;  // weight, node
+  using Edge = pair<int, int>;   // weight, node
+  using State = pair<int, int>;  // cost, node
 
-  using Heap = priority_queue<Edge, vector<Edge>, greater<>>;  // min-heap
+  using Heap = priority_queue<State, vector<State>, greater<>>;  // min-heap
 
   // Graph: from -> (weight, to) pairs
   int solve(const vector<vector<Edge>>& graph, int source, int target) {
@@ -21,7 +22,7 @@ class Dijkstra {
     auto costs = vector<int>(n, INT_MAX);
     Heap heap;
     costs[source] = 0;
-    heap.emplace(0, source);
+    heap.push(State{0, source});
 
     while (!heap.empty()) {
       auto [cost, node] = heap.top();
@@ -38,7 +39,7 @@ class Dijkstra {
         int nextCost = cost + weight;
         if (costs[nextNode] <= nextCost) continue;  // Relax
         costs[nextNode] = nextCost;
-        heap.emplace(nextCost, nextNode);
+        heap.push(State{nextCost, nextNode});
       }
     }
 
@@ -49,9 +50,9 @@ class Dijkstra {
 // Dense Dijkstra, O(V^2)
 // Dense, Single Source, No Negative Cycle
 class DijkstraDense {
-  using Edge = pair<int, int>;  // weight, node
+  using State = pair<int, int>;  // cost, node
 
-  using Heap = priority_queue<Edge, vector<Edge>, greater<>>;  // min-heap
+  using Heap = priority_queue<State, vector<State>, greater<>>;  // min-heap
 
   // Graph: (from, to) -> weight, INT_MAX for no edge
   int solve(const vector<vector<int>>& graph, int source, int target) {
@@ -62,7 +63,7 @@ class DijkstraDense {
     auto dones = vector<bool>(n, false);
     costs[source] = 0;
 
-    for (int iter = 0; iter < n - 1; ++iter) {  // at most n-1 steps to finalize all nodes
+    for (int iter = 0; iter < n - 1; ++iter) {  // at most n-1 steps to reach target
       // Find nearest non-finished node
       int u = -1;
       int cost = INT_MAX;
