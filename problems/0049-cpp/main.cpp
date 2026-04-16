@@ -4,28 +4,39 @@
 // Author: Mu Yang <http://muyang.pro>
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-// Given two strings `s` and `t`, return `true` if `t` is an **anagram** of `s`, and `false` otherwise.
+// Given an array of strings `strs`, group the **anagrams** together. You can return the answer in **any order**.
 //
 // **Example 1:**
 //
-// ```
-// Input: s = "anagram", t = "nagaram"
-// Output: true
-// ```
+// Input: strs = ["eat","tea","tan","ate","nat","bat"]
+//
+// Output: [["bat"],["nat","tan"],["ate","eat","tea"]]
+//
+// Explanation:
+//
+// - There is no string in strs that can be rearranged to form `"bat"`.
+// - The strings `"nat"` and `"tan"` are anagrams as they can be rearranged to form each other.
+// - The strings `"ate"`, `"eat"`, and `"tea"` are anagrams as they can be rearranged to form each other.
 //
 // **Example 2:**
 //
 // ```
-// Input: s = "rat", t = "car"
-// Output: false
+// Input: strs = [""]
+// Output: [[""]]
+// ```
+//
+// **Example 3:**
+//
+// ```
+// Input: strs = ["a"]
+// Output: [["a"]]
 // ```
 //
 // **Constraints:**
 //
-// - `1 <= s.length, t.length <= 5 * 10^4`
-// - `s` and `t` consist of lowercase English letters.
-//
-// **Follow up:** What if the inputs contain Unicode characters? How would you adapt your solution to such a case?
+// - `1 <= strs.length <= 10^4`
+// - `0 <= strs[i].length <= 100`
+// - `strs[i]` consists of lowercase English letters.
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -38,14 +49,16 @@ using namespace std;
 // Use sort + hashmap
 class Solution {
  public:
-  vector<vector<string>> groupAnagrams(vector<string>& strs) {
+  vector<vector<string>> groupAnagrams(const vector<string>& strs) {
+    // Grouping
     unordered_map<string, vector<string>> groups;
-    for (auto& str : strs) {
-      auto key = str;
+    for (const string& str : strs) {
+      string key = str;
       sort(key.begin(), key.end());
       groups[key].push_back(str);
     }
 
+    // Output groups
     vector<vector<string>> ans;
     for (auto& [_, vals] : groups) {
       ans.push_back(vals);

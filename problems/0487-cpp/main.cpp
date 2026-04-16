@@ -41,46 +41,34 @@
 
 using namespace std;
 
-// Use DP
+// DP
 //
-// DP0 is the maximum number of consecutive 1 without flipping
-// DP1 is the maximum number of consecutive 1 with flipping
+// Let DP0 be the max count without flip.
+// Let DP1 be the max count with flip.
+//
+// If nums[i] = 0:
+// DP0[i] = 0
+// DP1[i] = DP0[i-1]+1
+//
+// If nums[i] = 1:
+// DP0[i] = DP0[i-1]+1
+// DP1[i] = DP1[i-1]+1
 class Solution {
  public:
   int findMaxConsecutiveOnes(vector<int>& nums) {
-    auto ans = 0;
-    auto fp0 = 0, fp1 = 0;
-    for (auto curr : nums) {
-      if (curr == 1) {
-        ++fp0;
-        ++fp1;
+    int count0 = 0, count1 = 0;
+    int maxCount = 0;
+    for (int num : nums) {
+      if (num == 0) {
+        count1 = count0 + 1;
+        count0 = 0;
       } else {
-        fp1 = fp0 + 1;
-        fp0 = 0;
+        ++count0;
+        ++count1;
       }
-      ans = max({ans, fp0, fp1});
+      maxCount = max({maxCount, count0, count1});
     }
 
-    return ans;
-  }
-};
-
-// Tracking current and previous consecutive 1's.
-class Solution2 {
- public:
-  int findMaxConsecutiveOnes(vector<int>& nums) {
-    auto ans = 0;
-    auto prev = -1, curr = 0;
-    for (auto num : nums) {
-      if (num == 1) {
-        ++curr;
-      } else {
-        prev = curr;
-        curr = 0;
-      }
-      ans = max(ans, curr + prev + 1);  // current + previous + flipped
-    }
-
-    return ans;
+    return maxCount;
   }
 };

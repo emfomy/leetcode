@@ -36,6 +36,8 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 #include <algorithm>
+#include <climits>
+#include <cmath>
 #include <vector>
 
 using namespace std;
@@ -69,43 +71,45 @@ class Solution {
 class Solution2 {
  public:
   double findMedianSortedArrays(vector<int>& nums1, vector<int>& nums2) {
-    int n1 = nums1.size();
-    int n2 = nums2.size();
-    int n = n1 + n2;
-    int half = (n + 1) / 2;  // ensure left part is larger
+    int n1 = nums1.size(), n2 = nums2.size();
+    const int n = n1 + n2;
+    const int half = (n + 1) / 2;  // ensure left part is larger
 
-    const int INF = 1e7;
-
-    // WLOG, assume n1 < n2
+    // WLOG, assume n1 <= n2
     if (n1 > n2) {
       swap(n1, n2);
       swap(nums1, nums2);
     }
 
-    // Binary search
-    auto lo = 0, hi = n1 + 1;  // [0, n1] unknown
+    // Binary search on split point of nums1
+    int lo = 0, hi = n1 + 1;  // unknown range [0, n1]
     while (lo < hi) {
-      auto mid1 = lo + (hi - lo) / 2;
-      auto mid2 = half - mid1;
+      // Split points
+      int mid1 = lo + (hi - lo) / 2;
+      int mid2 = half - mid1;
 
-      auto left1 = (mid1 <= 0) ? -INF : nums1[mid1 - 1];
-      auto left2 = (mid2 <= 0) ? -INF : nums2[mid2 - 1];
-      auto right1 = (mid1 >= n1) ? INF : nums1[mid1];
-      auto right2 = (mid2 >= n2) ? INF : nums2[mid2];
+      // Values around split points
+      int left1 = (mid1 == 0) ? INT_MIN : nums1[mid1 - 1];
+      int left2 = (mid2 == 0) ? INT_MIN : nums2[mid2 - 1];
+      int right1 = (mid1 == n1) ? INT_MAX : nums1[mid1];
+      int right2 = (mid2 == n2) ? INT_MAX : nums2[mid2];
 
+      // Found valid split
       if (left1 <= right2 && left2 <= right1) {
-        auto left = max(left1, left2);
-        auto right = min(right1, right2);
-        return (n % 2) ? left : double(left + right) / 2;
+        if (n % 2) {  // Odd size
+          return max(left1, left2);
+        } else {  // Even size
+          return (max(left1, left2) + min(right1, right2)) / 2.0;
+        }
       }
 
-      if (left1 > right2) {
-        hi = mid1;  // [0, mid)
-      } else {
-        lo = mid1 + 1;  // [mid+1, hi)
+      if (left1 > right2) {  // mid1 too right
+        hi = mid1;
+      } else {  // mid1 too left
+        lo = mid1 + 1;
       }
     }
 
-    return {};  // unreachable
+    return NAN;  // unreachable
   }
 };

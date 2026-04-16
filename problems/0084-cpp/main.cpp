@@ -44,8 +44,8 @@ using namespace std;
 // We loop the bars from the left.
 // If the new bar is shorter than the top height,
 // then pop it and compute the maximum rectangle,
-// and then push the new bar height with the previous top position.
-// Next push the new bar if it is taller than the top height.
+// and then push the new bar height with the previous top position (since it can reach this far)
+// We only push the new bar if it is taller than the top height.
 class Solution {
   struct State {
     int height;

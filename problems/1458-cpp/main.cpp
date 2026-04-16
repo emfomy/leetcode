@@ -41,6 +41,7 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+#include <climits>
 #include <vector>
 
 using namespace std;
@@ -50,26 +51,28 @@ using namespace std;
 // It is similar to sequence alignment algorithm.
 // We use the product of any number as the weight.
 //
-// Let W[i, j] = Num1[i] * Num2[j].
+// Let P[i, j] = Num1[i] * Num2[j].
 // Let DP[i, j] be the maximum inner product of the any non-empty subsequences of nums1[:i] and nums2[:j].
 //
 // DP[i, j] = max(
-//   W[i, j],               // start from here, for the non-empty constraint
-//   DP[i-1, j-1] + W[i, j] // pick current numbers to extend
+//   P[i, j],               // start from here, for the non-empty constraint
+//   DP[i-1, j-1] + P[i, j] // pick current numbers to extend
 //   DP[i-1, j], DP[i, j-1] // ignore either of current number
 // )
 class Solution {
+  constexpr static int kNInf = INT_MIN / 2;
+
  public:
-  int maxDotProduct(vector<int>& nums1, vector<int>& nums2) {
+  int maxDotProduct(const vector<int>& nums1, const vector<int>& nums2) {
     int m = nums1.size(), n = nums2.size();
-    auto dp = vector(m + 1, vector(n + 1, int(-1e8)));  // use -1e8 to avoid empty subsequence
+    auto dp = vector(m + 1, vector(n + 1, kNInf));
 
     for (auto i = m - 1; i >= 0; --i) {
       for (auto j = n - 1; j >= 0; --j) {
-        auto w = nums1[i] * nums2[j];
+        int p = nums1[i] * nums2[j];
         dp[i][j] = max({
-            w,
-            dp[i + 1][j + 1] + w,
+            p,
+            dp[i + 1][j + 1] + p,
             dp[i + 1][j],
             dp[i][j + 1],
         });
@@ -81,32 +84,22 @@ class Solution {
 };
 
 // 1D-DP
-//
-// It is similar to sequence alignment algorithm.
-// We use the product of any number as the weight.
-//
-// Let W[i, j] = Num1[i] * Num2[j].
-// Let DP[i, j] be the maximum inner product of the any non-empty subsequences of nums1[:i] and nums2[:j].
-//
-// DP[i, j] = max(
-//   W[i, j],               // start from here, for the non-empty constraint
-//   DP[i-1, j-1] + W[i, j] // pick current numbers to extend
-//   DP[i-1, j], DP[i, j-1] // ignore either of current number
-// )
 class Solution2 {
+  constexpr static int kNInf = INT_MIN / 2;
+
  public:
-  int maxDotProduct(vector<int>& nums1, vector<int>& nums2) {
+  int maxDotProduct(const vector<int>& nums1, const vector<int>& nums2) {
     int m = nums1.size(), n = nums2.size();
-    auto curr = vector(n + 1, int(-1e8));  // use -1e8 to avoid empty subsequence
-    auto prev = vector(n + 1, int(-1e8));
+    auto curr = vector(n + 1, kNInf);
+    auto prev = vector(n + 1, kNInf);
 
     for (auto i = m - 1; i >= 0; --i) {
       swap(curr, prev);
       for (auto j = n - 1; j >= 0; --j) {
-        auto w = nums1[i] * nums2[j];
+        int p = nums1[i] * nums2[j];
         curr[j] = max({
-            w,
-            prev[j + 1] + w,
+            p,
+            prev[j + 1] + p,
             prev[j],
             curr[j + 1],
         });

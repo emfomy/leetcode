@@ -121,7 +121,7 @@ class Solution {
     // Concatenation
     string ans = "";
     ans.reserve(n);
-    for (auto& substr : substrs) {
+    for (const string& substr : substrs) {
       ans += substr;
     }
 

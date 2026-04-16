@@ -11,7 +11,7 @@ LeetCode Problems' Solutions
 | 4 | [Median of Two Sorted Arrays](https://leetcode.com/problems/median-of-two-sorted-arrays) | [C++](problems/0004-cpp/main.cpp) [Go](problems/0004-go/main.go) [Python](problems/0004-py/main.py) | Hard |
 | 5 | [Longest Palindromic Substring](https://leetcode.com/problems/longest-palindromic-substring) | [C++](problems/0005-cpp/main.cpp) [Go](problems/0005-go/main.go) [Python](problems/0005-py/main.py) | Medium |
 | 6 | [ZigZag Conversion](https://leetcode.com/problems/zigzag-conversion) | [Go](problems/0006-go/main.go) [Python](problems/0006-py/main.py) | Medium |
-| 7 | [Reverse Integer](https://leetcode.com/problems/reverse-integer) | [Python](problems/0007-py/main.py) | Easy |
+| 7 | [Reverse Integer](https://leetcode.com/problems/reverse-integer) | [C++](problems/0007-cpp/main.cpp) [Python](problems/0007-py/main.py) | Medium |
 | 8 | [String to Integer (atoi)](https://leetcode.com/problems/string-to-integer-atoi) | [Python](problems/0008-py/main.py) | Medium |
 | 9 | [Palindrome Number](https://leetcode.com/problems/palindrome-number) | [C++](problems/0009-cpp/main.cpp) [Python](problems/0009-py/main.py) | Easy |
 | 10 | [Regular Expression Matching](https://leetcode.com/problems/regular-expression-matching) | [Python](problems/0010-py/main.py) | Hard |
@@ -36,7 +36,7 @@ LeetCode Problems' Solutions
 | 29 | [Divide Two Integers](https://leetcode.com/problems/divide-two-integers) | [Go](problems/0029-go/main.go) | Medium |
 | 30 | [Substring with Concatenation of All Words](https://leetcode.com/problems/substring-with-concatenation-of-all-words) | [C++](problems/0030-cpp/main.cpp) [Go](problems/0030-go/main.go) | Hard |
 | 31 | [Next Permutation](https://leetcode.com/problems/next-permutation) | [C++](problems/0031-cpp/main.cpp) | Medium |
-| 32 | [Longest Valid Parentheses](https://leetcode.com/problems/longest-valid-parentheses) | [Python](problems/0032-py/main.py) | Hard |
+| 32 | [Longest Valid Parentheses](https://leetcode.com/problems/longest-valid-parentheses) | [C++](problems/0032-cpp/main.cpp) [Python](problems/0032-py/main.py) | Hard |
 | 33 | [Search in Rotated Sorted Array](https://leetcode.com/problems/search-in-rotated-sorted-array) | [C++](problems/0033-cpp/main.cpp) [Python](problems/0033-py/main.py) | Medium |
 | 34 | [Find First and Last Position of Element in Sorted Array](https://leetcode.com/problems/find-first-and-last-position-of-element-in-sorted-array) | [C++](problems/0034-cpp/main.cpp) [Go](problems/0034-go/main.go) | Medium |
 | 35 | [Search Insert Position](https://leetcode.com/problems/search-insert-position) | [C++](problems/0035-cpp/main.cpp) | Easy |
@@ -45,7 +45,7 @@ LeetCode Problems' Solutions
 | 39 | [Combination Sum](https://leetcode.com/problems/combination-sum) | [Go](problems/0039-go/main.go) [Python](problems/0039-py/main.py) | Medium |
 | 40 | [Combination Sum II](https://leetcode.com/problems/combination-sum-ii) | [Go](problems/0040-go/main.go) | Medium |
 | 41 | [First Missing Positive](https://leetcode.com/problems/first-missing-positive) | [C++](problems/0041-cpp/main.cpp) [Python](problems/0041-py/main.py) | Hard |
-| 42 | [Trapping Rain Water](https://leetcode.com/problems/trapping-rain-water) | [Go](problems/0042-go/main.go) [Python](problems/0042-py/main.py) | Hard |
+| 42 | [Trapping Rain Water](https://leetcode.com/problems/trapping-rain-water) | [C++](problems/0042-cpp/main.cpp) [Go](problems/0042-go/main.go) [Python](problems/0042-py/main.py) | Hard |
 | 43 | [Multiply Strings](https://leetcode.com/problems/multiply-strings) | [C++](problems/0043-cpp/main.cpp) | Medium |
 | 44 | [Wildcard Matching](https://leetcode.com/problems/wildcard-matching) | [Go](problems/0044-go/main.go) | Hard |
 | 45 | [Jump Game II](https://leetcode.com/problems/jump-game-ii) | [Go](problems/0045-go/main.go) [Python](problems/0045-py/main.py) | Hard |
@@ -90,6 +90,7 @@ LeetCode Problems' Solutions
 | 85 | [Maximal Rectangle](https://leetcode.com/problems/maximal-rectangle) | [C++](problems/0085-cpp/main.cpp) [Python](problems/0085-py/main.py) | Hard |
 | 86 | [Partition List](https://leetcode.com/problems/partition-list) | [C++](problems/0086-cpp/main.cpp) [Go](problems/0086-go/main.go) | Medium |
 | 88 | [Merge Sorted Array](https://leetcode.com/problems/merge-sorted-array) | [C++](problems/0088-cpp/main.cpp) [Go](problems/0088-go/main.go) [Python](problems/0088-py/main.py) | Medium |
+| 89 | [Gray Code](https://leetcode.com/problems/gray-code) | [C++](problems/0089-cpp/main.cpp) | Medium |
 | 91 | [Decode Ways](https://leetcode.com/problems/decode-ways) | [Go](problems/0091-go/main.go) | Medium |
 | 92 | [Reverse Linked List II](https://leetcode.com/problems/reverse-linked-list-ii) | [C++](problems/0092-cpp/main.cpp) [Go](problems/0092-go/main.go) | Medium |
 | 93 | [Restore IP Addresses](https://leetcode.com/problems/restore-ip-addresses) | [C++](problems/0093-cpp/main.cpp) | Medium |
@@ -112,8 +113,8 @@ LeetCode Problems' Solutions
 | 114 | [Flatten Binary Tree to Linked List](https://leetcode.com/problems/flatten-binary-tree-to-linked-list) | [C++](problems/0114-cpp/main.cpp) [Go](problems/0114-go/main.go) [Python](problems/0114-py/main.py) | Medium |
 | 116 | [Populating Next Right Pointers in Each Node](https://leetcode.com/problems/populating-next-right-pointers-in-each-node) | [C++](problems/0116-cpp/main.cpp) | Medium |
 | 117 | [Populating Next Right Pointers in Each Node II](https://leetcode.com/problems/populating-next-right-pointers-in-each-node-ii) | [Python](problems/0117-py/main.py) | Medium |
-| 118 | [Pascal's Triangle](https://leetcode.com/problems/pascals-triangle) | [Go](problems/0118-go/main.go) | Easy |
-| 119 | [Pascal's Triangle II](https://leetcode.com/problems/pascals-triangle-ii) | [Go](problems/0119-go/main.go) | Easy |
+| 118 | [Pascal's Triangle](https://leetcode.com/problems/pascals-triangle) | [C++](problems/0118-cpp/main.cpp) [Go](problems/0118-go/main.go) | Easy |
+| 119 | [Pascal's Triangle II](https://leetcode.com/problems/pascals-triangle-ii) | [C++](problems/0119-cpp/main.cpp) [Go](problems/0119-go/main.go) | Easy |
 | 120 | [Triangle](https://leetcode.com/problems/triangle) | [C++](problems/0120-cpp/main.cpp) [Go](problems/0120-go/main.go) | Medium |
 | 121 | [Best Time to Buy and Sell Stock](https://leetcode.com/problems/best-time-to-buy-and-sell-stock) | [C++](problems/0121-cpp/main.cpp) [Go](problems/0121-go/main.go) [Python](problems/0121-py/main.py) | Easy |
 | 122 | [Best Time to Buy and Sell Stock II](https://leetcode.com/problems/best-time-to-buy-and-sell-stock-ii) | [C++](problems/0122-cpp/main.cpp) [Go](problems/0122-go/main.go) [Python](problems/0122-py/main.py) | Medium |
@@ -145,6 +146,7 @@ LeetCode Problems' Solutions
 | 155 | [Min Stack](https://leetcode.com/problems/min-stack) | [C++](problems/0155-cpp/main.cpp) | Medium |
 | 160 | [Intersection of Two Linked Lists](https://leetcode.com/problems/intersection-of-two-linked-lists) | [C++](problems/0160-cpp/main.cpp) [Go](problems/0160-go/main.go) | Easy |
 | 162 | [Find Peak Element](https://leetcode.com/problems/find-peak-element) | [C++](problems/0162-cpp/main.cpp) | Medium |
+| 163 | [Missing Ranges](https://leetcode.com/problems/missing-ranges) | [C++](problems/0163-cpp/main.cpp) | Easy |
 | 165 | [Compare Version Numbers](https://leetcode.com/problems/compare-version-numbers) | [C++](problems/0165-cpp/main.cpp) [Go](problems/0165-go/main.go) | Medium |
 | 166 | [Fraction to Recurring Decimal](https://leetcode.com/problems/fraction-to-recurring-decimal) | [C++](problems/0166-cpp/main.cpp) | Medium |
 | 167 | [Two Sum II - Input Array Is Sorted](https://leetcode.com/problems/two-sum-ii-input-array-is-sorted) | [Go](problems/0167-go/main.go) [Python](problems/0167-py/main.py) | Medium |
@@ -165,7 +167,7 @@ LeetCode Problems' Solutions
 | 205 | [Isomorphic Strings](https://leetcode.com/problems/isomorphic-strings) | [C++](problems/0205-cpp/main.cpp) | Easy |
 | 206 | [Reverse Linked List](https://leetcode.com/problems/reverse-linked-list) | [C++](problems/0206-cpp/main.cpp) [Go](problems/0206-go/main.go) | Easy |
 | 207 | [Course Schedule](https://leetcode.com/problems/course-schedule) | [C++](problems/0207-cpp/main.cpp) [Go](problems/0207-go/main.go) | Medium |
-| 208 | [Implement Trie (Prefix Tree)](https://leetcode.com/problems/implement-trie-prefix-tree) | [Go](problems/0208-go/main.go) | Medium |
+| 208 | [Implement Trie (Prefix Tree)](https://leetcode.com/problems/implement-trie-prefix-tree) | [C++](problems/0208-cpp/main.cpp) [Go](problems/0208-go/main.go) | Medium |
 | 209 | [Minimum Size Subarray Sum](https://leetcode.com/problems/minimum-size-subarray-sum) | [C++](problems/0209-cpp/main.cpp) | Medium |
 | 210 | [Course Schedule II](https://leetcode.com/problems/course-schedule-ii) | [C++](problems/0210-cpp/main.cpp) [Go](problems/0210-go/main.go) | Medium |
 | 212 | [Word Search II](https://leetcode.com/problems/word-search-ii) | [C++](problems/0212-cpp/main.cpp) | Hard |
@@ -185,6 +187,7 @@ LeetCode Problems' Solutions
 | 230 | [Kth Smallest Element in a BST](https://leetcode.com/problems/kth-smallest-element-in-a-bst) | [C++](problems/0230-cpp/main.cpp) | Medium |
 | 231 | [Power of Two](https://leetcode.com/problems/power-of-two) | [C++](problems/0231-cpp/main.cpp) | Easy |
 | 232 | [Implement Queue using Stacks](https://leetcode.com/problems/implement-queue-using-stacks) | [C++](problems/0232-cpp/main.cpp) [Go](problems/0232-go/main.go) | Easy |
+| 233 | [Number of Digit One](https://leetcode.com/problems/number-of-digit-one) | [C++](problems/0233-cpp/main.cpp) | Hard |
 | 235 | [Lowest Common Ancestor of a Binary Search Tree](https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-search-tree) | [C++](problems/0235-cpp/main.cpp) [Go](problems/0235-go/main.go) | Medium |
 | 236 | [Lowest Common Ancestor of a Binary Tree](https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-tree) | [C++](problems/0236-cpp/main.cpp) [Go](problems/0236-go/main.go) [Python](problems/0236-py/main.py) | Medium |
 | 237 | [Delete Node in a Linked List](https://leetcode.com/problems/delete-node-in-a-linked-list) | [Go](problems/0237-go/main.go) | Medium |
@@ -198,7 +201,8 @@ LeetCode Problems' Solutions
 | 255 | [Verify Preorder Sequence in Binary Search Tree](https://leetcode.com/problems/verify-preorder-sequence-in-binary-search-tree) | [Go](problems/0255-go/main.go) | Medium |
 | 257 | [Binary Tree Paths](https://leetcode.com/problems/binary-tree-paths) | [C++](problems/0257-cpp/main.cpp) | Easy |
 | 259 | [3Sum Smaller](https://leetcode.com/problems/3sum-smaller) | [C++](problems/0259-cpp/main.cpp) | Medium |
-| 263 | [Ugly Number](https://leetcode.com/problems/ugly-number) | [Go](problems/0263-go/main.go) | Easy |
+| 261 | [Graph Valid Tree](https://leetcode.com/problems/graph-valid-tree) | [C++](problems/0261-cpp/main.cpp) | Medium |
+| 263 | [Ugly Number](https://leetcode.com/problems/ugly-number) | [C++](problems/0263-cpp/main.cpp) [Go](problems/0263-go/main.go) | Easy |
 | 264 | [Ugly Number](https://leetcode.com/problems/ugly-number) | [Go](problems/0264-go/main.go) | Easy |
 | 266 | [Palindrome Permutation](https://leetcode.com/problems/palindrome-permutation) | [C++](problems/0266-cpp/main.cpp) | Easy |
 | 268 | [Missing Number](https://leetcode.com/problems/missing-number) | [Go](problems/0268-go/main.go) | Easy |
@@ -245,6 +249,7 @@ LeetCode Problems' Solutions
 | 349 | [Intersection of Two Arrays](https://leetcode.com/problems/intersection-of-two-arrays) | [C++](problems/0349-cpp/main.cpp) | Easy |
 | 352 | [Data Stream as Disjoint Intervals](https://leetcode.com/problems/data-stream-as-disjoint-intervals) | [C++](problems/0352-cpp/main.cpp) | Hard |
 | 353 | [Design Snake Game](https://leetcode.com/problems/logger-rate-limiter) | [Go](problems/0353-go/main.go) | Medium |
+| 355 | [Design Twitter](https://leetcode.com/problems/design-twitter) | [C++](problems/0355-cpp/main.cpp) | Medium |
 | 358 | [Rearrange String k Distance Apart](https://leetcode.com/problems/rearrange-string-k-distance-apart) | [C++](problems/0358-cpp/main.cpp) | Hard |
 | 359 | [Logger Rate Limiter](https://leetcode.com/problems/logger-rate-limiter) | [Go](problems/0359-go/main.go) | Easy |
 | 361 | [Bomb Enemy](https://leetcode.com/problems/bomb-enemy) | [Go](problems/0361-go/main.go) | Medium |
@@ -252,10 +257,12 @@ LeetCode Problems' Solutions
 | 364 | [Nested List Weight Sum II](https://leetcode.com/problems/nested-list-weight-sum-ii) | [C++](problems/0364-cpp/main.cpp) | Medium |
 | 368 | [Largest Divisible Subset](https://leetcode.com/problems/largest-divisible-subset) | [Go](problems/0368-go/main.go) | Medium |
 | 370 | [Range Addition](https://leetcode.com/problems/range-addition) | [C++](problems/0370-cpp/main.cpp) | Medium |
+| 371 | [Sum of Two Integers](https://leetcode.com/problems/sum-of-two-integers) | [C++](problems/0371-cpp/main.cpp) | Medium |
 | 373 | [Find K Pairs with Smallest Sums](https://leetcode.com/problems/find-k-pairs-with-smallest-sums) | [C++](problems/0373-cpp/main.cpp) | Medium |
 | 376 | [Wiggle Subsequence](https://leetcode.com/problems/wiggle-subsequence) | [Go](problems/0376-go/main.go) | Medium |
 | 377 | [Combination Sum IV](https://leetcode.com/problems/combination-sum-iv) | [Go](problems/0377-go/main.go) | Medium |
 | 378 | [Kth Smallest Element in a Sorted Matrix](https://leetcode.com/problems/kth-smallest-element-in-a-sorted-matrix) | [Go](problems/0378-go/main.go) | Medium |
+| 379 | [Design Phone Directory](https://leetcode.com/problems/design-phone-directory) | [C++](problems/0379-cpp/main.cpp) | Medium |
 | 380 | [Insert Delete GetRandom O(1)](https://leetcode.com/problems/insert-delete-getrandom-o1) | [C++](problems/0380-cpp/main.cpp) [Go](problems/0380-go/main.go) [Python](problems/0380-py/main.py) | Medium |
 | 381 | [Insert Delete GetRandom O(1) - Duplicates allowed](https://leetcode.com/problems/insert-delete-getrandom-o1-duplicates-allowed) | [C++](problems/0381-cpp/main.cpp) | Hard |
 | 383 | [Ransom Note](https://leetcode.com/problems/ransom-note) | [C++](problems/0383-cpp/main.cpp) [Go](problems/0383-go/main.go) | Easy |
@@ -324,7 +331,9 @@ LeetCode Problems' Solutions
 | 566 | [Reshape the Matrix](https://leetcode.com/problems/reshape-the-matrix) | [Go](problems/0566-go/main.go) | Easy |
 | 576 | [Out of Boundary Paths](https://leetcode.com/problems/out-of-boundary-paths) | [Go](problems/0576-go/main.go) | Medium |
 | 581 | [Shortest Unsorted Continuous Subarray](https://leetcode.com/problems/shortest-unsorted-continuous-subarray) | [C++](problems/0581-cpp/main.cpp) | Medium |
+| 582 | [Kill Process](https://leetcode.com/problems/kill-process) | [C++](problems/0582-cpp/main.cpp) | Medium |
 | 583 | [Delete Operation for Two Strings](https://leetcode.com/problems/delete-operation-for-two-strings) | [Go](problems/0583-go/main.go) | Medium |
+| 588 | [Design In-Memory File System](https://leetcode.com/problems/design-in-memory-file-system) | [C++](problems/0588-cpp/main.cpp) | Hard |
 | 589 | [N-ary Tree Preorder Traversal](https://leetcode.com/problems/n-ary-tree-preorder-traversal) | [C++](problems/0589-cpp/main.cpp) [Go](problems/0589-go/main.go) | Easy |
 | 590 | [N-ary Tree Postorder Traversal](https://leetcode.com/problems/n-ary-tree-postorder-traversal) | [C++](problems/0590-cpp/main.cpp) | Easy |
 | 594 | [Longest Harmonious Subsequence](https://leetcode.com/problems/longest-harmonious-subsequence) | [Go](problems/0594-go/main.go) | Easy |
@@ -343,6 +352,7 @@ LeetCode Problems' Solutions
 | 651 | [4 Keys Keyboard](https://leetcode.com/problems/4-keys-keyboard) | [C++](problems/0651-cpp/main.cpp) | Medium |
 | 654 | [Maximum Binary Tree](https://leetcode.com/problems/maximum-binary-tree) | [C++](problems/0654-cpp/main.cpp) | Medium |
 | 656 | [Coin Path](https://leetcode.com/problems/coin-path) | [C++](problems/0656-cpp/main.cpp) | Hard |
+| 657 | [Robot Return to Origin](https://leetcode.com/problems/robot-return-to-origin) | [C++](problems/0657-cpp/main.cpp) | Easy |
 | 663 | [Equal Tree Partition](https://leetcode.com/problems/equal-tree-partition) | [Go](problems/0663-go/main.go) | Medium |
 | 665 | [Non-decreasing Array](https://leetcode.com/problems/non-decreasing-array) | [Go](problems/0665-go/main.go) | Medium |
 | 669 | [Trim a Binary Search Tree](https://leetcode.com/problems/trim-a-binary-search-tree) | [C++](problems/0669-cpp/main.cpp) | Medium |
@@ -362,9 +372,11 @@ LeetCode Problems' Solutions
 | 709 | [To Lower Case](https://leetcode.com/problems/to-lower-case) | [Go](problems/0709-go/main.go) | Easy |
 | 712 | [Minimum ASCII Delete Sum for Two Strings](https://leetcode.com/problems/minimum-ascii-delete-sum-for-two-strings) | [C++](problems/0712-cpp/main.cpp) | Medium |
 | 714 | [Best Time to Buy and Sell Stock with Transaction Fee](https://leetcode.com/problems/best-time-to-buy-and-sell-stock-with-transaction-fee) | [Go](problems/0714-go/main.go) | Medium |
+| 715 | [Range Module](https://leetcode.com/problems/range-module) | [C++](problems/0715-cpp/main.cpp) | Hard |
 | 717 | [1-bit and 2-bit Characters](https://leetcode.com/problems/1-bit-and-2-bit-characters) | [C++](problems/0717-cpp/main.cpp) | Easy |
 | 720 | [Longest Word in Dictionary](https://leetcode.com/problems/longest-word-in-dictionary) | [C++](problems/0720-cpp/main.cpp) | Medium |
 | 722 | [Basic Calculator III](https://leetcode.com/problems/basic-calculator-iii) | [C++](problems/0722-cpp/main.cpp) | Hard |
+| 728 | [Self Dividing Numbers](https://leetcode.com/problems/self-dividing-numbers) | [C++](problems/0728-cpp/main.cpp) | Easy |
 | 729 | [My Calendar I](https://leetcode.com/problems/my-calendar-i) | [C++](problems/0729-cpp/main.cpp) [Go](problems/0729-go/main.go) | Medium |
 | 731 | [My Calendar II](https://leetcode.com/problems/my-calendar-ii) | [C++](problems/0731-cpp/main.cpp) | Medium |
 | 732 | [My Calendar III](https://leetcode.com/problems/my-calendar-iii) | [C++](problems/0732-cpp/main.cpp) | Hard |
@@ -374,6 +386,7 @@ LeetCode Problems' Solutions
 | 744 | [Find Smallest Letter Greater Than Target](https://leetcode.com/problems/find-smallest-letter-greater-than-target) | [C++](problems/0744-cpp/main.cpp) | Easy |
 | 745 | [Prefix and Suffix Search](https://leetcode.com/problems/prefix-and-suffix-search) | [Go](problems/0745-go/main.go) | Hard |
 | 746 | [Min Cost Climbing Stairs](https://leetcode.com/problems/min-cost-climbing-stairs) | [Go](problems/0746-go/main.go) | Easy |
+| 755 | [Pour Water](https://leetcode.com/problems/pour-water) | [C++](problems/0755-cpp/main.cpp) | Medium |
 | 756 | [Pyramid Transition Matrix](https://leetcode.com/problems/pyramid-transition-matrix) | [C++](problems/0756-cpp/main.cpp) | Medium |
 | 757 | [Set Intersection Size At Least Two](https://leetcode.com/problems/set-intersection-size-at-least-two) | [C++](problems/0757-cpp/main.cpp) | Hard |
 | 761 | [Special Binary String](https://leetcode.com/problems/special-binary-string) | [C++](problems/0761-cpp/main.cpp) | Hard |
@@ -408,17 +421,20 @@ LeetCode Problems' Solutions
 | 850 | [Rectangle Area II](https://leetcode.com/problems/rectangle-area-ii) | [C++](problems/0850-cpp/main.cpp) | Hard |
 | 852 | [Peak Index in a Mountain Array](https://leetcode.com/problems/peak-index-in-a-mountain-array) | [C++](problems/0852-cpp/main.cpp) | Medium |
 | 853 | [Car Fleet](https://leetcode.com/problems/car-fleet) | [C++](problems/0853-cpp/main.cpp) | Medium |
-| 858 | [Mirror Reflection](https://leetcode.com/problems/mirror-reflection) | [Go](problems/0858-go/main.go) | Medium |
+| 858 | [Mirror Reflection](https://leetcode.com/problems/mirror-reflection) | [C++](problems/0858-cpp/main.cpp) [Go](problems/0858-go/main.go) | Medium |
 | 860 | [Lemonade Change](https://leetcode.com/problems/lemonade-change) | [C++](problems/0860-cpp/main.cpp) | Easy |
+| 863 | [All Nodes Distance K in Binary Tree](https://leetcode.com/problems/all-nodes-distance-k-in-binary-tree) | [C++](problems/0863-cpp/main.cpp) | Medium |
 | 865 | [https://leetcode.com/problems/smallest-subtree-with-all-the-deepest-nodes](https://leetcode.com/problems/car-fleet) | [C++](problems/0865-cpp/main.cpp) | Medium |
 | 867 | [Transpose Matrix](https://leetcode.com/problems/transpose-matrix) | [Go](problems/0867-go/main.go) [Python](problems/0867-py/main.py) | Easy |
 | 868 | [Binary Gap](https://leetcode.com/problems/binary-gap) | [C++](problems/0868-cpp/main.cpp) | Easy |
 | 869 | [Reordered Power of 2](https://leetcode.com/problems/reordered-power-of-2) | [C++](problems/0869-cpp/main.cpp) | Medium |
 | 873 | [Length of Longest Fibonacci Subsequence](https://leetcode.com/problems/length-of-longest-fibonacci-subsequence) | [Go](problems/0873-go/main.go) | Medium |
+| 874 | [Walking Robot Simulation](https://leetcode.com/problems/walking-robot-simulation) | [C++](problems/0874-cpp/main.cpp) | Medium |
 | 875 | [Koko Eating Bananas](https://leetcode.com/problems/split-array-largest-sum) | [C++](problems/0875-cpp/main.cpp) | Medium |
 | 876 | [Middle of the Linked List](https://leetcode.com/problems/middle-of-the-linked-list) | [Go](problems/0876-go/main.go) | Easy |
 | 877 | [Stone Game](https://leetcode.com/problems/stone-game) | [C++](problems/0877-cpp/main.cpp) | Medium |
 | 881 | [Boats to Save People](https://leetcode.com/problems/boats-to-save-people) | [Go](problems/0881-go/main.go) | Medium |
+| 883 | [Projection Area of 3D Shapes](https://leetcode.com/problems/projection-area-of-3d-shapes) | [C++](problems/0883-cpp/main.cpp) | Easy |
 | 884 | [Uncommon Words from Two Sentences](https://leetcode.com/problems/uncommon-words-from-two-sentences) | [Go](problems/0884-go/main.go) | Easy |
 | 885 | [Spiral Matrix III](https://leetcode.com/problems/spiral-matrix-iii) | [Go](problems/0885-go/main.go) | Medium |
 | 886 | [Possible Bipartition](https://leetcode.com/problems/possible-bipartition) | [C++](problems/0886-cpp/main.cpp) | Medium |
@@ -434,6 +450,7 @@ LeetCode Problems' Solutions
 | 914 | [X of a Kind in a Deck of Cards](https://leetcode.com/problems/x-of-a-kind-in-a-deck-of-cards) | [C++](problems/0914-cpp/main.cpp) | Easy |
 | 916 | [Word Subsets](https://leetcode.com/problems/word-subsets) | [Go](problems/0916-go/main.go) | Medium |
 | 918 | [Maximum Sum Circular Subarray](https://leetcode.com/problems/maximum-sum-circular-subarray) | [C++](problems/0918-cpp/main.cpp) [Go](problems/0918-go/main.go) | Medium |
+| 921 | [Minimum Add to Make Parentheses Valid](https://leetcode.com/problems/minimum-add-to-make-parentheses-valid) | [C++](problems/0921-cpp/main.cpp) | Medium |
 | 925 | [Long Pressed Name](https://leetcode.com/problems/long-pressed-name) | [C++](problems/0925-cpp/main.cpp) | Easy |
 | 931 | [Minimum Falling Path Sum](https://leetcode.com/problems/minimum-falling-path-sum) | [Go](problems/0931-go/main.go) | Medium |
 | 932 | [Beautiful Array](https://leetcode.com/problems/beautiful-array) | [C++](problems/0932-cpp/main.cpp) | Medium |
@@ -456,6 +473,7 @@ LeetCode Problems' Solutions
 | 989 | [Add to Array-Form of Integer](https://leetcode.com/problems/add-to-array-form-of-integer) | [C++](problems/0989-cpp/main.cpp) | Easy |
 | 994 | [Rotting Oranges](https://leetcode.com/problems/rotting-oranges) | [C++](problems/0994-cpp/main.cpp) | Medium |
 | 998 | [Maximum Binary Tree II](https://leetcode.com/problems/maximum-binary-tree-ii) | [C++](problems/0998-cpp/main.cpp) | Medium |
+| 1004 | [Max Consecutive Ones III](https://leetcode.com/problems/max-consecutive-ones-iii) | [C++](problems/1004-cpp/main.cpp) | Medium |
 | 1007 | [Minimum Domino Rotations For Equal Row](https://leetcode.com/problems/minimum-domino-rotations-for-equal-row) | [Go](problems/1007-go/main.go) | Medium |
 | 1009 | [Complement of Base 10 Integer](https://leetcode.com/problems/complement-of-base-10-integer) | [C++](problems/1009-cpp/main.cpp) | Easy |
 | 1011 | [Capacity To Ship Packages Within D Days](https://leetcode.com/problems/capacity-to-ship-packages-within-d-days) | [C++](problems/1011-cpp/main.cpp) | Medium |
@@ -517,7 +535,9 @@ LeetCode Problems' Solutions
 | 1220 | [Count Vowels Permutation](https://leetcode.com/problems/count-vowels-permutation) | [C++](problems/1220-cpp/main.cpp) [Go](problems/1220-go/main.go) | Hard |
 | 1232 | [Check If It Is a Straight Line](https://leetcode.com/problems/check-if-it-is-a-straight-line) | [Go](problems/1232-go/main.go) | Easy |
 | 1233 | [Remove Sub-Folders from the Filesystem](https://leetcode.com/problems/remove-sub-folders-from-the-filesystem) | [Go](problems/1233-go/main.go) | Medium |
+| 1239 | [Maximum Length of a Concatenated String with Unique Characters](https://leetcode.com/problems/maximum-length-of-a-concatenated-string-with-unique-characters) | [C++](problems/1239-cpp/main.cpp) | Medium |
 | 1244 | [Design A Leaderboard](https://leetcode.com/problems/design-a-leaderboard) | [C++](problems/1244-cpp/main.cpp) | Medium |
+| 1249 | [Minimum Remove to Make Valid Parentheses](https://leetcode.com/problems/minimum-remove-to-make-valid-parentheses) | [C++](problems/1249-cpp/main.cpp) | Medium |
 | 1255 | [Maximum Score Words Formed by Letters](https://leetcode.com/problems/maximum-score-words-formed-by-letters) | [Go](problems/1255-go/main.go) | Hard |
 | 1261 | [Find Elements in a Contaminated Binary Tree](https://leetcode.com/problems/find-elements-in-a-contaminated-binary-tree) | [Go](problems/1261-go/main.go) | Medium |
 | 1262 | [Greatest Sum Divisible by Three](https://leetcode.com/problems/greatest-sum-divisible-by-three) | [C++](problems/1262-cpp/main.cpp) | Medium |
@@ -536,6 +556,7 @@ LeetCode Problems' Solutions
 | 1311 | [Get Watched Videos by Your Friends](https://leetcode.com/problems/get-watched-videos-by-your-friends) | [C++](problems/1311-cpp/main.cpp) | Medium |
 | 1314 | [Matrix Block Sum](https://leetcode.com/problems/matrix-block-sum) | [C++](problems/1314-cpp/main.cpp) [Go](problems/1314-go/main.go) | Medium |
 | 1317 | [Convert Integer to the Sum of Two No-Zero Integers](https://leetcode.com/problems/convert-integer-to-the-sum-of-two-no-zero-integers) | [C++](problems/1317-cpp/main.cpp) | Easy |
+| 1320 | [Minimum Distance to Type a Word Using Two Fingers](https://leetcode.com/problems/minimum-distance-to-type-a-word-using-two-fingers) | [C++](problems/1320-cpp/main.cpp) | Hard |
 | 1332 | [Remove Palindromic Subsequences](https://leetcode.com/problems/remove-palindromic-subsequences) | [Go](problems/1332-go/main.go) | Easy |
 | 1334 | [Find the City With the Smallest Number of Neighbors at a Threshold Distance](https://leetcode.com/problems/find-the-city-with-the-smallest-number-of-neighbors-at-a-threshold-distance) | [C++](problems/1334-cpp/main.cpp) | Medium |
 | 1338 | [Reduce Array Size to The Half](https://leetcode.com/problems/reduce-array-size-to-the-half) | [Go](problems/1338-go/main.go) | Medium |
@@ -559,9 +580,10 @@ LeetCode Problems' Solutions
 | 1394 | [Find Lucky Integer in an Array](https://leetcode.com/problems/find-lucky-integer-in-an-array) | [Go](problems/1394-go/main.go) | Easy |
 | 1399 | [Count Largest Group](https://leetcode.com/problems/count-largest-group) | [Go](problems/1399-go/main.go) | Easy |
 | 1400 | [Construct K Palindrome Strings](https://leetcode.com/problems/construct-k-palindrome-strings) | [Go](problems/1400-go/main.go) | Medium |
+| 1401 | [Circle and Rectangle Overlapping](https://leetcode.com/problems/circle-and-rectangle-overlapping) | [C++](problems/1401-cpp/main.cpp) | Medium |
 | 1404 | [Number of Steps to Reduce a Number in Binary Representation to One](https://leetcode.com/problems/number-of-steps-to-reduce-a-number-in-binary-representation-to-one) | [C++](problems/1404-cpp/main.cpp) | Medium |
 | 1405 | [Longest Happy String](https://leetcode.com/problems/longest-happy-string) | [Go](problems/1405-go/main.go) | Medium |
-| 1408 | [String Matching in an Array](https://leetcode.com/problems/string-matching-in-an-array) | [Go](problems/1408-go/main.go) | Easy |
+| 1408 | [String Matching in an Array](https://leetcode.com/problems/string-matching-in-an-array) | [C++](problems/1408-cpp/main.cpp) [Go](problems/1408-go/main.go) | Easy |
 | 1411 | [Number of Ways to Paint N × 3 Grid](https://leetcode.com/problems/number-of-ways-to-paint-n-3-grid) | [C++](problems/1411-cpp/main.cpp) | Hard |
 | 1415 | [The k-th Lexicographical String of All Happy Strings of Length n](https://leetcode.com/problems/the-k-th-lexicographical-string-of-all-happy-strings-of-length-n) | [C++](problems/1415-cpp/main.cpp) [Go](problems/1415-go/main.go) | Medium |
 | 1422 | [Maximum Score After Splitting a String](https://leetcode.com/problems/maximum-score-after-splitting-a-string) | [Go](problems/1422-go/main.go) | Easy |
@@ -581,6 +603,7 @@ LeetCode Problems' Solutions
 | 1473 | [Paint House III](https://leetcode.com/problems/paint-house-iii) | [Go](problems/1473-go/main.go) | Hard |
 | 1474 | [Delete N Nodes After M Nodes of a Linked List](https://leetcode.com/problems/delete-n-nodes-after-m-nodes-of-a-linked-list) | [Go](problems/1474-go/main.go) | Easy |
 | 1475 | [Final Prices With a Special Discount in a Shop](https://leetcode.com/problems/final-prices-with-a-special-discount-in-a-shop) | [C++](problems/1475-cpp/main.cpp) [Go](problems/1475-go/main.go) | Easy |
+| 1476 | [Subrectangle Queries](https://leetcode.com/problems/subrectangle-queries) | [C++](problems/1476-cpp/main.cpp) | Medium |
 | 1480 | [Running Sum of 1d Array](https://leetcode.com/problems/running-sum-of-1d-array) | [Go](problems/1480-go/main.go) | Easy |
 | 1482 | [Minimum Number of Days to Make m Bouquets](https://leetcode.com/problems/minimum-number-of-days-to-make-m-bouquets) | [C++](problems/1482-cpp/main.cpp) | Medium |
 | 1488 | [Avoid Flood in The City](https://leetcode.com/problems/avoid-flood-in-the-city) | [C++](problems/1488-cpp/main.cpp) | Medium |
@@ -588,11 +611,12 @@ LeetCode Problems' Solutions
 | 1491 | [Average Salary Excluding the Minimum and Maximum Salary](https://leetcode.com/problems/average-salary-excluding-the-minimum-and-maximum-salary) | [Go](problems/1491-go/main.go) | Easy |
 | 1492 | [The kth Factor of n](https://leetcode.com/problems/the-kth-factor-of-n) | [C++](problems/1492-cpp/main.cpp) | Medium |
 | 1498 | [Number of Subsequences That Satisfy the Given Sum Condition](https://leetcode.com/problems/number-of-subsequences-that-satisfy-the-given-sum-condition) | [Go](problems/1498-go/main.go) | Medium |
-| 1502 | [Can Make Arithmetic Progression From Sequence](https://leetcode.com/problems/can-make-arithmetic-progression-from-sequence) | [Go](problems/1502-go/main.go) | Easy |
+| 1502 | [Can Make Arithmetic Progression From Sequence](https://leetcode.com/problems/can-make-arithmetic-progression-from-sequence) | [C++](problems/1502-cpp/main.cpp) [Go](problems/1502-go/main.go) | Easy |
 | 1507 | [Reformat Date](https://leetcode.com/problems/reformat-date) | [Go](problems/1507-go/main.go) | Easy |
 | 1508 | [Range Sum of Sorted Subarray Sums](https://leetcode.com/problems/range-sum-of-sorted-subarray-sums) | [Go](problems/1508-go/main.go) | Medium |
 | 1509 | [Minimum Difference Between Largest and Smallest Value in Three Moves](https://leetcode.com/problems/minimum-difference-between-largest-and-smallest-value-in-three-moves) | [Go](problems/1509-go/main.go) | Medium |
 | 1513 | [https://leetcode.com/problems/number-of-substrings-with-only-1s](Number of Substrings With Only 1s) | [C++](problems/1513-cpp/main.cpp) | Medium |
+| 1514 | [Path with Maximum Probability](https://leetcode.com/problems/path-with-maximum-probability) | [C++](problems/1514-cpp/main.cpp) | Medium |
 | 1518 | [Water Bottles](https://leetcode.com/problems/water-bottles) | [C++](problems/1518-cpp/main.cpp) | Easy |
 | 1523 | [Count Odd Numbers in an Interval Range](https://leetcode.com/problems/count-odd-numbers-in-an-interval-range) | [C++](problems/1523-cpp/main.cpp) [Go](problems/1523-go/main.go) | Easy |
 | 1524 | [Number of Sub-arrays With Odd Sum](https://leetcode.com/problems/number-of-sub-arrays-with-odd-sum) | [Go](problems/1524-go/main.go) | Medium |
@@ -617,6 +641,7 @@ LeetCode Problems' Solutions
 | 1611 | [Minimum One Bit Operations to Make Integers Zero](https://leetcode.com/problems/minimum-one-bit-operations-to-make-integers-zero) | [C++](problems/1611-cpp/main.cpp) | Hard |
 | 1622 | [Fancy Sequence](https://leetcode.com/problems/fancy-sequence) | [C++](problems/1622-cpp/main.cpp) | Hard |
 | 1625 | [Lexicographically Smallest String After Applying Operations](https://leetcode.com/problems/lexicographically-smallest-string-after-applying-operations) | [C++](problems/1625-cpp/main.cpp) | Medium |
+| 1631 | [Path With Minimum Effort](https://leetcode.com/problems/path-with-minimum-effort) | [C++](problems/1631-cpp/main.cpp) | Medium |
 | 1639 | [Number of Ways to Form a Target String Given a Dictionary](https://leetcode.com/problems/number-of-ways-to-form-a-target-string-given-a-dictionary) | [Go](problems/1639-go/main.go) | Hard |
 | 1642 | [Furthest Building You Can Reach](https://leetcode.com/problems/furthest-building-you-can-reach) | [Go](problems/1642-go/main.go) | Medium |
 | 1644 | [Lowest Common Ancestor of a Binary Tree II](https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-tree-ii) | [C++](problems/1644-cpp/main.cpp) | Medium |
@@ -665,10 +690,13 @@ LeetCode Problems' Solutions
 | 1792 | [Maximum Average Pass Ratio](https://leetcode.com/problems/maximum-average-pass-ratio) | [C++](problems/1792-cpp/main.cpp) [Go](problems/1792-go/main.go) | Medium |
 | 1797 | [Checking Existence of Edge Length Limited Paths](https://leetcode.com/problems/checking-existence-of-edge-length-limited-paths) | [C++](problems/1797-cpp/main.cpp) | Hard |
 | 1800 | [Maximum Ascending Subarray Sum](https://leetcode.com/problems/maximum-ascending-subarray-sum) | [Go](problems/1800-go/main.go) | Easy |
+| 1804 | [Implement Trie II (Prefix Tree)](https://leetcode.com/problems/implement-trie-ii-prefix-tree) | [C++](problems/1804-cpp/main.cpp) | Medium |
 | 1822 | [Sign of the Product of an Array](https://leetcode.com/problems/sign-of-the-product-of-an-array) | [Go](problems/1822-go/main.go) | Easy |
+| 1848 | [Minimum Distance to the Target Element](https://leetcode.com/problems/minimum-distance-to-the-target-element) | [C++](problems/1848-cpp/main.cpp) | Easy |
 | 1857 | [Largest Color Value in a Directed Graph](https://leetcode.com/problems/largest-color-value-in-a-directed-graph) | [Go](problems/1857-go/main.go) | Hard |
 | 1863 | [Sum of All Subset XOR Totals](https://leetcode.com/problems/sum-of-all-subset-xor-totals) | [Go](problems/1863-go/main.go) | Easy |
 | 1865 | [Finding Pairs With a Certain Sum](https://leetcode.com/problems/finding-pairs-with-a-certain-sum) | [Go](problems/1865-go/main.go) | Medium |
+| 1866 | [Number of Ways to Rearrange Sticks With K Sticks Visible](https://leetcode.com/problems/number-of-ways-to-rearrange-sticks-with-k-sticks-visible) | [C++](problems/1866-cpp/main.cpp) | Hard |
 | 1874 | [Minimize Product Sum of Two Arrays](https://leetcode.com/problems/minimize-product-sum-of-two-arrays) | [C++](problems/1874-cpp/main.cpp) | Medium |
 | 1877 | [Minimize Maximum Pair Sum in Array](https://leetcode.com/problems/minimize-maximum-pair-sum-in-array) | [C++](problems/1877-cpp/main.cpp) | Medium |
 | 1878 | [Get Biggest Three Rhombus Sums in a Grid](https://leetcode.com/problems/get-biggest-three-rhombus-sums-in-a-grid) | [C++](problems/1878-cpp/main.cpp) | Medium |
@@ -689,6 +717,7 @@ LeetCode Problems' Solutions
 | 1935 | [Maximum Number of Words You Can Type](https://leetcode.com/problems/maximum-number-of-words-you-can-type) | [C++](problems/1935-cpp/main.cpp) | Medium |
 | 1944 | [Number of Visible People in a Queue](https://leetcode.com/problems/number-of-visible-people-in-a-queue) | [C++](problems/1944-cpp/main.cpp) | Hard |
 | 1948 | [Delete Duplicate Folders in System](https://leetcode.com/problems/delete-duplicate-folders-in-system) | [Go](problems/1948-go/main.go) | Hard |
+| 1949 | [https://leetcode.com/problems/strong-friendship](/*******************************************************************************************************************************) | [SQL](problems/1949-sql/main.sql) | Strong Friendship |
 | 1957 | [Delete Characters to Make Fancy String](https://leetcode.com/problems/delete-characters-to-make-fancy-string) | [Go](problems/1957-go/main.go) | Easy |
 | 1970 | [Last Day Where You Can Still Cross](https://leetcode.com/problems/last-day-where-you-can-still-cross) | [C++](problems/1970-cpp/main.cpp) | Hard |
 | 1971 | [Find if Path Exists in Graph](https://leetcode.com/problems/find-if-path-exists-in-graph) | [C++](problems/1971-cpp/main.cpp) | Easy |
@@ -711,9 +740,12 @@ LeetCode Problems' Solutions
 | 2048 | [Next Greater Numerically Balanced Number](https://leetcode.com/problems/next-greater-numerically-balanced-number) | [C++](problems/2048-cpp/main.cpp) | Medium |
 | 2054 | [Two Best Non-Overlapping Events](https://leetcode.com/problems/two-best-non-overlapping-events) | [C++](problems/2054-cpp/main.cpp) [Go](problems/2054-go/main.go) | Medium |
 | 2065 | [Maximum Path Quality of a Graph](https://leetcode.com/problems/maximum-path-quality-of-a-graph) | [C++](problems/2065-cpp/main.cpp) | Hard |
+| 2069 | [Walking Robot Simulation II](https://leetcode.com/problems/walking-robot-simulation-ii) | [C++](problems/2069-cpp/main.cpp) | Medium |
 | 2071 | [Maximum Number of Tasks You Can Assign](https://leetcode.com/problems/maximum-number-of-tasks-you-can-assign) | [Go](problems/2071-go/main.go) | Hard |
 | 2073 | [Time Needed to Buy Tickets](https://leetcode.com/problems/time-needed-to-buy-tickets) | [C++](problems/2073-cpp/main.cpp) | Easy |
+| 2075 | [Decode the Slanted Ciphertext](https://leetcode.com/problems/decode-the-slanted-ciphertext) | [C++](problems/2075-cpp/main.cpp) | Medium |
 | 2076 | [Process Restricted Friend Requests](https://leetcode.com/problems/process-restricted-friend-requests) | [C++](problems/2076-cpp/main.cpp) | Hard |
+| 2080 | [Range Frequency Queries](https://leetcode.com/problems/range-frequency-queries) | [C++](problems/2080-cpp/main.cpp) | Medium |
 | 2081 | [Sum of k-Mirror Numbers](https://leetcode.com/problems/sum-of-k-mirror-numbers) | [Go](problems/2081-go/main.go) | Hard |
 | 2092 | [Find All People With Secret](https://leetcode.com/problems/find-all-people-with-secret) | [C++](problems/2092-cpp/main.cpp) | Hard |
 | 2094 | [Finding 3-Digit Even Numbers](https://leetcode.com/problems/finding-3-digit-even-numbers) | [Go](problems/2094-go/main.go) | Easy |
@@ -788,24 +820,28 @@ LeetCode Problems' Solutions
 | 2419 | [Longest Subarray With Maximum Bitwise AND](https://leetcode.com/problems/longest-subarray-with-maximum-bitwise-and) | [Go](problems/2419-go/main.go) | Medium |
 | 2425 | [Bitwise XOR of All Pairings](https://leetcode.com/problems/bitwise-xor-of-all-pairings) | [Go](problems/2425-go/main.go) | Medium |
 | 2429 | [Minimize XOR](https://leetcode.com/problems/minimize-xor) | [Go](problems/2429-go/main.go) | Medium |
+| 2433 | [Find The Original Array of Prefix Xor](https://leetcode.com/problems/find-the-original-array-of-prefix-xor) | [C++](problems/2433-cpp/main.cpp) | Medium |
 | 2434 | [Using a Robot to Print the Lexicographically Smallest String](httphttps://leetcode.com/problems/using-a-robot-to-print-the-lexicographically-smallest-string) | [Go](problems/2434-go/main.go) | Medium |
 | 2435 | [Paths in Matrix Whose Sum Is Divisible by K](https://leetcode.com/problems/paths-in-matrix-whose-sum-is-divisible-by-k) | [C++](problems/2435-cpp/main.cpp) | Hard |
 | 2438 | [Range Product Queries of Powers](https://leetcode.com/problems/range-product-queries-of-powers) | [C++](problems/2438-cpp/main.cpp) | Medium |
 | 2441 | [Largest Positive Integer That Exists With Its Negative](https://leetcode.com/problems/largest-positive-integer-that-exists-with-its-negative) | [Go](problems/2441-go/main.go) | Easy |
 | 2444 | [Count Subarrays With Fixed Bounds](https://leetcode.com/problems/count-subarrays-with-fixed-bounds) | [Go](problems/2444-go/main.go) | Hard |
 | 2460 | [Apply Operations to an Array](https://leetcode.com/problems/apply-operations-to-an-array) | [Go](problems/2460-go/main.go) | Easy |
+| 2463 | [Minimum Total Distance Traveled](https://leetcode.com/problems/minimum-total-distance-traveled) | [C++](problems/2463-cpp/main.cpp) | Hard |
 | 2464 | [Minimum Subarrays in a Valid Split](https://leetcode.com/problems/minimum-subarrays-in-a-valid-split) | [C++](problems/2464-cpp/main.cpp) | Medium |
 | 2466 | [Count Ways To Build Good Strings](https://leetcode.com/problems/count-ways-to-build-good-strings) | [Go](problems/2466-go/main.go) | Medium |
 | 2467 | [Most Profitable Path in a Tree](https://leetcode.com/problems/most-profitable-path-in-a-tree) | [Go](problems/2467-go/main.go) | Medium |
 | 2471 | [Minimum Number of Operations to Sort a Binary Tree by Level](https://leetcode.com/problems/minimum-number-of-operations-to-sort-a-binary-tree-by-level) | [Go](problems/2471-go/main.go) | Medium |
 | 2472 | [Maximum Number of Non-overlapping Palindrome Substrings](https://leetcode.com/problems/maximum-number-of-non-overlapping-palindrome-substrings) | [C++](problems/2472-cpp/main.cpp) | Hard |
 | 2483 | [Minimum Penalty for a Shop](https://leetcode.com/problems/minimum-penalty-for-a-shop) | [C++](problems/2483-cpp/main.cpp) | Medium |
+| 2485 | [Find the Pivot Integer](https://leetcode.com/problems/find-the-pivot-integer) | [C++](problems/2485-cpp/main.cpp) | Easy |
 | 2487 | [Remove Nodes From Linked List](https://leetcode.com/problems/remove-nodes-from-linked-list) | [Go](problems/2487-go/main.go) | Medium |
 | 2492 | [Minimum Score of a Path Between Two Cities](https://leetcode.com/problems/minimum-score-of-a-path-between-two-cities) | [C++](problems/2492-cpp/main.cpp) | Medium |
 | 2493 | [Divide Nodes Into the Maximum Number of Groups](https://leetcode.com/problems/divide-nodes-into-the-maximum-number-of-groups) | [Go](problems/2493-go/main.go) | Hard |
 | 2503 | [Maximum Number of Points From Grid Queries](https://leetcode.com/problems/maximum-number-of-points-from-grid-queries) | [Go](problems/2503-go/main.go) | Hard |
 | 2508 | [Add Edges to Make Degrees of All Nodes Even](https://leetcode.com/problems/add-edges-to-make-degrees-of-all-nodes-even) | [C++](problems/2508-cpp/main.cpp) | Hard |
-| 2523 | [Closest Prime Numbers in Range](https://leetcode.com/problems/closest-prime-numbers-in-range) | [Go](problems/2523-go/main.go) | Medium |
+| 2515 | [Shortest Distance to Target String in a Circular Array](https://leetcode.com/problems/shortest-distance-to-target-string-in-a-circular-array) | [C++](problems/2515-cpp/main.cpp) | Easy |
+| 2523 | [Closest Prime Numbers in Range](https://leetcode.com/problems/closest-prime-numbers-in-range) | [C++](problems/2523-cpp/main.cpp) [Go](problems/2523-go/main.go) | Medium |
 | 2528 | [Maximize the Minimum Powered City](https://leetcode.com/problems/maximize-the-minimum-powered-city) | [C++](problems/2528-cpp/main.cpp) | Hard |
 | 2529 | [Maximum Count of Positive Integer and Negative Integer](https://leetcode.com/problems/maximum-count-of-positive-integer-and-negative-integer) | [Go](problems/2529-go/main.go) | Easy |
 | 2536 | [Increment Submatrices by One](https://leetcode.com/problems/increment-submatrices-by-one) | [C++](problems/2536-cpp/main.cpp) | Medium |
@@ -820,6 +856,7 @@ LeetCode Problems' Solutions
 | 2566 | [Maximum Difference by Remapping a Digit](https://leetcode.com/problems/maximum-difference-by-remapping-a-digit) | [Go](problems/2566-go/main.go) | Easy |
 | 2570 | [Merge Two 2D Arrays by Summing Values](https://leetcode.com/problems/merge-two-2d-arrays-by-summing-values) | [Go](problems/2570-go/main.go) | Easy |
 | 2571 | [Minimum Operations to Reduce an Integer to 0](https://leetcode.com/problems/minimum-operations-to-reduce-an-integer-to-0) | [C++](problems/2571-cpp/main.cpp) | Medium |
+| 2573 | [Find the String with LCP](https://leetcode.com/problems/find-the-string-with-lcp) | [C++](problems/2573-cpp/main.cpp) | Hard |
 | 2579 | [Count Total Number of Colored Cells](https://leetcode.com/problems/count-total-number-of-colored-cells) | [Go](problems/2579-go/main.go) | Medium |
 | 2593 | [Find Score of an Array After Marking All Elements](https://leetcode.com/problems/find-score-of-an-array-after-marking-all-elements) | [Go](problems/2593-go/main.go) | Medium |
 | 2594 | [Minimum Time to Repair Cars](https://leetcode.com/problems/minimum-time-to-repair-cars) | [Go](problems/2594-go/main.go) | Medium |
@@ -836,6 +873,7 @@ LeetCode Problems' Solutions
 | 2698 | [Find the Punishment Number of an Integer](https://leetcode.com/problems/find-the-punishment-number-of-an-integer) | [Go](problems/2698-go/main.go) | Medium |
 | 2737 | [Find the Closest Marked Node](https://leetcode.com/problems/find-the-closest-marked-node) | [C++](problems/2737-cpp/main.cpp) | Medium |
 | 2749 | [Minimum Operations to Make the Integer Zero](https://leetcode.com/problems/minimum-operations-to-make-the-integer-zero) | [C++](problems/2749-cpp/main.cpp) | Medium |
+| 2751 | [Robot Collisions](https://leetcode.com/problems/robot-collisions) | [C++](problems/2751-cpp/main.cpp) | Hard |
 | 2762 | [Continuous Subarrays](https://leetcode.com/problems/continuous-subarrays) | [Go](problems/2762-go/main.go) | Medium |
 | 2779 | [Maximum Beauty of an Array After Applying Operation](https://leetcode.com/problems/maximum-beauty-of-an-array-after-applying-operation) | [Go](problems/2779-go/main.go) | Medium |
 | 2780 | [Minimum Index of a Valid Split](https://leetcode.com/problems/minimum-index-of-a-valid-split) | [Go](problems/2780-go/main.go) | Medium |
@@ -845,8 +883,11 @@ LeetCode Problems' Solutions
 | 2816 | [Double a Number Represented as a Linked List](https://leetcode.com/problems/double-a-number-represented-as-a-linked-list) | [Go](problems/2816-go/main.go) | Medium |
 | 2818 | [Apply Operations to Maximize Score](https://leetcode.com/problems/apply-operations-to-maximize-score) | [Go](problems/2818-go/main.go) | Medium |
 | 2825 | [Make String a Subsequence Using Cyclic Increments](https://leetcode.com/problems/make-string-a-subsequence-using-cyclic-increments) | [Go](problems/2825-go/main.go) | Medium |
+| 2839 | [Check if Strings Can be Made Equal With Operations I](https://leetcode.com/problems/check-if-strings-can-be-made-equal-with-operations-i) | [C++](problems/2839-cpp/main.cpp) | Easy |
+| 2840 | [Check if Strings Can be Made Equal With Operations II](https://leetcode.com/problems/check-if-strings-can-be-made-equal-with-operations-ii) | [C++](problems/2840-cpp/main.cpp) | Medium |
 | 2843 | [Count Symmetric Integers](https://leetcode.com/problems/count-symmetric-integers) | [Go](problems/2843-go/main.go) | Easy |
 | 2845 | [Count of Interesting Subarrays](https://leetcode.com/problems/count-of-interesting-subarrays) | [Go](problems/2845-go/main.go) | Medium |
+| 2858 | [Minimum Edge Reversals So Every Node Is Reachable](https://leetcode.com/problems/minimum-edge-reversals-so-every-node-is-reachable) | [C++](problems/2858-cpp/main.cpp) | Hard |
 | 2870 | [Minimum Number of Operations to Make Array Empty](https://leetcode.com/problems/minimum-number-of-operations-to-make-array-empty) | [Go](problems/2870-go/main.go) | Medium |
 | 2872 | [Maximum Number of K-Divisible Components](https://leetcode.com/problems/maximum-number-of-k-divisible-components) | [C++](problems/2872-cpp/main.cpp) [Go](problems/2872-go/main.go) | Medium |
 | 2873 | [Maximum Value of an Ordered Triplet I](https://leetcode.com/problems/maximum-value-of-an-ordered-triplet-i) | [Go](problems/2873-go/main.go) | Easy |
@@ -863,6 +904,7 @@ LeetCode Problems' Solutions
 | 2940 | [Find Building Where Alice and Bob Can Meet](https://leetcode.com/problems/find-building-where-alice-and-bob-can-meet) | [C++](problems/2940-cpp/main.cpp) [Go](problems/2940-go/main.go) | Hard |
 | 2942 | [Find Words Containing Character](https://leetcode.com/problems/find-words-containing-character) | [Go](problems/2942-go/main.go) | Easy |
 | 2943 | [Maximize Area of Square Hole in Grid](https://leetcode.com/problems/maximize-area-of-square-hole-in-grid) | [C++](problems/2943-cpp/main.cpp) | Medium |
+| 2946 | [Matrix Similarity After Cyclic Shifts](https://leetcode.com/problems/matrix-similarity-after-cyclic-shifts) | [C++](problems/2946-cpp/main.cpp) | Easy |
 | 2948 | [Make Lexicographically Smallest Array by Swapping Elements](https://leetcode.com/problems/make-lexicographically-smallest-array-by-swapping-elements) | [Go](problems/2948-go/main.go) | Medium |
 | 2962 | [Count Subarrays Where Max Element Appears at Least K Times](https://leetcode.com/problems/count-subarrays-where-max-element-appears-at-least-k-times) | [Go](problems/2962-go/main.go) | Medium |
 | 2965 | [Find Missing and Repeated Values](https://leetcode.com/problems/find-missing-and-repeated-values) | [Go](problems/2965-go/main.go) | Medium |
@@ -958,6 +1000,7 @@ LeetCode Problems' Solutions
 | 3403 | [Find the Lexicographically Largest String From the Box I](https://leetcode.com/problems/find-the-lexicographically-largest-string-from-the-box-i) | [Go](problems/3403-go/main.go) | Medium |
 | 3405 | [Count the Number of Arrays with K Matching Adjacent Elements](https://leetcode.com/problems/count-the-number-of-arrays-with-k-matching-adjacent-elements) | [Go](problems/3405-go/main.go) | Hard |
 | 3408 | [Design Task Manager](https://leetcode.com/problems/design-task-manager) | [C++](problems/3408-cpp/main.cpp) | Medium |
+| 3418 | [Maximum Amount of Money Robot Can Earn](https://leetcode.com/problems/maximum-amount-of-money-robot-can-earn) | [C++](problems/3418-cpp/main.cpp) | Medium |
 | 3423 | [Maximum Difference Between Adjacent Elements in a Circular Array](https://leetcode.com/problems/maximum-difference-between-adjacent-elements-in-a-circular-array) | [Go](problems/3423-go/main.go) | Easy |
 | 3432 | [Count Partitions with Even Sum Difference](https://leetcode.com/problems/count-partitions-with-even-sum-difference) | [C++](problems/3432-cpp/main.cpp) | Easy |
 | 3433 | [Count Mentions Per User](https://leetcode.com/problems/count-mentions-per-user) | [C++](problems/3433-cpp/main.cpp) | Medium |
@@ -971,6 +1014,7 @@ LeetCode Problems' Solutions
 | 3454 | [Separate Squares II](https://leetcode.com/problems/separate-squares-ii) | [C++](problems/3454-cpp/main.cpp) | Hard |
 | 3459 | [Length of Longest V-Shaped Diagonal Segment](https://leetcode.com/problems/length-of-longest-v-shaped-diagonal-segment) | [C++](problems/3459-cpp/main.cpp) | Hard |
 | 3461 | [Check If Digits Are Equal in String After Operations I](https://leetcode.com/problems/check-if-digits-are-equal-in-string-after-operations-i) | [C++](problems/3461-cpp/main.cpp) | Easy |
+| 3474 | [Lexicographically Smallest Generated String](https://leetcode.com/problems/lexicographically-smallest-generated-string) | [C++](problems/3474-cpp/main.cpp) | Hard |
 | 3477 | [Fruits Into Baskets II](https://leetcode.com/problems/fruits-into-baskets-ii) | [C++](problems/3477-cpp/main.cpp) | Easy |
 | 3479 | [Fruits Into Baskets III](https://leetcode.com/problems/fruits-into-baskets-iii) | [C++](problems/3479-cpp/main.cpp) | Medium |
 | 3480 | [Maximize Subarrays After Removing One Conflicting Pair](https://leetcode.com/problems/maximize-subarrays-after-removing-one-conflicting-pair) | [Go](problems/3480-go/main.go) | Hard |
@@ -1007,11 +1051,16 @@ LeetCode Problems' Solutions
 | 3650 | [Minimum Cost Path with Edge Reversals](https://leetcode.com/problems/minimum-cost-path-with-edge-reversals) | [C++](problems/3650-cpp/main.cpp) | Medium |
 | 3651 | [Minimum Cost Path with Teleportations](https://leetcode.com/problems/minimum-cost-path-with-teleportations) | [C++](problems/3651-cpp/main.cpp) | Hard |
 | 3652 | [Best Time to Buy and Sell Stock using Strategy](https://leetcode.com/problems/best-time-to-buy-and-sell-stock-using-strategy) | [C++](problems/3652-cpp/main.cpp) | Medium |
+| 3653 | [XOR After Range Multiplication Queries I](https://leetcode.com/problems/xor-after-range-multiplication-queries-i) | [C++](problems/3653-cpp/main.cpp) | Medium |
+| 3655 | [XOR After Range Multiplication Queries II](https://leetcode.com/problems/xor-after-range-multiplication-queries-ii) | [C++](problems/3655-cpp/main.cpp) | Hard |
+| 3661 | [Maximum Walls Destroyed by Robots](https://leetcode.com/problems/maximum-walls-destroyed-by-robots) | [C++](problems/3661-cpp/main.cpp) | Hard |
 | 3666 | [Minimum Operations to Equalize Binary String](https://leetcode.com/problems/minimum-operations-to-equalize-binary-string) | [C++](problems/3666-cpp/main.cpp) | Hard |
 | 3713 | [Longest Balanced Substring I](https://leetcode.com/problems/longest-balanced-substring-i) | [C++](problems/3713-cpp/main.cpp) | Medium |
 | 3714 | [Longest Balanced Substring II](https://leetcode.com/problems/longest-balanced-substring-ii) | [C++](problems/3714-cpp/main.cpp) | Medium |
 | 3719 | [Longest Balanced Subarray I](https://leetcode.com/problems/longest-balanced-subarray-i) | [C++](problems/3719-cpp/main.cpp) | Medium |
 | 3721 | [Longest Balanced Subarray II](https://leetcode.com/problems/longest-balanced-subarray-i) | [C++](problems/3721-cpp/main.cpp) | Medium |
+| 3740 | [Minimum Distance Between Three Equal Elements I](https://leetcode.com/problems/minimum-distance-between-three-equal-elements-i) | [C++](problems/3740-cpp/main.cpp) | Easy |
+| 3741 | [Minimum Distance Between Three Equal Elements II](https://leetcode.com/problems/minimum-distance-between-three-equal-elements-ii) | [C++](problems/3741-cpp/main.cpp) | Medium |
 | 3815 | [Design Auction System](https://leetcode.com/problems/design-auction-system) | [C++](problems/3815-cpp/main.cpp) | Medium |
 | 3881 | [Maximum Subarray Sum With Length Divisible by K](https://leetcode.com/problems/maximum-subarray-sum-with-length-divisible-by-k) | [C++](problems/3881-cpp/main.cpp) | Medium |
 

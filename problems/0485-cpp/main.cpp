@@ -34,18 +34,17 @@ using namespace std;
 
 class Solution {
  public:
-  int findMaxConsecutiveOnes(vector<int>& nums) {
-    auto ans = 0;
-    auto curr = 0;
-    for (auto num : nums) {
-      if (num == 1) {
-        ++curr;
-        ans = max(ans, curr);
+  int findMaxConsecutiveOnes(const vector<int>& nums) {
+    int currCount = 0;
+    int maxCount = 0;
+    for (int num : nums) {
+      if (num == 0) {
+        currCount = 0;
       } else {
-        curr = 0;
+        maxCount = max(maxCount, ++currCount);
       }
     }
 
-    return ans;
+    return maxCount;
   }
 };

@@ -13,6 +13,7 @@ LANG = {
     "cpp": "C++",
     "go": "Go",
     "py": "Python",
+    "sql": "SQL",
     "sh": "Bash",
 }
 

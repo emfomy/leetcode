@@ -1,6 +1,6 @@
 # Source: https://leetcode.com/problems/reverse-integer
 # Title: Reverse Integer
-# Difficulty: Easy
+# Difficulty: Medium
 # Author: Mu Yang <http://muyang.pro>
 
 ################################################################################################################################

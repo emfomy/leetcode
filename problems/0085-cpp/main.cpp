@@ -55,14 +55,14 @@ using namespace std;
 // Otherwise, DP[k][i][j] = min(DP[k-1][i-1][j], DP[k][i][j-1]+1)
 class Solution {
  public:
-  int maximalRectangle(vector<vector<char>>& matrix) {
-    int m = matrix.size(), n = matrix[0].size();
+  int maximalRectangle(const vector<vector<char>>& matrix) {
+    const int m = matrix.size(), n = matrix[0].size();
     auto dp = vector(m + 1, vector(m + 1, vector(n + 1, 0)));
     auto ans = 0;
 
     // k = 1
-    for (auto i = m - 1; i >= 0; --i) {
-      for (auto j = n - 1; j >= 0; --j) {
+    for (int i = m - 1; i >= 0; --i) {
+      for (int j = n - 1; j >= 0; --j) {
         if (matrix[i][j] == '1') {
           dp[1][i][j] = dp[1][i][j + 1] + 1;
           ans = max(ans, dp[1][i][j]);
@@ -71,9 +71,9 @@ class Solution {
     }
 
     // k > 1
-    for (auto k = 2; k <= m; ++k) {
-      for (auto i = m - 1; i >= 0; --i) {
-        for (auto j = n - 1; j >= 0; --j) {
+    for (int k = 2; k <= m; ++k) {
+      for (int i = m - 1; i >= 0; --i) {
+        for (int j = n - 1; j >= 0; --j) {
           if (matrix[i][j] == '1') {
             dp[k][i][j] = min(dp[k - 1][i + 1][j], dp[k][i][j + 1] + 1);
             ans = max(ans, k * dp[k][i][j]);
@@ -86,70 +86,64 @@ class Solution {
   }
 };
 
-// DP + Monotonic Stack
+// Monotonic Stack
 //
-// First use DP to compute the maximum 1-width height of each cell.
+// Loop for rows. For each row:
+// First update the height above this row (including).
+// Next compute the maximum area using monotonic stack.
 //
-// Now loop for each row, and use the same idea of problem 84 to find the maximum area.
-// We find the how far can a bar reach to the left & right.
+// We put (height, position) in the stack, both of them are increasing.
+// It represent the leftmost possible rectangle of each height.
 //
-// Now focus on the right part.
-// If the top of the stack is taller than current bar,
-// then the top bar can't reach current bar, and we can pop it.
-//
-// Same as the left part.
+// We loop the bars from the left.
+// If the new bar is shorter than the top height,
+// then pop it and compute the maximum rectangle,
+// and then push the new bar height with the previous top position (since it can reach this far).
+// We only push the new bar if it is taller than the top height.
 class Solution2 {
+  struct State {
+    int height;
+    int pos;
+  };
+
  public:
-  int maximalRectangle(vector<vector<char>>& matrix) {
-    int m = matrix.size(), n = matrix[0].size();
+  int maximalRectangle(const vector<vector<char>>& matrix) {
+    const int n = matrix[0].size();
 
     // Loop
-    auto ans = 0;
+    int maxArea = 0;
     auto heights = vector(n, 0);
-    for (auto i = 0; i < m; ++i) {
+    for (const auto& row : matrix) {
       // Height
-      for (auto j = 0; j < n; ++j) {
-        if (matrix[i][j] == '1') {
+      for (int j = 0; j < n; ++j) {
+        if (row[j] == '1') {
           ++heights[j];
         } else {
           heights[j] = 0;
         }
       }
 
-      // Right
-      auto rights = vector(n, n);  // rightmost is n, monotonic increase
-      {
-        auto st = stack<int>();
-        for (auto j = 0; j < n; ++j) {
-          auto h = heights[j];
-          while (!st.empty() && heights[st.top()] > h) {
-            rights[st.top()] = j;  // range is [?, j)
-            st.pop();
-          }
-          st.push(j);
-        }
-      }
+      // Area
+      auto st = stack<State>();  // leftmost possible rectangle of each height.
+      st.push(State{0, 0});      // first sentinel
+      for (int j = 0; j <= n; ++j) {
+        int height = j < n ? heights[j] : 0;  // sentinel at i=n
+        int pos = j;
 
-      // Left
-      auto lefts = vector(n, 0);  // leftmost is 0, monotonic increase
-      {
-        auto st = stack<int>();
-        for (auto j = n - 1; j >= 0; --j) {
-          auto h = heights[j];
-          while (!st.empty() && heights[st.top()] > h) {
-            lefts[st.top()] = j + 1;  // range is [j+1, ?)
-            st.pop();
-          }
-          st.push(j);
+        // Pop
+        while (st.top().height > height) {
+          maxArea = max(maxArea, st.top().height * (j - st.top().pos));
+          pos = st.top().pos;
+          st.pop();
         }
-      }
 
-      // Answer
-      for (auto j = 0; j < n; ++j) {
-        ans = max(ans, heights[j] * (rights[j] - lefts[j]));
+        // Push
+        if (st.top().height < height) {
+          st.push(State{height, pos});
+        }
       }
     }
 
-    return ans;
+    return maxArea;
   }
 };

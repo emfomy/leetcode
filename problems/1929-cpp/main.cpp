@@ -41,11 +41,38 @@
 
 using namespace std;
 
+// In-Place
 class Solution {
  public:
   vector<int> getConcatenation(vector<int>& nums) {
-    auto ans = nums;                                    // copy
-    ans.insert(ans.end(), nums.cbegin(), nums.cend());  // append
+    const int n = nums.size();
+
+    // Resize
+    nums.reserve(2 * n);
+
+    // Concat
+    for (int i = 0; i < n; ++i) {
+      nums.push_back(nums[i]);
+    }
+
+    return nums;
+  }
+};
+
+// Out-Place
+class Solution2 {
+ public:
+  vector<int> getConcatenation(const vector<int>& nums) {
+    const int n = nums.size();
+
+    // Reserve
+    auto ans = vector<int>();
+    ans.reserve(2 * n);
+
+    // Insert Twice
+    ans.insert(ans.end(), nums.cbegin(), nums.cend());
+    ans.insert(ans.end(), nums.cbegin(), nums.cend());
+
     return ans;
   }
 };

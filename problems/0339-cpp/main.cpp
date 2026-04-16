@@ -74,17 +74,15 @@ class NestedInteger {
   const vector<NestedInteger> &getList() const;
 };
 
+// Recursion DFS
 class Solution {
  public:
   int depthSum(const vector<NestedInteger> &nestedList, int depth = 1) {
-    auto ans = 0;
-    for (auto &item : nestedList) {
-      if (item.isInteger()) {
-        ans += item.getInteger() * depth;
-      } else {
-        ans += depthSum(item.getList(), depth + 1);
-      }
+    int sum = 0;
+    for (const NestedInteger &item : nestedList) {
+      sum += item.isInteger() ? depth * item.getInteger() : depthSum(item.getList(), depth + 1);
     }
-    return ans;
+
+    return sum;
   }
 };

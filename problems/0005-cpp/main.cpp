@@ -171,7 +171,7 @@ class Solution2 {
 class Solution3 {
  public:
   string longestPalindrome(const string_view s) {
-    // Guard
+    // Trivial Case
     if (s.empty()) return "";
 
     // Preprocess
@@ -193,12 +193,13 @@ class Solution3 {
     // Loop, skip sentinels
     for (int i = 1; i < m - 1; ++i) {
       // Mirror i around center (l+r)/2
-      int mi = l + r - i;
+      // i-(l+r)/2-i = (l+r)/2-j, j=l+r-i, j < i
+      int j = l + r - i;
 
-      // Init radius[i] by mirror if within bounds
-      // Not exceed r-i to avoid out of bounds
+      // Init radius[i] by radius[j]
+      // Not exceed r-i to avoid out of bound
       if (i < r) {
-        radius[i] = min(r - i, radius[mi]);
+        radius[i] = min(radius[j], i - r);
       }
 
       // Expand palindrome centered at i
