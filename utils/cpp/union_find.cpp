@@ -9,7 +9,7 @@ class UnionFind {
   int count;  // connected components
 
  public:
-  UnionFind(int n) : parents(n), ranks(n), count(n) {  //
+  UnionFind(int n) : parents(n), ranks(n, 0), count(n) {  //
     iota(parents.begin(), parents.end(), 0);
   }
 

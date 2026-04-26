@@ -6,7 +6,7 @@
 
 using namespace std;
 
-// Dijkstra, O(E logV)
+// Dijkstra, O(E logE)
 // Sparse, Single Source, No Negative Cycle
 class Dijkstra {
   using Edge = pair<int, int>;   // weight, node

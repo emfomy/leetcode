@@ -247,7 +247,7 @@ class Solution4 {
   }
 };
 
-// Math, Cayley–Hamilton theorem
+// Math, Cayley–Hamilton
 //
 // Define the transition matrix:
 // A = [
