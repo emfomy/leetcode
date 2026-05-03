@@ -39,6 +39,7 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+#include <numeric>
 #include <vector>
 
 using namespace std;
@@ -53,9 +54,8 @@ class NumArray {
     data.assign(n + 1, 0);
 
     // Build: O(N)
-    for (int i = 0; i < n; ++i) {
-      data[i + 1] = data[i] + nums[i];
-    }
+    data[0] = 0;
+    partial_sum(nums.cbegin(), nums.cend(), data.begin() + 1);
   }
 
   // Query O(1); sum of [left, right]
