@@ -41,28 +41,27 @@ struct ListNode {
 class Solution {
  public:
   ListNode* rotateRight(ListNode* head, int k) {
-    if (head == nullptr) return nullptr;
+    // Trivial case
+    if (!head) return nullptr;
 
-    // Count list size
-    auto n = 1;
-    auto tail = head;
+    // Find list size
+    int n = 1;
+    ListNode* tail = head;
     while (tail->next) {
       tail = tail->next;
-      n++;
+      ++n;
     }
     k %= n;
-    k = (n - k) % n;
 
+    // Early stop
     if (k == 0) return head;
 
-    // Find (k-1)th element
-    auto newTail = head;
-    for (auto i = 0; i < k - 1; i++) {
+    // Find (n-k-1)-th node, it should be the newest tail
+    ListNode* newTail = head;
+    for (int i = 1; i < n - k; ++i) {
       newTail = newTail->next;
     }
-    auto newHead = newTail->next;
-
-    // Rotate
+    ListNode* newHead = newTail->next;
     newTail->next = nullptr;
     tail->next = head;
 

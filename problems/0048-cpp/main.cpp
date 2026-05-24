@@ -31,24 +31,28 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+#include <tuple>
 #include <vector>
 
 using namespace std;
 
+// Split the square into four parts by middle vertical/horizontal lines.
+// For n odd, we also split these lines by the center into four segments (exclude the center).
+// We treat the left segment as top-left part, the top as top-right, ...
+//
+// The top-left part is 0 <= i < ceil(n/2), 0 <= j < floor(n/2).
+// Loop for all (i, j) in top-left part, we swap it in the following order:
+// (i, j) -> (n-1-j, i) -> (n-1-i, n-1-j), (j, n-1-i) -> (i, j)
 class Solution {
  public:
   void rotate(vector<vector<int>>& matrix) {
     int n = matrix.size();
 
-    for (auto i = 0; i < n / 2; i++) {
-      for (auto j = i; j < n - i - 1; j++) {
-        auto ni1 = n - i - 1;
-        auto nj1 = n - j - 1;
-        auto tmp = matrix[i][j];
-        matrix[i][j] = matrix[nj1][i];
-        matrix[nj1][i] = matrix[ni1][nj1];
-        matrix[ni1][nj1] = matrix[j][ni1];
-        matrix[j][ni1] = tmp;
+    for (int i = 0; i < (n + 1) / 2; ++i) {
+      for (int j = 0; j < n / 2; ++j) {
+        int ni = n - 1 - i, nj = n - 1 - j;
+        tie(matrix[i][j], matrix[nj][i], matrix[ni][nj], matrix[j][ni]) =
+            make_tuple(matrix[nj][i], matrix[ni][nj], matrix[j][ni], matrix[i][j]);
       }
     }
   }

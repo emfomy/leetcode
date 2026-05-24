@@ -44,7 +44,6 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 #include <algorithm>
-#include <functional>
 #include <vector>
 
 using namespace std;
@@ -54,34 +53,25 @@ using namespace std;
 // Say the array rotate at k. That is,
 // a[k+1] < a[k+2] < ... < a[n-1] < a[0] < a[1] < ... < a[k]
 //
-// Therefore, in binary search,
-// we treat all number less than a[0] greater then all number greater than a[0]
+// In binary search,
+// we treat all number less than a[0] greater then all number greater than a[0].
 class Solution {
  public:
-  int search(vector<int>& nums, int target) {
-    int n = nums.size();
+  int search(const vector<int>& nums, int target) {
+    const int n = nums.size();
 
     // Helper
-    auto num0 = nums[0];
-    auto myLess = [=](int a, int b) -> bool {
+    const int num0 = nums[0];
+    const auto comp = [num0](int a, int b) -> bool {
       if (a >= num0 && b < num0) return true;
       if (a < num0 && b >= num0) return false;
       return a < b;
     };
 
     // Binary search
-    // nums[lo-1] < target, nums[hi] > target
-    auto lo = 0, hi = n;
-    while (lo < hi) {
-      auto mid = lo + (hi - lo) / 2;
-      if (nums[mid] == target) return mid;
-      if (myLess(nums[mid], target)) {
-        lo = mid + 1;
-      } else {
-        hi = mid;
-      }
-    }
+    auto it = lower_bound(nums.cbegin(), nums.cend(), target, comp);
+    if (it == nums.cend() || *it != target) return -1;
 
-    return -1;
+    return it - nums.cbegin();
   }
 };

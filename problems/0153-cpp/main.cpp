@@ -54,57 +54,52 @@
 
 using namespace std;
 
-// Binary Search
-//
-// Mark all number with val >= nums[0] as LEFT,
-// mark all number with val < nums[0] as RIGHT.
-//
-// Use binary search to find first RIGHT.
+// Linear Search
 class Solution {
  public:
-  int findMin(vector<int>& nums) {
-    int n = nums.size();
+  int findMin(const vector<int>& nums) {  //
+    return *min_element(nums.cbegin(), nums.cend());
+  }
+};
 
-    auto front = nums[0];
-    if (front <= nums[n - 1]) return front;  // no rotate
+// Binary Search
+//
+// Denote the last number as x.
+// Mark all number with val >  x as LEFT,
+// Mark all number with val <= x as RIGHT.
+// Use binary search to find first RIGHT.
+class Solution2 {
+ public:
+  int findMin(const vector<int>& nums) {
+    const int n = nums.size();
 
-    // Binary search
-    auto lo = 1, hi = n;  // [1, n) unknown
+    const int back = nums.back();
+
+    // Binary Search
+    // lo-1=LEFT, hi=RIGHT
+    int lo = 0, hi = n;
     while (lo < hi) {
-      auto mid = lo + (hi - lo) / 2;
-      if (nums[mid] > front) {
-        lo = mid + 1;  // [mid+1, hi)
+      int mid = lo + (hi - lo) / 2;
+      if (nums[mid] > back) {
+        lo = mid + 1;
       } else {
-        hi = mid;  // [lo, mid)
+        hi = mid;
       }
     }
-    // nums[lo-1] LEFT; nums[lo=hi] RIGHT
 
-    return nums[lo];
+    return nums[hi];
   }
 };
 
 // Binary Search (STL)
-//
-// Mark all number with val >= nums[0] as LEFT,
-// mark all number with val < nums[0] as RIGHT.
-//
-// Use binary search to find first RIGHT.
-class Solution2 {
+class Solution3 {
  public:
-  int findMin(vector<int>& nums) {
-    int n = nums.size();
+  int findMin(const vector<int>& nums) {
+    const int n = nums.size();
 
-    // Compare
-    auto front = nums[0];
-    auto comp = [=](int a, int b) -> bool {
-      auto aa = (a >= front) ? 0 : 1;
-      auto bb = (b >= front) ? 0 : 1;
-      return aa < bb;
-    };
+    const int back = nums.back();
+    const auto pred = [back](int x) -> bool { return x > back; };
 
-    // Binary search
-    auto it = upper_bound(nums.cbegin(), nums.cend(), front, comp);
-    return it == nums.cend() ? front : *it;
+    return *partition_point(nums.cbegin(), nums.cend(), pred);
   }
 };
