@@ -12,13 +12,13 @@ void prepare() {
 }
 
 // Iteration Version (ZKW) + Coordinates
-class SegmentTree2D {
+class SegmentTree {
   int n;
   const vector<int>& coords;
   vector<int> tree;  // parent i -> child 2i & 2i+1
 
  public:
-  SegmentTree2D(const vector<int>& coords) : coords(coords) {
+  SegmentTree(const vector<int>& coords) : coords(coords) {
     n = coords.size();
     tree.assign(2 * n, 0);
   }

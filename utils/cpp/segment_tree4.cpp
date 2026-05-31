@@ -7,7 +7,7 @@ using namespace std;
 //
 // [l, r) query/update range
 // [lo, hi) segment of node p
-class SegmentTree2D {
+class SegmentTree {
   // Lazy Tag
   struct Tag {
     int64_t toAdd;  // 0 mean no need to update
@@ -71,9 +71,9 @@ class SegmentTree2D {
   mutable vector<Node> tree;  // parent i -> child 2i & 2i+1
 
  public:
-  SegmentTree2D(int n) : n(n), tree(4 * n) {}
+  SegmentTree(int n) : n(n), tree(4 * n) {}
 
-  SegmentTree2D(const vector<int>& nums) {
+  SegmentTree(const vector<int>& nums) {
     n = nums.size();
     tree.resize(4 * n);
     build(nums, 1, 0, n);
@@ -144,7 +144,7 @@ class SegmentTree2D {
     pushDown(p);
     int mid = lo + (hi - lo) / 2;
     update(l, r, leftChild(p), lo, mid, t);
-    update(l, r, rightChild(p), lo, mid, t);
+    update(l, r, rightChild(p), mid, hi, t);
     pushUp(p);
   }
 

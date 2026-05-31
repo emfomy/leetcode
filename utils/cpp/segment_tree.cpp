@@ -32,14 +32,14 @@ using namespace std;
 // Now we must add tree[r-1] to the result and decrease r (exclude current node).
 
 // Iteration Version (ZKW)
-class SegmentTree2D {
+class SegmentTree {
   int n;
   vector<int> tree;  // parent i -> child 2i & 2i+1
 
  public:
-  SegmentTree2D(int n) : n(n), tree(2 * n, 0) {}
+  SegmentTree(int n) : n(n), tree(2 * n, 0) {}
 
-  SegmentTree2D(const vector<int>& nums) {
+  SegmentTree(const vector<int>& nums) {
     n = nums.size();
     tree.resize(2 * n);  // only need 2n for iteration version
 

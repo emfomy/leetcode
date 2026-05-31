@@ -3,14 +3,14 @@
 using namespace std;
 
 // Recursion Version
-class SegmentTree2D {
+class SegmentTree {
   int n;
   vector<int> tree;  // parent i -> child 2i & 2i+1
 
  public:
-  SegmentTree2D(int n) : n(n), tree(4 * n, 0) {}
+  SegmentTree(int n) : n(n), tree(4 * n, 0) {}
 
-  SegmentTree2D(const vector<int>& nums) {
+  SegmentTree(const vector<int>& nums) {
     n = nums.size();
     tree.resize(4 * n);
     build(nums, 1, 0, n);
