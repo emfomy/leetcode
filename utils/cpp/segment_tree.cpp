@@ -39,11 +39,11 @@ class SegmentTree {
  public:
   SegmentTree(int n) : n(n), tree(2 * n, 0) {}
 
+  // Build: O(N)
   SegmentTree(const vector<int>& nums) {
     n = nums.size();
     tree.resize(2 * n);  // only need 2n for iteration version
 
-    // build: O(N)
     for (int i = 0; i < n; ++i) tree[i + n] = nums[i];  // leaves
     for (int i = n - 1; i >= 1; --i) tree[i] = tree[2 * i] + tree[2 * i + 1];
   }

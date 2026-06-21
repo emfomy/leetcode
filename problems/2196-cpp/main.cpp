@@ -59,7 +59,13 @@ struct TreeNode {
   TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
 };
 
-// Hash Map
+// Hash Map + Hash Set
+//
+// Use a hash map to store the nodes.
+// Use a hash set to store the nodes that aren't root.
+//
+// For each description, find (or create) the nodes from the hash map;
+// and put the child node into the child set.
 class Solution {
  public:
   TreeNode *createBinaryTree(const vector<vector<int>> &descriptions) {

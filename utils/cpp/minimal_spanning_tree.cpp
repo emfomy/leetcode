@@ -5,7 +5,7 @@
 using namespace std;
 
 // Kruskal, O(E logE); Good for sparse graph.
-class Kruskal {
+struct Kruskal {
   using Edge = tuple<int, int, int>;  // weight, node, node
 
   struct UnionFind {
@@ -36,7 +36,7 @@ class Kruskal {
 };
 
 // Dense Prim, O(V^2); Good for dense graph.
-class Prim {
+struct Prim {
   // Graph: [i][j] -> weight
   void solve(const vector<vector<int>>& graph) {
     const int n = graph.size();

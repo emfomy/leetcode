@@ -8,7 +8,7 @@ using namespace std;
 
 // Dijkstra, O(E logE)
 // Sparse, Single Source, No Negative Cycle
-class Dijkstra {
+struct Dijkstra {
   using Edge = pair<int, int>;   // weight, node
   using State = pair<int, int>;  // cost, node
 
@@ -49,7 +49,7 @@ class Dijkstra {
 
 // Dense Dijkstra, O(V^2)
 // Dense, Single Source, No Negative Cycle
-class DijkstraDense {
+struct DijkstraDense {
   using State = pair<int, int>;  // cost, node
 
   using Heap = priority_queue<State, vector<State>, greater<>>;  // min-heap
@@ -94,7 +94,7 @@ class DijkstraDense {
 
 // Bellman-Ford, O(EV)
 // Sparse, Single Source, Negative Cycle
-class BellmanFord {
+struct BellmanFord {
   using Edge = tuple<int, int, int>;  // weight, from, to
 
   int solve(const int n, const vector<Edge>& edges, int source, int target) {
@@ -132,7 +132,7 @@ class BellmanFord {
 
 // Floyd-Warshall, O(V^3)
 // Dense, All Pairs, Negative Cycle
-class FloydWarshall {
+struct FloydWarshall {
   // Graph: (from, to) -> weight, INT_MAX for no edge
   bool solve(vector<vector<int>>& graph) {
     const int n = graph.size();
