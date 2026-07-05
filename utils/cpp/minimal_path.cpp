@@ -50,10 +50,6 @@ struct Dijkstra {
 // Dense Dijkstra, O(V^2)
 // Dense, Single Source, No Negative Cycle
 struct DijkstraDense {
-  using State = pair<int, int>;  // cost, node
-
-  using Heap = priority_queue<State, vector<State>, greater<>>;  // min-heap
-
   // Graph: (from, to) -> weight, INT_MAX for no edge
   int solve(const vector<vector<int>>& graph, int source, int target) {
     const int n = graph.size();
@@ -159,5 +155,47 @@ struct FloydWarshall {
     }
 
     return true;
+  }
+};
+
+// 0-1 BFS, O(N)
+// Boolean Edge, Single Source
+struct ZeroOneBFS {
+  using Edge = pair<int, bool>;  // weight, node
+  using State = pair<int, int>;  // cost, node
+
+  using Queue = deque<State>;
+
+  // Graph: from -> (weight, to) pairs
+  int solve(const vector<vector<Edge>>& graph, int source, int target) {
+    const int n = graph.size();
+
+    // Loop
+    auto costs = vector<int>(n, INT_MAX);
+    Queue que;
+    costs[source] = 0;
+    que.push_front(State{0, source});
+
+    while (!que.empty()) {
+      auto [cost, node] = que.front();
+      que.pop_front();
+
+      // Early stop
+      if (node == target) return cost;
+
+      // Traverse
+      for (const auto [weight, nextNode] : graph[node]) {
+        int nextCost = cost + weight;
+        if (costs[nextNode] <= nextCost) continue;  // Relax
+        costs[nextNode] = nextCost;
+        if (weight) {
+          que.push_back(State{nextCost, nextNode});
+        } else {
+          que.push_front(State{nextCost, nextNode});
+        }
+      }
+    }
+
+    return INT_MAX;  // unreachable
   }
 };

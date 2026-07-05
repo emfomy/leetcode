@@ -45,23 +45,23 @@ using namespace std;
 // Slicing Window
 class Solution {
  public:
-  int numberOfSubstrings(string s) {
-    int n = s.size();
+  int numberOfSubstrings(const string &s) {
+    const int n = s.size();
 
-    auto ans = 0;
-    auto counts = vector<int>(3);
+    int count = 0;
+    auto freqs = vector<int>(3);
     auto l = 0, r = 0;  // [l, r]
     while (r < n) {
-      ++counts[s[r] - 'a'];
-      while (l < r && counts[0] > 0 && counts[1] > 0 && counts[2] > 0) {
-        ans += n - r;  // all substring start at l and end after r (including) is valid;
-        --counts[s[l] - 'a'];
+      ++freqs[s[r] - 'a'];
+      while (l < r && freqs[0] > 0 && freqs[1] > 0 && freqs[2] > 0) {
+        count += n - r;  // all substring start at l and end after r (including) is valid;
+        --freqs[s[l] - 'a'];
         ++l;
       }
       ++r;
     }
 
-    return ans;
+    return count;
   }
 };
 
@@ -71,17 +71,17 @@ class Solution {
 // Then every string start before i (including) and end here is a valid substring.
 class Solution2 {
  public:
-  int numberOfSubstrings(string s) {
-    int n = s.size();
+  int numberOfSubstrings(const string &s) {
+    const int n = s.size();
 
-    auto ans = 0;
+    int count = 0;
     auto lastSeen = vector<int>(3, -1);
-    for (auto i = 0; i < n; ++i) {
+    for (int i = 0; i < n; ++i) {
       lastSeen[s[i] - 'a'] = i;
-      auto lastIdx = min({lastSeen[0], lastSeen[1], lastSeen[2]});
-      ans += lastIdx + 1;
+      int lastIdx = min({lastSeen[0], lastSeen[1], lastSeen[2]});
+      count += lastIdx + 1;
     }
 
-    return ans;
+    return count;
   }
 };
