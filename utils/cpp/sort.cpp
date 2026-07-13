@@ -5,7 +5,7 @@
 using namespace std;
 
 // orders[rank] = original_idx
-// ranks[original_idx] = order (i.e. sorted position)
+// ranks[original_idx] = order
 void sortByIndex(const vector<int> &nums) {
   const int n = nums.size();
 
