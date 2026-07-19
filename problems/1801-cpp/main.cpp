@@ -1,36 +1,36 @@
-// Source: https://leetcode.com/problems/remove-duplicate-letters
-// Title: Remove Duplicate Letters
+// Source: https://leetcode.com/problems/smallest-subsequence-of-distinct-characters
+// Title: Smallest Subsequence of Distinct Characters
 // Difficulty: Medium
 // Author: Mu Yang <http://muyang.pro>
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-// Given a string `s`, remove duplicate letters so that every letter appears once and only once. You must make sure your result is **the smallest in lexicographical order** among all possible results.
-//
+// Given a string `s`, return the **lexicographically smallest subsequence** of `s` that contains all the distinct characters of `s` exactly once.
+
 // **Example 1:**
-//
+
 // ```
 // Input: s = "bcabc"
 // Output: "abc"
 // ```
-//
+
 // **Example 2:**
-//
+
 // ```
 // Input: s = "cbacdcbc"
 // Output: "acdb"
 // ```
-//
+
 // **Constraints:**
-//
-// - `1 <= s.length <= 10^4`
+
+// - `1 <= s.length <= 1000`
 // - `s` consists of lowercase English letters.
-//
-// **Note:** This question is the same as 1081: https://leetcode.com/problems/smallest-subsequence-of-distinct-characters
-//
+
+// **Note:** This question is the same as 316: https://leetcode.com/problems/remove-duplicate-letters
+
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+#include <array>
 #include <string>
-#include <vector>
 
 using namespace std;
 
@@ -51,7 +51,7 @@ class Solution {
   using Bool = unsigned char;
 
  public:
-  string removeDuplicateLetters(string s) {
+  string smallestSubsequence(const string &s) {
     const int n = s.size();
 
     // Count
