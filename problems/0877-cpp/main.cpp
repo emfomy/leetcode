@@ -47,11 +47,15 @@ using namespace std;
 
 // DP
 //
-// DP[k][i] is defined as score(current user) - score(another user) for the range [i, i+k)
-// DP[1][i] = nums[i] since Bob can no choice.
-// DP[k][i] = max(piles[i] - DP[k-1][i+1], piles[i+k-1] - DP[k-1][i])
+// DP[k, i] = score difference (current player - other player) for range [i, i+k]
+// DP[0, i] = nums[i] since current player has no choice
+// DP[k, i] = max(
+//   nums[i]   - DP[k-1, i+1], // pick first number
+//   nums[i+k] - DP[k-1, i],   // pick last number
+// )
 //
-// Then answer is DP[n][0]
+// Then answer is DP[n-1][0]
+// Note: 0 <= k < n; 0 <= i; i+k < n
 class Solution {
  public:
   bool stoneGame(const vector<int>& piles) {
@@ -60,10 +64,10 @@ class Solution {
     auto prev = vector<int>(n);
     auto curr = vector<int>(piles.cbegin(), piles.cend());
 
-    for (int k = 2; k <= n; ++k) {
+    for (int k = 1; k < n; ++k) {
       swap(curr, prev);
-      for (int i = 0; i <= n - k; ++i) {
-        curr[i] = max(piles[i] - prev[i + 1], piles[i + k - 1] - prev[i]);
+      for (int i = 0; i < n - k; ++i) {
+        curr[i] = max(piles[i] - prev[i + 1], piles[i + k] - prev[i]);
       }
     }
 
@@ -71,6 +75,8 @@ class Solution {
   }
 };
 
+// Math
+//
 // We group the piles by the parity of the indices.
 // Denoted as A and B group.
 //
@@ -81,7 +87,7 @@ class Solution {
 // Alice always pick the pile from the A group,
 // and keep both end with B group for Bob.
 //
-// Hence Alice always win.
+// Hence Alice always wins.
 class Solution2 {
  public:
   bool stoneGame(const vector<int>& piles) {
