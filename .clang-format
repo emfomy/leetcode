@@ -2,3 +2,5 @@ BasedOnStyle: Google
 
 ColumnLimit: 128
 ReflowComments: false
+QualifierAlignment: Custom
+QualifierOrder: [static, inline, constexpr, const, volatile, type]
