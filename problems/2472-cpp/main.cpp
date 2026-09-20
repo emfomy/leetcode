@@ -95,8 +95,8 @@ class Solution {
 // SufHash[i, j) = s[i] + ... + s[j-1]B^(j-i-1)
 //               = SufHash[i, n) - SufHash[j, n) * B^(j-i)
 class Solution2 {
-  constexpr static int64_t M = 1e9 + 7;  // modulo
-  constexpr static int64_t B = 13331;    // base
+  static constexpr int64_t M = 1e9 + 7;  // modulo
+  static constexpr int64_t B = 13331;    // base
 
   int64_t mod(int64_t x) {
     return ((x % M) + M) % M;  //

@@ -1,181 +1,173 @@
-// Source: https://leetcode.com/problems/path-existence-queries-in-a-graph-ii
-// Title: Path Existence Queries in a Graph II
+// Source: https://leetcode.com/problems/lexicographically-smallest-palindromic-permutation-greater-than-target
+// Title: Lexicographically Smallest Palindromic Permutation Greater Than Target
 // Difficulty: Hard
 // Author: Mu Yang <http://muyang.pro>
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-// You are given an integer `n` representing the number of nodes in a graph, labeled from 0 to `n - 1`.
+// You are given two strings `s` and `target`, each of length `n`, consisting of lowercase English letters.
 //
-// You are also given an integer array `nums` of length `n` and an integer `maxDiff`.
-//
-// An **undirected **edge exists between nodes `i` and `j` if the **absolute** difference between `nums[i]` and `nums[j]` is **at most** `maxDiff` (i.e., `|nums[i] - nums[j]| <= maxDiff`).
-//
-// You are also given a 2D integer array `queries`. For each `queries[i] = [u_i, v_i]`, find the **minimum** distance between nodes `u_i` and `v_i`_. If no path exists between the two nodes, return -1 for that query.
-//
-// Return an array `answer`, where `answer[i]` is the result of the `i^th` query.
-//
-// **Note:** The edges between the nodes are unweighted.
+// Return the **lexicographically smallest string** that is **both** a **palindromic permutation** of `s` and **strictly** greater than `target`. If no such permutation exists, return an empty string.
 //
 // **Example 1:**
 //
 // ```
-// Input: n = 5, nums = [1,8,3,4,2], maxDiff = 3, queries = [[0,3],[2,4]]
-// Output: [1,1]
+// Input: s = "baba", target = "abba"
+// Output: "baab"
 // Explanation:
-// The resulting graph is:
-// https://assets.leetcode.com/uploads/2025/03/25/4149example1drawio.png
-//
-// | Query | Shortest Path | Minimum Distance |
-// |-------|---------------|------------------|
-// | [0,3] | 0 → 3         | 1                |
-// | [2,4] | 2 → 4         | 1                |
-//
-// Thus, the output is `[1, 1]`.
+// - The palindromic permutations of `s` (in lexicographical order) are `"abba"` and `"baab"`.
+// - The lexicographically smallest permutation that is strictly greater than `target` is `"baab"`.
 // ```
 //
 // **Example 2:**
 //
 // ```
-// Input: n = 5, nums = [5,3,1,9,10], maxDiff = 2, queries = [[0,1],[0,2],[2,3],[4,3]]
-// Output: [1,2,-1,1]
+// Input: s = "baba", target = "bbaa"
+// Output: ""
 // Explanation:
-// The resulting graph is:
-// https://assets.leetcode.com/uploads/2025/03/25/4149example2drawio.png
-//
-// | Query | Shortest Path | Minimum Distance |
-// |-------|---------------|------------------|
-// | [0,3] | 0 → 3         | 1                |
-// | [2,4] | 2 → 4         | 1                |
-//
-// Thus, the output is `[1, 2, -1, 1]`.
+// - The palindromic permutations of `s` (in lexicographical order) are `"abba"` and `"baab"`.
+// - None of them is lexicographically strictly greater than `target`. Therefore, the answer is `""`.
+// ```
 //
 // **Example 3:**
 //
 // ```
-// Input: n = 3, nums = [3,6,1], maxDiff = 1, queries = [[0,0],[0,1],[1,2]]
-// Output: [0,-1,-1]
+// Input: s = "abc", target = "abb"
+// Output: ""
 // Explanation:
-// There are no edges between any two nodes because:
-// - Nodes 0 and 1: `|nums[0] - nums[1]| = |3 - 6| = 3 > 1`
-// - Nodes 0 and 2: `|nums[0] - nums[2]| = |3 - 1| = 2 > 1`
-// - Nodes 1 and 2: `|nums[1] - nums[2]| = |6 - 1| = 5 > 1`
-// Thus, no node can reach any other node, and the output is `[0, -1, -1]`.
+// `s` has no palindromic permutations. Therefore, the answer is `""`.
+// ```
+//
+// **Example 4:**
+//
+// ```
+// Input: s = "aac", target = "abb"
+// Output: "aca"
+// Explanation:
+// - The only palindromic permutation of `s` is `"aca"`.
+// - `"aca"` is strictly greater than `target`. Therefore, the answer is `"aca"`.
 // ```
 //
 // **Constraints:**
 //
-// - `1 <= n == nums.length <= 10^5`
-// - `0 <= nums[i] <= 10^5`
-// - `0 <= maxDiff <= 10^5`
-// - `1 <= queries.length <= 10^5`
-// - `queries[i] == [u_i, v_i]`
-// - `0 <= u_i, v_i < n`
+// - `1 <= n == s.length == target.length <= 300`
+// - `s` and `target` consist of only lowercase English letters.
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-#include <numeric>
-#include <vector>
+#include <array>
+#include <string>
 
 using namespace std;
 
-// Sort + Sliding Window + Binary Lifting
+// Greedy
 //
-// First sort the nodes. Find the gaps and group the nodes.
-// Path exists iff. two node are in the same group.
+// First count the letter frequency of `s`,
+// and check if it has palindromic permutation.
 //
-// Next use sliding window to find the furthest reachable node (in one step) per node.
-// The node int the window is always less than maxDiff.
-// Before pushing new node, check if the head is too far.
-// If so, pop the head node, and assign head.max_reach = tail.
-// (Note that we must ensure that head != tail).
+// Next loop through the letters in `target`.
+// Note that we only need to loop for the first half.
 //
-// Next use binary lifting to find the path length.
-// For each node,
-// we store the furthest node it can reach in 1, 2, 4, 8, ... steps.
+// For each letter, pick the same letter if possible.
+// After that, we try to form the maximum string with the rest of the letters,
+// ensuring that we can form a greater permutation.
 //
-// Let jump[u][k] be the node from u with 2^k steps.
-// jump[u][0] is initialized from above sliding window.
-// We can compute jump[u][k] from jump[u][k-1].
+// If there is no such letter or we can't from a greater permutation,
+// pick the smallest letter that is greater than the current letter.
+// After that, we pick the smallest letters (no constraint) for the rest.
 class Solution {
-  struct Node {
-    int rank;
-    int num;
-  };
-
  public:
-  vector<int> pathExistenceQueries(       //
-      const int n,                        //
-      const vector<int>& nums,            //
-      const int maxDiff,                  //
-      const vector<vector<int>>& queries  //
-  ) {
-    // Sort by index
-    auto orders = vector<int>(n);  // orders[rank] = original_idx
-    iota(orders.begin(), orders.end(), 0);
-    const auto comp = [&nums](int i, int j) -> bool { return nums[i] < nums[j]; };
-    sort(orders.begin(), orders.end(), comp);
+  string lexPalindromicPermutation(const string& s, const string& target) {
+    const int n = s.size();
+    const int m = n / 2;
+    string ans;
+    ans.reserve(n);
 
-    auto ranks = vector<int>(n);  // ranks[original_idx] = order (i.e. sorted position)
-    for (int r = 0; r < n; r++) {
-      ranks[orders[r]] = r;
+    // Edge case: only one letter
+    if (n == 1 && s[0] <= target[0]) return "";
+
+    // Frequency
+    auto freq = array<int, 128>();
+    for (const char ch : s) ++freq[ch];
+
+    // Check palindromic
+    char oddCh = '\0';
+    for (int ch = 'a'; ch <= 'z'; ++ch) {
+      if (freq[ch] % 2 == 1) {
+        if (oddCh) return "";
+        oddCh = ch;
+      }
+      freq[ch] /= 2;
     }
 
-    // Group
-    auto groups = vector<int>(n);
-    groups[0] = 0;
-    for (int r = 0; r < n - 1; ++r) {
-      if (nums[orders[r + 1]] - nums[orders[r]] <= maxDiff) {
-        groups[r + 1] = groups[r];
-      } else {
-        groups[r + 1] = groups[r] + 1;
-      }
-    }
-
-    // Sliding window
-    int logn = bit_width(size_t(n));                           // floor(log(n)) + 1
-    auto jump = vector<vector<int>>(n, vector<int>(logn, n));  // n as can't go
-    int head = 0;
-    for (int r = 0; r < n; ++r) {  // [head, r) is current window
-      int num = nums[orders[r]];
-      while (head < r && num - nums[orders[head]] > maxDiff) {
-        if (head < r - 1) {  // r-1 = tail exist
-          jump[head][0] = r - 1;
-        }
-        ++head;
-      }
-    }
-
-    // Binary lifting
-    for (int k = 1; k < logn; ++k) {
-      for (int r = 0; r < n; ++r) {
-        int nextR = jump[r][k - 1];
-        if (nextR >= n) continue;
-        jump[r][k] = jump[nextR][k - 1];
-      }
-    }
-
-    // Query
-    auto ans = vector<int>();
-    ans.reserve(queries.size());
-    for (const auto& query : queries) {
-      int u = ranks[query[0]], v = ranks[query[1]];
-      if (groups[u] != groups[v]) {
-        ans.push_back(-1);
-        continue;
-      }
-      if (u > v) swap(u, v);
-
-      int curr = u, step = 0;
-      for (int k = logn - 1; k >= 0; --k) {
-        int next = jump[curr][k];
-        if (next <= v) {  // reachable and not too far
-          curr = next;
-          step += (1 << k);
+    // Helper
+    auto canFormGreater = [n, oddCh, &target, &freq, &ans](int i) -> bool {
+      // Check first half
+      for (char ch = 'z'; ch >= 'a'; --ch) {
+        for (int f = 0; f < freq[ch]; ++f) {
+          ++i;
+          if (ch > target[i]) return true;
+          if (ch < target[i]) return false;
         }
       }
-      if (curr < v) ++step;  // not reach v, add one extra step
-      ans.push_back(step);
+
+      // Check middle
+      if (oddCh) {
+        ++i;
+        if (oddCh > target[i]) return true;
+        if (oddCh < target[i]) return false;
+      }
+
+      // Check last half
+      for (char ch = 'a'; ch <= 'z'; ++ch) {
+        for (int f = 0; f < freq[ch]; ++f) {
+          ++i;
+          if (ch > target[i]) return true;
+          if (ch < target[i]) return false;
+        }
+      }
+
+      // Check filled letters
+      for (++i; i < n; ++i) {
+        char ch = ans[n - 1 - i];
+        if (ch > target[i]) return true;
+        if (ch < target[i]) return false;
+      }
+
+      return false;  // equal to target
+    };
+
+    // Backtrack
+    for (int i = 0; i < m; i++) {
+      const char ch = target[i];  // current letter
+
+      // Pick the same letter
+      if (freq[ch] > 0) {
+        --freq[ch];
+        ans.push_back(ch);
+        if (canFormGreater(i)) continue;
+
+        // can't pick, backtrack
+        ans.pop_back();
+        ++freq[ch];
+      }
+
+      // Pick greater letter
+      auto it = find_if(freq.cbegin() + ch + 1, freq.cend(), [](int x) -> bool { return x > 0; });
+      if (it == freq.cend()) return "";  // no solution
+      char c = it - freq.cbegin();
+      --freq[c];
+      ans.push_back(c);
+      break;
     }
+
+    // Fill the rest
+    for (char ch = 'a'; ch <= 'z'; ++ch) {
+      for (int f = 0; f < freq[ch]; ++f) {
+        ans.push_back(ch);
+      }
+    }
+    if (oddCh) ans.push_back(oddCh);
+    for (int j = m - 1; j >= 0; --j) ans.push_back(ans[j]);
 
     return ans;
   }

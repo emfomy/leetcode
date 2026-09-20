@@ -54,7 +54,7 @@ import (
 	"sort"
 )
 
-// Use DP + Binary Search
+// DP + Binary Search
 //
 // # We first sort the events by its start time
 //
