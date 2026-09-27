@@ -63,14 +63,18 @@ class SegmentTree {
 
   // Query: O(logN); Max in [l, r)
   int query(int l, int r, int node, int lo, int hi) const {
-    // Out of range
-    if (r <= lo || hi <= l) return INT_MIN;
+    int mid = lo + (hi - lo) / 2;
 
     // Full overlap
     if (l <= lo && hi <= r) return tree[node];
 
+    // Only left
+    if (r <= mid) return query(l, r, leftChild(node), lo, mid);
+
+    // Only right
+    if (mid <= l) return query(l, r, rightChild(node), mid, hi);
+
     // Partial overlap
-    int mid = lo + (hi - lo) / 2;
     int leftVal = query(l, r, leftChild(node), lo, mid);
     int rightVal = query(l, r, rightChild(node), mid, hi);
     return max(leftVal, rightVal);
