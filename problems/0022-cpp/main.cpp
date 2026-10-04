@@ -32,33 +32,36 @@ using namespace std;
 
 // Backtracking
 class Solution {
+  struct Backtrack {
+    vector<string> ans;
+
+    // d:   parentheses depth.
+    // k:   number of letter to fill.
+    // str: current string.
+    void run(int d, int k, string& str) {
+      if (d == k) {
+        ans.push_back(str + string(k, ')'));
+        return;
+      }
+
+      str.push_back('(');
+      run(d + 1, k - 1, str);
+      str.pop_back();
+
+      if (d == 0) return;
+      str.push_back(')');
+      run(d - 1, k - 1, str);
+      str.pop_back();
+    }
+  };
+
  public:
   vector<string> generateParenthesis(int n) {
-    auto ans = vector<string>();
-
     string str = "";
     str.reserve(2 * n);
 
-    backtrack(0, 2 * n, str, ans);
-    return ans;
-  }
-
-  // d   is the parentheses depth.
-  // k   is the number of letter to fill.
-  // str is the current string.
-  void backtrack(int d, int k, string& str, vector<string>& ans) {
-    if (d == k) {
-      ans.push_back(str + string(k, ')'));
-      return;
-    }
-
-    str.push_back('(');
-    backtrack(d + 1, k - 1, str, ans);
-    str.pop_back();
-
-    if (d == 0) return;
-    str.push_back(')');
-    backtrack(d - 1, k - 1, str, ans);
-    str.pop_back();
+    Backtrack bt;
+    bt.run(0, 2 * n, str);
+    return bt.ans;
   }
 };

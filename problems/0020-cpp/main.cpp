@@ -59,14 +59,8 @@
 
 using namespace std;
 
-// Use stack
+// Stack
 class Solution {
-  constexpr static char match[128] = {
-      [')'] = '(',
-      [']'] = '[',
-      ['}'] = '{',
-  };
-
  public:
   bool isValid(const string &s) {
     const int n = s.size();
@@ -83,9 +77,15 @@ class Solution {
           break;
         }
         case ')':
+          if (st.empty() || st.back() != '(') return false;
+          st.pop_back();
+          break;
         case ']':
+          if (st.empty() || st.back() != '[') return false;
+          st.pop_back();
+          break;
         case '}': {
-          if (st.empty() || st.back() != match[ch]) return false;
+          if (st.empty() || st.back() != '{') return false;
           st.pop_back();
           break;
         }
