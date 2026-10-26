@@ -53,7 +53,7 @@ class Solution {
   int minAddToMakeValid(const string &s) {
     int ans = 0;
     int count = 0;
-    for (char ch : s) {
+    for (const char ch : s) {
       if (ch == '(') {
         ++count;
       } else {

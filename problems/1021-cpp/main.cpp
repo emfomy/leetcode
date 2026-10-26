@@ -53,34 +53,22 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 #include <string>
-#include <string_view>
 
 using namespace std;
 
-// Counter
+// Just remove all item with depth zero.
 class Solution {
  public:
-  string removeOuterParentheses(const string_view &s) {
-    const int n = s.size();
-
-    if (n == 0) return "";
-
-    // Prepare ans
+  string removeOuterParentheses(const string &s) {
     string ans;
-    ans.reserve(n);
+    ans.reserve(s.size());
 
-    // Prepare counter
-    int counter = 0;
-    int prevIdx = 0;
-    for (int i = 1; i <= n; ++i) {  // end index
-      counter += (s[i - 1] == '(') ? 1 : -1;
-      if (counter == 0) {
-        ans += s.substr(prevIdx + 1, i - prevIdx - 2);
-        prevIdx = i;
-      }
+    int depth = 0;
+    for (const char ch : s) {
+      if (ch == ')') --depth;
+      if (depth == 0) ans.push_back(ch);
+      if (ch == '(') ++depth;
     }
-
-    // Counter must be 0 at the end since s is valid
 
     return ans;
   }
