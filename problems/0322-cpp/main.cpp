@@ -53,7 +53,7 @@ using namespace std;
 // DP[0] = 0
 // For each kind of coin, try to apply this coin to all DP values.
 class Solution {
-  constexpr static int kInf = INT_MAX / 2;
+  static constexpr int kInf = INT_MAX / 4;
 
  public:
   int coinChange(const vector<int>& coins, const int amount) {

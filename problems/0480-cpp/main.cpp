@@ -49,7 +49,7 @@
 
 using namespace std;
 
-// Tree Set
+// Tree Set (multi)
 class Solution {
   struct MedianSet {
     // size(upper) >= size(lower) >= size(upper)-1

@@ -62,7 +62,7 @@ using namespace std;
 
 // Floyd-Warshall, O(N^3)
 class Solution {
-  constexpr static int kInf = INT_MAX / 2;
+  static constexpr int kInf = INT_MAX / 4;
 
  public:
   int findTheCity(int n, const vector<vector<int>>& edges, int distanceThreshold) {

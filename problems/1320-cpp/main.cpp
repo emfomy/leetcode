@@ -62,9 +62,9 @@ using namespace std;
 // Use the position of the two finger as DP state. (Total 26x26 states)
 // For each letter, try to use both finger to get the new state. (Total 26x26x2 possibility).
 class Solution {
-  constexpr static int kKeys = 26;
-  constexpr static int kStates = kKeys * kKeys;
-  constexpr static int kCols = 6;
+  static constexpr int kKeys = 26;
+  static constexpr int kStates = kKeys * kKeys;
+  static constexpr int kCols = 6;
 
   using State = array<int, kStates>;
 
@@ -108,10 +108,10 @@ class Solution {
 // For each step i, one of the finger must be placed at word[i].
 // Therefore, we only need to store the state for another finger.
 class Solution2 {
-  constexpr static int kInf = INT_MAX / 2;  // avoid overflow
+  static constexpr int kInf = INT_MAX / 4;  // avoid overflow
 
-  constexpr static int kKeys = 26;
-  constexpr static int kCols = 6;
+  static constexpr int kKeys = 26;
+  static constexpr int kCols = 6;
 
   using State = array<int, kKeys>;
 

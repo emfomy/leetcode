@@ -83,7 +83,7 @@ class Solution2 {
 
     auto ans = INT64_MIN;
     auto sum = int64_t(0);
-    auto prefix = vector(k, INT64_MAX / 2);
+    auto prefix = vector(k, INT64_MAX / 4);
     prefix[0] = 0;
     for (auto j = 1; j <= n; ++j) {
       sum += nums[j - 1];
@@ -103,7 +103,7 @@ class Solution3 {
 
     auto ans = INT64_MIN;
     auto sum = int64_t(0);
-    auto prefix = vector(k, INT64_MAX / 2);
+    auto prefix = vector(k, INT64_MAX / 4);
     prefix[k - 1] = 0;
     for (auto j = 0; j < n; ++j) {
       sum += nums[j];
