@@ -29,19 +29,17 @@ def main():
     data = {}
     errors = []
 
-    for prob_dir in sorted(glob.glob("problems/*-*")):
-        if not os.path.isdir(prob_dir):
-            errors.append(f"Expected {prob_dir} to be a directory")
-            continue
-
-        basename = os.path.basename(prob_dir)
-        prob_num_str, lang_code = basename.split("-", 1)
-        prob_num = int(prob_num_str)
-
-        filepath = os.path.join(prob_dir, f"main.{lang_code}")
+    for filepath in sorted(glob.glob("problems/*")):
         if not os.path.isfile(filepath):
-            errors.append(f"Expected {filepath} to exist")
+            errors.append(f"Expected {filepath} to be a file")
             continue
+
+        basename = os.path.basename(filepath)
+        prob_num_str, _, lang_code = basename.partition(".")
+        if not prob_num_str.isdigit() or not lang_code:
+            errors.append(f"Unexpected filename: {filepath}")
+            continue
+        prob_num = int(prob_num_str)
 
         prob_lang = LANG.get(lang_code)
         if not prob_lang:
